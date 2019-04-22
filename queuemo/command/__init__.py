@@ -14,6 +14,7 @@ from utila import parse
 from utila import saveme
 
 from queuemo import __version__
+from queuemo.config import check_startup
 
 COMMANDS = []  # add additonal commands here
 
@@ -25,5 +26,7 @@ def main():
         version=__version__,
     )
     args = parse(parser)
+
+    check_startup()
 
     return SUCCESS
