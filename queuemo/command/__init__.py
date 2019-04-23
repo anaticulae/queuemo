@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+from configo import check_startup
 from utila import SUCCESS
 from utila import Command
 from utila import create_parser
@@ -14,7 +15,6 @@ from utila import parse
 from utila import saveme
 
 from queuemo import __version__
-from queuemo.config import check_startup
 
 COMMANDS = []  # add additonal commands here
 
