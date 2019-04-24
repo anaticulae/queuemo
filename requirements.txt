@@ -6,5 +6,7 @@ utila==0.5.9
 link==0.1.2
 
 # Features packages
+analysis==0.1.1
+feedback==0.1.1
 hey==0.2.1
 rawmaker==0.3.0
