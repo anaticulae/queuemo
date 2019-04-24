@@ -16,21 +16,23 @@ from queuemo.worker.scheduler import run
 from queuemo.worker.scheduler import step
 from tests import EXAMPLE_JOB
 from tests import TODO
+from tests import patch_todo
 
 
 def content(capture):
     return capture.readouterr().out
 
 
-def test_run(capsys):
+def test_run(capsys, tmpdir, monkeypatch):
     step(None)
     assert 'Wait' in content(capsys)
 
-    step('8166109011')
-    progress = content(capsys)
-    assert 'Copy' in progress
-    assert 'Start' in progress
-    assert 'Finish' in progress
+    with patch_todo(tmpdir, monkeypatch):
+        step('8166109011')
+        progress = content(capsys)
+        assert 'Copy' in progress
+        assert 'Start' in progress
+        assert 'Finish' in progress
 
 
 def test_copy_job_to_workspace(monkeypatch):

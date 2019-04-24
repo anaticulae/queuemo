@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
+from contextlib import contextmanager
+from os import makedirs
 from os.path import exists
 from os.path import join
 
@@ -22,3 +24,21 @@ EXAMPLE_JOB = '8166109011'
 
 EXAMPLE_JOB_PATH = join(TODO, EXAMPLE_JOB)
 assert exists(EXAMPLE_JOB_PATH), EXAMPLE_JOB_PATH
+
+
+@contextmanager
+def patch_todo(directory, monkeypatch):
+    import os
+    from configo.share import COMMON
+    from configo.share import READY
+    from configo.share import TODO as ENV_TODO
+
+    makedirs(join(directory, 'ready'))
+    with monkeypatch.context() as context:
+        # Remove all environment vars
+        context.setattr(os, 'environ', {
+            COMMON: directory,
+            ENV_TODO: TODO,
+            READY: join(directory, 'ready'),
+        })
+        yield

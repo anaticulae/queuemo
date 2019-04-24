@@ -88,6 +88,21 @@ def push_result(workspace):
     result = join(workspace, 'result')
     assert exists(result)
 
+    ready_before = ready_count()
+
+    index = jobid(workspace)
+    ready_path = join(ready(), index)
+
+    # Copy results
+    copytree(result, ready_path)
+    # Copy info.yaml
+    info = file_read(join(workspace, JOB_FILE_NAME))
+    file_create(join(ready_path, JOB_FILE_NAME), info)
+
+    ready_after = ready_count()
+
+    assert ready_before + 1 == ready_after
+
 
 def work(workspace):
     assert exists(workspace)
@@ -98,10 +113,17 @@ def work(workspace):
 
 
 def update_info(workspace, result: int):
-    info_path = join(workspace, 'info.yaml')
+    info_path = join(workspace, JOB_FILE_NAME)
     assert exists(info_path)
-    info = read(info_path)
+    info = job_load(info_path)
+    info.result = '%d percent' % result
 
-    # Update result
-    info['result'] = '%d percent' % result
-    write(info_path, info)
+    file_remove(info_path)  # remove old one to replace with new one
+    job_dump(info_path, info)
+
+
+def jobid(path: str):
+    info_path = join(path, JOB_FILE_NAME)
+    assert exists(info_path)
+    info = job_load(info_path)
+    return info.index
