@@ -1,0 +1,96 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2019 by Helmut Konrad Fahrendholz. All rights reserved.
+# Tis file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+"""Watchdog for todo folder to listen to incoming jobs"""
+
+from os import makedirs
+from os.path import exists
+from os.path import join
+from shutil import copytree
+from time import sleep
+
+from configo import todo
+from utila import logging
+from utila import tempfile
+from utila import tmp
+
+from queuemo import ROOT
+from queuemo.worker.info import read
+from queuemo.worker.info import write
+
+WAIT_FOR_NEXT_JOB = 1  # in seconds
+
+RUNNING = True
+
+
+def run():
+    while RUNNING:
+        job = nextjob()
+        step(job)
+
+
+def step(job):
+    if not job:
+        logging('Wait for job')
+        sleep(WAIT_FOR_NEXT_JOB)
+    else:
+        logging('Copy job')
+        workspace = copy(job)
+
+        logging('Start job')
+        work(workspace)
+
+        logging('Finished')
+        push_result(workspace)
+
+
+def nextjob():
+    return None
+
+
+def copy(job):
+    """Copy job to temporary workspace folder
+
+    Args:
+        job(int):
+    Returns:
+        path to temporary workspace
+    """
+    path = join(todo(), job)
+    assert exists(path), path
+
+    workspace = tempfile(ROOT)
+
+    # copy todo folder
+    copytree(path, workspace)
+
+    return workspace
+
+
+def push_result(workspace):
+    assert exists(workspace)
+    result = join(workspace, 'result')
+    assert exists(result)
+
+
+def work(workspace):
+    assert exists(workspace)
+    result = join(workspace, 'result')
+    makedirs(result)
+
+    update_info(workspace, 50)
+
+
+def update_info(workspace, result: int):
+    info_path = join(workspace, 'info.yaml')
+    assert exists(info_path)
+    info = read(info_path)
+
+    # Update result
+    info['result'] = '%d percent' % result
+    write(info_path, info)

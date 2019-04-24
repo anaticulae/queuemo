@@ -13,5 +13,12 @@ from os.path import join
 from queuemo import ROOT
 
 TEST_DATA = join(ROOT, 'tests/data')
-
 assert exists(TEST_DATA), TEST_DATA
+
+TODO = join(TEST_DATA, 'todo')
+assert exists(TODO), TODO
+
+EXAMPLE_JOB = '8166109011'
+
+EXAMPLE_JOB_PATH = join(TODO, EXAMPLE_JOB)
+assert exists(EXAMPLE_JOB_PATH), EXAMPLE_JOB_PATH
