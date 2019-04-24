@@ -31,18 +31,23 @@ from queuemo import ROOT
 
 WAIT_FOR_NEXT_JOB = 1  # in seconds
 
-RUNNING = True
+MAX_RUNTIME = 60 * 60 * 24 * 365  # Run one year
 
 
 def run():
-    while RUNNING:
+    tick = 0
+    while tick < MAX_RUNTIME:
         job = nextjob()
         step(job)
+        tick += 1
+    logging('Terminated: %d' % tick)
+
+    return SUCCESS
 
 
 def step(job):
     if not job:
-        logging('Wait for job')
+        logging('Wait...')
         sleep(WAIT_FOR_NEXT_JOB)
     else:
         logging('Copy job')
@@ -51,8 +56,8 @@ def step(job):
         logging('Start job')
         work(workspace)
 
-        logging('Finished')
         push_result(workspace)
+        logging('Finished')
 
 
 def nextjob():
