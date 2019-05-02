@@ -9,4 +9,4 @@ link==0.1.2
 analysis==0.1.2
 feedback==0.2.1
 hey==0.2.1
-rawmaker==0.3.0
+rawmaker==0.4.0
