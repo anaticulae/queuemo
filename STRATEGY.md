@@ -37,7 +37,7 @@ Input:
 
 Output:
 
-* rawmaker/rawmaker__tableofcontent.yaml
+* rawmaker/rawmaker__toc.yaml
 
 ```[txt]
 A list of the table of content of the pdf document. The headlines are given
@@ -45,3 +45,21 @@ with the level/value of the chapter.
 ```
 
 * rawmaker/rawmaker__text.yaml
+
+`groupme`:
+
+Input:
+
+* rawmaker__text.yaml
+
+Output:
+
+* groupme__chapter.yaml
+
+```[txt]
+```
+
+* groupme__toc.yaml
+
+```[txt]
+```

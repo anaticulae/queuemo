@@ -6,6 +6,8 @@ Welcome to queuemo
 
   pages/readme
 
+  pages/strategy
+
   pages/changelog
 
   pages/bugs
