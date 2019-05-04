@@ -12,7 +12,6 @@ from os.path import exists
 from configo.share import TODO as SHARED_TODO
 
 from queuemo.worker.scheduler import copy
-from queuemo.worker.scheduler import run
 from queuemo.worker.scheduler import step
 from tests import EXAMPLE_JOB
 from tests import TODO
