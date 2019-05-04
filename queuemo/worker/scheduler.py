@@ -28,6 +28,7 @@ from utila import logging
 from utila import tempfile
 
 from queuemo import ROOT
+from queuemo.receipe import run as run_receipe
 
 WAIT_FOR_NEXT_JOB = 1  # in seconds
 
@@ -109,7 +110,9 @@ def work(workspace):
     result = join(workspace, 'result')
     makedirs(result)
 
-    update_info(workspace, 50)
+    result = run_receipe(workspace, jobid(workspace))
+
+    update_info(workspace, result)
 
 
 def update_info(workspace, result: int):
