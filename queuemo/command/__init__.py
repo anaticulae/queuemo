@@ -15,18 +15,11 @@ from utila import parse
 from utila import saveme
 
 from queuemo import __version__
-
-COMMANDS = []  # add additonal commands here
+from queuemo.worker.scheduler import run as start_scheduler
 
 
 @saveme
 def main():
-    parser = create_parser(
-        COMMANDS,
-        version=__version__,
-    )
-    args = parse(parser)
-
     check_startup()
-
+    start_scheduler()
     return SUCCESS
