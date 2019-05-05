@@ -8,6 +8,7 @@
 # =============================================================================
 """Watchdog for todo folder to listen to incoming jobs"""
 
+from os import listdir
 from os import makedirs
 from os.path import exists
 from os.path import join
@@ -62,6 +63,25 @@ def step(job):
 
 
 def nextjob():
+    """Find next job and mark it as `in progress`
+
+    Select the todo folder and search for a folder that does not include an
+    `inprogress` file.
+
+    Returns:
+        If there is a matching file, return the folder name as jobid
+        If there is no matching file than return `None`
+    """
+
+    todopath = todo(True)
+    for item in listdir(todopath):
+        check_ready = join(todopath, item, 'inprogress')
+        if not exists(check_ready):
+            continue
+        # Mark folder as in progress
+        file_create(check_ready)
+        makedirs(check_ready)
+        return item
     return None
 
 
