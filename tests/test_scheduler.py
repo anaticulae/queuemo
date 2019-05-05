@@ -22,7 +22,7 @@ def content(capture):
     return capture.readouterr().out
 
 
-def test_run(capsys, tmpdir, monkeypatch):
+def test_run_steps(capsys, tmpdir, monkeypatch):
     step(None)
     assert 'Wait' in content(capsys)
 
