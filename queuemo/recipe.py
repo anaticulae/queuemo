@@ -51,9 +51,9 @@ RUNNER = [
 
 def run(workspace, document: int) -> int:
     check(workspace)
-
     run_raw(workspace, document)
 
+    # TODO: We need a custom result
     return 95
 
 

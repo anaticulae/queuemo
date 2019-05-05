@@ -130,7 +130,7 @@ def work(workspace):
     result = join(workspace, 'result')
     makedirs(result)
 
-    result = run_receipe(workspace, jobid(workspace))
+    result = run_recipe(workspace, jobid(workspace))
 
     update_info(workspace, result)
 

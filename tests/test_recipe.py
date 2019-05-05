@@ -7,15 +7,14 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from queuemo.receipe import run
+from queuemo.recipe import run
 from queuemo.worker.scheduler import copy
 from tests import EXAMPLE_JOB
 from tests import patch_todo
 
 
-def test_run_receipe(tmpdir, monkeypatch):
+def test_run_recipe(tmpdir, monkeypatch):
     with patch_todo(tmpdir, monkeypatch):
         workspace = copy(EXAMPLE_JOB)
-
         result = run(workspace, EXAMPLE_JOB)
     assert result, result
