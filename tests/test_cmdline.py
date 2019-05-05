@@ -16,6 +16,8 @@ from utila.test import skip_not_virtual
 
 from queuemo import ROOT
 from queuemo.command import PROCESS_NAME
+from queuemo.command import RUNTIME
+from queuemo.command import WAITING
 from queuemo.command import main
 
 
@@ -31,9 +33,29 @@ def test_run_queuemo():
 
 
 def test_run_main(monkeypatch):
+    run_queuemo('--version', monkeypatch, None)
+
+
+def test_run_one_job(monkeypatch):
+    run_queuemo(
+        [
+            '--%s' % RUNTIME,
+            '1',  # seconds
+            '--%s' % WAITING,
+            '10',  # mili
+        ],
+        monkeypatch,
+        None,
+    )
+
+
+def run_queuemo(command, monkeypatch, testdir):
+    if isinstance(command, str):
+        command = command.split()
+
     with monkeypatch.context() as context:
         # Remove all environment vars
-        context.setattr(sys, 'argv', [PROCESS_NAME, '--version'])
+        context.setattr(sys, 'argv', [PROCESS_NAME] + command)
 
         with raises(SystemExit) as result:
             main()
