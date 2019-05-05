@@ -3,7 +3,7 @@
 # C O P Y R I G H T
 #------------------------------------------------------------------------------
 # Copyright (c) 2019 by Helmut Konrad Fahrendholz. All rights reserved.
-# Tis file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
@@ -21,18 +21,33 @@ with open(join(ROOT, 'README.md'), 'rt', encoding='utf8') as fp:
 with open(join(ROOT, 'queuemo/__init__.py'), 'rt', encoding='utf8') as fp:
     VERSION = search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
 
+with open(join(ROOT, "requirements.txt"), mode='rt', encoding='utf8') as fp:
+    INSTALL_REQUIRES = [
+        line for line in fp.readlines() if line and '#' not in line
+    ]
+
+
+def datafiles():
+    return [('.', [
+        'BUGS.md',
+        'CHANGELOG.md',
+        'README.md',
+        'TODO.md',
+        'requirements.txt',
+    ])]
+
+
 if __name__ == "__main__":
     setup(
         author='Helmut Konrad Fahrendholz',
         author_email='info@checkitweg.de',
+        data_files=datafiles(),
         description='queuemo',
         include_package_data=True,
-        install_requires=[],
+        install_requires=INSTALL_REQUIRES,
         long_description=README,
         name='queuemo',
         platforms='any',
-        setup_requires=[],
-        tests_require=[],
         version=VERSION,
         zip_safe=False,  # create 'zip'-file if True. Don't do it!
         classifiers=[
@@ -46,5 +61,6 @@ if __name__ == "__main__":
         packages=[
             'queuemo',
             'queuemo.command',
+            'queuemo.worker',
         ],
     )
