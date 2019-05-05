@@ -21,45 +21,69 @@ from link import JOB_FILE_NAME
 from link import job_dump
 from link import job_load
 from link import ready_count
+from utila import FAILURE
 from utila import SUCCESS
 from utila import file_create
 from utila import file_read
 from utila import file_remove
 from utila import logging
+from utila import logging_error
+from utila import logging_stacktrace
 from utila import tempfile
 
 from queuemo import ROOT
-from queuemo.receipe import run as run_receipe
-
-WAIT_FOR_NEXT_JOB = 1  # in seconds
+from queuemo.recipe import run as run_recipe
 
 MAX_RUNTIME = 60 * 60 * 24 * 365  # Run one year
+WAITING = 1000  # ms, 1 second
 
 
-def run():
+def run(runtime=MAX_RUNTIME, waiting=WAITING, verbose: bool = True):
+    """Run the scheduler
+
+    Args:
+        runtime():
+        waiting():
+    Returns:
+        SUCCESS when scheduler ends, or Exception, when runtime error occurs
+    """
+    if not waiting:
+        waiting = 1
     tick = 0
-    while tick < MAX_RUNTIME:
+    while tick < runtime:
         job = nextjob()
-        step(job)
+        try:
+            step(job, waiting=waiting, verbose=verbose)
+        except Exception:  # pylint: disable=broad-except
+            logging_stacktrace()
+            logging_error('Close scheduler: %d' % tick)
+            return FAILURE
         tick += 1
-    logging('Terminated: %d' % tick)
 
+    logging('Terminated: %d' % tick)
     return SUCCESS
 
 
-def step(job):
+def step(job, waiting=WAITING, verbose: bool = True):
     if not job:
-        logging('Wait...')
-        sleep(WAIT_FOR_NEXT_JOB)
+        if verbose:
+            logging('Wait...')
+        else:
+            logging('.', end='')
+        sleep(waiting / 1000)
     else:
-        logging('Copy job')
+        logging('Run job')
+        if verbose:
+            logging('Copy job')
         workspace = copy(job)
 
-        logging('Start job')
+        if verbose:
+            logging('Start job')
         work(workspace)
 
         push_result(workspace)
-        logging('Finished')
+        if verbose:
+            logging('Finished')
 
 
 def nextjob():
