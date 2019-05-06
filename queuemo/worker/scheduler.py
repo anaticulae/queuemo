@@ -145,7 +145,7 @@ def push_result(workspace):
 
     logging('Push result to: %s' % ready_path)
     # Copy results
-    copytree(result, ready_path)
+    copytree(result, join(ready_path, 'result'))
     # Copy info.yaml
     info = file_read(join(workspace, JOB_FILE_NAME))
     file_create(join(ready_path, JOB_FILE_NAME), info)
