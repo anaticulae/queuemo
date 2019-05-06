@@ -135,7 +135,7 @@ def run_raw(workspace, document: int):
 
     log_process_start('publish')
     goal_sections = join(result_path, '06_statistica/05_chapter/05_sections')
-    goal_words = join(result_path, '06_statistica/05_chapter/05_words')
+    goal_words = join(result_path, '06_statistica/05_chapter/06_words')
     makedirs(goal_sections)
     makedirs(goal_words)
 
