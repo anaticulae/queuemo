@@ -56,15 +56,18 @@ def run(runtime=MAX_RUNTIME, waiting=WAITING, verbose: bool = True):
             step(job, waiting=waiting, verbose=verbose)
         except Exception:  # pylint: disable=broad-except
             logging_stacktrace()
-            logging_error('Close scheduler: %d' % tick)
+            logging_error('\nClose scheduler: %d' % tick)
             return FAILURE
         tick += 1
+        if not verbose and tick % 80 == 0:
+            logging()  # write newline
 
-    logging('Terminated: %d' % tick)
+    logging('\nTerminated: %d' % tick)
     return SUCCESS
 
 
 def step(job, waiting=WAITING, verbose: bool = True):
+
     if not job:
         if verbose:
             logging('Wait...')
@@ -72,6 +75,8 @@ def step(job, waiting=WAITING, verbose: bool = True):
             logging('.', end='')
         sleep(waiting / 1000)
     else:
+        if not verbose:
+            logging()  # write newline
         logging('Run job')
         if verbose:
             logging('Copy job')

@@ -9,6 +9,7 @@
 
 import sys
 
+from pytest import mark
 from pytest import raises
 from utila import SUCCESS
 from utila.test import run
@@ -37,19 +38,34 @@ def test_run_main(monkeypatch):
 
 
 def test_run_one_job(monkeypatch):
+    command = [
+        '--%s' % RUNTIME,
+        '1',  # seconds
+        '--%s' % WAITING,
+        '10',  # mili
+        '-VV',
+    ]
     run_queuemo(
-        [
-            '--%s' % RUNTIME,
-            '1',  # seconds
-            '--%s' % WAITING,
-            '10',  # mili
-        ],
+        command,
         monkeypatch,
         None,
     )
 
 
-def run_queuemo(command, monkeypatch, testdir):
+@mark.parametrize('verbose', [
+    ('-V'),
+    ('-VV'),
+    ('--verbose'),
+])
+def test_incremental_verbose_flag(verbose, monkeypatch):
+    run_queuemo(
+        [verbose],
+        monkeypatch,
+        None,
+    )
+
+
+def run_queuemo(command, monkeypatch, testdir):  #pylint: disable=W0613
     if isinstance(command, str):
         command = command.split()
 

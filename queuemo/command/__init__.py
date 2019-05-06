@@ -9,6 +9,7 @@
 
 from configo import check_startup
 from utila import SUCCESS
+from utila import Flag
 from utila import Parameter
 from utila import create_parser
 from utila import parse
@@ -20,6 +21,7 @@ from queuemo.worker.scheduler import run as start_scheduler
 PROCESS_NAME = 'queuemo'
 RUNTIME = 'runtime'
 WAITING = 'waiting'
+VERBOSE = 'verbose'
 
 COMMANDS = [
     Parameter(
@@ -31,6 +33,12 @@ COMMANDS = [
         longcut=WAITING,
         message='waitime in miliseconds for next job',
         args={'default': 1000},
+    ),
+    Flag(
+        args={'action': 'count'},
+        longcut=VERBOSE,
+        message='define how verbose logging is',
+        shortcut='V',
     ),
 ]
 
@@ -45,7 +53,10 @@ def main():
     args = parse(parser)
     runtime = int(args[RUNTIME])
     waiting = int(args[WAITING])
-    check_startup()
-    start_scheduler(runtime=runtime, waiting=waiting)
+    verbose = int(args[VERBOSE]) if args[VERBOSE] else 0
+
+    # TODO: Add verbose mechanismn to utila
+    check_startup()  # TODO: Add verbose flag
+    start_scheduler(runtime=runtime, waiting=waiting, verbose=verbose)
 
     return SUCCESS
