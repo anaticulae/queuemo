@@ -181,7 +181,7 @@ def update_info(workspace, result: int):
     info_path = join(workspace, JOB_FILE_NAME)
     assert exists(info_path)
     info = job_load(info_path)
-    info.result = '%d percent' % result
+    info.result = '%d' % result
 
     file_remove(info_path)  # remove old one to replace with new one
     job_dump(info_path, info)
