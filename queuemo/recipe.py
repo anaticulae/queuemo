@@ -72,6 +72,7 @@ def check(workspace: str):
 
 
 def run_raw(workspace, document: int):
+    logging('Run recipe')
     raw_path = join(workspace, 'raw')
     result_path = join(workspace, 'result')
 
@@ -92,7 +93,7 @@ def run_raw(workspace, document: int):
         rawmaker_output,
     ))
     logging(completed.stdout)
-    assert completed.returncode == SUCCESS, str(completed)
+    assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
     assert exists(rawmaker_output)
 
     groupme_output = join(raw_path, 'groupme')
@@ -101,7 +102,7 @@ def run_raw(workspace, document: int):
         rawmaker_output,
         groupme_output,
     ))
-    assert completed.returncode == SUCCESS, str(completed)
+    assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
 
     statistica_output = join(raw_path, 'analysis_statistica')
     completed = process('%s -i %s -o %s' % (
@@ -109,7 +110,7 @@ def run_raw(workspace, document: int):
         groupme_output,
         statistica_output,
     ))
-    assert completed.returncode == SUCCESS, str(completed)
+    assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
 
     feedback_statistica_input = join(raw_path, 'feedback_statistica_input')
     # Analysis statistica feedback requires the output of two processes:
@@ -125,7 +126,7 @@ def run_raw(workspace, document: int):
         feedback_statistica_input,
         feedback_statistica_output,
     ))
-    assert completed.returncode == SUCCESS, str(completed)
+    assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
 
     goal_sections = join(result_path, '06_statistica/05_chapter/05_sections')
     goal_words = join(result_path, '06_statistica/05_chapter/05_words')
@@ -138,6 +139,8 @@ def run_raw(workspace, document: int):
     copy(
         join(feedback_statistica_output, 'feedback_statistica__words.html'),
         join(goal_words, 'index.html'))
+
+    logging('End recipe')
 
 
 def copy_content(source, destination):
