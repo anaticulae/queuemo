@@ -108,8 +108,8 @@ def nextjob():
         # already in progress
         if exists(check_ready):
             continue
-        # Mark folder as in progress
-        file_create(check_ready)
+        # Mark folder as in progress and start with 0 percent
+        file_create(check_ready, '000')
         return item
     return None
 
