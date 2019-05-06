@@ -60,8 +60,9 @@ def run(workspace, document: int) -> int:
 def check(workspace: str):
     ret = 0
     for item in RUNNER:
-        logging('check %s' % item)
-        result = _run_target('%s --help' % item, workspace)
+        logging('check %s ' % item, end='')
+        result = _run_target('%s --version' % item, workspace)
+        logging(result.stdout.strip())
         if result.returncode:
             logging_error('Could not run %s' % item)
             logging_error(str(result))
