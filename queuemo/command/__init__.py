@@ -34,12 +34,6 @@ COMMANDS = [
         message='waitime in miliseconds for next job',
         args={'default': 1000},
     ),
-    Flag(
-        args={'action': 'count'},
-        longcut=VERBOSE,
-        message='define how verbose logging is',
-        shortcut='V',
-    ),
 ]
 
 
