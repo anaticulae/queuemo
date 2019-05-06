@@ -13,8 +13,8 @@ from tests import EXAMPLE_JOB
 from tests import patch_todo
 
 
-def test_run_recipe(tmpdir, monkeypatch):
-    with patch_todo(tmpdir, monkeypatch):
+def test_run_recipe(testdir, monkeypatch):
+    with patch_todo(testdir, monkeypatch):
         workspace = copy(EXAMPLE_JOB)
         result = run(workspace, EXAMPLE_JOB)
     assert result, result

@@ -23,11 +23,11 @@ def content(capture):
     return capture.readouterr().out
 
 
-def test_run_steps(capsys, tmpdir, monkeypatch):
+def test_run_steps(capsys, testdir, monkeypatch):
     step(None)
     assert 'Wait' in content(capsys)
 
-    with patch_todo(tmpdir, monkeypatch):
+    with patch_todo(testdir, monkeypatch):
         step('8166109011')
         progress = content(capsys)
         assert 'Copy' in progress

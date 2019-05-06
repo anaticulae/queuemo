@@ -11,6 +11,7 @@ from contextlib import contextmanager
 from os import makedirs
 from os.path import exists
 from os.path import join
+from shutil import copytree
 
 from queuemo import ROOT
 
@@ -27,18 +28,22 @@ assert exists(EXAMPLE_JOB_PATH), EXAMPLE_JOB_PATH
 
 
 @contextmanager
-def patch_todo(directory, monkeypatch):
+def patch_todo(testdir, monkeypatch):
+    testdir = str(testdir)
     import os
     from configo.share import COMMON
     from configo.share import READY
     from configo.share import TODO as ENV_TODO
 
-    makedirs(join(directory, 'ready'))
+    makedirs(join(testdir, 'ready'))
+    # Copy content from todo
+    copytree(TODO, join(testdir, 'todo'))
     with monkeypatch.context() as context:
         # Remove all environment vars
-        context.setattr(os, 'environ', {
-            COMMON: directory,
-            ENV_TODO: TODO,
-            READY: join(directory, 'ready'),
-        })
+        context.setattr(
+            os, 'environ', {
+                COMMON: testdir,
+                ENV_TODO: join(testdir, 'todo'),
+                READY: join(testdir, 'ready'),
+            })
         yield
