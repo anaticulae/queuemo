@@ -60,7 +60,7 @@ def run(workspace, document: int) -> int:
 def check(workspace: str):
     ret = 0
     for item in RUNNER:
-        logging('check %s ' % item, end='')
+        logging(' check %s ' % item, end='')
         result = _run_target('%s --version' % item, workspace)
         logging(result.stdout.strip())
         if result.returncode:
@@ -69,6 +69,7 @@ def check(workspace: str):
         ret += result.returncode
     if ret:
         exit(ret)
+    logging()  # add newline
 
 
 def run_raw(workspace, document: int):
@@ -85,6 +86,7 @@ def run_raw(workspace, document: int):
     # extract pdf file
     copy(pdf, join(workspace, 'work.pdf'))
 
+    log_process_start('rawmaker')
     process = partial(_run_target, cwd=workspace)
     rawmaker_output = join(raw_path, 'rawmaker')
     completed = process('%s -i %s -o %s' % (
@@ -96,6 +98,7 @@ def run_raw(workspace, document: int):
     assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
     assert exists(rawmaker_output)
 
+    log_process_start('groupme')
     groupme_output = join(raw_path, 'groupme')
     completed = process('%s -i %s -o %s' % (
         'groupme',
@@ -104,6 +107,7 @@ def run_raw(workspace, document: int):
     ))
     assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
 
+    log_process_start('analysis_statistica')
     statistica_output = join(raw_path, 'analysis_statistica')
     completed = process('%s -i %s -o %s' % (
         'analysis_statistica',
@@ -112,6 +116,7 @@ def run_raw(workspace, document: int):
     ))
     assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
 
+    log_process_start('feedback_analysis_statistica')
     feedback_statistica_input = join(raw_path, 'feedback_statistica_input')
     # Analysis statistica feedback requires the output of two processes:
     #   rawmaker
@@ -128,6 +133,7 @@ def run_raw(workspace, document: int):
     ))
     assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
 
+    log_process_start('publish')
     goal_sections = join(result_path, '06_statistica/05_chapter/05_sections')
     goal_words = join(result_path, '06_statistica/05_chapter/05_words')
     makedirs(goal_sections)
@@ -141,6 +147,10 @@ def run_raw(workspace, document: int):
         join(goal_words, 'index.html'))
 
     logging('End recipe')
+
+
+def log_process_start(process):
+    logging(' run %s' % process)
 
 
 def copy_content(source, destination):

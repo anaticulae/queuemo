@@ -79,11 +79,11 @@ def step(job, waiting=WAITING, verbose: bool = True):
             logging()  # write newline
         logging('Run job')
         if verbose:
-            logging('Copy job')
+            logging('  Copy job')
         workspace = copy(job)
 
         if verbose:
-            logging('Start job')
+            logging('  Start job')
         work(workspace)
 
         push_result(workspace)
@@ -143,6 +143,7 @@ def push_result(workspace):
     index = jobid(workspace)
     ready_path = join(ready(), index)
 
+    logging('Push result to: %s' % ready_path)
     # Copy results
     copytree(result, ready_path)
     # Copy info.yaml
