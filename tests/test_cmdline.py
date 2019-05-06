@@ -37,7 +37,6 @@ def test_run_main(monkeypatch):
     run_queuemo('--version', monkeypatch, None)
 
 
-@mark.skip
 def test_run_one_job(monkeypatch):
     command = [
         '--%s' % RUNTIME,
@@ -53,7 +52,6 @@ def test_run_one_job(monkeypatch):
     )
 
 
-@mark.skip
 @mark.parametrize('verbose', [
     ('-V'),
     ('-VV'),
