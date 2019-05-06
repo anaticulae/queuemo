@@ -73,7 +73,7 @@ def step(job, waiting=WAITING, verbose: bool = True):
             logging('Wait...')
         else:
             logging('.', end='')
-        sleep(waiting / 1000)
+        sleep(waiting / 1000)  # miliseconds to seconds
     else:
         if not verbose:
             logging()  # write newline
@@ -105,11 +105,11 @@ def nextjob():
     todopath = todo(True)
     for item in listdir(todopath):
         check_ready = join(todopath, item, 'inprogress')
-        if not exists(check_ready):
+        # already in progress
+        if exists(check_ready):
             continue
         # Mark folder as in progress
         file_create(check_ready)
-        makedirs(check_ready)
         return item
     return None
 
