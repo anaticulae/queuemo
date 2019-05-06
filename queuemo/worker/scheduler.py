@@ -13,6 +13,7 @@ from os import makedirs
 from os.path import exists
 from os.path import join
 from shutil import copytree
+from shutil import rmtree
 from time import sleep
 
 from configo import ready
@@ -153,6 +154,17 @@ def push_result(workspace):
     ready_after = ready_count()
 
     assert ready_before + 1 == ready_after
+
+    assert todo(), todo()
+    assert index, index
+    current_todo = join(todo(), index)
+    assert exists(current_todo)
+    logging('Remove todo: %s' % current_todo)
+    rmtree(current_todo)
+    # Wait till deletion is completed
+    # TODO: Investigate here! Increase sleep? Check if todo is already in ready
+    sleep(1)
+    logging('Remove temp: %s' % workspace)
 
 
 def work(workspace):
