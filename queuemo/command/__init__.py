@@ -45,12 +45,10 @@ def main():
         version=__version__,
     )
     args = parse(parser)
-    runtime = int(args[RUNTIME])
-    waiting = int(args[WAITING])
+    runtime, waiting = int(args[RUNTIME]), int(args[WAITING])
     verbose = int(args[VERBOSE]) if args[VERBOSE] else 0
 
-    # TODO: Add verbose mechanismn to utila
-    check_startup()  # TODO: Add verbose flag
+    check_startup()
     start_scheduler(runtime=runtime, waiting=waiting, verbose=verbose)
 
     return SUCCESS
