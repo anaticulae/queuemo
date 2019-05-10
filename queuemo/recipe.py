@@ -29,11 +29,14 @@ Presentation:
 
 """
 
+from dataclasses import dataclass
 from functools import partial
 from os import listdir
 from os import makedirs
 from os.path import exists
+from os.path import isfile
 from os.path import join
+from os.path import split
 from shutil import copy
 
 from utila import SUCCESS
@@ -42,10 +45,12 @@ from utila import logging_error
 from utila.test import run as _run_target
 
 RUNNER = [
+    'analysis_statistica',
+    'decider_border',
+    'feedback_decider_border',
     'feedback_statistica',
     'groupme',
     'rawmaker',
-    'analysis_statistica',
 ]
 
 
@@ -72,81 +77,107 @@ def check(workspace: str):
     logging()  # add newline
 
 
+@dataclass
+class Step:
+    process: str
+    inpath: str
+    outpath: str = ''
+
+
+@dataclass
+class Copy:
+    source: str
+    destination: str
+
+
+class RawCopy(Copy):
+    pass
+
+
+class Publish(Copy):
+    pass
+
+
+def run_step(workspace: str, step: str, inpath: str, outpath: str = None):
+    # if outpath is not definied use step-name as outpath
+    outpath = outpath if outpath != '' else step
+    log_process_start(step)
+    assert exists(workspace), workspace
+    process = partial(_run_target, cwd=workspace)
+    inpath = join(workspace, inpath)
+    outpath = join(workspace, outpath)
+    completed = process('%s -i %s -o %s' % (
+        step,
+        inpath,
+        outpath,
+    ))
+    logging(completed.stdout)
+    assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
+    assert exists(outpath)
+
+
 def run_raw(workspace, document: int):
     logging('Run recipe')
-    raw_path = join(workspace, 'raw')
-    result_path = join(workspace, 'result')
+    raw = join(workspace, 'raw')
+    result = join(workspace, 'result')
 
-    makedirs(raw_path)
-    makedirs(result_path, exist_ok=True)
+    makedirs(raw)
+    makedirs(result, exist_ok=True)
 
     pdf = join(workspace, document)
     assert exists(pdf)
 
     # extract pdf file
     copy(pdf, join(workspace, 'work.pdf'))
+    # TODO: Use more public vars
+    todo = [
+        Step('rawmaker', '..'),
+        Step('groupme', 'rawmaker'),
+        Step('analysis_statistica', 'groupme'),
+        RawCopy('groupme', 'feedback_statistica_input'),
+        RawCopy('analysis_statistica', 'feedback_statistica_input'),
+        Step('feedback_statistica', 'feedback_statistica_input'),
+        # publish
+        Publish('feedback_statistica/feedback_statistica__chapter.html',
+                '06_statistica/05_chapter/05_sections/index.html'),
+        Publish('feedback_statistica/feedback_statistica__words.html',
+                '06_statistica/06_chapter/06_words/index.html'),
+        # decider
+        Step('decider_border', 'rawmaker'),
+        Step('feedback_decider_border', 'decider_border'),
+        # publish
+        Publish('feedback_decider_border/hitthebox_view__result.html',
+                '02_layout/04_pages/06_border/index.html'),
+    ]
 
-    log_process_start('rawmaker')
-    process = partial(_run_target, cwd=workspace)
-    rawmaker_output = join(raw_path, 'rawmaker')
-    completed = process('%s -i %s -o %s' % (
-        'rawmaker',
-        workspace,
-        rawmaker_output,
-    ))
-    logging(completed.stdout)
-    assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
-    assert exists(rawmaker_output)
-
-    log_process_start('groupme')
-    groupme_output = join(raw_path, 'groupme')
-    completed = process('%s -i %s -o %s' % (
-        'groupme',
-        rawmaker_output,
-        groupme_output,
-    ))
-    assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
-
-    log_process_start('analysis_statistica')
-    statistica_output = join(raw_path, 'analysis_statistica')
-    completed = process('%s -i %s -o %s' % (
-        'analysis_statistica',
-        groupme_output,
-        statistica_output,
-    ))
-    assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
-
-    log_process_start('feedback_analysis_statistica')
-    feedback_statistica_input = join(raw_path, 'feedback_statistica_input')
-    # Analysis statistica feedback requires the output of two processes:
-    #   rawmaker
-    #   groupme
-    copy_content(groupme_output, feedback_statistica_input)
-    # copy_content(rawmaker_output, feedback_statistica_input)
-    copy_content(statistica_output, feedback_statistica_input)
-
-    feedback_statistica_output = join(raw_path, 'analysis_statistica')
-    completed = process('%s -i %s -o %s' % (
-        'feedback_statistica',
-        feedback_statistica_input,
-        feedback_statistica_output,
-    ))
-    assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
-
-    log_process_start('publish')
-    goal_sections = join(result_path, '06_statistica/05_chapter/05_sections')
-    goal_words = join(result_path, '06_statistica/05_chapter/06_words')
-    makedirs(goal_sections)
-    makedirs(goal_words)
-
-    copy(
-        join(feedback_statistica_output, 'feedback_statistica__chapter.html'),
-        join(goal_sections, 'index.html'))
-    copy(
-        join(feedback_statistica_output, 'feedback_statistica__words.html'),
-        join(goal_words, 'index.html'))
+    run_recipe(workspace, todo)
 
     logging('End recipe')
+    return
+
+
+def run_recipe(workspace: str, todo):
+    raw = join(workspace, 'raw')
+    for step in todo:
+        if isinstance(step, Step):
+            run_step(raw, step.process, step.inpath, step.outpath)
+            continue
+
+        if isinstance(step, RawCopy):
+            step.source = 'raw/' + step.source
+            step.destination = 'raw/' + step.destination
+        elif isinstance(step, Publish):
+            step.source = 'raw/' + step.source
+            step.destination = 'result/' + step.destination
+
+        source = join(workspace, step.source)
+        dest = join(workspace, step.destination)
+        if isfile(source):
+            # Create base path
+            makedirs(split(dest)[0], exist_ok=True)
+            copy(source, dest)
+        else:
+            copy_content(source, dest)
 
 
 def log_process_start(process):
@@ -156,7 +187,7 @@ def log_process_start(process):
 def copy_content(source, destination):
     """Copy the content from `source` to `destination` folder. If `desitination`
     folder does not exists, it will created."""
-    assert exists(source)
+    assert exists(source), source
     makedirs(destination, exist_ok=True)
     for item in listdir(source):
         copy(join(source, item), join(destination, item))
