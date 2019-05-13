@@ -90,10 +90,12 @@ class Copy:
     destination: str
 
 
+@dataclass
 class RawCopy(Copy):
     pass
 
 
+@dataclass
 class Publish(Copy):
     pass
 
