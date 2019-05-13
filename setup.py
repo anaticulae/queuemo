@@ -21,27 +21,30 @@ with open(join(ROOT, 'README.md'), 'rt', encoding='utf8') as fp:
 with open(join(ROOT, 'queuemo/__init__.py'), 'rt', encoding='utf8') as fp:
     VERSION = search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
 
-with open(join(ROOT, "requirements.txt"), mode='rt', encoding='utf8') as fp:
+with open(join(ROOT, 'requirements.txt'), mode='rt', encoding='utf8') as fp:
     INSTALL_REQUIRES = [
         line for line in fp.readlines() if line and '#' not in line
     ]
 
-
-def datafiles():
-    return [('.', [
+DATA_FILES = [
+    ('.', [
         'BUGS.md',
         'CHANGELOG.md',
+        'LICENCE.md',
         'README.md',
         'TODO.md',
         'requirements.txt',
-    ])]
-
+    ]),
+    ('config', [
+        'config/decider_fonts__ugly_fonts.yaml',
+    ]),
+]
 
 if __name__ == "__main__":
     setup(
         author='Helmut Konrad Fahrendholz',
         author_email='info@checkitweg.de',
-        data_files=datafiles(),
+        data_files=DATA_FILES,
         description='queuemo',
         include_package_data=True,
         install_requires=INSTALL_REQUIRES,
@@ -51,7 +54,6 @@ if __name__ == "__main__":
         version=VERSION,
         zip_safe=False,  # create 'zip'-file if True. Don't do it!
         classifiers=[
-            'Programming Language :: Python :: 3.6',
             'Programming Language :: Python :: 3.7',
             'Programming Language :: Python :: 3.8',
         ],
@@ -61,6 +63,7 @@ if __name__ == "__main__":
         packages=[
             'queuemo',
             'queuemo.command',
+            'queuemo.recipes',
             'queuemo.worker',
         ],
     )
