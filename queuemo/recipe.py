@@ -44,6 +44,8 @@ from utila import logging
 from utila import logging_error
 from utila.test import run as _run_target
 
+from queuemo import ROOT
+
 RUNNER = [
     'analysis_statistica',
     'decider_border',
@@ -122,15 +124,20 @@ def run_raw(workspace, document: int):
     logging('Run recipe')
     raw = join(workspace, 'raw')
     result = join(workspace, 'result')
+    config = join(workspace, 'config')
 
     makedirs(raw)
+    makedirs(config)
     makedirs(result, exist_ok=True)
+
+    copy_content(join(ROOT, 'config'), config)
 
     pdf = join(workspace, document)
     assert exists(pdf)
 
     # extract pdf file
     copy(pdf, join(workspace, 'work.pdf'))
+
     # TODO: Use more public vars
     todo = [
         Step('rawmaker', '..'),
@@ -150,6 +157,25 @@ def run_raw(workspace, document: int):
         # publish
         Publish('feedback_decider_border/hitthebox_view__result.html',
                 '02_layout/04_pages/06_border/index.html'),
+
+        # fonts
+        RawCopy('../config/', 'decider_fonts_input'),
+        RawCopy('rawmaker', 'decider_fonts_input'),
+        Step(
+            'decider_fonts',
+            'decider_fonts_input',
+            'feedback_decider_fonts_input',
+        ),
+        RawCopy('rawmaker', 'feedback_decider_fonts_input'),
+        Step(
+            'feedback_decider_fonts',
+            'feedback_decider_fonts_input',
+            'feedback_decider_fonts',
+        ),
+        Publish('feedback_decider_fonts/iamugly_view__used.html',
+                '02_layout/03_fonts/01_used/index.html'),
+        Publish('feedback_decider_fonts/iamugly_view__ugly.html',
+                '02_layout/03_fonts/02_ugly/index.html'),
     ]
 
     run_recipe(workspace, todo)
@@ -164,7 +190,6 @@ def run_recipe(workspace: str, todo):
         if isinstance(step, Step):
             run_step(raw, step.process, step.inpath, step.outpath)
             continue
-
         if isinstance(step, RawCopy):
             step.source = 'raw/' + step.source
             step.destination = 'raw/' + step.destination
