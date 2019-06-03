@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v0.1.1
+
+### Feature
+
+* add folder to store different recipes (34ce9ef8a827)
+* add ugly font detection to default recipe (ccf09cf2c003)
+* improve writing recipes - reduce code, improve stability (b2a4ad61ff74)
+
+### Fix
+
+* remove unit from result file, it is displayed by `viewo` (7fb87340bdd6)
+
 ## v0.1.0
 
 ### Feature
