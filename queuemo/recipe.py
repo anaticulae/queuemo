@@ -140,7 +140,7 @@ def run_raw(workspace, document: int):
 
     # TODO: Use more public vars
     todo = [
-        Step('rawmaker', '..'),
+        Step('rawmaker', '../work.pdf'),
         Step('groupme', 'rawmaker'),
         Step('analysis_statistica', 'groupme'),
         RawCopy('groupme', 'feedback_statistica_input'),

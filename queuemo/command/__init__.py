@@ -11,9 +11,9 @@ from configo import check_startup
 from utila import SUCCESS
 from utila import Flag
 from utila import Parameter
-from utila import create_parser
 from utila import parse
 from utila import saveme
+from utila.cmdline import create_parser
 
 from queuemo import __version__
 from queuemo.worker.scheduler import run as start_scheduler
