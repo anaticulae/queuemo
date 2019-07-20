@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.1.2
+
+### Fix
+
+* fix in/out path to new featurepack pattern (fc66a8e6a080)
+
 ## v0.1.1
 
 ### Feature
