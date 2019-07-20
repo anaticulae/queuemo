@@ -125,17 +125,23 @@ def run_raw(workspace, document: int):
         RawCopy('groupme', 'feedback_statistica_input'),
         RawCopy('analysis_statistica', 'feedback_statistica_input'),
         Step('feedback_statistica', 'feedback_statistica_input'),
+
         # publish
-        Publish('feedback_statistica/feedback_statistica__chapter.html',
-                '06_statistica/05_chapter/05_sections/index.html'),
-        Publish('feedback_statistica/feedback_statistica__words.html',
-                '06_statistica/06_chapter/06_words/index.html'),
+        Publish(
+            'feedback_statistica/feedback_statistica__feedback_statistica_chapter.html',
+            '06_statistica/05_chapter/05_sections/index.html'),
+        Publish(
+            'feedback_statistica/feedback_statistica__feedback_statistica_words.html',
+            '06_statistica/06_chapter/06_words/index.html'),
+
         # decider
         Step('decider_border', 'rawmaker'),
         Step('feedback_decider_border', 'decider_border'),
+
         # publish
-        Publish('feedback_decider_border/hitthebox_view__result.html',
-                '02_layout/04_pages/06_border/index.html'),
+        Publish(
+            'feedback_decider_border/feedback_decider_border__hitthebox_result.html',
+            '02_layout/04_pages/06_border/index.html'),
 
         # fonts
         RawCopy('../config/', 'decider_fonts_input'),
@@ -151,10 +157,12 @@ def run_raw(workspace, document: int):
             'feedback_decider_fonts_input',
             'feedback_decider_fonts',
         ),
-        Publish('feedback_decider_fonts/iamugly_view__used.html',
-                '02_layout/03_fonts/01_used/index.html'),
-        Publish('feedback_decider_fonts/iamugly_view__ugly.html',
-                '02_layout/03_fonts/02_ugly/index.html'),
+        Publish(
+            'feedback_decider_fonts/feedback_decider_fonts__iamugly_view_used.html',
+            '02_layout/03_fonts/01_used/index.html'),
+        Publish(
+            'feedback_decider_fonts/feedback_decider_fonts__iamugly_view_ugly.html',
+            '02_layout/03_fonts/02_ugly/index.html'),
     ]
 
     run_recipe(workspace, todo)
