@@ -29,7 +29,6 @@ Presentation:
 
 """
 
-from dataclasses import dataclass
 from functools import partial
 from os import listdir
 from os import makedirs
@@ -45,6 +44,9 @@ from utila import logging_error
 from utila.test import run as _run_target
 
 from queuemo import ROOT
+from queuemo.api import Publish
+from queuemo.api import RawCopy
+from queuemo.api import Step
 
 RUNNER = [
     'analysis_statistica',
@@ -77,29 +79,6 @@ def check(workspace: str):
     if ret:
         exit(ret)
     logging()  # add newline
-
-
-@dataclass
-class Step:
-    process: str
-    inpath: str
-    outpath: str = ''
-
-
-@dataclass
-class Copy:
-    source: str
-    destination: str
-
-
-@dataclass
-class RawCopy(Copy):
-    pass
-
-
-@dataclass
-class Publish(Copy):
-    pass
 
 
 def run_step(workspace: str, step: str, inpath: str, outpath: str = None):
