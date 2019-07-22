@@ -39,10 +39,17 @@ from os.path import split
 from shutil import copy
 
 from utila import SUCCESS
+from utila import call
 from utila import logging
 from utila import logging_error
 from utila.test import run as _run_target
 
+import queuemo.recipes.analysis as analysis
+import queuemo.recipes.central as central
+import queuemo.recipes.decider.border as decider_border
+import queuemo.recipes.decider.fonts as decider_fonts
+import queuemo.recipes.extractraw as extractraw
+import queuemo.recipes.setup as setup
 from queuemo import ROOT
 from queuemo.api import Publish
 from queuemo.api import RawCopy
@@ -100,73 +107,30 @@ def run_step(workspace: str, step: str, inpath: str, outpath: str = None):
 
 
 def run_raw(workspace, document: int):
-    logging('Run recipe')
-    raw = join(workspace, 'raw')
-    result = join(workspace, 'result')
-    config = join(workspace, 'config')
+    # TODO: Automate add parallize order of recipes
+    logging('run recipe')
 
-    makedirs(raw)
-    makedirs(config)
-    makedirs(result, exist_ok=True)
+    rawspace = join(workspace, 'raw')
 
-    copy_content(join(ROOT, 'config'), config)
+    call('setup: before')
+    setup.before(workspace)
+    call('setup: run')
+    setup.run(workspace, document)
 
-    pdf = join(workspace, document)
-    assert exists(pdf)
+    extractraw.run(rawspace)
 
-    # extract pdf file
-    copy(pdf, join(workspace, 'work.pdf'))
+    analysis.before(rawspace)
+    analysis.run(rawspace)
+    analysis.after(rawspace)
 
-    # TODO: Use more public vars
-    todo = [
-        Step('rawmaker', '../work.pdf'),
-        Step('groupme', 'rawmaker'),
-        Step('analysis_statistica', 'groupme'),
-        RawCopy('groupme', 'feedback_statistica_input'),
-        RawCopy('analysis_statistica', 'feedback_statistica_input'),
-        Step('feedback_statistica', 'feedback_statistica_input'),
+    decider_border.run(rawspace)
+    decider_border.after(rawspace)
 
-        # publish
-        Publish(
-            'feedback_statistica/feedback_statistica__feedback_statistica_chapter.html',
-            '06_statistica/05_chapter/05_sections/index.html'),
-        Publish(
-            'feedback_statistica/feedback_statistica__feedback_statistica_words.html',
-            '06_statistica/06_chapter/06_words/index.html'),
+    decider_fonts.before(rawspace)
+    decider_fonts.run(rawspace)
+    decider_fonts.after(rawspace)
 
-        # decider
-        Step('decider_border', 'rawmaker'),
-        Step('feedback_decider_border', 'decider_border'),
-
-        # publish
-        Publish(
-            'feedback_decider_border/feedback_decider_border__hitthebox_result.html',
-            '02_layout/04_pages/06_border/index.html'),
-
-        # fonts
-        RawCopy('../config/', 'decider_fonts_input'),
-        RawCopy('rawmaker', 'decider_fonts_input'),
-        Step(
-            'decider_fonts',
-            'decider_fonts_input',
-            'feedback_decider_fonts_input',
-        ),
-        RawCopy('rawmaker', 'feedback_decider_fonts_input'),
-        Step(
-            'feedback_decider_fonts',
-            'feedback_decider_fonts_input',
-            'feedback_decider_fonts',
-        ),
-        Publish(
-            'feedback_decider_fonts/feedback_decider_fonts__iamugly_view_used.html',
-            '02_layout/03_fonts/01_used/index.html'),
-        Publish(
-            'feedback_decider_fonts/feedback_decider_fonts__iamugly_view_ugly.html',
-            '02_layout/03_fonts/02_ugly/index.html'),
-    ]
-
-    run_recipe(workspace, todo)
-
+    logging('end recipe')
     logging('End recipe')
     return
 
