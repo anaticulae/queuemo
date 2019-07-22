@@ -11,7 +11,9 @@ import sys
 
 from pytest import mark
 from pytest import raises
+from utila import FAILURE
 from utila import SUCCESS
+from utila import returncode
 from utila.test import run
 from utila.test import skip_not_virtual
 
@@ -65,7 +67,7 @@ def test_incremental_verbose_flag(verbose, monkeypatch):
     )
 
 
-def run_queuemo(command, monkeypatch, testdir):  #pylint: disable=W0613
+def run_queuemo(command, monkeypatch, testdir, returncode_=SUCCESS):  #pylint: disable=W0613
     if isinstance(command, str):
         command = command.split()
 
@@ -75,5 +77,4 @@ def run_queuemo(command, monkeypatch, testdir):  #pylint: disable=W0613
 
         with raises(SystemExit) as result:
             main()
-        result = str(result)
-        assert 'SystemExit: 0' in result, result
+        assert returncode(result) == returncode_, str(result)
