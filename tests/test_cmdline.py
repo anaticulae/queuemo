@@ -15,7 +15,7 @@ from utila import INVALID_COMMAND
 from utila import SUCCESS
 from utila import returncode
 from utila.test import run
-from utila.test import skip_not_virtual
+from utila.test import skip_nonvirtual
 
 from queuemo import ROOT
 from queuemo.command import PROCESS_NAME
@@ -24,7 +24,7 @@ from queuemo.command import WAITING
 from queuemo.command import main
 
 
-@skip_not_virtual
+@skip_nonvirtual
 def test_run_queuemo():
     """Install queuemo and run queuemo --help to ensure basic function"""
     uninstall = 'pip uninstall queuemo -y'
