@@ -23,6 +23,8 @@ rawmaker:4
 gomaker:2
 """
 
+from utila import from_raw_or_path
+
 SPLIT_LEVEL = '    '  # 4 space per level
 
 FORWARD_SLASH = '/'
@@ -45,7 +47,7 @@ class TabStructure:
             children = current['children']
             for search in children:
                 if search['name'] == item:
-                    result += '%s_%s/' % (search['name'], search['number'])
+                    result += '%s_%s/' % (search['number'], search['name'])
                     current = search
                     break
             else:
@@ -54,12 +56,15 @@ class TabStructure:
 
 
 def load(raw: str) -> TabStructure:
+    raw = from_raw_or_path(raw)
     splitted = raw.splitlines()
 
     current = {'name': 'root', 'level': -1, 'children': []}
     stack = []
     for item in splitted:
         if not item:
+            continue
+        if item.strip().startswith('#'):
             continue
         level = item.count(SPLIT_LEVEL)
         item = item.strip()

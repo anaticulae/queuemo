@@ -34,14 +34,14 @@ gomaker:2
 def test_tabstructure_load_and_lookup():
     loaded: TabStructure = load(EXAMPLE)
 
-    assert loaded.look('rawmaker/words') == 'rawmaker_04/words_02/'
+    assert loaded.look('rawmaker/words') == '04_rawmaker/02_words/'
 
     assert loaded.look(
-        'statistica/chapter/words') == 'statistica_06/chapter_05/words_04/'
+        'statistica/chapter/words') == '06_statistica/05_chapter/04_words/'
 
-    assert loaded.look('statistica/error') == 'statistica_06/error_02/'
+    assert loaded.look('statistica/error') == '06_statistica/02_error/'
 
-    assert loaded.look('gomaker') == 'gomaker_02/'
+    assert loaded.look('gomaker') == '02_gomaker/'
 
     with raises(ValueError):
         loaded.look('non_existing_path')
