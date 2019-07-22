@@ -14,6 +14,7 @@ from os.path import basename
 from os.path import exists
 from os.path import isfile
 from os.path import join
+from os.path import split
 from shutil import copy
 
 from utila import file_create
@@ -45,6 +46,9 @@ def copy_content(source: str, destination: str, recursive: bool = False):
         if not isfilepath(destination):
             makedirs(destination, exist_ok=True)
             destination = join(destination, basename(source))
+
+        # ensure that parent directories exists
+        makedirs(split(destination)[0], exist_ok=True)
         file_create(destination, content)
         return
 
