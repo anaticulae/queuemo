@@ -8,9 +8,12 @@
 # =============================================================================
 
 from configo import check_startup
+from utila import FAILURE
+from utila import INVALID_COMMAND
 from utila import SUCCESS
 from utila import Flag
 from utila import Parameter
+from utila import error
 from utila import parse
 from utila import saveme
 from utila.cmdline import create_parser
@@ -45,9 +48,13 @@ def main():
         version=__version__,
     )
     args = parse(parser)
-    runtime, waiting = int(args[RUNTIME]), int(args[WAITING])
-    verbose = int(args[VERBOSE]) if args[VERBOSE] else 0
-
+    try:
+        runtime, waiting = int(args[RUNTIME]), int(args[WAITING])
+        verbose = int(args[VERBOSE]) if args[VERBOSE] else 0
+    except ValueError:
+        msg = 'invalid start parameter: `%s`, `%s`, `%s`'
+        error(msg % (args[RUNTIME], args[WAITING], args[VERBOSE]))
+        return INVALID_COMMAND
     check_startup()
     start_scheduler(runtime=runtime, waiting=waiting, verbose=verbose)
 

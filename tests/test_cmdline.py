@@ -11,7 +11,7 @@ import sys
 
 from pytest import mark
 from pytest import raises
-from utila import FAILURE
+from utila import INVALID_COMMAND
 from utila import SUCCESS
 from utila import returncode
 from utila.test import run
@@ -52,6 +52,16 @@ def test_run_one_job(monkeypatch):
         monkeypatch,
         None,
     )
+
+
+def test_queuemo_invalid_parameter(monkeypatch):
+    command = [
+        '--%s' % RUNTIME,
+        'str',  # invalid input
+        '--%s' % WAITING,
+        'woho',  # invalid input
+    ]
+    run_queuemo(command, monkeypatch, None, returncode_=INVALID_COMMAND)
 
 
 @mark.parametrize('verbose', [
