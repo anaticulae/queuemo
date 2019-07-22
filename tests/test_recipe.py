@@ -13,7 +13,7 @@ from tests import EXAMPLE_JOB
 from tests import patch_todo
 
 
-def test_run_recipe(testdir, monkeypatch):
+def test_recipe_run(testdir, monkeypatch):
     with patch_todo(testdir, monkeypatch):
         workspace = copy(EXAMPLE_JOB)
         result = run(workspace, EXAMPLE_JOB)
