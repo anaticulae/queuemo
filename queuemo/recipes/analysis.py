@@ -43,11 +43,5 @@ def run(rawspace: str):
 def after(rawspace: str):
     chapter_out = join(FEED_STATISTICA, STATISTICA_CHAPTER_HTML) + '.html'
     words_out = join(FEED_STATISTICA, STATISTICA_WORDS_HTML) + '.html'
-    print(chapter_out)
-    print(FEED_STATISTICA)
-    print(STATISTICA_CHAPTER_HTML)
-    print(words_out)
-    print(FEED_STATISTICA)
-    print(STATISTICA_WORDS_HTML)
     publish(rawspace, chapter_out, 'statistica/chapter/sections')
     publish(rawspace, words_out, 'statistica/chapter/words')
