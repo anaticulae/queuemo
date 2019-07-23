@@ -16,6 +16,9 @@ from pytest import fixture
 
 import queuemo.recipes.setup as setup
 from queuemo.recipe import run
+from queuemo.recipes.docsplit import before as docsplit_before
+from queuemo.recipes.docsplit import run as docsplit_run
+from queuemo.recipes.docsplit import workingpath as docsplit_workingpath
 from queuemo.recipes.extractraw import OUTPATH as RAWMAKER_OUTPATH
 from queuemo.recipes.extractraw import run as run_extractraw
 from queuemo.worker.scheduler import copy
@@ -44,7 +47,17 @@ def rawmaker_result(rawspace):  # pylint:disable=W0621
     expected_result = join(rawspace, RAWMAKER_OUTPATH)
     run_extractraw(rawspace)
     assert exists(expected_result), str(expected_result)
-    return expected_result
+    return rawspace, expected_result
+
+
+@fixture
+def docsplit_result(rawmaker_result):  # pylint:disable=W0621
+    """Run rawmaker twice and extract sections"""
+    rawspace, _ = rawmaker_result  # pylint:disable=W0621
+    docsplit_before(rawspace)
+    docsplit_run(rawspace)
+
+    return rawspace, docsplit_workingpath(rawspace)
 
 
 def test_recipe_run(testdir, monkeypatch):
@@ -60,9 +73,16 @@ def test_recipe_workspace_setup(rawspace):  # pylint:disable=W0621
 
 
 def test_recipe_extractraw_run(rawmaker_result):
-    result = listdir(rawmaker_result)
+    result = listdir(rawmaker_result[1])
 
     # this value may change in the future, but it is not so important. Existing
     # files signals working feature.
     circa_eight = 8
     assert len(result) > circa_eight, str(result)
+
+
+def test_recipe_docsplit_run(docsplit_result):
+    rawspace, docsplitpath = docsplit_result
+    result = listdir(docsplitpath)
+    circa_fifteen = 15
+    assert len(result) >= circa_fifteen, str(result)

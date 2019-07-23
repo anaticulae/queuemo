@@ -25,9 +25,12 @@ from queuemo.utils import copy_content
 
 PDF_FILE = '../work.pdf'
 
+DECIDER_FONTS = 'decider_fonts'
 FEED_DECIDER_BORDER = 'feedback_decider_border'
 FEED_DECIDER_FONTS = 'feedback_decider_fonts'
-DECIDER_FONTS = 'decider_fonts'
+SECTIONS = 'sections'
+
+RAWMAKER_OUTPUT = 'rawmaker'
 
 LAYOUT_PATH = join(ROOT, 'queuemo/layout.tab')
 assert exists(LAYOUT_PATH), str(LAYOUT_PATH)
@@ -102,8 +105,8 @@ def groupme(workspace: str, input_: str, output: str = None):
     run('groupme', workspace, input_, output)
 
 
-def analysis_statistica(workspace: str, input_: str, output: str = None):
-    run('analysis_statistica', workspace, input_, output)
+def sections(workspace: str, input_: str, output: str = None):
+    run(SECTIONS, workspace, input_, output)
 
 
 def feedback_analysis_statistica(
