@@ -26,6 +26,9 @@ EXAMPLE_JOB = '8166109011'
 EXAMPLE_JOB_PATH = join(TODO, EXAMPLE_JOB)
 assert exists(EXAMPLE_JOB_PATH), EXAMPLE_JOB_PATH
 
+EXAMPLE_PDF = join(EXAMPLE_JOB_PATH, EXAMPLE_JOB)
+assert exists(EXAMPLE_PDF), str(EXAMPLE_PDF)
+
 
 @contextmanager
 def patch_todo(testdir, monkeypatch):

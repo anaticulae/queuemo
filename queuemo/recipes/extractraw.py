@@ -10,6 +10,8 @@
 from queuemo.recipes import PDF_FILE
 from queuemo.recipes import rawmaker
 
+OUTPATH = 'rawmaker'
+
 
 def run(rawspace: str):
     rawmaker(rawspace, PDF_FILE)
