@@ -32,28 +32,58 @@ assert exists(LAYOUT_PATH), str(LAYOUT_PATH)
 OUTPUT_LAYOUT = load_tabstructure(LAYOUT_PATH)
 
 
-def run(runable: str, workspace: str, input_: str, output: str = None):
-    inputpath = join(workspace, input_)
-    if output is None:
+def run(
+        runable: str,
+        workspace: str,
+        inpath: str,
+        outpath: str = None,
+        prefix: str = '',
+        kwargs=None,
+):
+    inputpath = join(workspace, inpath)
+    if outpath is None:
         outputpath = join(workspace, runable)
     else:
-        outputpath = join(workspace, output)
+        outputpath = join(workspace, outpath)
     assert exists(inputpath), inputpath
 
-    process = partial(_run_target, cwd=workspace)
+    if kwargs is None:
+        kwargs = {}
+    if prefix:
+        prefix = '--prefix ' + prefix
 
-    completed = process('%s -i %s -o %s' % (
+    process = partial(_run_target, cwd=workspace)
+    cmds = ['--%s %s' % (param, value) for (param, value) in kwargs.items()]
+    cmds = ' '.join(cmds)
+    completed = process('%s -i %s -o %s %s %s' % (
         runable,
         inputpath,
         outputpath,
+        prefix,
+        cmds,
     ))
     log(completed.stdout)
     assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
     assert exists(outputpath)
 
 
-def rawmaker(workspace: str, input_: str, output: str = None):
-    run('rawmaker', workspace, input_, output)
+def rawmaker(
+        workspace: str,
+        inpath: str,
+        outpath: str = None,
+        prefix='',
+        kwargs=None,
+):
+    """Run external rawmaker
+
+    Args:
+        workspace(str): working path were input/output is relativ
+        inpath(str): relative input path
+        outpath(str): relative output path
+        prefix(str): to modifi the output name with a prefix
+        kwargs(dict):
+    """
+    run('rawmaker', workspace, inpath, outpath, prefix, kwargs)
 
 
 def groupme(workspace: str, input_: str, output: str = None):
