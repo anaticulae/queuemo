@@ -18,6 +18,10 @@ from utila import debug
 
 from queuemo import ROOT
 
+WORKFILE = 'work.pdf'
+RAWNAME = 'raw'
+RESULT = 'result'
+
 
 def before(workspace: str):
     # TODO: move logging to global
@@ -29,8 +33,8 @@ def run(workspace: str, document: int):
     assert exists(workspace), workspace
     for item in [
             'config',
-            'raw',
-            'result',
+            RAWNAME,
+            RESULT,
     ]:
         path = join(workspace, item)
         debug('create dir: %s' % path)
@@ -44,5 +48,5 @@ def run(workspace: str, document: int):
     # extract pdf file
     sourcepdf = join(workspace, document)
     assert exists(sourceconfig)
-    destpdf = join(workspace, 'work.pdf')
+    destpdf = join(workspace, WORKFILE)
     copy(sourcepdf, destpdf)
