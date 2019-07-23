@@ -15,7 +15,7 @@ from shutil import copytree
 
 from queuemo import ROOT
 
-TEST_DATA = join(ROOT, 'tests/data')
+TEST_DATA = join(ROOT, 'tests/resources')
 assert exists(TEST_DATA), TEST_DATA
 
 TODO = join(TEST_DATA, 'todo')
