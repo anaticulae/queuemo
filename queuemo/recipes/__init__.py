@@ -43,7 +43,7 @@ def run(
         inpath: str,
         outpath: str = None,
         prefix: str = '',
-        kwargs=None,
+        **kwargs,
 ):
     inputpath = join(workspace, inpath)
     if outpath is None:
@@ -52,8 +52,6 @@ def run(
         outputpath = join(workspace, outpath)
     assert exists(inputpath), inputpath
 
-    if kwargs is None:
-        kwargs = {}
     if prefix:
         prefix = '--prefix ' + prefix
 
@@ -83,7 +81,7 @@ def rawmaker(
         prefix='',
         char_margin: float = CHAR_MARGIN_DEFAULT,
         boxes_flow: float = BOXES_FLOW_DEFAULT,
-        kwargs=None,
+        **kwargs,
 ):
     """Run external rawmaker
 
@@ -94,11 +92,13 @@ def rawmaker(
         prefix(str): to modifi the output name with a prefix
         kwargs(dict):
     """
-    kwargs = {
-        CHAR_MARGIN.name: char_margin,
-        BOXES_FLOW.name: boxes_flow,
-    }
-    run('rawmaker', workspace, inpath, outpath, prefix, kwargs)
+    kwargs[CHAR_MARGIN.name] = char_margin
+    kwargs[BOXES_FLOW.name] = boxes_flow
+    run('rawmaker', workspace, inpath, outpath, prefix, **kwargs)
+
+
+def analysis_statistica(workspace: str, input_: str, output: str = None):
+    run('analysis_statistica', workspace, input_, output)
 
 
 def groupme(workspace: str, input_: str, output: str = None):
