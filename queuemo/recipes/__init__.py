@@ -12,6 +12,8 @@ from os.path import exists
 from os.path import join
 from os.path import split
 
+from rawmaker.cli import BOXES_FLOW
+from rawmaker.cli import CHAR_MARGIN
 from utila import SUCCESS
 from utila import error
 from utila import log
@@ -67,11 +69,17 @@ def run(
     assert exists(outputpath)
 
 
+CHAR_MARGIN_DEFAULT = float(CHAR_MARGIN.defaultvar)
+BOXES_FLOW_DEFAULT = float(BOXES_FLOW.defaultvar)
+
+
 def rawmaker(
         workspace: str,
         inpath: str,
         outpath: str = None,
         prefix='',
+        char_margin: float = CHAR_MARGIN_DEFAULT,
+        boxes_flow: float = BOXES_FLOW_DEFAULT,
         kwargs=None,
 ):
     """Run external rawmaker
@@ -83,6 +91,10 @@ def rawmaker(
         prefix(str): to modifi the output name with a prefix
         kwargs(dict):
     """
+    kwargs = {
+        CHAR_MARGIN.name: char_margin,
+        BOXES_FLOW.name: boxes_flow,
+    }
     run('rawmaker', workspace, inpath, outpath, prefix, kwargs)
 
 
