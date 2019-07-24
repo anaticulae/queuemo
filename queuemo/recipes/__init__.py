@@ -28,9 +28,13 @@ PDF_FILE = '../work.pdf'
 DECIDER_FONTS = 'decider_fonts'
 FEED_DECIDER_BORDER = 'feedback_decider_border'
 FEED_DECIDER_FONTS = 'feedback_decider_fonts'
+GROUPME = 'groupme'
 SECTIONS = 'sections'
-
+WORDS = 'words'
+FEEDBACK = 'feedback'
 RAWMAKER_OUTPUT = 'rawmaker'
+
+COMMON_VIEW_WORK = 'commonview'
 
 LAYOUT_PATH = join(ROOT, 'queuemo/layout.tab')
 assert exists(LAYOUT_PATH), str(LAYOUT_PATH)
@@ -131,6 +135,14 @@ def feedback_decider_border(workspace: str, input_: str, output: str = None):
 
 def feedback_decider_fonts(workspace: str, input_: str, output: str = None):
     run(FEED_DECIDER_FONTS, workspace, input_, output)
+
+
+def words(workspace: str, input_: str, output: str = None):
+    run(WORDS, workspace, input_, output)
+
+
+def feedback(workspace: str, input_: str, output: str = None):
+    run(FEEDBACK, workspace, input_, output)
 
 
 def copy(workspace: str, input_: str, output: str):

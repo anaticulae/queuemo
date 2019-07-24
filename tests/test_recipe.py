@@ -16,6 +16,11 @@ from pytest import fixture
 
 import queuemo.recipes.setup as setup
 from queuemo.recipe import run
+from queuemo.recipes import COMMON_VIEW_WORK
+from queuemo.recipes.analysis import before as analysis_before
+from queuemo.recipes.commonview import after as commonview_after
+from queuemo.recipes.commonview import before as commonview_before
+from queuemo.recipes.commonview import run as commonview_run
 from queuemo.recipes.docsplit import before as docsplit_before
 from queuemo.recipes.docsplit import run as docsplit_run
 from queuemo.recipes.docsplit import workingpath as docsplit_workingpath
@@ -81,8 +86,23 @@ def test_recipe_extractraw_run(rawmaker_result):
     assert len(result) > circa_eight, str(result)
 
 
-def test_recipe_docsplit_run(docsplit_result):
-    rawspace, docsplitpath = docsplit_result
+def test_recipe_docsplit_run(docsplit_result):  # pylint:disable=W0621
+    _, docsplitpath = docsplit_result
     result = listdir(docsplitpath)
     circa_fifteen = 15
     assert len(result) >= circa_fifteen, str(result)
+
+
+def test_recipe_commonview_run(docsplit_result):  # pylint:disable=W0621
+    rawspace_, _ = docsplit_result
+
+    analysis_before(rawspace_)
+
+    commonview_before(rawspace_)
+    commonview_run(rawspace_)
+    commonview_after(rawspace_)
+
+    workingpath = join(rawspace_, COMMON_VIEW_WORK)
+    result = listdir(workingpath)
+
+    assert len(result) > 20, str(result)

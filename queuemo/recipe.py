@@ -45,6 +45,7 @@ from utila import logging_error
 from utila.test import run as _run_target
 
 import queuemo.recipes.analysis as analysis
+import queuemo.recipes.commonview as commonview
 import queuemo.recipes.decider.border as decider_border
 import queuemo.recipes.decider.fonts as decider_fonts
 import queuemo.recipes.docsplit as docsplit
@@ -130,8 +131,14 @@ def run_raw(workspace, document: int):
     decider_fonts.run(rawspace)
     decider_fonts.after(rawspace)
 
+    docsplit.before(rawspace)
+    docsplit.run(rawspace)
+
+    commonview.before(rawspace)
+    commonview.run(rawspace)
+    commonview.after(rawspace)
+
     logging('end recipe')
-    logging('End recipe')
     return
 
 

@@ -9,6 +9,7 @@
 
 from os.path import join
 
+from queuemo.recipes import COMMON_VIEW_WORK
 from queuemo.recipes import PDF_FILE
 from queuemo.recipes import RAWMAKER_OUTPUT
 from queuemo.recipes import copy_content
@@ -44,7 +45,7 @@ def before(rawspace: str):
 
 
 def run(rawspace: str):
-    sections(rawspace, DOCSPLIT_INPUT, DOCSPLIT_INPUT)
+    sections(rawspace, DOCSPLIT_INPUT, COMMON_VIEW_WORK)
 
 
 def workingpath(rawspace: str):

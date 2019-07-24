@@ -11,6 +11,7 @@ from os.path import join
 
 from feedback.io import STATISTICA_CHAPTER_HTML
 from feedback.io import STATISTICA_WORDS_HTML
+from queuemo.recipes import GROUPME
 from queuemo.recipes import analysis_statistica
 from queuemo.recipes import copy
 from queuemo.recipes import feedback_analysis_statistica
@@ -20,7 +21,6 @@ from queuemo.recipes import publish
 ANALYSIS_STATISTICA = 'analysis_statistica'
 FEED_STATISTICA = 'feedback_statistica'
 FEED_STATISTICA_IN = '%s_input' % FEED_STATISTICA
-GROUPME = 'groupme'
 RAWMAKER = 'rawmaker'
 
 
