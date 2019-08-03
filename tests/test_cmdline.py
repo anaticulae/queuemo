@@ -44,11 +44,11 @@ def test_install_and_run_queuemo():
     assert completed.returncode == SUCCESS, str(completed)
 
 
-def test_run_main(monkeypatch):
-    run_queuemo('--version', monkeypatch, None)
+def test_run_main(monkeypatch, testdir, capsys):
+    run_queuemo('--version', monkeypatch, testdir, capsys)
 
 
-def test_run_one_job(monkeypatch):
+def test_run_one_job(monkeypatch, testdir, capsys):
     command = [
         '--%s' % RUNTIME,
         '1',  # seconds
@@ -59,7 +59,8 @@ def test_run_one_job(monkeypatch):
     run_queuemo(
         command,
         monkeypatch,
-        None,
+        testdir,
+        capsys,
     )
 
 
@@ -93,7 +94,13 @@ def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
         '--%s' % WAITING,
         'woho',  # invalid input
     ]
-    run_queuemo(command, monkeypatch, None, returncode_=INVALID_COMMAND)
+    run_queuemo(
+        command,
+        monkeypatch,
+        testdir,
+        capsys,
+        returncode_=INVALID_COMMAND,
+    )
 
 
 @mark.parametrize('verbose', [
@@ -101,15 +108,16 @@ def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
     ('-VV'),
     ('--verbose'),
 ])
-def test_incremental_verbose_flag(verbose, monkeypatch):
+def test_incremental_verbose_flag(verbose, monkeypatch, testdir, capsys):
     run_queuemo(
         [verbose],
         monkeypatch,
-        None,
+        testdir,
+        capsys,
     )
 
 
-def run_queuemo(command, monkeypatch, testdir, returncode_=SUCCESS):  #pylint: disable=W0613
+def run_queuemo(command, monkeypatch, testdir, capsys, returncode_=SUCCESS):  #pylint: disable=W0613
     if isinstance(command, str):
         command = command.split()
 
@@ -120,3 +128,4 @@ def run_queuemo(command, monkeypatch, testdir, returncode_=SUCCESS):  #pylint: d
         with raises(SystemExit) as result:
             main()
         assert returncode(result) == returncode_, str(result)
+    return capsys
