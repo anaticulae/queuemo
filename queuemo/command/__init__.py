@@ -14,6 +14,7 @@ from utila import SUCCESS
 from utila import Flag
 from utila import Parameter
 from utila import error
+from utila import level_setup
 from utila import parse
 from utila import saveme
 from utila.cli import create_parser
@@ -55,6 +56,7 @@ def main():
     try:
         runtime, waiting = int(args[RUNTIME]), int(args[WAITING])
         verbose = int(args[VERBOSE]) if args[VERBOSE] else 0
+        level_setup(verbose)
     except ValueError:
         msg = 'invalid start parameter: `%s`, `%s`, `%s`'
         error(msg % (args[RUNTIME], args[WAITING], args[VERBOSE]))
