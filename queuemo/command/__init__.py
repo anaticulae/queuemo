@@ -30,12 +30,16 @@ COMMANDS = [
     Parameter(
         longcut=RUNTIME,
         message='runtime in seconds',
-        args={'default': 1},
+        args={
+            'default': 1,
+        },
     ),
     Parameter(
         longcut=WAITING,
-        message='waitime in miliseconds for next job',
-        args={'default': 1000},
+        message='time to wait for the next job in miliseconds',
+        args={
+            'default': 1000,
+        },
     ),
 ]
 
