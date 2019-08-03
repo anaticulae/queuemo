@@ -11,6 +11,7 @@
 from os import listdir
 from os import makedirs
 from os.path import exists
+from os.path import isfile
 from os.path import join
 from shutil import copytree
 from shutil import rmtree
@@ -107,6 +108,10 @@ def nextjob():
 
     todopath = todo(True)
     for item in listdir(todopath):
+        itempath = join(todopath, item)
+        if isfile(itempath):
+            error('file: not a input resource %s' % itempath)
+            continue
         check_ready = join(todopath, item, 'inprogress')
         # already in progress
         if exists(check_ready):
