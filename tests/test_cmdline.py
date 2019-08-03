@@ -25,7 +25,7 @@ from queuemo.command import main
 
 
 @skip_nonvirtual
-def test_run_queuemo():
+def test_install_and_run_queuemo():
     """Install queuemo and run queuemo --help to ensure basic function"""
     uninstall = 'pip uninstall queuemo -y'
     install = 'python setup.py install && queuemo --help'
