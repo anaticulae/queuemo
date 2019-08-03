@@ -40,8 +40,8 @@ from shutil import copy
 
 from utila import SUCCESS
 from utila import call
-from utila import logging
-from utila import logging_error
+from utila import error
+from utila import log
 from utila.test import run as _run_target
 
 import queuemo.recipes.analysis as analysis
@@ -77,16 +77,16 @@ def run(workspace, document: int) -> int:
 def check(workspace: str):
     ret = 0
     for item in RUNNER:
-        logging(' check %s ' % item, end='')
+        log(' check %s ' % item, end='')
         result = _run_target('%s --version' % item, workspace)
-        logging(result.stdout.strip())
+        log(result.stdout.strip())
         if result.returncode:
-            logging_error('Could not run %s' % item)
-            logging_error(str(result))
+            error('Could not run %s' % item)
+            error(str(result))
         ret += result.returncode
     if ret:
         exit(ret)
-    logging()  # add newline
+    log()  # add newline
 
 
 def run_step(workspace: str, step: str, inpath: str, outpath: str = None):
@@ -102,14 +102,14 @@ def run_step(workspace: str, step: str, inpath: str, outpath: str = None):
         inpath,
         outpath,
     ))
-    logging(completed.stdout)
+    log(completed.stdout)
     assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
     assert exists(outpath)
 
 
 def run_raw(workspace, document: int):
     # TODO: Automate add parallize order of recipes
-    logging('run recipe')
+    log('run recipe')
 
     rawspace = join(workspace, 'raw')
 
@@ -138,7 +138,7 @@ def run_raw(workspace, document: int):
     commonview.run(rawspace)
     commonview.after(rawspace)
 
-    logging('end recipe')
+    log('end recipe')
     return
 
 
@@ -166,7 +166,7 @@ def run_recipe(workspace: str, todo):
 
 
 def log_process_start(process):
-    logging(' run %s' % process)
+    log(' run %s' % process)
 
 
 def copy_content(source, destination):

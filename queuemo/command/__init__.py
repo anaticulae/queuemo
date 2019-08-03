@@ -16,7 +16,7 @@ from utila import Parameter
 from utila import error
 from utila import parse
 from utila import saveme
-from utila.cmdline import create_parser
+from utila.cli import create_parser
 
 from queuemo import __version__
 from queuemo.worker.scheduler import run as start_scheduler

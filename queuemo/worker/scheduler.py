@@ -24,13 +24,13 @@ from link import job_load
 from link import ready_count
 from utila import FAILURE
 from utila import SUCCESS
+from utila import error
 from utila import file_create
 from utila import file_read
 from utila import file_remove
-from utila import logging
-from utila import logging_error
-from utila import logging_stacktrace
-from utila import tempfile
+from utila import log
+from utila import log_stacktrace
+from utila import tmpfile
 
 from queuemo import ROOT
 from queuemo.recipe import run as run_recipe
@@ -56,14 +56,14 @@ def run(runtime=MAX_RUNTIME, waiting=WAITING, verbose: bool = True):
         try:
             step(job, waiting=waiting, verbose=verbose)
         except Exception:  # pylint: disable=broad-except
-            logging_stacktrace()
-            logging_error('\nClose scheduler: %d' % tick)
+            log_stacktrace()
+            error('\nClose scheduler: %d' % tick)
             return FAILURE
         tick += 1
         if not verbose and tick % 80 == 0:
-            logging()  # write newline
+            log()  # write newline
 
-    logging('\nTerminated: %d' % tick)
+    log('\nTerminated: %d' % tick)
     return SUCCESS
 
 
@@ -71,25 +71,25 @@ def step(job, waiting=WAITING, verbose: bool = True):
 
     if not job:
         if verbose:
-            logging('Wait...')
+            log('Wait...')
         else:
-            logging('.', end='')
+            log('.', end='')
         sleep(waiting / 1000)  # miliseconds to seconds
     else:
         if not verbose:
-            logging()  # write newline
-        logging('Run job')
+            log()  # write newline
+        log('Run job')
         if verbose:
-            logging('  Copy job')
+            log('  Copy job')
         workspace = copy(job)
 
         if verbose:
-            logging('  Start job')
+            log('  Start job')
         work(workspace)
 
         push_result(workspace)
         if verbose:
-            logging('Finished')
+            log('Finished')
 
 
 def nextjob():
@@ -126,7 +126,7 @@ def copy(job):
     path = join(todo(), job)
     assert exists(path), path
 
-    workspace = tempfile(ROOT)
+    workspace = tmpfile(ROOT)
 
     # copy todo folder
     copytree(path, workspace)
@@ -144,7 +144,7 @@ def push_result(workspace):
     index = jobid(workspace)
     ready_path = join(ready(), index)
 
-    logging('Push result to: %s' % ready_path)
+    log('Push result to: %s' % ready_path)
     # Copy results
     copytree(result, join(ready_path, 'result'))
     # Copy info.yaml
@@ -159,12 +159,12 @@ def push_result(workspace):
     assert index, index
     current_todo = join(todo(), index)
     assert exists(current_todo)
-    logging('Remove todo: %s' % current_todo)
+    log('Remove todo: %s' % current_todo)
     rmtree(current_todo)
     # Wait till deletion is completed
     # TODO: Investigate here! Increase sleep? Check if todo is already in ready
     sleep(1)
-    logging('Remove temp: %s' % workspace)
+    log('Remove temp: %s' % workspace)
 
 
 def work(workspace):
