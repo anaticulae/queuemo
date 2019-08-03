@@ -54,6 +54,7 @@ if __name__ == "__main__":
         long_description=README,
         name='queuemo',
         platforms='any',
+        url='https://dev.package.checkitweg.de/queuemo',
         version=VERSION,
         zip_safe=False,  # create 'zip'-file if True. Don't do it!
         classifiers=[
