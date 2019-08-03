@@ -60,6 +60,6 @@ def main():
         error(msg % (args[RUNTIME], args[WAITING], args[VERBOSE]))
         return INVALID_COMMAND
     check_startup()
-    start_scheduler(runtime=runtime, waiting=waiting, verbose=verbose)
+    closed = start_scheduler(runtime=runtime, waiting=waiting, verbose=verbose)
 
-    return SUCCESS
+    return closed

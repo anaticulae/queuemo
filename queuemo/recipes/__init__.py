@@ -83,6 +83,8 @@ def run(
     assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
     assert exists(outputpath)
 
+    return completed.returncode
+
 
 CHAR_MARGIN_DEFAULT = float(CHAR_MARGIN.defaultvar)
 BOXES_FLOW_DEFAULT = float(BOXES_FLOW.defaultvar)
