@@ -41,12 +41,14 @@ def patch_todo(testdir, monkeypatch):
     makedirs(join(testdir, 'ready'))
     # Copy content from todo
     copytree(TODO, join(testdir, 'todo'))
+
+    copy = dict(os.environ)
     with monkeypatch.context() as context:
-        # Remove all environment vars
-        context.setattr(
-            os, 'environ', {
-                COMMON: testdir,
-                ENV_TODO: join(testdir, 'todo'),
-                READY: join(testdir, 'ready'),
-            })
+        # Overwrite env vars instead of replacing. If we replace the vars we
+        # have to set every single variable again, like accesing rawmaker,
+        # sections etc.
+        copy[COMMON] = testdir
+        copy[ENV_TODO] = join(testdir, 'todo')
+        copy[READY] = join(testdir, 'ready')
+        context.setattr(os, 'environ', copy)
         yield
