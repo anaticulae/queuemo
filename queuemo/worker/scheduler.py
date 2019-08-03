@@ -48,6 +48,8 @@ def run(runtime=MAX_RUNTIME, waiting=WAITING, verbose: bool = True):
     Returns:
         SUCCESS when scheduler ends, or Exception, when runtime error occurs
     """
+    todopath = todo(True)
+    log('start working on: %s' % todopath)
     if not waiting:
         waiting = 1
     tick = 0
