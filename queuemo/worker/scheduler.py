@@ -131,7 +131,7 @@ def copy(job):
         path to temporary workspace
     """
     path = join(todo(), job)
-    assert exists(path), path
+    assert exists(path), str(path)
 
     workspace = tmpfile(ROOT)
 
@@ -142,9 +142,9 @@ def copy(job):
 
 
 def push_result(workspace):
-    assert exists(workspace)
+    assert exists(workspace), str(workspace)
     result = join(workspace, 'result')
-    assert exists(result)
+    assert exists(result), str(result)
 
     ready_before = ready_count()
 
@@ -165,7 +165,7 @@ def push_result(workspace):
     assert todo(), todo()
     assert index, index
     current_todo = join(todo(), index)
-    assert exists(current_todo)
+    assert exists(current_todo), str(current_todo)
     log('Remove todo: %s' % current_todo)
     rmtree(current_todo)
     # Wait till deletion is completed
@@ -175,7 +175,7 @@ def push_result(workspace):
 
 
 def work(workspace):
-    assert exists(workspace)
+    assert exists(workspace), str(workspace)
     result = join(workspace, 'result')
     makedirs(result)
 
@@ -186,7 +186,7 @@ def work(workspace):
 
 def update_info(workspace, result: int):
     info_path = join(workspace, JOB_FILE_NAME)
-    assert exists(info_path)
+    assert exists(info_path), str(info_path)
     info = job_load(info_path)
     info.result = '%d' % result
 
@@ -196,6 +196,6 @@ def update_info(workspace, result: int):
 
 def jobid(path: str):
     info_path = join(path, JOB_FILE_NAME)
-    assert exists(info_path)
+    assert exists(info_path), str(info_path)
     info = job_load(info_path)
     return info.index
