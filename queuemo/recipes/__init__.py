@@ -11,6 +11,7 @@ from functools import partial
 from os.path import exists
 from os.path import join
 from os.path import split
+from typing import List
 
 from rawmaker.cli import BOXES_FLOW
 from rawmaker.cli import CHAR_MARGIN
@@ -42,19 +43,23 @@ OUTPUT_LAYOUT = load_tabstructure(LAYOUT_PATH)
 
 
 def run(
-        runable: str,
+        runnable: str,
         workspace: str,
-        inpath: str,
+        inpath: List[str],
         outpath: str = None,
         prefix: str = '',
         **kwargs,
 ):
-    inputpath = join(workspace, inpath)
+    if isinstance(inpath, str):
+        inpath = [inpath]
+    inputpath = [join(workspace, item) for item in inpath]
+    for item in inputpath:
+        assert exists(item), item
+
     if outpath is None:
-        outputpath = join(workspace, runable)
+        outputpath = join(workspace, runnable)
     else:
         outputpath = join(workspace, outpath)
-    assert exists(inputpath), inputpath
 
     if prefix:
         prefix = '--prefix ' + prefix
@@ -62,13 +67,18 @@ def run(
     process = partial(_run_target, cwd=workspace)
     cmds = ['--%s %s' % (param, value) for (param, value) in kwargs.items()]
     cmds = ' '.join(cmds)
-    completed = process('%s -i %s -o %s %s %s' % (
-        runable,
+    # single inputpath does not produces -i, see str.join docu
+    inputpath = ' -i '.join(inputpath)
+    command = '%s -i %s -o %s %s %s' % (
+        runnable,
         inputpath,
         outputpath,
         prefix,
         cmds,
-    ))
+    )
+    log('running: %s' % command)
+    completed = process(command)
+
     log(completed.stdout)
     assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
     assert exists(outputpath)
@@ -96,26 +106,28 @@ def rawmaker(
         prefix(str): to modifi the output name with a prefix
         kwargs(dict):
     """
+    if isinstance(inpath, str):
+        inpath = [inpath]
     kwargs[CHAR_MARGIN.name] = char_margin
     kwargs[BOXES_FLOW.name] = boxes_flow
     run('rawmaker', workspace, inpath, outpath, prefix, **kwargs)
 
 
-def analysis_statistica(workspace: str, input_: str, output: str = None):
-    run('analysis_statistica', workspace, input_, output)
+def analysis_statistica(workspace: str, inputs: str, output: str = None):
+    run('analysis_statistica', workspace, inputs, output)
 
 
-def groupme(workspace: str, input_: str, output: str = None):
-    run('groupme', workspace, input_, output)
+def groupme(workspace: str, inputs: str, output: str = None):
+    run('groupme', workspace, inputs, output)
 
 
-def sections(workspace: str, input_: str, output: str = None):
-    run(SECTIONS, workspace, input_, output)
+def sections(workspace: str, inputs: str, output: str = None):
+    run(SECTIONS, workspace, inputs, output)
 
 
 def feedback_analysis_statistica(
         workspace: str,
-        input_: str,
+        input_: List[str],
         output: str = None,
 ):
     run('feedback_statistica', workspace, input_, output)

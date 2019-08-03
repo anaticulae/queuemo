@@ -32,12 +32,10 @@ def before(rawspace: str):
     groupme(rawspace, RAWMAKER)
     analysis_statistica(rawspace, GROUPME)
 
-    copy(rawspace, GROUPME, FEED_STATISTICA_IN)
-    copy(rawspace, ANALYSIS_STATISTICA, FEED_STATISTICA_IN)
-
 
 def run(rawspace: str):
-    feedback_analysis_statistica(rawspace, FEED_STATISTICA_IN)
+    input_ = [ANALYSIS_STATISTICA, GROUPME]
+    feedback_analysis_statistica(rawspace, input_)
 
 
 def after(rawspace: str):
