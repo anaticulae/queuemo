@@ -2,6 +2,24 @@
 
 Every noteable change is logged here.
 
+## v0.2.1
+
+### Feature
+
+* add method to display environment variables (65eabced70f5)
+* setup logging level on start up via --verbose level (8f7c07b49ae0)
+* show path which hits the assertion (728b68f3274d)
+* add method to run command with manipulated os env (f507243895e5)
+* add log entree of todo path after startup (6d7efd78a58d)
+
+### Fix
+
+* fix env vars - overwrite instead of replacing (9ac786b55ac0)
+* ignore single file as working input (a85490be4137)
+* close scheduler with correct error code on failure (ebdd73d4f7b7)
+* fix typo in command line interface (e513b7e131f9)
+* add missing package url (be6f1a7cd250)
+
 ## v0.2.0
 
 ### Feature
