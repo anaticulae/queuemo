@@ -2,6 +2,27 @@
 
 Every noteable change is logged here.
 
+## v0.2.0
+
+### Feature
+
+* use new featurepack multi input behavior (fa3f7696fa63)
+* add generation of common view to display document (5b3a86b6c44d)
+* add component to split document in different `Sections` (ef18e4268507)
+* parameterize rawmaker to extract different layouts (98b92c8487ad)
+* add optional args and prefix parameter to process runner (26cd8ba9562e)
+* add new `recipe` approach (b08e985fc591)
+* print invalid input error message and return failure (b5e857f38ef0)
+* add loading file and accept comments (86c303f5ed26)
+* add file to describe result view (243e052f2c3c)
+* add tabstructure to simplify managing output paths (e915b70f545d)
+* add method to copy files and folder (db08bc1d7257)
+
+### Fix
+
+* fix method header to pass kwargs to parametrize runnable s (d1ae5e70df9a)
+* create all required parent folder (8e2e5f011b8d)
+
 ## v0.1.2
 
 ### Fix
