@@ -21,7 +21,7 @@ from utila import SUCCESS
 from utila import copy_content
 from utila import returncode
 from utila import skip_longrun
-from utila.test import run
+from utila.test import run as run_test
 from utila.test import skip_nonvirtual
 
 from queuemo import ROOT
@@ -40,7 +40,7 @@ def test_install_and_run_queuemo():
     install = 'python setup.py install && queuemo --help'
 
     clean_and_run = uninstall + ' && ' + install
-    completed = run(clean_and_run, cwd=ROOT)  # run setup.py
+    completed = run_test(clean_and_run, cwd=ROOT)  # run setup.py
     assert completed.returncode == SUCCESS, str(completed)
 
 

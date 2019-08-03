@@ -15,7 +15,7 @@ from shutil import copy as copy_file
 from pytest import fixture
 
 import queuemo.recipes.setup as setup
-from queuemo.recipe import run
+from queuemo.recipe import run as run_recipe
 from queuemo.recipes import COMMON_VIEW_WORK
 from queuemo.recipes.analysis import before as analysis_before
 from queuemo.recipes.commonview import after as commonview_after
@@ -66,7 +66,7 @@ def docsplit_result(rawmaker_result):  # pylint:disable=W0621
 def test_recipe_run(testdir, monkeypatch):
     with patch_todo(testdir, monkeypatch):
         workspace = copy(EXAMPLE_JOB)
-        result = run(workspace, EXAMPLE_JOB)
+        result = run_recipe(workspace, EXAMPLE_JOB)
     assert result, result
 
 
