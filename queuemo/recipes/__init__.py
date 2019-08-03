@@ -16,13 +16,13 @@ from typing import List
 from rawmaker.cli import BOXES_FLOW
 from rawmaker.cli import CHAR_MARGIN
 from utila import SUCCESS
+from utila import copy_content
 from utila import error
 from utila import log
 from utila.test import run as _run_target
 
 from queuemo import ROOT
 from queuemo.tabstructure import load as load_tabstructure
-from queuemo.utils import copy_content
 
 PDF_FILE = '../work.pdf'
 

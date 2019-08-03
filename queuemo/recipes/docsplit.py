@@ -9,10 +9,11 @@
 
 from os.path import join
 
+from utila import copy_content
+
 from queuemo.recipes import COMMON_VIEW_WORK
 from queuemo.recipes import PDF_FILE
 from queuemo.recipes import RAWMAKER_OUTPUT
-from queuemo.recipes import copy_content
 from queuemo.recipes import rawmaker
 from queuemo.recipes import sections
 

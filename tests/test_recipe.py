@@ -31,8 +31,6 @@ from tests import EXAMPLE_JOB
 from tests import EXAMPLE_PDF
 from tests import patch_todo
 
-# from utila import copy_content # TODO: REPLACE AFTER UPGRADE
-
 
 @fixture
 def rawspace(testdir) -> str:
