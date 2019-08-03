@@ -12,6 +12,7 @@ import os
 from subprocess import PIPE
 from subprocess import CompletedProcess
 
+from utila import info
 from utila.test import _run
 
 
@@ -32,7 +33,6 @@ def run(command: str, cwd: str = None, env: dict = None) -> CompletedProcess:
     assert os.path.isdir(cwd), msg
 
     env = os.environ if env is None else env
-
     completed = _run(
         command,
         cwd=cwd,
@@ -44,3 +44,13 @@ def run(command: str, cwd: str = None, env: dict = None) -> CompletedProcess:
         universal_newlines=True,
     )
     return completed
+
+
+def print_env():
+    """Print environment vars if logging level is higher, equal than
+    INFORMATION.
+
+    TODO: MOVE TO UTILA
+    """
+    for key, value in os.environ.items():
+        info('{:<40}{}'.format(key, value))
