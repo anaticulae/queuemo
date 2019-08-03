@@ -7,13 +7,20 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
 import sys
+from os import makedirs
+from os.path import join
 
+from configo.share import READY
+from configo.share import TODO
 from pytest import mark
 from pytest import raises
 from utila import INVALID_COMMAND
 from utila import SUCCESS
+from utila import copy_content
 from utila import returncode
+from utila import skip_longrun
 from utila.test import run
 from utila.test import skip_nonvirtual
 
@@ -22,6 +29,8 @@ from queuemo.command import PROCESS_NAME
 from queuemo.command import RUNTIME
 from queuemo.command import WAITING
 from queuemo.command import main
+from queuemo.utils import run as run_replace_me
+from tests import TODO as TODO_SOURCE
 
 
 @skip_nonvirtual
@@ -54,7 +63,30 @@ def test_run_one_job(monkeypatch):
     )
 
 
-def test_queuemo_invalid_parameter(monkeypatch):
+@skip_longrun
+def test_run_queuemo(testdir):
+    command = 'queuemo --runtime=2'
+    root = str(testdir)
+    todo = join(root, 'todo')
+    ready = join(root, 'ready')
+    tmp = join(root, 'tmp')
+    for item in [todo, ready, tmp]:
+        makedirs(item)
+
+    # copy to item
+    copy_content(TODO_SOURCE, todo, recursive=True)
+
+    env = dict(os.environ)
+    env[TODO] = todo
+    env[READY] = ready
+    env['SHARED_TMP'] = tmp  # TODO: REPLACE WITH CONFIGO
+
+    # TODO: REPLACE AFTER UPGRADING UTILA
+    completed = run_replace_me(command, env=env)
+    assert completed.returncode == SUCCESS, str(completed)
+
+
+def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
     command = [
         '--%s' % RUNTIME,
         'str',  # invalid input
