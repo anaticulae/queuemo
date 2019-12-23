@@ -59,11 +59,10 @@ if __name__ == "__main__":
             'Programming Language :: Python :: 3.8',
         ],
         entry_points={
-            'console_scripts': ['queuemo = queuemo.command:main'],
+            'console_scripts': ['queuemo = queuemo.cli:main'],
         },
         packages=[
             'queuemo',
-            'queuemo.command',
             'queuemo.recipes',
             'queuemo.recipes.decider',
             'queuemo.worker',

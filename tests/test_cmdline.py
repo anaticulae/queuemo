@@ -25,10 +25,10 @@ from utila.test import run as run_test
 from utila.test import skip_nonvirtual
 
 from queuemo import ROOT
-from queuemo.command import PROCESS_NAME
-from queuemo.command import RUNTIME
-from queuemo.command import WAITING
-from queuemo.command import main
+from queuemo.cli import PROCESS_NAME
+from queuemo.cli import RUNTIME
+from queuemo.cli import WAITING
+from queuemo.cli import main
 from queuemo.utils import run as run_replace_me
 from tests import TODO as TODO_SOURCE
 

@@ -8,6 +8,6 @@
 # =============================================================================
 """Evaluate cmd-args and execute commands"""
 
-import queuemo.command
+import queuemo.cli
 
-queuemo.command.main()
+queuemo.cli.main()

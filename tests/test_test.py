@@ -11,7 +11,7 @@ This testsuite ensure compiling and running basic functionality.
 """
 # pylint: disable=wildcard-import, unused-wildcard-import
 from queuemo import *
-from queuemo.command import *
+from queuemo.cli import *
 from queuemo.worker import *
 
 
