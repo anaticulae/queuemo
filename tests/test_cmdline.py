@@ -33,17 +33,6 @@ from queuemo.utils import run as run_replace_me
 from tests import TODO as TODO_SOURCE
 
 
-@skip_nonvirtual
-def test_install_and_run_queuemo():
-    """Install queuemo and run queuemo --help to ensure basic function"""
-    uninstall = 'pip uninstall queuemo -y'
-    install = 'python setup.py install && queuemo --help'
-
-    clean_and_run = uninstall + ' && ' + install
-    completed = run_test(clean_and_run, cwd=ROOT)  # run setup.py
-    assert completed.returncode == SUCCESS, str(completed)
-
-
 def test_run_main(monkeypatch, testdir, capsys):
     run_queuemo('--version', monkeypatch, testdir, capsys)
 

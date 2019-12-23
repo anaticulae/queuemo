@@ -10,6 +10,7 @@
 import os
 from os.path import exists
 
+import utila
 from configo.share import TODO as SHARED_TODO
 
 from queuemo.worker.scheduler import copy
@@ -23,6 +24,7 @@ def content(capture):
     return capture.readouterr().out
 
 
+@utila.skip_longrun
 def test_run_steps(capsys, testdir, monkeypatch):
     step(None)
     assert 'Wait' in content(capsys)

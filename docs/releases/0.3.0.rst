@@ -13,7 +13,7 @@ general
 
 * [ ] update to current packages
 
-* [ ] support multiprocessed tests
+* [x] support multiprocessed tests
 
 scheduler
 ---------

@@ -12,6 +12,7 @@ from os.path import exists
 from os.path import join
 from shutil import copy as copy_file
 
+import utila
 from pytest import fixture
 
 import queuemo.recipes.setup as setup
@@ -63,6 +64,7 @@ def docsplit_result(rawmaker_result):  # pylint:disable=W0621
     return rawspace, docsplit_workingpath(rawspace)
 
 
+@utila.skip_longrun
 def test_recipe_run(testdir, monkeypatch):
     with patch_todo(testdir, monkeypatch):
         workspace = copy(EXAMPLE_JOB)
@@ -75,6 +77,7 @@ def test_recipe_workspace_setup(rawspace):  # pylint:disable=W0621
     assert exists(rawspacepath)
 
 
+@utila.skip_longrun
 def test_recipe_extractraw_run(rawmaker_result):
     result = listdir(rawmaker_result[1])
 
@@ -84,6 +87,7 @@ def test_recipe_extractraw_run(rawmaker_result):
     assert len(result) > circa_eight, str(result)
 
 
+@utila.skip_longrun
 def test_recipe_docsplit_run(docsplit_result):  # pylint:disable=W0621
     _, docsplitpath = docsplit_result
     result = listdir(docsplitpath)
@@ -91,6 +95,7 @@ def test_recipe_docsplit_run(docsplit_result):  # pylint:disable=W0621
     assert len(result) >= circa_fifteen, str(result)
 
 
+@utila.skip_longrun
 def test_recipe_commonview_run(docsplit_result):  # pylint:disable=W0621
     rawspace_, _ = docsplit_result
 
