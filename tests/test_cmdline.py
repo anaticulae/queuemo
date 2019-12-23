@@ -14,6 +14,7 @@ from os.path import join
 
 import configo.directory
 import pytest
+import utila
 from pytest import mark
 from pytest import raises
 from utila import INVALID_COMMAND
@@ -29,7 +30,6 @@ from queuemo.cli import PROCESS_NAME
 from queuemo.cli import RUNTIME
 from queuemo.cli import WAITING
 from queuemo.cli import main
-from queuemo.utils import run as run_replace_me
 from tests import TODO as TODO_SOURCE
 
 
@@ -72,8 +72,7 @@ def test_run_queuemo(testdir):
     env[configo.directory.READY] = ready
     env[configo.directory.COMMON] = tmp
 
-    # TODO: REPLACE AFTER UPGRADING UTILA
-    completed = run_replace_me(command, env=env)
+    completed = utila.run(command, env=env)
     assert completed.returncode == SUCCESS, str(completed)
 
 

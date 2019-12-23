@@ -16,6 +16,7 @@ from shutil import copytree
 from shutil import rmtree
 from time import sleep
 
+import utila
 from configo import ready
 from configo import todo
 from link import JOB_FILE_NAME
@@ -34,7 +35,6 @@ from utila import tmpfile
 
 from queuemo import ROOT
 from queuemo.recipe import run as run_recipe
-from queuemo.utils import print_env
 
 MAX_RUNTIME = 60 * 60 * 24 * 365  # Run one year
 WAITING = 1000  # ms, 1 second
@@ -51,7 +51,7 @@ def run(runtime=MAX_RUNTIME, waiting=WAITING, verbose: bool = True):
     """
     todopath = todo(True)
     log('start working on: %s' % todopath)
-    print_env()
+    utila.print_env()
     if not waiting:
         waiting = 1
     tick = 0
