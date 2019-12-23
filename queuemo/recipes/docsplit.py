@@ -14,6 +14,9 @@ from utila import copy_content
 from queuemo.recipes import COMMON_VIEW_WORK
 from queuemo.recipes import PDF_FILE
 from queuemo.recipes import RAWMAKER_OUTPUT
+from queuemo.recipes import decider_decider
+from queuemo.recipes import detector
+from queuemo.recipes import groupme
 from queuemo.recipes import rawmaker
 from queuemo.recipes import sections
 
@@ -40,13 +43,14 @@ def before(rawspace: str):
         text='',
         toc='',
     )
+    groupme(rawspace, 'rawmaker', DOCSPLIT_INPUT)
     sectionspath = join(rawspace, DOCSPLIT_INPUT)
-
     copy_content(workingpath(rawspace), sectionspath)
 
 
 def run(rawspace: str):
     sections(rawspace, DOCSPLIT_INPUT, COMMON_VIEW_WORK)
+    # decider_decider(rawspace, DOCSPLIT_INPUT)
 
 
 def workingpath(rawspace: str):

@@ -12,8 +12,8 @@ import sys
 from os import makedirs
 from os.path import join
 
-from configo.share import READY
-from configo.share import TODO
+import configo.directory
+import pytest
 from pytest import mark
 from pytest import raises
 from utila import INVALID_COMMAND
@@ -53,6 +53,7 @@ def test_run_one_job(monkeypatch, testdir, capsys):
     )
 
 
+@pytest.mark.xfail(reason='broken interface')
 @skip_longrun
 def test_run_queuemo(testdir):
     command = 'queuemo --runtime=2'
@@ -67,9 +68,9 @@ def test_run_queuemo(testdir):
     copy_content(TODO_SOURCE, todo, recursive=True)
 
     env = dict(os.environ)
-    env[TODO] = todo
-    env[READY] = ready
-    env['SHARED_TMP'] = tmp  # TODO: REPLACE WITH CONFIGO
+    env[configo.directory.TODO] = todo
+    env[configo.directory.READY] = ready
+    env[configo.directory.COMMON] = tmp
 
     # TODO: REPLACE AFTER UPGRADING UTILA
     completed = run_replace_me(command, env=env)

@@ -33,7 +33,7 @@ DATA_FILES = [
         'requirements.txt',
     ]),
     ('config', [
-        'config/decider_fonts__ugly_fonts.yaml',
+        'config/decider_fonts_config__ugly_fonts.yaml',
     ]),
     ('queuemo', [
         'queuemo/layout.tab',

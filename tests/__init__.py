@@ -34,9 +34,9 @@ assert exists(EXAMPLE_PDF), str(EXAMPLE_PDF)
 def patch_todo(testdir, monkeypatch):
     testdir = str(testdir)
     import os
-    from configo.share import COMMON
-    from configo.share import READY
-    from configo.share import TODO as ENV_TODO
+    from configo.directory import COMMON
+    from configo.directory import READY
+    from configo.directory import TODO as ENV_TODO
 
     makedirs(join(testdir, 'ready'))
     # Copy content from todo

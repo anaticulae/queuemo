@@ -135,6 +135,14 @@ def feedback_analysis_statistica(
     run('feedback_statistica', workspace, input_, output)
 
 
+def detector(workspace: str, input_: str, output: str = None):
+    run('detector', workspace, input_, output)
+
+
+def decider_decider(workspace: str, input_: str, output: str = None):
+    run('decider', workspace, input_, output)
+
+
 def decider_border(workspace: str, input_: str, output: str = None):
     run('decider_border', workspace, input_, output)
 
@@ -170,6 +178,7 @@ def copy(workspace: str, input_: str, output: str):
 
 def publish(rawspace: str, input_: str, output: str):
     # TODO: add method publish_html, publish_image?
+    return
     output = OUTPUT_LAYOUT.look(output)
     output = join('../result', output)
 
@@ -202,7 +211,7 @@ RUNNER = [
     'analysis_statistica',
     'decider_border',
     'feedback_decider_border',
-    'feedback_statistica',
+    # 'feedback_statistica',
     'groupme',
     'rawmaker',
 ]

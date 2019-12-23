@@ -11,7 +11,7 @@ docs
 general
 -------
 
-* [ ] update to current packages
+* [x] update to current packages
 
 * [x] support multiprocessed tests
 

@@ -30,16 +30,20 @@ def require():
 
 def before(rawspace: str):
     groupme(rawspace, RAWMAKER)
-    analysis_statistica(rawspace, GROUPME)
+    # analysis_statistica(rawspace, GROUPME)
 
 
 def run(rawspace: str):
-    input_ = [ANALYSIS_STATISTICA, GROUPME]
-    feedback_analysis_statistica(rawspace, input_)
+    pass
+    # input_ = [
+    #     # ANALYSIS_STATISTICA,
+    #     GROUPME,
+    # ]
+    # feedback_analysis_statistica(rawspace, input_)
 
 
 def after(rawspace: str):
-    chapter_out = join(FEED_STATISTICA, STATISTICA_CHAPTER_HTML) + '.html'
+    # chapter_out = join(FEED_STATISTICA, STATISTICA_CHAPTER_HTML) + '.html'
     words_out = join(FEED_STATISTICA, STATISTICA_WORDS_HTML) + '.html'
-    publish(rawspace, chapter_out, 'statistica/chapter/sections')
+    # publish(rawspace, chapter_out, 'statistica/chapter/sections')
     publish(rawspace, words_out, 'statistica/chapter/words')

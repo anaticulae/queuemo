@@ -9,11 +9,11 @@
 """Store experimental code here"""
 
 import os
+import subprocess
 from subprocess import PIPE
 from subprocess import CompletedProcess
 
 from utila import info
-from utila.test import _run
 
 
 def run(command: str, cwd: str = None, env: dict = None) -> CompletedProcess:
@@ -33,7 +33,7 @@ def run(command: str, cwd: str = None, env: dict = None) -> CompletedProcess:
     assert os.path.isdir(cwd), msg
 
     env = os.environ if env is None else env
-    completed = _run(
+    completed = subprocess.run(
         command,
         cwd=cwd,
         env=env,

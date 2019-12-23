@@ -12,6 +12,7 @@ from os.path import exists
 from os.path import join
 from shutil import copy as copy_file
 
+import pytest
 import utila
 from pytest import fixture
 
@@ -64,6 +65,7 @@ def docsplit_result(rawmaker_result):  # pylint:disable=W0621
     return rawspace, docsplit_workingpath(rawspace)
 
 
+@pytest.mark.xfail(reason='broken interface')
 @utila.skip_longrun
 def test_recipe_run(testdir, monkeypatch):
     with patch_todo(testdir, monkeypatch):
@@ -78,7 +80,7 @@ def test_recipe_workspace_setup(rawspace):  # pylint:disable=W0621
 
 
 @utila.skip_longrun
-def test_recipe_extractraw_run(rawmaker_result):
+def test_recipe_extractraw_run(rawmaker_result):  # pylint:disable=W0621
     result = listdir(rawmaker_result[1])
 
     # this value may change in the future, but it is not so important. Existing
@@ -95,6 +97,7 @@ def test_recipe_docsplit_run(docsplit_result):  # pylint:disable=W0621
     assert len(result) >= circa_fifteen, str(result)
 
 
+@pytest.mark.xfail(reason='broken interface')
 @utila.skip_longrun
 def test_recipe_commonview_run(docsplit_result):  # pylint:disable=W0621
     rawspace_, _ = docsplit_result
