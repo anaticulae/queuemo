@@ -1,1 +1,0 @@
-.. mdinclude:: ../../STRATEGY.md

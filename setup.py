@@ -28,11 +28,8 @@ with open(join(ROOT, 'requirements.txt'), mode='rt', encoding='utf8') as fp:
 
 DATA_FILES = [
     ('.', [
-        'BUGS.md',
         'CHANGELOG.md',
-        'LICENCE.md',
         'README.md',
-        'TODO.md',
         'requirements.txt',
     ]),
     ('config', [

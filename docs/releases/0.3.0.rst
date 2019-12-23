@@ -1,0 +1,33 @@
+.. _0_3_0:
+
+RP 0.3.0
+=========
+
+docs
+----
+
+* [x] introduce new general rst doc structure
+
+general
+-------
+
+* [ ] update to current packages
+
+* [ ] support multiprocessed tests
+
+scheduler
+---------
+
+* [ ] introduce new waiting and fast view processes
+
+Code quality
+------------
+
+Before
+~~~~~~
+
+* Your code has been rated at 9.09/10
+* Total coverage: 85.44%
+
+After
+~~~~~
