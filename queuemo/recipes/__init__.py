@@ -47,6 +47,7 @@ def run(
         workspace: str,
         inpath: List[str],
         outpath: str = None,
+        parameter: str = None,
         prefix: str = '',
         **kwargs,
 ):
@@ -69,8 +70,11 @@ def run(
     cmds = ' '.join(cmds)
     # single inputpath does not produces -i, see str.join docu
     inputpath = ' -i '.join(inputpath)
-    command = '%s -i %s -o %s %s %s' % (
+
+    parameter = ' ' if parameter is None else parameter
+    command = '%s %s -i %s -o %s %s %s' % (
         runnable,
+        parameter,
         inputpath,
         outputpath,
         prefix,
@@ -112,7 +116,16 @@ def rawmaker(
         inpath = [inpath]
     kwargs[CHAR_MARGIN.name] = char_margin
     kwargs[BOXES_FLOW.name] = boxes_flow
-    run('rawmaker', workspace, inpath, outpath, prefix, **kwargs)
+    # reduces required test power
+    run(
+        'rawmaker',
+        workspace,
+        inpath,
+        outpath,
+        '--pages=0:5 -j=4',
+        prefix,
+        **kwargs,
+    )
 
 
 def analysis_statistica(workspace: str, inputs: str, output: str = None):
@@ -124,7 +137,13 @@ def groupme(workspace: str, inputs: str, output: str = None):
 
 
 def sections(workspace: str, inputs: str, output: str = None):
-    run(SECTIONS, workspace, inputs, output)
+    run(
+        SECTIONS,
+        workspace,
+        inputs,
+        output,
+        parameter='-j=4',
+    )
 
 
 def feedback_analysis_statistica(
@@ -160,7 +179,7 @@ def feedback_decider_fonts(workspace: str, input_: str, output: str = None):
 
 
 def words(workspace: str, input_: str, output: str = None):
-    run(WORDS, workspace, input_, output)
+    run(WORDS, workspace, input_, output, parameter='-j=4')
 
 
 def feedback(workspace: str, input_: str, output: str = None):
