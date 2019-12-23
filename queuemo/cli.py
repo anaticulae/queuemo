@@ -7,20 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from configo import check_startup
-from utila import FAILURE
-from utila import INVALID_COMMAND
-from utila import SUCCESS
-from utila import Flag
-from utila import Parameter
-from utila import error
-from utila import level_setup
-from utila import parse
-from utila import saveme
-from utila.cli import create_parser
+import configo
+import utila
+import utila.cli
 
-from queuemo import __version__
-from queuemo.worker.scheduler import run as start_scheduler
+import queuemo
+import queuemo.worker.scheduler
 
 PROCESS_NAME = 'queuemo'
 RUNTIME = 'runtime'
@@ -28,14 +20,14 @@ WAITING = 'waiting'
 VERBOSE = 'verbose'
 
 COMMANDS = [
-    Parameter(
+    utila.Parameter(
         longcut=RUNTIME,
         message='runtime in seconds',
         args={
             'default': 1,
         },
     ),
-    Parameter(
+    utila.Parameter(
         longcut=WAITING,
         message='time to wait for the next job in miliseconds',
         args={
@@ -45,23 +37,28 @@ COMMANDS = [
 ]
 
 
-@saveme
+@utila.saveme
 def main():
-    parser = create_parser(
+    parser = utila.cli.create_parser(
         todo=COMMANDS,
         prog=PROCESS_NAME,
-        version=__version__,
+        version=queuemo.__version__,
     )
-    args = parse(parser)
+    args = utila.parse(parser)
     try:
         runtime, waiting = int(args[RUNTIME]), int(args[WAITING])
         verbose = int(args[VERBOSE]) if args[VERBOSE] else 0
-        level_setup(verbose)
+        utila.level_setup(verbose)
     except ValueError:
         msg = 'invalid start parameter: `%s`, `%s`, `%s`'
-        error(msg % (args[RUNTIME], args[WAITING], args[VERBOSE]))
-        return INVALID_COMMAND
-    check_startup()
-    closed = start_scheduler(runtime=runtime, waiting=waiting, verbose=verbose)
+        utila.error(msg % (args[RUNTIME], args[WAITING], args[VERBOSE]))
+        return utila.INVALID_COMMAND
+    configo.check_startup()
+    # start scheduler
+    closed = queuemo.worker.scheduler.run(
+        runtime=runtime,
+        waiting=waiting,
+        verbose=verbose,
+    )
 
     return closed
