@@ -9,28 +9,14 @@
 
 import os
 import sys
-from os import makedirs
-from os.path import join
 
 import configo.directory
 import pytest
 import utila
-from pytest import mark
-from pytest import raises
-from utila import INVALID_COMMAND
-from utila import SUCCESS
-from utila import copy_content
-from utila import returncode
-from utila import skip_longrun
-from utila.test import run as run_test
-from utila.test import skip_nonvirtual
 
-from queuemo import ROOT
-from queuemo.cli import PROCESS_NAME
-from queuemo.cli import RUNTIME
-from queuemo.cli import WAITING
-from queuemo.cli import main
-from tests import TODO as TODO_SOURCE
+import queuemo
+import queuemo.cli
+import tests
 
 
 def test_run_main(monkeypatch, testdir, capsys):
@@ -39,9 +25,9 @@ def test_run_main(monkeypatch, testdir, capsys):
 
 def test_run_one_job(monkeypatch, testdir, capsys):
     command = [
-        '--%s' % RUNTIME,
+        '--%s' % queuemo.cli.RUNTIME,
         '1',  # seconds
-        '--%s' % WAITING,
+        '--%s' % queuemo.cli.WAITING,
         '10',  # mili
         '-VV',
     ]
@@ -54,18 +40,18 @@ def test_run_one_job(monkeypatch, testdir, capsys):
 
 
 @pytest.mark.xfail(reason='broken interface')
-@skip_longrun
+@utila.skip_longrun
 def test_run_queuemo(testdir):
     command = 'queuemo --runtime=2'
     root = str(testdir)
-    todo = join(root, 'todo')
-    ready = join(root, 'ready')
-    tmp = join(root, 'tmp')
+    todo = os.path.join(root, 'todo')
+    ready = os.path.join(root, 'ready')
+    tmp = os.path.join(root, 'tmp')
     for item in [todo, ready, tmp]:
-        makedirs(item)
+        os.makedirs(item)
 
     # copy to item
-    copy_content(TODO_SOURCE, todo, recursive=True)
+    utila.copy_content(tests.TODO, todo, recursive=True)
 
     env = dict(os.environ)
     env[configo.directory.TODO] = todo
@@ -73,14 +59,14 @@ def test_run_queuemo(testdir):
     env[configo.directory.COMMON] = tmp
 
     completed = utila.run(command, env=env)
-    assert completed.returncode == SUCCESS, str(completed)
+    assert completed.returncode == utila.SUCCESS, str(completed)
 
 
 def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
     command = [
-        '--%s' % RUNTIME,
+        '--%s' % queuemo.cli.RUNTIME,
         'str',  # invalid input
-        '--%s' % WAITING,
+        '--%s' % queuemo.cli.WAITING,
         'woho',  # invalid input
     ]
     run_queuemo(
@@ -88,11 +74,11 @@ def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
         monkeypatch,
         testdir,
         capsys,
-        returncode_=INVALID_COMMAND,
+        returncode_=utila.INVALID_COMMAND,
     )
 
 
-@mark.parametrize('verbose', [
+@pytest.mark.parametrize('verbose', [
     ('-V'),
     ('-VV'),
     ('--verbose'),
@@ -106,15 +92,21 @@ def test_incremental_verbose_flag(verbose, monkeypatch, testdir, capsys):
     )
 
 
-def run_queuemo(command, monkeypatch, testdir, capsys, returncode_=SUCCESS):  #pylint: disable=W0613
+def run_queuemo(
+        command,
+        monkeypatch,
+        testdir,
+        capsys,
+        returncode_=utila.SUCCESS,
+):  #pylint: disable=W0613
     if isinstance(command, str):
         command = command.split()
 
     with monkeypatch.context() as context:
         # Remove all environment vars
-        context.setattr(sys, 'argv', [PROCESS_NAME] + command)
+        context.setattr(sys, 'argv', [queuemo.cli.PROCESS_NAME] + command)
 
-        with raises(SystemExit) as result:
-            main()
-        assert returncode(result) == returncode_, str(result)
+        with pytest.raises(SystemExit) as result:
+            queuemo.cli.main()
+        assert utila.returncode(result) == returncode_, str(result)
     return capsys

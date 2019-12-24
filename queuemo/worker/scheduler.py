@@ -7,50 +7,37 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 """Watchdog for todo folder to listen to incoming jobs"""
-from os import listdir
-from os import makedirs
-from os.path import exists
-from os.path import isfile
-from os.path import join
-from shutil import copytree
-from shutil import rmtree
-from time import sleep
+import os
+import shutil
+import time
 
+import configo
+import link
 import utila
-from configo import ready
-from configo import todo
-from link import JOB_FILE_NAME
-from link import job_dump
-from link import job_load
-from link import ready_count
-from utila import FAILURE
-from utila import SUCCESS
-from utila import error
-from utila import file_create
-from utila import file_read
-from utila import file_remove
-from utila import log
-from utila import log_stacktrace
-from utila import tmpfile
 
-from queuemo import ROOT
-from queuemo.recipe import run as run_recipe
+import queuemo
+import queuemo.recipe
 
 MAX_RUNTIME = 60 * 60 * 24 * 365  # Run one year
 WAITING = 1000  # ms, 1 second
 
 
-def run(runtime=MAX_RUNTIME, waiting=WAITING, verbose: bool = True):
+def run(
+        runtime: float = MAX_RUNTIME,
+        waiting: float = WAITING,
+        verbose: bool = True,
+) -> int:
     """Run the scheduler
 
     Args:
-        runtime():
-        waiting():
+        runtime(float): runtime in seconds
+        waiting(float): waiting time in mili-seconds
+        verbose(bool): increase logging if True
     Returns:
         SUCCESS when scheduler ends, or Exception, when runtime error occurs
     """
-    todopath = todo(True)
-    log('start working on: %s' % todopath)
+    todopath = configo.todo(True)
+    utila.log('start working on: %s' % todopath)
     utila.print_env()
     if not waiting:
         waiting = 1
@@ -60,40 +47,39 @@ def run(runtime=MAX_RUNTIME, waiting=WAITING, verbose: bool = True):
         try:
             step(job, waiting=waiting, verbose=verbose)
         except Exception:  # pylint: disable=broad-except
-            log_stacktrace()
-            error('\nClose scheduler: %d' % tick)
-            return FAILURE
+            utila.log_stacktrace()
+            utila.error('\nClose scheduler: %d' % tick)
+            return utila.FAILURE
         tick += 1
         if not verbose and tick % 80 == 0:
-            log()  # write newline
+            utila.log()  # write newline
 
-    log('\nTerminated: %d' % tick)
-    return SUCCESS
+    utila.log('\nTerminated: %d' % tick)
+    return utila.SUCCESS
 
 
 def step(job, waiting=WAITING, verbose: bool = True):
-
     if not job:
         if verbose:
-            log('Wait...')
+            utila.log('Wait...')
         else:
-            log('.', end='')
-        sleep(waiting / 1000)  # miliseconds to seconds
+            utila.log('.', end='')
+        time.sleep(waiting / 1000)  # miliseconds to seconds
     else:
         if not verbose:
-            log()  # write newline
-        log('Run job')
+            utila.log()  # write newline
+        utila.log('Run job')
         if verbose:
-            log('  Copy job')
+            utila.log('  Copy job')
         workspace = copy(job)
 
         if verbose:
-            log('  Start job')
+            utila.log('  Start job')
         work(workspace)
 
         push_result(workspace)
         if verbose:
-            log('Finished')
+            utila.log('Finished')
 
 
 def nextjob():
@@ -107,18 +93,18 @@ def nextjob():
         If there is no matching file than return `None`
     """
 
-    todopath = todo(True)
-    for item in listdir(todopath):
-        itempath = join(todopath, item)
-        if isfile(itempath):
-            error('file: not a input resource %s' % itempath)
+    todopath = configo.todo(True)
+    for item in os.listdir(todopath):
+        itempath = os.path.join(todopath, item)
+        if os.path.isfile(itempath):
+            utila.error('file: not a input resource %s' % itempath)
             continue
-        check_ready = join(todopath, item, 'inprogress')
+        check_ready = os.path.join(todopath, item, 'inprogress')
         # already in progress
-        if exists(check_ready):
+        if os.path.exists(check_ready):
             continue
         # Mark folder as in progress and start with 0 percent
-        file_create(check_ready, '000')
+        utila.file_create(check_ready, '000')
         return item
     return None
 
@@ -131,72 +117,72 @@ def copy(job):
     Returns:
         path to temporary workspace
     """
-    path = join(todo(), job)
-    assert exists(path), str(path)
+    path = os.path.join(configo.todo(), job)
+    assert os.path.exists(path), str(path)
 
-    workspace = tmpfile(ROOT)
+    workspace = utila.tmpfile(queuemo.ROOT)
 
-    # copy todo folder
-    copytree(path, workspace)
+    # copy todo to temporary folder
+    shutil.copytree(path, workspace)
 
     return workspace
 
 
 def push_result(workspace):
-    assert exists(workspace), str(workspace)
-    result = join(workspace, 'result')
-    assert exists(result), str(result)
+    assert os.path.exists(workspace), str(workspace)
+    result = os.path.join(workspace, 'result')
+    assert os.path.exists(result), str(result)
 
-    ready_before = ready_count()
+    ready_before = link.ready_count()
 
     index = jobid(workspace)
-    ready_path = join(ready(), index)
+    ready_path = os.path.join(configo.ready(), index)
 
-    log('Push result to: %s' % ready_path)
+    utila.log('Push result to: %s' % ready_path)
     # Copy results
-    copytree(result, join(ready_path, 'result'))
+    shutil.copytree(result, os.path.join(ready_path, 'result'))
     # Copy info.yaml
-    info = file_read(join(workspace, JOB_FILE_NAME))
-    file_create(join(ready_path, JOB_FILE_NAME), info)
+    info = utila.file_read(os.path.join(workspace, link.JOB_FILE_NAME))
+    utila.file_create(os.path.join(ready_path, link.JOB_FILE_NAME), info)
 
-    ready_after = ready_count()
+    ready_after = link.ready_count()
 
     assert ready_before + 1 == ready_after
 
-    assert todo(), todo()
+    assert configo.todo(), configo.todo()
     assert index, index
-    current_todo = join(todo(), index)
-    assert exists(current_todo), str(current_todo)
-    log('Remove todo: %s' % current_todo)
-    rmtree(current_todo)
+    current_todo = os.path.join(configo.todo(), index)
+    assert os.path.exists(current_todo), str(current_todo)
+    utila.log('Remove todo: %s' % current_todo)
+    shutil.rmtree(current_todo)
     # Wait till deletion is completed
     # TODO: Investigate here! Increase sleep? Check if todo is already in ready
-    sleep(1)
-    log('Remove temp: %s' % workspace)
+    time.sleep(1)
+    utila.log('Remove temp: %s' % workspace)
 
 
 def work(workspace):
-    assert exists(workspace), str(workspace)
-    result = join(workspace, 'result')
-    makedirs(result)
+    assert os.path.exists(workspace), str(workspace)
+    result = os.path.join(workspace, 'result')
+    os.makedirs(result)
 
-    result = run_recipe(workspace, jobid(workspace))
+    queuemo.recipe.run(workspace, jobid(workspace))
 
     update_info(workspace, result)
 
 
 def update_info(workspace, result: int):
-    info_path = join(workspace, JOB_FILE_NAME)
-    assert exists(info_path), str(info_path)
-    info = job_load(info_path)
+    info_path = os.path.join(workspace, link.JOB_FILE_NAME)
+    assert os.path.exists(info_path), str(info_path)
+    info = link.job_load(info_path)
     info.result = '%d' % result
 
-    file_remove(info_path)  # remove old one to replace with new one
-    job_dump(info_path, info)
+    utila.file_remove(info_path)  # remove old one to replace with new one
+    link.job_dump(info_path, info)
 
 
-def jobid(path: str):
-    info_path = join(path, JOB_FILE_NAME)
-    assert exists(info_path), str(info_path)
-    info = job_load(info_path)
+def jobid(path: str) -> int:
+    info_path = os.path.join(path, link.JOB_FILE_NAME)
+    assert os.path.exists(info_path), str(info_path)
+    info = link.job_load(info_path)
     return info.index

@@ -79,7 +79,7 @@ def check(workspace: str):
 
 
 def run_step(workspace: str, step: str, inpath: str, outpath: str = None):
-    # if outpath is not definied use step-name as outpath
+    # if outpath is not defined use step-name as outpath
     outpath = outpath if outpath != '' else step
     log_process_start(step)
     assert os.path.exists(workspace), workspace
@@ -163,5 +163,6 @@ def copy_content(source, destination):
     folder does not exists, it will created."""
     assert os.path.exists(source), source
     os.makedirs(destination, exist_ok=True)
+    # TODO: USE UTILA CODE?
     for item in os.listdir(source):
         shutil.copy(os.path.join(source, item), os.path.join(destination, item))
