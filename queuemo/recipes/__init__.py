@@ -122,7 +122,7 @@ def rawmaker(
         workspace,
         inpath,
         outpath,
-        '--pages=0:5 -j=4',
+        '-j=4',
         prefix,
         **kwargs,
     )

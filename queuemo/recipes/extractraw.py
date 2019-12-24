@@ -14,7 +14,7 @@ OUTPATH = 'rawmaker'
 
 
 def run(rawspace: str):
-    rawmaker(rawspace, PDF_FILE)
+    rawmaker(rawspace, PDF_FILE, pages='0:5')
 
 
 def after(rawspace: str):

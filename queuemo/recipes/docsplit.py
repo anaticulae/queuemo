@@ -38,6 +38,7 @@ def before(rawspace: str):
         prefix='oneline',
         char_margin=ONELINE_CHAR_MARGIN,
         boxes_flow=ONELINE_BOXES_FLOW,
+        pages='0:5',
         # run only this features
         font='',
         text='',
