@@ -17,6 +17,7 @@ import utila
 
 import queuemo
 import queuemo.recipe
+import queuemo.worker.progress
 
 MAX_RUNTIME = 60 * 60 * 24 * 365  # Run one year
 WAITING = 1000  # ms, 1 second
@@ -82,30 +83,28 @@ def step(job, waiting=WAITING, verbose: bool = True):
             utila.log('Finished')
 
 
-def nextjob():
+def nextjob() -> int:
     """Find next job and mark it as `in progress`
 
-    Select the todo folder and search for a folder that does not include an
-    `inprogress` file.
+    Select the todo folder and search for a folder that does not include
+    an `inprogress` file. After finding an waiting job, starting them
+    and return the `jobid` as nextjob.
 
     Returns:
         If there is a matching file, return the folder name as jobid
-        If there is no matching file than return `None`
+        If there is no matching file, return `None`
     """
-
     todopath = configo.todo(True)
-    for item in os.listdir(todopath):
-        itempath = os.path.join(todopath, item)
+    for jobnumber in os.listdir(todopath):
+        itempath = os.path.join(todopath, jobnumber)
         if os.path.isfile(itempath):
-            utila.error('file: not a input resource %s' % itempath)
+            # require input folder, not a single file
+            utila.error(f'file: not a input resource: {itempath}')
             continue
-        check_ready = os.path.join(todopath, item, 'inprogress')
-        # already in progress
-        if os.path.exists(check_ready):
+        if queuemo.worker.progress.inprogress(jobnumber):
             continue
-        # Mark folder as in progress and start with 0 percent
-        utila.file_create(check_ready, '000')
-        return item
+        queuemo.worker.progress.start(jobnumber)
+        return jobnumber
     return None
 
 
