@@ -27,5 +27,12 @@ def example_8166(testdir):
 def test_recipe_fastview_extract_resources(example_8166):  # pylint:disable=W0621
     """Ensure that resources for title page analysation is created."""
     workspace = str(example_8166)
-    with tests.increased_filecount(workspace):
+    with tests.increased_filecount(workspace, 'yaml'):
         queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
+
+
+def test_recipe_fastview_titlepage(example_8166):  # pylint:disable=W0621
+    workspace = str(example_8166)
+    queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
+    with tests.increased_filecount(workspace, 'yaml'):
+        queuemo.recipes.fastview.titlepage(workspace, tests.EXAMPLE_JOB)

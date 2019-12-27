@@ -162,6 +162,10 @@ def decider_decider(workspace: str, input_: str, output: str = None):
     run('decider', workspace, input_, output)
 
 
+def decider_titlepage(workspace: str, input_: str, output: str = None):
+    run('decider --titlepage', workspace, input_, output)
+
+
 def decider_border(workspace: str, input_: str, output: str = None):
     run('decider_border', workspace, input_, output)
 

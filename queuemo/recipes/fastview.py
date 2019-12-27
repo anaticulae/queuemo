@@ -14,6 +14,7 @@ import configo
 import utila
 
 from queuemo.recipes import decider_decider
+from queuemo.recipes import decider_titlepage
 from queuemo.recipes import detector
 from queuemo.recipes import groupme
 from queuemo.recipes import rawmaker
@@ -37,3 +38,8 @@ def extract_resource(workspace: str, document: str):
         pages='0',
     )
     assert completed == 0, str(completed)
+
+
+def titlepage(workspace: str, document: str):
+    detector(workspace, 'fastview/titlepage', 'fastview/titlepage')
+    decider_titlepage(workspace, 'fastview/titlepage', 'fastview/titlepage')
