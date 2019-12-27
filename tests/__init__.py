@@ -7,11 +7,16 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
+import contextlib
+import glob
+import os
 from contextlib import contextmanager
 from os import makedirs
 from os.path import exists
 from os.path import join
 from shutil import copytree
+
+import utila
 
 from queuemo import ROOT
 
@@ -52,3 +57,16 @@ def patch_todo(testdir, monkeypatch):
         copy[READY] = join(testdir, 'ready')
         context.setattr(os, 'environ', copy)
         yield
+
+
+@contextlib.contextmanager
+def increased_filecount(path: str):
+    """Ensure to create some files while running operations in yieldet
+    state."""
+    # TODO: MOVE TO UTILA TEST
+    assert os.path.exists(path), str(path)
+    with utila.chdir(path):
+        before = list(glob.glob('**', recursive=True))
+        yield
+        after = list(glob.glob('**', recursive=True))
+    assert after > before
