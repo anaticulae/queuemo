@@ -55,13 +55,14 @@ def patch_todo(testdir, monkeypatch):
 
 
 @contextlib.contextmanager
-def increased_filecount(path: str):
+def increased_filecount(path: str, ending: str = None):
     """Ensure to create some files while running operations in yieldet
     state."""
     # TODO: MOVE TO UTILA TEST
     assert os.path.exists(path), str(path)
+    pattern = '**/*.*' if ending is None else f'**/*.{ending}'
     with utila.chdir(path):
-        before = list(glob.glob('**', recursive=True))
+        before = list(glob.glob(pattern, recursive=True))
         yield
-        after = list(glob.glob('**', recursive=True))
-    assert after > before
+        after = list(glob.glob(pattern, recursive=True))
+    assert len(after) > len(before), f'{before}\n\n{after}'
