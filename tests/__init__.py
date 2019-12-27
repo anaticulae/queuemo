@@ -10,42 +10,37 @@
 import contextlib
 import glob
 import os
-from contextlib import contextmanager
-from os import makedirs
-from os.path import exists
-from os.path import join
-from shutil import copytree
+import shutil
 
 import utila
 
-from queuemo import ROOT
+import queuemo
 
-TEST_DATA = join(ROOT, 'tests/resources')
-assert exists(TEST_DATA), TEST_DATA
+TEST_DATA = os.path.join(queuemo.ROOT, 'tests/resources')
+assert os.path.exists(TEST_DATA), TEST_DATA
 
-TODO = join(TEST_DATA, 'todo')
-assert exists(TODO), TODO
+TODO = os.path.join(TEST_DATA, 'todo')
+assert os.path.exists(TODO), TODO
 
 EXAMPLE_JOB = '8166109011'
 
-EXAMPLE_JOB_PATH = join(TODO, EXAMPLE_JOB)
-assert exists(EXAMPLE_JOB_PATH), EXAMPLE_JOB_PATH
+EXAMPLE_JOB_PATH = os.path.join(TODO, EXAMPLE_JOB)
+assert os.path.exists(EXAMPLE_JOB_PATH), EXAMPLE_JOB_PATH
 
-EXAMPLE_PDF = join(EXAMPLE_JOB_PATH, EXAMPLE_JOB)
-assert exists(EXAMPLE_PDF), str(EXAMPLE_PDF)
+EXAMPLE_PDF = os.path.join(EXAMPLE_JOB_PATH, EXAMPLE_JOB)
+assert os.path.exists(EXAMPLE_PDF), str(EXAMPLE_PDF)
 
 
-@contextmanager
+@contextlib.contextmanager
 def patch_todo(testdir, monkeypatch):
     testdir = str(testdir)
-    import os
     from configo.directory import COMMON
     from configo.directory import READY
     from configo.directory import TODO as ENV_TODO
 
-    makedirs(join(testdir, 'ready'))
+    os.makedirs(os.path.join(testdir, 'ready'))
     # Copy content from todo
-    copytree(TODO, join(testdir, 'todo'))
+    shutil.copytree(TODO, os.path.join(testdir, 'todo'))
 
     copy = dict(os.environ)
     with monkeypatch.context() as context:
@@ -53,8 +48,8 @@ def patch_todo(testdir, monkeypatch):
         # have to set every single variable again, like accesing rawmaker,
         # sections etc.
         copy[COMMON] = testdir
-        copy[ENV_TODO] = join(testdir, 'todo')
-        copy[READY] = join(testdir, 'ready')
+        copy[ENV_TODO] = os.path.join(testdir, 'todo')
+        copy[READY] = os.path.join(testdir, 'ready')
         context.setattr(os, 'environ', copy)
         yield
 
