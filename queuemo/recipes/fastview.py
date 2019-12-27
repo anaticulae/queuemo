@@ -20,10 +20,16 @@ from queuemo.recipes import groupme
 from queuemo.recipes import rawmaker
 
 
-def extract_resource(workspace: str, document: str):
+def assert_validdocument(document: str):
     assert document.isalnum(), str(document)  # ensure to pass no path
+
+
+def extract_resource(workspace: str, document: str):
+    assert_validdocument(document)
+
     outpath = os.path.join(workspace, 'fastview/titlepage')
     os.makedirs(outpath, exist_ok=True)
+
     resource = os.path.join(workspace, document)
     assert os.path.exists(resource), str(resource)
     # TODO: REMOVE AFTER UPGRADING RAWMAKER WHICH SUPPORTS FILES AS INPUT
