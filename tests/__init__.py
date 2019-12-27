@@ -32,15 +32,19 @@ assert os.path.exists(EXAMPLE_PDF), str(EXAMPLE_PDF)
 
 
 @contextlib.contextmanager
-def patch_todo(testdir, monkeypatch):
+def patch_todo(testdir, monkeypatch, copy=True):
     testdir = str(testdir)
     from configo.directory import COMMON
     from configo.directory import READY
     from configo.directory import TODO as ENV_TODO
 
     os.makedirs(os.path.join(testdir, 'ready'))
-    # Copy content from todo
-    shutil.copytree(TODO, os.path.join(testdir, 'todo'))
+    todopath = os.path.join(testdir, 'todo')
+    if copy:
+        # Copy content from todo
+        shutil.copytree(TODO, todopath)
+    else:
+        os.makedirs(todopath)
 
     copy = dict(os.environ)
     with monkeypatch.context() as context:
