@@ -36,3 +36,16 @@ def test_recipe_fastview_titlepage(example_8166):  # pylint:disable=W0621
     queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
     with tests.increased_filecount(workspace, 'yaml'):
         queuemo.recipes.fastview.titlepage(workspace, tests.EXAMPLE_JOB)
+
+
+def test_recipe_fastview_publish(example_8166, monkeypatch, tmpdir):  # pylint:disable=W0621
+    workspace = str(example_8166)
+    tmpdir = str(tmpdir)
+    queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
+    queuemo.recipes.fastview.titlepage(workspace, tests.EXAMPLE_JOB)
+
+    todopath = os.path.join(workspace, '_todo')
+    with tests.patch_todo(todopath, monkeypatch):
+        with tests.increased_filecount(todopath, 'yaml'):
+            # ensure to copy **user result files**
+            queuemo.recipes.fastview.publish(workspace, tests.EXAMPLE_JOB)

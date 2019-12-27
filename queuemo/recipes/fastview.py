@@ -47,5 +47,23 @@ def extract_resource(workspace: str, document: str):
 
 
 def titlepage(workspace: str, document: str):
+    assert_validdocument(document)
     detector(workspace, 'fastview/titlepage', 'fastview/titlepage')
     decider_titlepage(workspace, 'fastview/titlepage', 'fastview/titlepage')
+
+
+def publish(workspace: str, document: str):
+    assert_validdocument(document)
+
+    publish_fast(workspace, document, 'titlepage', 1)
+
+
+def publish_fast(workspace, document, source, destination: int):
+    sourcepath = os.path.join(workspace, 'fastview')
+    sourcepath = os.path.join(sourcepath, source)
+
+    fastpath = os.path.join(configo.todo(True), document, 'fastview')
+    destination = str(destination).zfill(2)
+    destination = os.path.join(fastpath, f'{destination}_{source}')
+
+    utila.copy_content(sourcepath, destination, pattern='*_user.yaml')
