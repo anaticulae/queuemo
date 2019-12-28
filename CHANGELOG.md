@@ -2,6 +2,29 @@
 
 Every noteable change is logged here.
 
+## v0.3.0
+
+### Feature
+
+* add resultview to scheduler (09019cdab667)
+* add result view to invoke generation of resultview (0a4053361932)
+* add verify and fastview step to scheduler (4281c8420848)
+* add validation step to verify given pdf file (3bd7469fa300)
+* add run step to run fastview recipe with sub-recipes (1f74c8db1fb7)
+* add method to publish fast view results (a7e8f52c8d1d)
+* add recipe to verify title page (576f89d9c224)
+* extend file creation counter with file ending (67c79a0206e4)
+* add method to extract required fastview resources (4a1eff62a4f7)
+
+### Fix
+
+* pass workspace result to job info (67daefce0da3)
+
+### Documentation
+
+* extend interface documentation (1af255b03e7f)
+* introduce general doc structure (2e15f0ccafc6)
+
 ## v0.2.1
 
 ### Feature
