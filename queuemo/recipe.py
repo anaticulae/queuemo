@@ -39,11 +39,11 @@ import utila.test
 import queuemo.api
 import queuemo.recipes.analysis
 import queuemo.recipes.commonview
-import queuemo.recipes.decider.border as qrdb
-import queuemo.recipes.decider.fonts as qrdf
 import queuemo.recipes.docsplit
 import queuemo.recipes.extractraw
+import queuemo.recipes.fastview
 import queuemo.recipes.setup
+import queuemo.recipes.validation
 
 RUNNER = [
     'analysis_statistica',
@@ -100,32 +100,9 @@ def run_raw(workspace, document: int):
     # TODO: Automate add parallize order of recipes
     utila.log('run recipe')
 
-    rawspace = os.path.join(workspace, 'raw')
+    queuemo.recipes.validation.run(workspace, document)
 
-    utila.call('setup: before')
-    queuemo.recipes.setup.before(workspace)
-    utila.call('setup: run')
-    queuemo.recipes.setup.run(workspace, document)
-
-    queuemo.recipes.extractraw.run(rawspace)
-
-    queuemo.recipes.analysis.before(rawspace)
-    queuemo.recipes.analysis.run(rawspace)
-    queuemo.recipes.analysis.after(rawspace)
-
-    qrdb.run(rawspace)
-    qrdb.after(rawspace)
-
-    qrdf.before(rawspace)
-    qrdf.run(rawspace)
-    qrdf.after(rawspace)
-
-    queuemo.recipes.docsplit.before(rawspace)
-    queuemo.recipes.docsplit.run(rawspace)
-
-    queuemo.recipes.commonview.before(rawspace)
-    queuemo.recipes.commonview.run(rawspace)
-    queuemo.recipes.commonview.after(rawspace)
+    queuemo.recipes.fastview.run(workspace, document)
 
     utila.log('end recipe')
     return
