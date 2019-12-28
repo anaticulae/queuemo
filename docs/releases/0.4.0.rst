@@ -1,0 +1,21 @@
+.. _0_4_0:
+
+RP 0.4.0
+=========
+
+test data
+---------
+
+* [ ] automate test data generation
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Your code has been rated at 9.51/10
+* Total coverage: 76.64%
+
+after
+~~~~~
