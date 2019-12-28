@@ -49,3 +49,11 @@ def test_recipe_fastview_publish(example_8166, monkeypatch, tmpdir):  # pylint:d
         with tests.increased_filecount(todopath, 'yaml'):
             # ensure to copy **user result files**
             queuemo.recipes.fastview.publish(workspace, tests.EXAMPLE_JOB)
+
+
+def test_recipe_fastview_run(example_8166, monkeypatch):  # pylint:disable=W0621
+    workspace = str(example_8166)
+
+    todopath = os.path.join(workspace, '_todo')
+    with tests.patch_todo(todopath, monkeypatch):
+        queuemo.recipes.fastview.run(workspace, tests.EXAMPLE_JOB)

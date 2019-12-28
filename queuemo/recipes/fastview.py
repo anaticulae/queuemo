@@ -8,15 +8,12 @@
 # =============================================================================
 
 import os
-import time
 
 import configo
 import utila
 
-from queuemo.recipes import decider_decider
 from queuemo.recipes import decider_titlepage
 from queuemo.recipes import detector
-from queuemo.recipes import groupme
 from queuemo.recipes import rawmaker
 
 
@@ -24,10 +21,26 @@ def assert_validdocument(document: str):
     assert document.isalnum(), str(document)  # ensure to pass no path
 
 
+def run(workspace: str, document):
+    assert_validdocument(document)
+    resource = os.path.join(workspace, document)
+    assert os.path.exists(resource), str(resource)
+
+    extract_resource(workspace, document)
+
+    # jobs
+    titlepage(workspace, document)
+
+    # use public to push results after every finished job
+    publish(workspace, document)
+
+    close(document)
+
+
 def extract_resource(workspace: str, document: str):
     assert_validdocument(document)
 
-    outpath = os.path.join(workspace, 'fastview/titlepage')
+    outpath = os.path.join(workspace, FASTVIEW_TITLEPAGE)
     os.makedirs(outpath, exist_ok=True)
 
     resource = os.path.join(workspace, document)
@@ -67,3 +80,13 @@ def publish_fast(workspace, document, source, destination: int):
     destination = os.path.join(fastpath, f'{destination}_{source}')
 
     utila.copy_content(sourcepath, destination, pattern='*_user.yaml')
+
+
+def close(document: str):
+    """Create a file named close to signal update hander that process is
+    completed."""
+    assert_validdocument(document)
+    fastpath = os.path.join(configo.todo(True), document, 'fastview')
+    donepath = os.path.join(fastpath, 'done')
+    # TODO: ADD STATUS INFORMATION LATER
+    utila.file_create(donepath)
