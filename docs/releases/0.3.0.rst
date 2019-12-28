@@ -18,7 +18,7 @@ general
 scheduler
 ---------
 
-* [ ] introduce new waiting and fast view processes
+* [x] introduce new waiting and fast view processes
 
 Code quality
 ------------

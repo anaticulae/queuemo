@@ -42,6 +42,7 @@ import queuemo.recipes.commonview
 import queuemo.recipes.docsplit
 import queuemo.recipes.extractraw
 import queuemo.recipes.fastview
+import queuemo.recipes.resultview
 import queuemo.recipes.setup
 import queuemo.recipes.validation
 
@@ -103,6 +104,8 @@ def run_raw(workspace, document: int):
     queuemo.recipes.validation.run(workspace, document)
 
     queuemo.recipes.fastview.run(workspace, document)
+
+    queuemo.recipes.resultview.run(workspace, document)
 
     utila.log('end recipe')
     return
