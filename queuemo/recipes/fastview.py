@@ -37,6 +37,9 @@ def run(workspace: str, document):
     close(document)
 
 
+FASTVIEW_TITLEPAGE = 'fastview/titlepage'
+
+
 def extract_resource(workspace: str, document: str):
     assert_validdocument(document)
 
@@ -61,8 +64,8 @@ def extract_resource(workspace: str, document: str):
 
 def titlepage(workspace: str, document: str):
     assert_validdocument(document)
-    detector(workspace, 'fastview/titlepage', 'fastview/titlepage')
-    decider_titlepage(workspace, 'fastview/titlepage', 'fastview/titlepage')
+    detector(workspace, FASTVIEW_TITLEPAGE, FASTVIEW_TITLEPAGE)
+    decider_titlepage(workspace, FASTVIEW_TITLEPAGE, FASTVIEW_TITLEPAGE)
 
 
 def publish(workspace: str, document: str):
