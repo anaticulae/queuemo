@@ -255,3 +255,7 @@ def check(workspace: str):
     if ret:
         exit(ret)
     log()  # add newline
+
+
+def assert_validdocument(document: str):
+    assert document.isalnum(), str(document)  # ensure to pass no path

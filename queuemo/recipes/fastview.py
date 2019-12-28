@@ -12,17 +12,14 @@ import os
 import configo
 import utila
 
+import queuemo.recipes
 from queuemo.recipes import decider_titlepage
 from queuemo.recipes import detector
 from queuemo.recipes import rawmaker
 
 
-def assert_validdocument(document: str):
-    assert document.isalnum(), str(document)  # ensure to pass no path
-
-
 def run(workspace: str, document):
-    assert_validdocument(document)
+    queuemo.recipes.assert_validdocument(document)
     resource = os.path.join(workspace, document)
     assert os.path.exists(resource), str(resource)
 
@@ -41,7 +38,7 @@ FASTVIEW_TITLEPAGE = 'fastview/titlepage'
 
 
 def extract_resource(workspace: str, document: str):
-    assert_validdocument(document)
+    queuemo.recipes.assert_validdocument(document)
 
     outpath = os.path.join(workspace, FASTVIEW_TITLEPAGE)
     os.makedirs(outpath, exist_ok=True)
@@ -63,13 +60,13 @@ def extract_resource(workspace: str, document: str):
 
 
 def titlepage(workspace: str, document: str):
-    assert_validdocument(document)
+    queuemo.recipes.assert_validdocument(document)
     detector(workspace, FASTVIEW_TITLEPAGE, FASTVIEW_TITLEPAGE)
     decider_titlepage(workspace, FASTVIEW_TITLEPAGE, FASTVIEW_TITLEPAGE)
 
 
 def publish(workspace: str, document: str):
-    assert_validdocument(document)
+    queuemo.recipes.assert_validdocument(document)
 
     publish_fast(workspace, document, 'titlepage', 1)
 
@@ -88,7 +85,7 @@ def publish_fast(workspace, document, source, destination: int):
 def close(document: str):
     """Create a file named close to signal update hander that process is
     completed."""
-    assert_validdocument(document)
+    queuemo.recipes.assert_validdocument(document)
     fastpath = os.path.join(configo.todo(True), document, 'fastview')
     donepath = os.path.join(fastpath, 'done')
     # TODO: ADD STATUS INFORMATION LATER
