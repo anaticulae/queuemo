@@ -38,9 +38,8 @@ def test_recipe_fastview_titlepage(example_8166):  # pylint:disable=W0621
         queuemo.recipes.fastview.titlepage(workspace, tests.EXAMPLE_JOB)
 
 
-def test_recipe_fastview_publish(example_8166, monkeypatch, tmpdir):  # pylint:disable=W0621
+def test_recipe_fastview_publish(example_8166, monkeypatch):  # pylint:disable=W0621
     workspace = str(example_8166)
-    tmpdir = str(tmpdir)
     queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
     queuemo.recipes.fastview.titlepage(workspace, tests.EXAMPLE_JOB)
 
