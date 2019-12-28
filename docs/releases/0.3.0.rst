@@ -20,14 +20,14 @@ scheduler
 
 * [x] introduce new waiting and fast view processes
 
-Code quality
+code quality
 ------------
 
-Before
+before
 ~~~~~~
 
 * Your code has been rated at 9.09/10
 * Total coverage: 85.44%
 
-After
+after
 ~~~~~
