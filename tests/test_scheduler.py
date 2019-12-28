@@ -25,7 +25,6 @@ def content(capture):
     return capture.readouterr().out
 
 
-@pytest.mark.xfail(reason='broken interfaces')
 @utila.skip_longrun
 def test_run_steps(capsys, testdir, monkeypatch):
     step(None)

@@ -65,7 +65,6 @@ def docsplit_result(rawmaker_result):  # pylint:disable=W0621
     return rawspace, docsplit_workingpath(rawspace)
 
 
-@pytest.mark.xfail(reason='broken interface')
 @utila.skip_longrun
 def test_recipe_run(testdir, monkeypatch):
     with patch_todo(testdir, monkeypatch):

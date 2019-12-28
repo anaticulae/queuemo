@@ -39,7 +39,6 @@ def test_run_one_job(monkeypatch, testdir, capsys):
     )
 
 
-@pytest.mark.xfail(reason='broken interface')
 @utila.skip_longrun
 def test_run_queuemo(testdir):
     command = 'queuemo --runtime=2'
