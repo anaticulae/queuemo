@@ -102,22 +102,23 @@ def rawmaker(
         char_margin: float = CHAR_MARGIN_DEFAULT,
         boxes_flow: float = BOXES_FLOW_DEFAULT,
         **kwargs,
-):
+) -> int:
     """Run external rawmaker
 
     Args:
         workspace(str): working path were input/output is relativ
         inpath(str): relative input path
         outpath(str): relative output path
-        prefix(str): to modifi the output name with a prefix
+        prefix(str): to extend the output name with a prefix
         kwargs(dict):
+    Returns:
+        0 if process succeeded else failure code
     """
     if isinstance(inpath, str):
         inpath = [inpath]
     kwargs[CHAR_MARGIN.name] = char_margin
     kwargs[BOXES_FLOW.name] = boxes_flow
-    # reduces required test power
-    run(
+    returncode = run(
         'rawmaker',
         workspace,
         inpath,
@@ -126,6 +127,7 @@ def rawmaker(
         prefix,
         **kwargs,
     )
+    return returncode
 
 
 def analysis_statistica(workspace: str, inputs: str, output: str = None):
