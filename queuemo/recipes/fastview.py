@@ -46,12 +46,12 @@ def extract_resource(workspace: str, document: str):
     resource = os.path.join(workspace, document)
     assert os.path.exists(resource), str(resource)
     # TODO: REMOVE AFTER UPGRADING RAWMAKER WHICH SUPPORTS FILES AS INPUT
-    destination = os.path.join(outpath, 'work.pdf')
-    utila.file_copy(resource, destination)
+    source = os.path.join(outpath, 'work.pdf')
+    utila.file_copy(resource, source)
 
     completed = rawmaker(
         workspace,
-        inpath=destination,
+        inpath=source,
         outpath=outpath,
         prefix='oneline',
         pages='0',
