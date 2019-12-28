@@ -13,15 +13,7 @@ import utila
 
 import queuemo.recipes.fastview
 import tests
-
-
-@pytest.fixture
-def example_8166(testdir):
-    root = str(testdir)
-    source = os.path.join(tests.TODO, tests.EXAMPLE_JOB, tests.EXAMPLE_JOB)
-    destination = os.path.join(root, tests.EXAMPLE_JOB)
-    utila.file_copy(source, destination)
-    return root
+from tests.fixtures.todo import example_8166  # pylint:disable=W0611
 
 
 def test_recipe_fastview_extract_resources(example_8166):  # pylint:disable=W0621
