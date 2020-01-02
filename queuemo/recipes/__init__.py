@@ -6,7 +6,7 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""Load different recipes from this package"""
+"""Load different recipes from this package."""
 from functools import partial
 from os.path import exists
 from os.path import join
@@ -222,11 +222,9 @@ def publish(rawspace: str, input_: str, output: str):
 
 
 # TODO: Make defining publishing structure easier, see below
-"""
-statistica:6
-    chapter:5
-        words:4
-"""
+# statistica:6
+#     chapter:5
+#         words:4
 
 
 def determine_name(filepath):

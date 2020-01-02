@@ -6,9 +6,8 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""
-This testsuite ensure compiling and running basic functionality.
-"""
+"""This testsuite ensure compiling and running basic functionality."""
+
 # pylint: disable=wildcard-import, unused-wildcard-import
 from queuemo import *
 from queuemo.cli import *
