@@ -43,6 +43,7 @@ def main():
         todo=COMMANDS,
         prog=PROCESS_NAME,
         version=queuemo.__version__,
+        verboseflag=True,
     )
     args = utila.parse(parser)
     try:
