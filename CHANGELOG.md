@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.3.2
+
+### Fix
+
+* correct path where result html view must be stored (057d3d1768a5)
+
 ## v0.3.1
 
 ### Feature
