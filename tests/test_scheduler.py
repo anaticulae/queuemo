@@ -8,17 +8,12 @@
 # =============================================================================
 
 import os
-from os.path import exists
 
-import pytest
+import configo.directory
 import utila
-from configo.directory import TODO as SHARED_TODO
 
-from queuemo.worker.scheduler import copy
-from queuemo.worker.scheduler import step
-from tests import EXAMPLE_JOB
-from tests import TODO
-from tests import patch_todo
+import queuemo.worker.scheduler
+import tests
 
 
 def content(capture):
@@ -27,11 +22,11 @@ def content(capture):
 
 @utila.skip_longrun
 def test_run_steps(capsys, testdir, monkeypatch):
-    step(None)
+    queuemo.worker.scheduler.step(None)
     assert 'Wait' in content(capsys)
 
-    with patch_todo(testdir, monkeypatch):
-        step('8166109011')
+    with tests.patch_todo(testdir, monkeypatch):
+        queuemo.worker.scheduler.step('8166109011')
         progress = content(capsys)
         assert 'Copy' in progress
         assert 'Start' in progress
@@ -40,7 +35,7 @@ def test_run_steps(capsys, testdir, monkeypatch):
 
 def test_copy_job_to_workspace(monkeypatch):
     with monkeypatch.context() as context:
-        context.setattr(os, 'environ', {SHARED_TODO: TODO})
+        context.setattr(os, 'environ', {configo.directory.TODO: tests.TODO})
 
-        temp_workspace = copy(EXAMPLE_JOB)
-        assert exists(temp_workspace), temp_workspace
+        temp_workspace = queuemo.worker.scheduler.copy(tests.EXAMPLE_JOB)
+        assert os.path.exists(temp_workspace), temp_workspace

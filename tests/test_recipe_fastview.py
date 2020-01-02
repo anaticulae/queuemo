@@ -8,9 +8,6 @@
 # =============================================================================
 import os
 
-import pytest
-import utila
-
 import queuemo.recipes.fastview
 import tests
 from tests.fixtures.todo import example_8166  # pylint:disable=W0611

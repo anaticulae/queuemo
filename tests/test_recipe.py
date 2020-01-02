@@ -7,14 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from os import listdir
-from os.path import exists
-from os.path import join
-from shutil import copy as copy_file
+import os
+import shutil
 
 import pytest
 import utila
-from pytest import fixture
 
 import queuemo.recipes.setup as setup
 from queuemo.recipe import run as run_recipe
@@ -34,28 +31,28 @@ from tests import EXAMPLE_PDF
 from tests import patch_todo
 
 
-@fixture
+@pytest.fixture
 def rawspace(testdir) -> str:
     workspace = str(testdir)
-    workpdf = join(workspace,)
-    rawspacepath = join(workspace, 'raw')
+    workpdf = os.path.join(workspace,)
+    rawspacepath = os.path.join(workspace, 'raw')
     # TODO: REMOVE AFTER UPGRADE
-    copy_file(EXAMPLE_PDF, workspace)
+    shutil.copy(EXAMPLE_PDF, workspace)
     setup.run(workspace, EXAMPLE_JOB)
 
-    assert exists(workpdf), str(workpdf)
+    assert os.path.exists(workpdf), str(workpdf)
     return rawspacepath
 
 
-@fixture
+@pytest.fixture
 def rawmaker_result(rawspace):  # pylint:disable=W0621
-    expected_result = join(rawspace, RAWMAKER_OUTPATH)
+    expected_result = os.path.join(rawspace, RAWMAKER_OUTPATH)
     run_extractraw(rawspace)
-    assert exists(expected_result), str(expected_result)
+    assert os.path.exists(expected_result), str(expected_result)
     return rawspace, expected_result
 
 
-@fixture
+@pytest.fixture
 def docsplit_result(rawmaker_result):  # pylint:disable=W0621
     """Run rawmaker twice and extract sections"""
     rawspace, _ = rawmaker_result  # pylint:disable=W0621
@@ -75,12 +72,12 @@ def test_recipe_run(testdir, monkeypatch):
 
 def test_recipe_workspace_setup(rawspace):  # pylint:disable=W0621
     rawspacepath = rawspace
-    assert exists(rawspacepath)
+    assert os.path.exists(rawspacepath)
 
 
 @utila.skip_longrun
 def test_recipe_extractraw_run(rawmaker_result):  # pylint:disable=W0621
-    result = listdir(rawmaker_result[1])
+    result = os.listdir(rawmaker_result[1])
 
     # this value may change in the future, but it is not so important. Existing
     # files signals working feature.
@@ -91,7 +88,7 @@ def test_recipe_extractraw_run(rawmaker_result):  # pylint:disable=W0621
 @utila.skip_longrun
 def test_recipe_docsplit_run(docsplit_result):  # pylint:disable=W0621
     _, docsplitpath = docsplit_result
-    result = listdir(docsplitpath)
+    result = os.listdir(docsplitpath)
     circa_fifteen = 15
     assert len(result) >= circa_fifteen, str(result)
 
@@ -107,7 +104,7 @@ def test_recipe_commonview_run(docsplit_result):  # pylint:disable=W0621
     commonview_run(rawspace_)
     commonview_after(rawspace_)
 
-    workingpath = join(rawspace_, COMMON_VIEW_WORK)
-    result = listdir(workingpath)
+    workingpath = os.path.join(rawspace_, COMMON_VIEW_WORK)
+    result = os.listdir(workingpath)
 
     assert len(result) > 20, str(result)

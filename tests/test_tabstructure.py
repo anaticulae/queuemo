@@ -7,10 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-from pytest import raises
+import pytest
 
-from queuemo.tabstructure import TabStructure
-from queuemo.tabstructure import load
+import queuemo.tabstructure
 
 EXAMPLE = \
 """
@@ -32,7 +31,8 @@ gomaker:2
 
 
 def test_tabstructure_load_and_lookup():
-    loaded: TabStructure = load(EXAMPLE)
+    loaded: queuemo.tabstructure.TabStructure = \
+                                              queuemo.tabstructure.load(EXAMPLE)
 
     assert loaded.look('rawmaker/words') == '04_rawmaker/02_words/'
 
@@ -43,5 +43,5 @@ def test_tabstructure_load_and_lookup():
 
     assert loaded.look('gomaker') == '02_gomaker/'
 
-    with raises(ValueError):
+    with pytest.raises(ValueError):
         loaded.look('non_existing_path')
