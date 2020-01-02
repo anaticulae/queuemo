@@ -82,7 +82,8 @@ def create_view(workspace: str, document: str):
         ],
         output='',
     )
-    outpath = os.path.join(resultpath(document), 'view')
+    outpath = os.path.join(resultpath(document), '../view')
+    utila.log(f'copy: {sourcepath} to: {outpath}')
     utila.copy_content(sourcepath, outpath)
 
 
