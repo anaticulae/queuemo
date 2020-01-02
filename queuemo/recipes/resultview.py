@@ -70,6 +70,11 @@ def tableofcontent(workspace: str):
 
 
 def create_view(workspace: str, document: str):
+    # HACK: REMOVE AFTER PATCHING UTILA
+    # Utila is not creating the required folder correctly
+    sourcepath = os.path.join(workspace, 'feedback__view_pages')
+    os.makedirs(sourcepath, exist_ok=True)
+
     feedback_view(
         workspace,
         inpath=[
@@ -77,7 +82,6 @@ def create_view(workspace: str, document: str):
         ],
         output='',
     )
-    sourcepath = os.path.join(workspace, 'feedback__view_pages')
     outpath = os.path.join(resultpath(document), 'view')
     utila.copy_content(sourcepath, outpath)
 
