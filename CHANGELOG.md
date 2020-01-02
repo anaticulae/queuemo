@@ -2,6 +2,22 @@
 
 Every noteable change is logged here.
 
+## v0.3.1
+
+### Feature
+
+* add mechanism to generate annotated pages (f94071ff2f4e)
+
+### Fix
+
+* create folder which must be create by feedback tool (e7b58fbefdd4)
+
+### Documentation
+
+* format docs (a5ebb0a9ca1c)
+* Happy New Year! (a9a2e3810d25)
+* update strategy documentation (5b35e46ca4db)
+
 ## v0.3.0
 
 ### Feature
