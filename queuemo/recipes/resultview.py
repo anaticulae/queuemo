@@ -14,6 +14,7 @@ import utila
 
 import queuemo.recipes
 from queuemo.recipes import decider_toc
+from queuemo.recipes import feedback_view
 from queuemo.recipes import groupme
 from queuemo.recipes import rawmaker
 
@@ -28,6 +29,8 @@ def run(workspace: str, document):
     tableofcontent(workspace)
 
     publish(workspace, document)
+
+    create_view(workspace, document)
 
     close(document)
 
@@ -64,6 +67,19 @@ def extract_resource(workspace: str, document: str):
 def tableofcontent(workspace: str):
     groupme(workspace, 'result/toc', 'result/toc')
     decider_toc(workspace, 'result/toc', 'result/toc')
+
+
+def create_view(workspace: str, document: str):
+    feedback_view(
+        workspace,
+        inpath=[
+            'result/toc',
+        ],
+        output='',
+    )
+    sourcepath = os.path.join(workspace, 'feedback__view_pages')
+    outpath = os.path.join(resultpath(document), 'view')
+    utila.copy_content(sourcepath, outpath)
 
 
 def publish(workspace: str, document: str):

@@ -196,6 +196,10 @@ def feedback(workspace: str, input_: str, output: str = None):
     run(FEEDBACK, workspace, input_, output)
 
 
+def feedback_view(workspace: str, inpath: str, output: str = None):
+    run(f'{FEEDBACK} --view', workspace, inpath, output)
+
+
 def copy(workspace: str, input_: str, output: str):
     inputpath = join(workspace, input_)
     outputpath = join(workspace, output) if output is not None else inputpath
