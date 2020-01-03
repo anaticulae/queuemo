@@ -35,7 +35,11 @@ def test_run_steps(capsys, testdir, monkeypatch):
 
 def test_copy_job_to_workspace(monkeypatch):
     with monkeypatch.context() as context:
-        context.setattr(os, 'environ', {configo.directory.TODO: tests.TODO})
+        context.setattr(
+            os,
+            'environ',
+            {configo.directory.TODO: tests.resources.TODO},
+        )
 
-        temp_workspace = queuemo.worker.scheduler.copy(tests.EXAMPLE_JOB)
+        temp_workspace = queuemo.worker.scheduler.copy(tests.resources.EXAMPLE_JOB) # yapf:disable
         assert os.path.exists(temp_workspace), temp_workspace

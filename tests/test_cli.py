@@ -17,6 +17,7 @@ import utila
 import queuemo
 import queuemo.cli
 import tests
+import tests.resources
 
 
 def test_run_main(monkeypatch, testdir, capsys):
@@ -50,7 +51,7 @@ def test_run_queuemo(testdir):
         os.makedirs(item)
 
     # copy to item
-    utila.copy_content(tests.TODO, todo, recursive=True)
+    utila.copy_content(tests.resources.TODO, todo, recursive=True)
 
     env = dict(os.environ)
     env[configo.directory.TODO] = todo

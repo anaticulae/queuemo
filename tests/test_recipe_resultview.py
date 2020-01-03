@@ -12,6 +12,7 @@ import utila
 
 import queuemo.recipes.resultview
 import tests
+import tests.resources
 from tests.fixtures.todo import example_8166  # pylint:disable=W0611
 
 
@@ -21,4 +22,4 @@ def test_recipe_resultview_run(example_8166, monkeypatch):  # pylint:disable=W06
 
     todopath = os.path.join(workspace, '_todo')
     with tests.patch_todo(todopath, monkeypatch):
-        queuemo.recipes.resultview.run(workspace, tests.EXAMPLE_JOB)
+        queuemo.recipes.resultview.run(workspace, tests.resources.EXAMPLE_JOB)

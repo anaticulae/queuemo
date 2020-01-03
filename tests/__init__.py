@@ -14,21 +14,7 @@ import shutil
 
 import utila
 
-import queuemo
-
-TEST_DATA = os.path.join(queuemo.ROOT, 'tests/resources')
-assert os.path.exists(TEST_DATA), TEST_DATA
-
-TODO = os.path.join(TEST_DATA, 'todo')
-assert os.path.exists(TODO), TODO
-
-EXAMPLE_JOB = '8166109011'
-
-EXAMPLE_JOB_PATH = os.path.join(TODO, EXAMPLE_JOB)
-assert os.path.exists(EXAMPLE_JOB_PATH), EXAMPLE_JOB_PATH
-
-EXAMPLE_PDF = os.path.join(EXAMPLE_JOB_PATH, EXAMPLE_JOB)
-assert os.path.exists(EXAMPLE_PDF), str(EXAMPLE_PDF)
+import tests.resources
 
 
 @contextlib.contextmanager
@@ -42,7 +28,7 @@ def patch_todo(testdir, monkeypatch, copy=True):
     todopath = os.path.join(testdir, 'todo')
     if copy:
         # Copy content from todo
-        shutil.copytree(TODO, todopath)
+        shutil.copytree(tests.resources.TODO, todopath)
     else:
         os.makedirs(todopath)
 

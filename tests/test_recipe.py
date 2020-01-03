@@ -26,9 +26,9 @@ from queuemo.recipes.docsplit import workingpath as docsplit_workingpath
 from queuemo.recipes.extractraw import OUTPATH as RAWMAKER_OUTPATH
 from queuemo.recipes.extractraw import run as run_extractraw
 from queuemo.worker.scheduler import copy
-from tests import EXAMPLE_JOB
-from tests import EXAMPLE_PDF
 from tests import patch_todo
+from tests.resources import EXAMPLE_JOB
+from tests.resources import EXAMPLE_PDF
 
 
 @pytest.fixture

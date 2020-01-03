@@ -12,13 +12,20 @@ import os
 import pytest
 import utila
 
-import tests
+import tests.resources
 
 
 @pytest.fixture
 def example_8166(testdir):
     root = str(testdir)
-    source = os.path.join(tests.TODO, tests.EXAMPLE_JOB, tests.EXAMPLE_JOB)
-    destination = os.path.join(root, tests.EXAMPLE_JOB)
+    source = os.path.join(
+        tests.resources.TODO,
+        tests.resources.EXAMPLE_JOB,
+        tests.resources.EXAMPLE_JOB,
+    )
+    destination = os.path.join(
+        root,
+        tests.resources.EXAMPLE_JOB,
+    )
     utila.file_copy(source, destination)
     return root

@@ -12,6 +12,7 @@ import utila
 
 import queuemo.recipes.fastview
 import tests
+import tests.resources
 from tests.fixtures.todo import example_8166  # pylint:disable=W0611
 
 
@@ -20,28 +21,46 @@ def test_recipe_fastview_extract_resources(example_8166):  # pylint:disable=W062
     """Ensure that resources for title page analysation is created."""
     workspace = str(example_8166)
     with tests.increased_filecount(workspace, 'yaml'):
-        queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
+        queuemo.recipes.fastview.extract_resource(
+            workspace,
+            tests.resources.EXAMPLE_JOB,
+        )
 
 
 @utila.skip_longrun
 def test_recipe_fastview_titlepage(example_8166):  # pylint:disable=W0621
     workspace = str(example_8166)
-    queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
+    queuemo.recipes.fastview.extract_resource(
+        workspace,
+        tests.resources.EXAMPLE_JOB,
+    )
     with tests.increased_filecount(workspace, 'yaml'):
-        queuemo.recipes.fastview.titlepage(workspace, tests.EXAMPLE_JOB)
+        queuemo.recipes.fastview.titlepage(
+            workspace,
+            tests.resources.EXAMPLE_JOB,
+        )
 
 
 @utila.skip_longrun
 def test_recipe_fastview_publish(example_8166, monkeypatch):  # pylint:disable=W0621
     workspace = str(example_8166)
-    queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
-    queuemo.recipes.fastview.titlepage(workspace, tests.EXAMPLE_JOB)
+    queuemo.recipes.fastview.extract_resource(
+        workspace,
+        tests.resources.EXAMPLE_JOB,
+    )
+    queuemo.recipes.fastview.titlepage(
+        workspace,
+        tests.resources.EXAMPLE_JOB,
+    )
 
     todopath = os.path.join(workspace, '_todo')
     with tests.patch_todo(todopath, monkeypatch):
         with tests.increased_filecount(todopath, 'yaml'):
             # ensure to copy **user result files**
-            queuemo.recipes.fastview.publish(workspace, tests.EXAMPLE_JOB)
+            queuemo.recipes.fastview.publish(
+                workspace,
+                tests.resources.EXAMPLE_JOB,
+            )
 
 
 @utila.skip_longrun
@@ -50,4 +69,4 @@ def test_recipe_fastview_run(example_8166, monkeypatch):  # pylint:disable=W0621
 
     todopath = os.path.join(workspace, '_todo')
     with tests.patch_todo(todopath, monkeypatch):
-        queuemo.recipes.fastview.run(workspace, tests.EXAMPLE_JOB)
+        queuemo.recipes.fastview.run(workspace, tests.resources.EXAMPLE_JOB)
