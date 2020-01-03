@@ -8,11 +8,14 @@
 # =============================================================================
 import os
 
+import utila
+
 import queuemo.recipes.resultview
 import tests
 from tests.fixtures.todo import example_8166  # pylint:disable=W0611
 
 
+@utila.skip_longrun
 def test_recipe_resultview_run(example_8166, monkeypatch):  # pylint:disable=W0621
     workspace = str(example_8166)
 

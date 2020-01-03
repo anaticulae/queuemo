@@ -8,11 +8,14 @@
 # =============================================================================
 import os
 
+import utila
+
 import queuemo.recipes.fastview
 import tests
 from tests.fixtures.todo import example_8166  # pylint:disable=W0611
 
 
+@utila.skip_longrun
 def test_recipe_fastview_extract_resources(example_8166):  # pylint:disable=W0621
     """Ensure that resources for title page analysation is created."""
     workspace = str(example_8166)
@@ -20,6 +23,7 @@ def test_recipe_fastview_extract_resources(example_8166):  # pylint:disable=W062
         queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
 
 
+@utila.skip_longrun
 def test_recipe_fastview_titlepage(example_8166):  # pylint:disable=W0621
     workspace = str(example_8166)
     queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
@@ -27,6 +31,7 @@ def test_recipe_fastview_titlepage(example_8166):  # pylint:disable=W0621
         queuemo.recipes.fastview.titlepage(workspace, tests.EXAMPLE_JOB)
 
 
+@utila.skip_longrun
 def test_recipe_fastview_publish(example_8166, monkeypatch):  # pylint:disable=W0621
     workspace = str(example_8166)
     queuemo.recipes.fastview.extract_resource(workspace, tests.EXAMPLE_JOB)
@@ -39,6 +44,7 @@ def test_recipe_fastview_publish(example_8166, monkeypatch):  # pylint:disable=W
             queuemo.recipes.fastview.publish(workspace, tests.EXAMPLE_JOB)
 
 
+@utila.skip_longrun
 def test_recipe_fastview_run(example_8166, monkeypatch):  # pylint:disable=W0621
     workspace = str(example_8166)
 
