@@ -2,7 +2,7 @@ PyYAML==5.1
 
 # Internal packages
 configo==0.4.1
-link==0.1.13
+link==0.2.3
 utila==1.11.3
 
 # Features packages
