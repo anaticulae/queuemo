@@ -241,8 +241,9 @@ def determine_name(filepath):
 RUNNER = [
     'analysis_statistica',
     'decider_border',
+    'feedback',
     'feedback_decider_border',
-    # 'feedback_statistica',
+    'feedback_statistica',
     'groupme',
     'rawmaker',
 ]
