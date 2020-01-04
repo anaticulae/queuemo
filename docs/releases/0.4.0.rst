@@ -8,6 +8,25 @@ test data
 
 * [x] automate test data generation
 
+general
+-------
+
+* [ ] support recipes API to automatically detect connections
+
+refactor
+--------
+
+* [ ] simplify fastview and use recipes API
+
+* [ ] simplify resultview and use recipes API
+
+documentation
+-------------
+
+* [ ] document purpose of fastview
+
+* [ ] document purpose of resultview
+
 code quality
 ------------
 
