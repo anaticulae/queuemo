@@ -22,3 +22,10 @@ if not 'PYTEST_XDIST_WORKER' in os.environ:
     if 'GENERATE' in os.environ or utila.test.LONGRUN:
         utila.log('install requirements')
         tests.update.install_requirements()
+
+        tests.update.sync_resources()
+
+        tests.update.extract_examples()
+
+for item in tests.resources.REQUIRED_RESOURCES:
+    assert os.path.exists(item), str(item)

@@ -7,9 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
+import link
 import utila
 
 import queuemo
+import tests.resources
 
 
 def install_requirements():
@@ -20,3 +24,48 @@ def install_requirements():
     clean_and_run = uninstall + ' && ' + install
     completed = utila.run(clean_and_run, cwd=queuemo.ROOT)  # run setup.py
     assert completed.returncode == utila.SUCCESS, str(completed)
+
+
+def sync_resources():
+    completed = utila.run('power --all', cwd=tests.resources.PDF)  # pylint:disable=C0103
+    assert completed.returncode == utila.SUCCESS, str(completed)
+
+
+def extract_examples():
+    utila.log('extract examples')
+    if os.path.exists(tests.resources.GENERATED):
+        return
+    os.makedirs(tests.resources.GENERATED)
+
+    todo = os.path.join(tests.resources.GENERATED, 'todo')
+    os.makedirs(todo)
+
+    create_example(tests.resources.MASTER72)
+    create_example(
+        tests.resources.PORTING_EXTENTION,
+        todoname=tests.resources.EXAMPLE_JOB,
+        filename='howto-cporting.pdf',  # TODO: decide what is correct, see below
+    )
+    create_example(
+        tests.resources.RESTRUCTURED,
+        todoname='2324123123',
+        filename='The RestructuredText Book',
+    )
+
+
+def create_example(source: str, todoname: str = None, filename: str = None):
+    todopath = os.path.join(tests.resources.GENERATED, 'todo')
+
+    if todoname is None:
+        todoname = os.path.basename(source)
+        todoname = todoname.split('.')[0]  # remove file extention
+
+    if filename is None:
+        filename = 'sample.pdf'
+
+    link.create_todo(
+        source,
+        filename=filename,
+        todopath=todopath,
+        todoname=todoname,
+    )

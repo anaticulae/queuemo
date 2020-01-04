@@ -14,15 +14,39 @@ import queuemo
 RESOURCES = os.path.join(queuemo.ROOT, 'tests/resources')
 assert os.path.exists(RESOURCES), RESOURCES
 
+PDF = os.path.join(RESOURCES, 'pdf')
+
 GENERATED = os.path.join(RESOURCES, 'generated')
 
-TODO = os.path.join(RESOURCES, 'todo')
-assert os.path.exists(TODO), TODO
+TODO = os.path.join(GENERATED, 'todo')
 
 EXAMPLE_JOB = '8166109011'
-
 EXAMPLE_JOB_PATH = os.path.join(TODO, EXAMPLE_JOB)
-assert os.path.exists(EXAMPLE_JOB_PATH), EXAMPLE_JOB_PATH
-
 EXAMPLE_PDF = os.path.join(EXAMPLE_JOB_PATH, EXAMPLE_JOB)
-assert os.path.exists(EXAMPLE_PDF), str(EXAMPLE_PDF)
+
+MASTER = os.path.join(PDF, 'master')
+DOCU = os.path.join(PDF, 'docu')
+
+GENERATED_TODO = os.path.join(GENERATED, 'todo')
+
+MASTER72 = os.path.join(MASTER, 'page_72_noimages_toc.pdf')
+PORTING_EXTENTION = os.path.join(DOCU, 'porting_extension_modules.pdf')
+RESTRUCTURED = os.path.join(DOCU, 'restructuredtext.pdf')
+
+MASTER72_JOB = os.path.join(GENERATED_TODO, 'page_72_noimages_toc')
+PORTING_EXTENTION_JOB = os.path.join(GENERATED_TODO, EXAMPLE_JOB)
+RESTRUCTURED_JOB = os.path.join(GENERATED_TODO, '2324123123')
+
+REQUIRED_RESOURCES = [
+    DOCU,
+    EXAMPLE_JOB_PATH,
+    EXAMPLE_PDF,
+    MASTER,
+    MASTER72,
+    MASTER72_JOB,
+    PORTING_EXTENTION,
+    PORTING_EXTENTION_JOB,
+    RESTRUCTURED,
+    RESTRUCTURED_JOB,
+    TODO,
+]
