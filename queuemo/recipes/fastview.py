@@ -44,7 +44,7 @@ from queuemo.recipes import detector
 from queuemo.recipes import rawmaker
 
 
-def run(workspace: str, document):
+def run(workspace: str, document: str):
     queuemo.recipes.assert_validdocument(document)
     resource = os.path.join(workspace, document)
     assert os.path.exists(resource), str(resource)
@@ -82,7 +82,7 @@ def extract_resource(workspace: str, document: str):
         prefix='oneline',
         pages='0',
     )
-    assert completed == 0, str(completed)
+    assert completed == utila.SUCCESS, str(completed)
 
 
 def titlepage(workspace: str, document: str):
