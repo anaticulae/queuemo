@@ -41,6 +41,14 @@ def extract_examples():
     os.makedirs(todo)
 
     create_example(tests.resources.MASTER72)
+    create_example(tests.resources.MASTER78)
+    create_example(tests.resources.MASTER83)
+    create_example(tests.resources.MASTER89)
+    create_example(tests.resources.MASTER116)
+
+    create_example(tests.resources.HOWTOWRITE9)
+    create_example(tests.resources.ORDER38)
+
     create_example(
         tests.resources.PORTING_EXTENTION,
         todoname=tests.resources.EXAMPLE_JOB,

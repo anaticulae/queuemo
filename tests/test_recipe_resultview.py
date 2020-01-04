@@ -30,7 +30,19 @@ def test_recipe_resultview_run(example_8166, monkeypatch):  # pylint:disable=W06
 @utila.skip_longrun
 @pytest.mark.parametrize('jobid', [
     '2324123123',
+    pytest.param(
+        'howtowrite_pages9',
+        marks=pytest.mark.xfail(reason='problem in groupme module'),
+    ),
+    'page_116_images_toc_formular',
+    'page_38',
     'page_72_noimages_toc',
+    'page_78_images_toc',
+    'page_83_noimages_toc',
+    pytest.param(
+        'page_89_noimages_toc',
+        marks=pytest.mark.xfail(reason='problem in groupme module'),
+    ),
 ])
 def test_recipe_resultview_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
