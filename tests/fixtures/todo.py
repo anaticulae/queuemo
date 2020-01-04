@@ -29,3 +29,9 @@ def example_8166(testdir):
     )
     utila.file_copy(source, destination)
     return root
+
+
+def copy_todo(jobid: str, destination: str):
+    source = os.path.join(tests.resources.TODO, jobid, jobid)
+    destination = os.path.join(destination, jobid)
+    utila.file_copy(source, destination)

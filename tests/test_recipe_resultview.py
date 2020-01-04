@@ -8,11 +8,13 @@
 # =============================================================================
 import os
 
+import pytest
 import utila
 
 import queuemo.recipes.resultview
 import tests
 import tests.resources
+from tests.fixtures.todo import copy_todo
 from tests.fixtures.todo import example_8166  # pylint:disable=W0611
 
 
@@ -23,3 +25,17 @@ def test_recipe_resultview_run(example_8166, monkeypatch):  # pylint:disable=W06
     todopath = os.path.join(workspace, '_todo')
     with tests.patch_todo(todopath, monkeypatch):
         queuemo.recipes.resultview.run(workspace, tests.resources.EXAMPLE_JOB)
+
+
+@utila.skip_longrun
+@pytest.mark.parametrize('jobid', [
+    '2324123123',
+    'page_72_noimages_toc',
+])
+def test_recipe_resultview_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
+    workspace = str(testdir)
+    copy_todo(jobid, workspace)
+
+    todopath = os.path.join(workspace, '_todo')
+    with tests.patch_todo(todopath, monkeypatch):
+        queuemo.recipes.resultview.run(workspace, jobid)

@@ -19,7 +19,7 @@ from queuemo.recipes import groupme
 from queuemo.recipes import rawmaker
 
 
-def run(workspace: str, document):
+def run(workspace: str, document: str):
     """Run validation to check that """
     resource = os.path.join(workspace, document)
     assert os.path.exists(resource), str(resource)

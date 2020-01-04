@@ -264,4 +264,6 @@ def check(workspace: str):
 
 
 def assert_validdocument(document: str):
-    assert document.isalnum(), str(document)  # ensure to pass no path
+    """Accepted chars are character, numbers and underscore."""
+    valid = [item.isalnum() or item == '_' for item in document]
+    assert all(valid), str(document)  # ensure to pass no path
