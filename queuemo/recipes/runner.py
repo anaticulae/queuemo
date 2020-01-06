@@ -55,6 +55,10 @@ class RecipeRuntime:
                 outpath=outpath,
             )
             run(current, flow)
+        except RuntimeControl as error:
+            utila.info(error)
+            # TODO Should we return NONE, to signal that process is over?
+            return False
         except RuntimeError as error:
             utila.error(error)
             return False
@@ -62,6 +66,14 @@ class RecipeRuntime:
 
     def __len__(self):
         return len(self.todo)
+
+
+class RuntimeControl(RuntimeError):
+    pass
+
+
+class Stop(RuntimeControl):
+    pass
 
 
 def run(
@@ -117,6 +129,8 @@ def run(
             utila.call(item)
             try:
                 action(current_flow)
+            except RuntimeControl as control:
+                raise control
             except Exception:
                 utila.error(f'could not run: {item}')
                 utila.logger.log_stacktrace()

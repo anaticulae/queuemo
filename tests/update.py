@@ -9,6 +9,7 @@
 
 import os
 
+import configo
 import link
 import utila
 
@@ -60,6 +61,8 @@ def extract_examples():
         filename='The RestructuredText Book',
     )
 
+    generate_broken_example()
+
 
 def create_example(source: str, todoname: str = None, filename: str = None):
     todopath = os.path.join(tests.resources.GENERATED, 'todo')
@@ -77,3 +80,9 @@ def create_example(source: str, todoname: str = None, filename: str = None):
         todopath=todopath,
         todoname=todoname,
     )
+
+
+def generate_broken_example():
+    broken = utila.tmpfile(configo.tmp())
+    utila.file_replace(broken, 'invalid pdf data')
+    create_example(broken, todoname='broken_resource', filename='broken.pdf')

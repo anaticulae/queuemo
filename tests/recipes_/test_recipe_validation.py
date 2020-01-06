@@ -1,0 +1,46 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2020 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
+import queuemo
+import tests
+from tests.fixtures.todo import copy_todo
+from tests.fixtures.todo import runtime
+
+
+def test_recipe_validation(testdir, monkeypatch):  # pylint:disable=W0621
+    """Ensure to create validation result via `pdfinfo` tool"""
+    workspace = str(testdir)
+    copy_todo(tests.resources.EXAMPLE_JOB, workspace)
+    with runtime(
+            workspace,
+            tests.resources.EXAMPLE_JOB,
+            queuemo.recipe.VALIDATION,
+            monkeypatch,
+    ) as rt:  # pylint:disable=C0103
+        with tests.increased_filecount(workspace, 'json'):
+            completed = rt.next_step()
+    assert completed
+
+
+def test_recipe_validation_failure(testdir, monkeypatch, capsys):  # pylint:disable=W0621
+    """Ensure that validation tool stops with validation error on
+    invalid, broken resource"""
+    workspace = str(testdir)
+    copy_todo('broken_resource', workspace)
+    with runtime(
+            workspace,
+            'broken_resource',
+            queuemo.recipe.VALIDATION,
+            monkeypatch,
+    ) as rt:  # pylint:disable=C0103
+        with tests.increased_filecount(workspace, 'json'):
+            completed = rt.next_step()
+    assert completed is False
+    log = capsys.readouterr().out
+    assert 'invalid resource' in log, log
