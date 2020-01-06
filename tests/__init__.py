@@ -19,6 +19,14 @@ import tests.resources
 
 @contextlib.contextmanager
 def patch_todo(testdir, monkeypatch, copy=True):
+    """Change todo path to avoid overriding test data.
+
+    Args:
+        testdir: path where working data is written
+        copy(bool): sync data of todo folder
+    Yields:
+        None: in current working location with setuped environment variables
+    """
     testdir = str(testdir)
     from configo.directory import COMMON
     from configo.directory import READY
