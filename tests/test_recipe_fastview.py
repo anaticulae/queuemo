@@ -71,7 +71,7 @@ def test_recipe_fastview_run_single(example_8166, monkeypatch):  # pylint:disabl
     todopath = os.path.join(workspace, '_todo')
     outpath = os.path.join(workspace, 'outpath')
 
-    with tests.patch_todo(todopath, monkeypatch):
+    with tests.patch_todo(todopath, monkeypatch, copy=False):
         runtime = queuemo.recipes.runner.RecipeRuntime(
             workspace=workspace,
             document=tests.resources.EXAMPLE_JOB,
