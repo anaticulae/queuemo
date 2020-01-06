@@ -18,6 +18,7 @@ from tests.fixtures.todo import copy_todo
 from tests.fixtures.todo import example_8166  # pylint:disable=W0611
 
 
+@pytest.mark.xfail(reason='re work scheduler')
 @utila.skip_longrun
 def test_recipe_resultview_run(example_8166, monkeypatch):  # pylint:disable=W0621
     workspace = str(example_8166)
@@ -28,21 +29,16 @@ def test_recipe_resultview_run(example_8166, monkeypatch):  # pylint:disable=W06
 
 
 @utila.skip_longrun
+@pytest.mark.xfail(reason='re work scheduler')
 @pytest.mark.parametrize('jobid', [
     '2324123123',
-    pytest.param(
-        'howtowrite_pages9',
-        marks=pytest.mark.xfail(reason='problem in groupme module'),
-    ),
+    'howtowrite_pages9',
     'page_116_images_toc_formular',
     'page_38',
     'page_72_noimages_toc',
     'page_78_images_toc',
     'page_83_noimages_toc',
-    pytest.param(
-        'page_89_noimages_toc',
-        marks=pytest.mark.xfail(reason='problem in groupme module'),
-    ),
+    'page_89_noimages_toc',
 ])
 def test_recipe_resultview_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)

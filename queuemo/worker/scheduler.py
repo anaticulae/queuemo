@@ -165,7 +165,7 @@ def work(workspace):
     result = os.path.join(workspace, 'result')
     os.makedirs(result)
 
-    result = queuemo.recipe.run(workspace, jobid(workspace))
+    result = queuemo.recipe.run(workspace, jobid(workspace), outpath=result)
 
     update_info(workspace, result)
 

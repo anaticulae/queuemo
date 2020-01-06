@@ -11,67 +11,76 @@ import os
 import pytest
 import utila
 
-import queuemo.recipes.fastview_old
+import queuemo.recipe
+import queuemo.recipes.fastview
+import queuemo.recipes.runner
+import queuemo.recipes.scheduler
 import tests
 import tests.resources
 from tests.fixtures.todo import copy_todo
 from tests.fixtures.todo import example_8166  # pylint:disable=W0611
 
+# @utila.skip_longrun
+# def test_recipe_fastview_extract_resources(example_8166):  # pylint:disable=W0621
+#     """Ensure that resources for title page analysation is created."""
+#     workspace = str(example_8166)
+#     with tests.increased_filecount(workspace, 'yaml'):
+#         queuemo.recipes.fastview_old.extract_resource(
+#             workspace,
+#             tests.resources.EXAMPLE_JOB,
+#         )
 
-@utila.skip_longrun
-def test_recipe_fastview_extract_resources(example_8166):  # pylint:disable=W0621
-    """Ensure that resources for title page analysation is created."""
-    workspace = str(example_8166)
-    with tests.increased_filecount(workspace, 'yaml'):
-        queuemo.recipes.fastview_old.extract_resource(
-            workspace,
-            tests.resources.EXAMPLE_JOB,
-        )
+# @utila.skip_longrun
+# def test_recipe_fastview_titlepage(example_8166):  # pylint:disable=W0621
+#     workspace = str(example_8166)
+#     queuemo.recipes.fastview_old.extract_resource(
+#         workspace,
+#         tests.resources.EXAMPLE_JOB,
+#     )
+#     with tests.increased_filecount(workspace, 'yaml'):
+#         queuemo.recipes.fastview_old.titlepage(
+#             workspace,
+#             tests.resources.EXAMPLE_JOB,
+#         )
 
+# @utila.skip_longrun
+# def test_recipe_fastview_publish(example_8166, monkeypatch):  # pylint:disable=W0621
+#     workspace = str(example_8166)
+#     queuemo.recipes.fastview_old.extract_resource(
+#         workspace,
+#         tests.resources.EXAMPLE_JOB,
+#     )
+#     queuemo.recipes.fastview_old.titlepage(
+#         workspace,
+#         tests.resources.EXAMPLE_JOB,
+#     )
 
-@utila.skip_longrun
-def test_recipe_fastview_titlepage(example_8166):  # pylint:disable=W0621
-    workspace = str(example_8166)
-    queuemo.recipes.fastview_old.extract_resource(
-        workspace,
-        tests.resources.EXAMPLE_JOB,
-    )
-    with tests.increased_filecount(workspace, 'yaml'):
-        queuemo.recipes.fastview_old.titlepage(
-            workspace,
-            tests.resources.EXAMPLE_JOB,
-        )
-
-
-@utila.skip_longrun
-def test_recipe_fastview_publish(example_8166, monkeypatch):  # pylint:disable=W0621
-    workspace = str(example_8166)
-    queuemo.recipes.fastview_old.extract_resource(
-        workspace,
-        tests.resources.EXAMPLE_JOB,
-    )
-    queuemo.recipes.fastview_old.titlepage(
-        workspace,
-        tests.resources.EXAMPLE_JOB,
-    )
-
-    todopath = os.path.join(workspace, '_todo')
-    with tests.patch_todo(todopath, monkeypatch):
-        with tests.increased_filecount(todopath, 'yaml'):
-            # ensure to copy **user result files**
-            queuemo.recipes.fastview_old.publish(
-                workspace,
-                tests.resources.EXAMPLE_JOB,
-            )
+#     todopath = os.path.join(workspace, '_todo')
+#     with tests.patch_todo(todopath, monkeypatch):
+#         with tests.increased_filecount(todopath, 'yaml'):
+#             # ensure to copy **user result files**
+#             queuemo.recipes.fastview_old.publish(
+#                 workspace,
+#                 tests.resources.EXAMPLE_JOB,
+#             )
 
 
-@utila.skip_longrun
+# @utila.skip_longrun
 def test_recipe_fastview_run_single(example_8166, monkeypatch):  # pylint:disable=W0621
     workspace = str(example_8166)
-
     todopath = os.path.join(workspace, '_todo')
+    outpath = os.path.join(workspace, 'outpath')
+
     with tests.patch_todo(todopath, monkeypatch):
-        queuemo.recipes.fastview_old.run(workspace, tests.resources.EXAMPLE_JOB)
+        runtime = queuemo.recipes.runner.RecipeRuntime(
+            workspace=workspace,
+            document=tests.resources.EXAMPLE_JOB,
+            outpath=outpath,
+        )
+        runtime.append(queuemo.recipe.FASTVIEW)
+        assert len(runtime.todo) == 1
+        completed = runtime.next_step()
+    assert completed
 
 
 @utila.skip_longrun
@@ -81,15 +90,22 @@ def test_recipe_fastview_run_single(example_8166, monkeypatch):  # pylint:disabl
     'page_72_noimages_toc',
     'page_78_images_toc',
     'page_83_noimages_toc',
-    pytest.param(
-        'page_89_noimages_toc',
-        marks=pytest.mark.xfail(reason='problem in groupe module'),
-    ),
+    'page_89_noimages_toc',
 ])
 def test_recipe_fastview_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
     copy_todo(jobid, workspace)
 
     todopath = os.path.join(workspace, '_todo')
+    outpath = os.path.join(workspace, 'outpath')
+
     with tests.patch_todo(todopath, monkeypatch):
-        queuemo.recipes.resultview.run(workspace, jobid)
+        runtime = queuemo.recipes.runner.RecipeRuntime(
+            workspace=workspace,
+            document=jobid,
+            outpath=outpath,
+        )
+        runtime.append(queuemo.recipe.FASTVIEW)
+        assert len(runtime.todo) == 1
+        completed = runtime.next_step()
+    assert completed

@@ -36,13 +36,14 @@ import shutil
 import utila
 import utila.test
 
+import queuemo
 import queuemo.api
 import queuemo.recipes.analysis
 import queuemo.recipes.commonview
 import queuemo.recipes.docsplit
 import queuemo.recipes.extractraw
-import queuemo.recipes.fastview_old
 import queuemo.recipes.resultview
+import queuemo.recipes.runner
 import queuemo.recipes.setup
 import queuemo.recipes.validation
 
@@ -54,11 +55,29 @@ RUNNER = [
     'groupme',
     'rawmaker',
 ]
+RECIPES = os.path.join(queuemo.ROOT, 'queuemo', 'recipes')
+
+FASTVIEW = queuemo.recipes.scheduler.load(os.path.join(RECIPES, 'fastview'))
 
 
-def run(workspace, document: int) -> int:
+def run(workspace: str, document: str, outpath: str) -> int:
     check(workspace)
-    run_raw(workspace, document)
+
+    runtime = queuemo.recipes.runner.RecipeRuntime(
+        workspace=workspace,
+        document=document,
+        outpath=outpath,
+    )
+    runtime.append(FASTVIEW)
+
+    while True:
+        current = runtime.next_step()
+        if current is None:
+            # Done, everthing completed successful.
+            break
+        if not current:
+            # Failure
+            break
 
     # TODO: We need a custom result
     return 95
@@ -97,18 +116,18 @@ def run_step(workspace: str, step: str, inpath: str, outpath: str = None):
     assert os.path.exists(outpath)
 
 
-def run_raw(workspace, document: int):
-    # TODO: Automate add parallize order of recipes
-    utila.log('run recipe')
+# def run_raw(workspace, document: int):
+#     # TODO: Automate add parallize order of recipes
+#     utila.log('run recipe')
 
-    queuemo.recipes.validation.run(workspace, document)
+#     queuemo.recipes.validation.run(workspace, document)
 
-    queuemo.recipes.fastview_old.run(workspace, document)
+#     queuemo.recipes.fastview_old.run(workspace, document)
 
-    queuemo.recipes.resultview.run(workspace, document)
+#     queuemo.recipes.resultview.run(workspace, document)
 
-    utila.log('end recipe')
-    return
+#     utila.log('end recipe')
+#     return
 
 
 def run_recipe(workspace: str, todo):

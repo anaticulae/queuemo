@@ -39,6 +39,28 @@ Failure
 ~~~~~~~
 
 If defined it is runned if some error occurs in any step.
+
+Scheduler
+---------
+
+Define order, prefix and parallizeability of executed jobs
+
+ORDER = [
+    'titlepage'
+]
+
+ORDER = [
+    ('01', titlepage')
+]
+
+ORDER = [
+    {
+        'titlepage', 'paper',
+    },
+    {
+        'toc',
+    }
+]
 """
 
 import contextlib
@@ -54,6 +76,7 @@ import utila
 @dataclasses.dataclass
 class RecipeStep:
     name: str = None
+    prefix: str = None
     before: callable = None
     run: callable = None
     after: callable = None
@@ -127,11 +150,11 @@ def collect(path: str) -> dict:
             continue
 
         step = RecipeStep(name=item)
-        for value_name in ['before', 'run', 'after']:
+        for value_name in ['before', 'run', 'after', 'order', 'PREFIX']:
             with contextlib.suppress(AttributeError):
                 value = getattr(module, value_name)
+                value_name = value_name.lower()
                 setattr(step, value_name, value)
-
         result[item] = step
     return result
 
@@ -153,6 +176,18 @@ def compose(collected: dict, parent: str) -> ComposedRecipe:
             continue
         result.append(value)
     return result
+
+
+def load(path: str) -> ComposedRecipe:
+    """Compose recipe from path.
+
+    Load recipse and compose them afterwards to run in `runner`.
+    """
+    assert os.path.exists(path), path
+    parent = os.path.basename(path)
+    collected = collect(path)
+    composed = compose(collected, parent=parent)
+    return composed
 
 
 def schedule(steps: RecipeSteps, orderby: list = None) -> RecipeSteps:

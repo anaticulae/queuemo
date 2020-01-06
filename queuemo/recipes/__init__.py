@@ -13,18 +13,18 @@ from os.path import join
 from os.path import split
 from typing import List
 
+import utila.test
 from rawmaker.cli import BOXES_FLOW
 from rawmaker.cli import CHAR_MARGIN
 from utila import SUCCESS
 from utila import copy_content
 from utila import error
 from utila import log
-from utila.test import run as _run_target
 
 from queuemo import ROOT
 from queuemo.tabstructure import load as load_tabstructure
 
-PDF_FILE = '../work.pdf'
+PDF_FILE = 'work.pdf'
 
 DECIDER_FONTS = 'decider_fonts'
 FEED_DECIDER_BORDER = 'feedback_decider_border'
@@ -44,7 +44,6 @@ OUTPUT_LAYOUT = load_tabstructure(LAYOUT_PATH)
 
 def run(
         runnable: str,
-        workspace: str,
         inpath: List[str],
         outpath: str = None,
         parameter: str = None,
@@ -53,39 +52,32 @@ def run(
 ):
     if isinstance(inpath, str):
         inpath = [inpath]
-    inputpath = [join(workspace, item) for item in inpath]
-    for item in inputpath:
+    for item in inpath:
         assert exists(item), item
-
-    if outpath is None:
-        outputpath = join(workspace, runnable)
-    else:
-        outputpath = join(workspace, outpath)
 
     if prefix:
         prefix = '--prefix ' + prefix
 
-    process = partial(_run_target, cwd=workspace)
     cmds = ['--%s %s' % (param, value) for (param, value) in kwargs.items()]
     cmds = ' '.join(cmds)
     # single inputpath does not produces -i, see str.join docu
-    inputpath = ' -i '.join(inputpath)
+    inputpath = ' -i '.join(inpath)
 
     parameter = ' ' if parameter is None else parameter
     command = '%s %s -i %s -o %s %s %s' % (
         runnable,
         parameter,
         inputpath,
-        outputpath,
+        outpath,
         prefix,
         cmds,
     )
     log('running: %s' % command)
-    completed = process(command)
+    completed = utila.test.run(command)
 
     log(completed.stdout)
     assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
-    assert exists(outputpath)
+    assert exists(outpath)
 
     return completed.returncode
 
@@ -95,7 +87,6 @@ BOXES_FLOW_DEFAULT = float(BOXES_FLOW.defaultvar)
 
 
 def rawmaker(
-        workspace: str,
         inpath: str,
         outpath: str = None,
         prefix='',
@@ -120,7 +111,6 @@ def rawmaker(
     kwargs[BOXES_FLOW.name] = boxes_flow
     returncode = run(
         'rawmaker',
-        workspace,
         inpath,
         outpath,
         '-j=4',
@@ -156,16 +146,20 @@ def feedback_analysis_statistica(
     run('feedback_statistica', workspace, input_, output)
 
 
-def detector(workspace: str, input_: str, output: str = None):
-    run('detector', workspace, input_, output)
+def detector(inpath: str, outpath: str = None):
+    run('detector', inpath, outpath)
+
+
+def detector_titlepage(inpath: str, outpath: str = None):
+    run('detector --titlepage', inpath, outpath)
 
 
 def decider_decider(workspace: str, input_: str, output: str = None):
     run('decider', workspace, input_, output)
 
 
-def decider_titlepage(workspace: str, input_: str, output: str = None):
-    run('decider --titlepage', workspace, input_, output)
+def decider_titlepage(inpath: str, output: str = None):
+    run('decider --titlepage', inpath, output)
 
 
 def decider_toc(workspace: str, input_: str, output: str = None):
@@ -253,7 +247,7 @@ def check(workspace: str):
     ret = 0
     for item in RUNNER:
         log(' check %s ' % item, end='')
-        result = _run_target('%s --version' % item, workspace)
+        result = utila.test.run('%s --version' % item, workspace)
         log(result.stdout.strip())
         if result.returncode:
             error('Could not run %s' % item)
