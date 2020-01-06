@@ -45,7 +45,6 @@ import queuemo.recipes.extractraw
 import queuemo.recipes.resultview
 import queuemo.recipes.runner
 import queuemo.recipes.setup
-import queuemo.recipes.validation
 
 RUNNER = [
     'analysis_statistica',
