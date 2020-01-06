@@ -66,7 +66,7 @@ def test_recipe_fastview_publish(example_8166, monkeypatch):  # pylint:disable=W
 
 
 @utila.skip_longrun
-def test_recipe_fastview_run(example_8166, monkeypatch):  # pylint:disable=W0621
+def test_recipe_fastview_run_single(example_8166, monkeypatch):  # pylint:disable=W0621
     workspace = str(example_8166)
 
     todopath = os.path.join(workspace, '_todo')
