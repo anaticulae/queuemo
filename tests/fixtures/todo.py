@@ -7,11 +7,13 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import contextlib
 import os
 
 import pytest
 import utila
 
+import queuemo
 import tests.resources
 
 
@@ -35,3 +37,27 @@ def copy_todo(jobid: str, destination: str):
     source = os.path.join(tests.resources.TODO, jobid, jobid)
     destination = os.path.join(destination, jobid)
     utila.file_copy(source, destination)
+
+
+@contextlib.contextmanager
+def runtime(
+        workspace,
+        document,
+        recipes,
+        monkeypatch,
+) -> queuemo.recipes.runner.RecipeRuntime:
+    workspace = str(workspace)
+    todopath = os.path.join(workspace, '_todo')
+    outpath = os.path.join(workspace, 'outpath')
+    if not isinstance(recipes, list):
+        recipes = [recipes]
+
+    with tests.patch_todo(todopath, monkeypatch, copy=False):
+        current = queuemo.recipes.runner.RecipeRuntime(
+            workspace=workspace,
+            document=document,
+            outpath=outpath,
+        )
+        for item in recipes:
+            current.append(item)
+        yield current
