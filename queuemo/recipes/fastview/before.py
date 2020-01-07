@@ -24,6 +24,11 @@ def run(flow: queuemo.recipes.api.RecipeIO) -> list:
         outpath=flow.tmppath,
         prefix='oneline',
         pages='0',
+        # TODO: use rawmaker parameter! Refactor run interface
+        boxes_flow=1.0,
+        char_margin=100,
+        line_margin=0.1,
     )
+
     assert completed == utila.SUCCESS, str(completed)
     return [completed]
