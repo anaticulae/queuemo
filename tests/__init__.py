@@ -28,6 +28,7 @@ def patch_todo(testdir, monkeypatch, copy=True):
         None: in current working location with setuped environment variables
     """
     testdir = str(testdir)
+    # TODO: REFACTOR
     from configo.directory import COMMON
     from configo.directory import READY
     from configo.directory import TODO as ENV_TODO
