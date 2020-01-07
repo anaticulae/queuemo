@@ -53,7 +53,7 @@ class RecipeRuntime:
         """
         if not self.todo:
             return None
-        current = self.todo.pop()
+        current = self.todo.pop(0)
         try:
             tmppath = os.path.join(self.workspace, current.name)
             outpath = os.path.join(self.outpath, current.name)
