@@ -14,6 +14,7 @@ import pytest
 import utila
 
 import queuemo
+import queuemo.recipes.runner
 import tests.resources
 
 

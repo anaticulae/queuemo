@@ -8,6 +8,7 @@
 # =============================================================================
 
 import queuemo
+import queuemo.recipe
 import tests
 from tests.fixtures.todo import copy_todo
 from tests.fixtures.todo import runtime

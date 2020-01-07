@@ -14,36 +14,51 @@ import utila
 import queuemo.recipes.resultview
 import tests
 import tests.resources
-from tests.fixtures.todo import copy_todo
-from tests.fixtures.todo import example_8166  # pylint:disable=W0611
-
-
-@pytest.mark.xfail(reason='re work scheduler')
-@utila.skip_longrun
-def test_recipe_resultview_run(example_8166, monkeypatch):  # pylint:disable=W0621
-    workspace = str(example_8166)
-
-    todopath = os.path.join(workspace, '_todo')
-    with tests.patch_todo(todopath, monkeypatch):
-        queuemo.recipes.resultview.run(workspace, tests.resources.EXAMPLE_JOB)
 
 
 @utila.skip_longrun
-@pytest.mark.xfail(reason='re work scheduler')
+def test_recipe_resultview_run_single(testdir):  # pylint:disable=W0621
+    workspace = str(testdir)
+    tests.fixtures.todo.copy_todo(tests.resources.EXAMPLE_JOB, workspace)
+    outpath = os.path.join(workspace, 'outpath')
+
+    runtime = queuemo.recipes.runner.RecipeRuntime(
+        workspace=workspace,
+        document=tests.resources.EXAMPLE_JOB,
+        outpath=outpath,
+    )
+    runtime.append(queuemo.recipe.RESULT)
+    completed = runtime.next_step()
+    assert completed
+
+
+@utila.skip_longrun
 @pytest.mark.parametrize('jobid', [
     '2324123123',
-    'howtowrite_pages9',
+    pytest.param(
+        'howtowrite_pages9',
+        marks=pytest.mark.xfail(reason='fix bug in groupme'),
+    ),
     'page_116_images_toc_formular',
     'page_38',
     'page_72_noimages_toc',
     'page_78_images_toc',
     'page_83_noimages_toc',
-    'page_89_noimages_toc',
+    pytest.param(
+        'page_89_noimages_toc',
+        marks=pytest.mark.xfail(reason='fix bug in groupme'),
+    ),
 ])
-def test_recipe_resultview_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
+def test_recipe_resultview_run_example(jobid, testdir):  # pylint:disable=W0621
     workspace = str(testdir)
-    copy_todo(jobid, workspace)
+    tests.fixtures.todo.copy_todo(jobid, workspace)
+    outpath = os.path.join(workspace, 'outpath')
 
-    todopath = os.path.join(workspace, '_todo')
-    with tests.patch_todo(todopath, monkeypatch):
-        queuemo.recipes.resultview.run(workspace, jobid)
+    runtime = queuemo.recipes.runner.RecipeRuntime(
+        workspace=workspace,
+        document=jobid,
+        outpath=outpath,
+    )
+    runtime.append(queuemo.recipe.RESULT)
+    completed = runtime.next_step()
+    assert completed

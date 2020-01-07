@@ -58,6 +58,7 @@ RECIPES = os.path.join(queuemo.ROOT, 'queuemo', 'recipes')
 
 VALIDATION = queuemo.recipes.scheduler.load(os.path.join(RECIPES, 'validation'))
 FASTVIEW = queuemo.recipes.scheduler.load(os.path.join(RECIPES, 'fastview'))
+RESULT = queuemo.recipes.scheduler.load(os.path.join(RECIPES, 'result'))
 
 
 def run(workspace: str, document: str, outpath: str) -> int:

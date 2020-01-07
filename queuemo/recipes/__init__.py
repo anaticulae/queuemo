@@ -124,8 +124,8 @@ def analysis_statistica(workspace: str, inputs: str, output: str = None):
     run('analysis_statistica', workspace, inputs, output)
 
 
-def groupme(workspace: str, inputs: str, output: str = None):
-    run('groupme', workspace, inputs, output)
+def groupme(inpath: str, output: str = None):
+    run('groupme', inpath, output)
 
 
 def sections(workspace: str, inputs: str, output: str = None):
@@ -162,8 +162,8 @@ def decider_titlepage(inpath: str, output: str = None):
     run('decider --titlepage', inpath, output)
 
 
-def decider_toc(workspace: str, input_: str, output: str = None):
-    run('decider --toc', workspace, input_, output)
+def decider_toc(inpath: str, output: str = None):
+    run('decider --toc', inpath, output)
 
 
 def decider_border(workspace: str, input_: str, output: str = None):
@@ -190,8 +190,8 @@ def feedback(workspace: str, input_: str, output: str = None):
     run(FEEDBACK, workspace, input_, output)
 
 
-def feedback_view(workspace: str, inpath: str, output: str = None):
-    run(f'{FEEDBACK} --view', workspace, inpath, output)
+def feedback_view(inpath: str, output: str = None):
+    run(f'{FEEDBACK} --view', inpath, output)
 
 
 def copy(workspace: str, input_: str, output: str):

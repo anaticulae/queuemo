@@ -32,5 +32,18 @@ class RecipeIO:
             return self.tmppath
         return os.path.join(self.tmppath, '../.tmp')
 
+    def package(self, item) -> str:
+        """Path to package step."""
+        parent = os.path.split(self.tmppath)[0]
+        path = os.path.join(parent, item)
+        assert os.path.exists(path), path
+        return path
+
     def publish_linting(self):
         utila.copy_content(self.tmppath, self.outpath, pattern='*_user.yaml')
+
+    def publish(self, folder=None, pattern='*.*'):
+        source = self.tmppath
+        if folder is not None:
+            source = os.path.join(self.tmppath, folder)
+        utila.copy_content(source, self.outpath, pattern=pattern)
