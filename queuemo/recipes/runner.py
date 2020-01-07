@@ -25,12 +25,21 @@ class RecipeRuntime:
             document: str,
             outpath: str,
     ):
+        """Initialize RectipeRuntime.
+
+        Args:
+            workspace(str): path which contains the `document` and where
+                            the temporary files are created
+            document(str): identifier of processed document
+            outpath(str): write results to
+        """
         self.todo = []
         self.workspace = workspace
         self.document = document
         self.outpath = outpath
 
-    def append(self, item):
+    def append(self, item: queuemo.recipes.scheduler.ComposedRecipe):
+        """Add composed recipe to todo list"""
         assert isinstance(item, queuemo.recipes.scheduler.ComposedRecipe)
         self.todo.append(item)
 
@@ -38,9 +47,9 @@ class RecipeRuntime:
         """Run next composed recipe.
 
         Returns:
-            None is todo is empty
-            True if ComposedRecipe is executed successful
-            False if execution raised an RuntimeError
+            - None if todo is empty
+            - True if ComposedRecipe is executed successfully
+            - False if execution raised an RuntimeError
         """
         if not self.todo:
             return None
@@ -80,8 +89,8 @@ def run(
         composition: queuemo.recipes.scheduler.ComposedRecipe,
         flow: queuemo.recipes.api.RecipeIO,
 ):
-    """Run composed steps in the order that `Scheduler` defines them.
-    Use `flow` to transfer the data to the correct location.
+    """Run composed steps in the order defined by `Scheduler`.
+    Use `flow` to determine the location where data must copy to.
 
     There are 2 types of steps, the standard steps: before, main and
     after. These steps works on the general `composition.name/.tmp`
@@ -102,6 +111,7 @@ def run(
         flow: define the location where data transfer must handled
     Raises:
         RuntimeError: if some failure occurs while executing a RecipeStep
+        RuntimeControl: if some step signals to hold
     """
     tmp = os.path.join(flow.tmppath, '.tmp')
     for current in composition.schedule:
