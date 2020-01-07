@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 """Load different recipes from this package."""
+import os
 from functools import partial
 from os.path import exists
 from os.path import join
@@ -191,6 +192,9 @@ def feedback(workspace: str, input_: str, output: str = None):
 
 
 def feedback_view(inpath: str, output: str = None):
+    # TODO: Remove after feedview is working correctly
+    missing_outdir = os.path.join(output, 'feedback__view_pages')
+    os.makedirs(missing_outdir, exist_ok=True)
     run(f'{FEEDBACK} --view', inpath, output)
 
 
