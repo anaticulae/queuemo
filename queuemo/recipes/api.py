@@ -9,6 +9,7 @@
 import dataclasses
 import os
 
+import configo
 import utila
 
 
@@ -30,7 +31,19 @@ class RecipeIO:
     def general(self) -> str:
         if self.tmppath.endswith('.tmp'):
             return self.tmppath
-        return os.path.join(self.tmppath, '../.tmp')
+        result = os.path.join(self.tmppath, '../.tmp')
+        # TODO: REMOVE AFTER FIXING UTILA.COPY_CONTENT, there is a problem
+        result = os.path.normpath(result)
+        return result
+
+    @property
+    def main(self) -> str:
+        parent = os.path.join(self.outpath, '..')
+        # TODO: REMOVE AFTER FIXING UTILA.COPY_CONTENT, there is a problem
+        # with detecting file path correctly which leads to create an
+        # unnecessary folder.
+        parent = os.path.normpath(parent)
+        return parent
 
     def package(self, item) -> str:
         """Path to package step."""
@@ -41,6 +54,12 @@ class RecipeIO:
 
     def publish_linting(self):
         utila.copy_content(self.tmppath, self.outpath, pattern='*_user.yaml')
+
+    def publish_main(self, folder=None, pattern='*.*'):
+        source = self.tmppath
+        if folder is not None:
+            source = os.path.join(self.tmppath, folder)
+        utila.copy_content(source, self.main, pattern=pattern)
 
     def publish(self, folder=None, pattern='*.*'):
         source = self.tmppath
