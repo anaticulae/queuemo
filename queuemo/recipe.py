@@ -42,7 +42,6 @@ import queuemo.recipes.analysis
 import queuemo.recipes.commonview
 import queuemo.recipes.docsplit
 import queuemo.recipes.extractraw
-import queuemo.recipes.resultview
 import queuemo.recipes.runner
 import queuemo.recipes.setup
 
