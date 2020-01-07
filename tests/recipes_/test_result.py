@@ -11,13 +11,14 @@ import os
 import pytest
 import utila
 
-import queuemo.recipes.resultview
+import queuemo.recipe
+import queuemo.recipes.runner
 import tests
 import tests.resources
 
 
 @utila.skip_longrun
-def test_recipe_resultview_run_single(testdir):  # pylint:disable=W0621
+def test_recipe_result_run_single(testdir):  # pylint:disable=W0621
     workspace = str(testdir)
     tests.fixtures.todo.copy_todo(tests.resources.EXAMPLE_JOB, workspace)
     outpath = os.path.join(workspace, 'outpath')
@@ -49,7 +50,7 @@ def test_recipe_resultview_run_single(testdir):  # pylint:disable=W0621
         marks=pytest.mark.xfail(reason='fix bug in groupme'),
     ),
 ])
-def test_recipe_resultview_run_example(jobid, testdir):  # pylint:disable=W0621
+def test_recipe_result_run_example(jobid, testdir):  # pylint:disable=W0621
     workspace = str(testdir)
     tests.fixtures.todo.copy_todo(jobid, workspace)
     outpath = os.path.join(workspace, 'outpath')
