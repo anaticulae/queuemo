@@ -162,12 +162,12 @@ def push_result(workspace):
 
 def work(workspace):
     assert os.path.exists(workspace), str(workspace)
-    result = os.path.join(workspace, 'result')
-    os.makedirs(result)
+    current = jobid(workspace)
+    outpath = os.path.join(configo.todo(), current)
 
-    result = queuemo.recipe.run(workspace, jobid(workspace), outpath=result)
+    result = queuemo.recipe.run(workspace, jobid(workspace), outpath=outpath)
 
-    update_info(workspace, result)
+    update_info(outpath, result)
 
 
 def update_info(workspace, result: int):
