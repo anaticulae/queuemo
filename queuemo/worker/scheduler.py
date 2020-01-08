@@ -132,7 +132,7 @@ def push_result(workspace):
     result = os.path.join(workspace, 'result')
     assert os.path.exists(result), str(result)
 
-    ready_before = link.ready_count()
+    ready_before = link.count_ready()
 
     index = jobid(workspace)
     ready_path = os.path.join(configo.ready(), index)
@@ -144,7 +144,7 @@ def push_result(workspace):
     info = utila.file_read(os.path.join(workspace, link.JOB_FILE_NAME))
     utila.file_create(os.path.join(ready_path, link.JOB_FILE_NAME), info)
 
-    ready_after = link.ready_count()
+    ready_after = link.count_ready()
 
     assert ready_before + 1 == ready_after
 
@@ -173,15 +173,15 @@ def work(workspace):
 def update_info(workspace, result: int):
     info_path = os.path.join(workspace, link.JOB_FILE_NAME)
     assert os.path.exists(info_path), str(info_path)
-    info = link.job_load(info_path)
+    info = link.load_job(info_path)
     info.result = '%d' % result
 
     utila.file_remove(info_path)  # remove old one to replace with new one
-    link.job_dump(info_path, info)
+    link.dump_job(info_path, info)
 
 
 def jobid(path: str) -> int:
     info_path = os.path.join(path, link.JOB_FILE_NAME)
     assert os.path.exists(info_path), str(info_path)
-    info = link.job_load(info_path)
+    info = link.load_job(info_path)
     return info.index
