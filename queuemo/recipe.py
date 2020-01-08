@@ -70,6 +70,7 @@ def run(workspace: str, document: str, outpath: str) -> int:
     )
     runtime.append(VALIDATION)
     runtime.append(FASTVIEW)
+    runtime.append(RESULT)
 
     while True:
         current = runtime.next_step()
