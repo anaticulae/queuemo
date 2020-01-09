@@ -2,6 +2,37 @@
 
 Every noteable change is logged here.
 
+## v0.4.0
+
+### Feature
+
+* add separate publish step (76bb4df0bb3e)
+* extend runnable checker (5fc74460f082)
+* add method to publish todo to ready folder (64a75cc00dc9)
+* activate result scheduling step (41241ea9dba7)
+* use oneline parameter to improve extraction result (ac9e4d4cff9f)
+* extend recipes API (6bc61d4d2929)
+* add new result view (7f4027ace2e3)
+* add validation step to check that input resource is valid (80c11dfd1827)
+* use new scheduling to run fastview (89e0c845330d)
+* add runtime to run and manage schedules (51d2c3566c81)
+* add recipe scheduler and two recipe examples (db81a1278de7)
+* extend list with application test at startup (72e08439b9f3)
+
+### Fix
+
+* add required result folder (5bcfad455d1d)
+* run validation task first (c5c7e934e663)
+* set output path to todo path (5fa0130d894a)
+* fix scheduling order (8e463c6de8e3)
+
+### Documentation
+
+* improve general documentation (edd6598d808e)
+* extend interface documentation (df6a161103c4)
+* extend interface documentation (5e43ad4ab2e4)
+* extend module documentation (dfaf668ca897)
+
 ## v0.3.2
 
 ### Fix
