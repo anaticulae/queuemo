@@ -13,7 +13,7 @@ import pytest
 import utila
 
 import queuemo.recipe
-import queuemo.recipes.runner
+import queuemo.runtime.runtime
 import tests
 import tests.fixtures.todo
 import tests.resources

@@ -12,21 +12,22 @@ import os
 import link
 import utila
 
-import queuemo.recipes.api
-import queuemo.recipes.runner
+import queuemo.runnable
+import queuemo.runtime.api
+import queuemo.runtime.runtime
 
 
-def before(flow: queuemo.recipes.api.RecipeIO):
+def before(flow: queuemo.runtime.api.RecipeIO):
     if link.current(flow.document) == link.ProcessState.VERIFIED:
         # if fastview is not started before, start analysis with resultview
         link.start_analysis(flow.document)
 
 
-def run(flow: queuemo.recipes.api.RecipeIO):
+def run(flow: queuemo.runtime.api.RecipeIO):
     pdf = os.path.join(flow.tmppath, 'work.pdf')
     utila.file_copy(flow.sourcepath, pdf)
 
-    completed = queuemo.recipes.rawmaker(
+    completed = queuemo.runnable.rawmaker(
         inpath=pdf,
         outpath=flow.tmppath,
         pages='0:5',

@@ -12,8 +12,8 @@ import os
 import utila
 import utila.logger
 
-import queuemo.recipes.api
-import queuemo.recipes.scheduler
+import queuemo.runtime.api
+import queuemo.runtime.scheduler
 
 
 class RecipeRuntime:
@@ -38,9 +38,9 @@ class RecipeRuntime:
         self.document = document
         self.outpath = outpath
 
-    def append(self, item: queuemo.recipes.scheduler.ComposedRecipe):
+    def append(self, item: queuemo.runtime.scheduler.ComposedRecipe):
         """Add composed recipe to todo list"""
-        assert isinstance(item, queuemo.recipes.scheduler.ComposedRecipe), item
+        assert isinstance(item, queuemo.runtime.scheduler.ComposedRecipe), item
         self.todo.append(item)
 
     def next_step(self) -> bool:
@@ -57,7 +57,7 @@ class RecipeRuntime:
         try:
             tmppath = os.path.join(self.workspace, current.name)
             outpath = os.path.join(self.outpath, current.name)
-            flow = queuemo.recipes.api.RecipeIO(
+            flow = queuemo.runtime.api.RecipeIO(
                 workspace=self.workspace,
                 document=self.document,
                 tmppath=tmppath,
@@ -93,8 +93,8 @@ class Stop(RuntimeControl):
 
 
 def run(
-        composition: queuemo.recipes.scheduler.ComposedRecipe,
-        flow: queuemo.recipes.api.RecipeIO,
+        composition: queuemo.runtime.scheduler.ComposedRecipe,
+        flow: queuemo.runtime.api.RecipeIO,
 ):
     """Run composed steps in the order defined by `Scheduler`.
     Use `flow` to determine the location where data must copy to.
@@ -132,7 +132,7 @@ def run(
         if current.name in ['before', 'after', 'main']:
             tmppath = tmp
             outpath = flow.outpath
-        current_flow = queuemo.recipes.api.RecipeIO(
+        current_flow = queuemo.runtime.api.RecipeIO(
             workspace=flow.workspace,
             document=flow.document,
             tmppath=tmppath,

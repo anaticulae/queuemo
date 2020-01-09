@@ -11,20 +11,20 @@ import json
 import link
 import utila
 
-import queuemo.recipes.api
-import queuemo.recipes.runner
+import queuemo.runtime.api
+import queuemo.runtime.runtime
 
 
-def before(flow: queuemo.recipes.api.RecipeIO):
+def before(flow: queuemo.runtime.api.RecipeIO):
     link.start_progress(flow.document)
 
 
-def run(flow: queuemo.recipes.api.RecipeIO) -> list:
+def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     """Run validation to check that """
     link.verify(flow.document)
 
 
-def after(flow: queuemo.recipes.api.RecipeIO):
+def after(flow: queuemo.runtime.api.RecipeIO):
     # TODO: add pdfinfo --status to check if validation was successful
     pdfinfo = link.pdfinfo(flow.document)
     loaded = utila.file_read(pdfinfo)
@@ -32,4 +32,4 @@ def after(flow: queuemo.recipes.api.RecipeIO):
     if validated:
         return
     utila.log(f'invalid resource {flow.sourcepath}, stop analysis.')
-    raise queuemo.recipes.runner.Stop('invald pdf resource')
+    raise queuemo.runtime.runtime.Stop('invald pdf resource')

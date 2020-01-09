@@ -30,15 +30,16 @@ publish linter result
 
 """
 import queuemo.recipe
-import queuemo.recipes.api
+import queuemo.runnable
+import queuemo.runtime.api
 
 PREFIX = '01'
 
 
-def run(flow: queuemo.recipes.api.RecipeIO):
-    queuemo.recipes.detector_titlepage(flow.general, flow.tmppath)
-    queuemo.recipes.decider_titlepage(flow.tmppath, flow.tmppath)
+def run(flow: queuemo.runtime.api.RecipeIO):
+    queuemo.runnable.detector_titlepage(flow.general, flow.tmppath)
+    queuemo.runnable.decider_titlepage(flow.tmppath, flow.tmppath)
 
 
-def after(flow: queuemo.recipes.api.RecipeIO):
+def after(flow: queuemo.runtime.api.RecipeIO):
     flow.publish_linting()

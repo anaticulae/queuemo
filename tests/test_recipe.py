@@ -10,7 +10,7 @@
 import utila
 
 import queuemo.recipe
-import queuemo.worker.scheduler
+import queuemo.worker.startup
 import tests
 import tests.resources
 
@@ -19,7 +19,7 @@ import tests.resources
 def test_recipe_run(testdir, monkeypatch):
     root = str(testdir)
     with tests.patch_todo(testdir, monkeypatch):
-        workspace = queuemo.worker.scheduler.copy(tests.resources.EXAMPLE_JOB)
+        workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB)
         result = queuemo.recipe.run(
             workspace,
             tests.resources.EXAMPLE_JOB,

@@ -9,10 +9,10 @@
 
 import link
 
-import queuemo.recipes.api
+import queuemo.runtime.api
 
 
-def run(flow: queuemo.recipes.api.RecipeIO):
+def run(flow: queuemo.runtime.api.RecipeIO):
     """Create a file named close to signal update hander that process is
     completed."""
     # TODO: ADD STATUS INFORMATION LATER

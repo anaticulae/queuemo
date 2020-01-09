@@ -66,6 +66,7 @@ if __name__ == "__main__":
             'queuemo.recipes.publish',
             'queuemo.recipes.result',
             'queuemo.recipes.validation',
+            'queuemo.runtime',
             'queuemo.worker',
         ],
     )

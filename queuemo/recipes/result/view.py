@@ -8,11 +8,12 @@
 # =============================================================================
 
 import queuemo.recipes
-import queuemo.recipes.api
+import queuemo.runnable
+import queuemo.runtime.api
 
 
-def run(flow: queuemo.recipes.api.RecipeIO):
-    queuemo.recipes.feedback_view(
+def run(flow: queuemo.runtime.api.RecipeIO):
+    queuemo.runnable.feedback_view(
         inpath=[
             flow.general,
             flow.package('toc'),

@@ -12,8 +12,8 @@ import utila
 
 import queuemo.recipe
 import queuemo.recipes.fastview
-import queuemo.recipes.runner
-import queuemo.recipes.scheduler
+import queuemo.runtime.runtime
+import queuemo.runtime.scheduler
 import tests
 import tests.fixtures.todo
 import tests.resources

@@ -12,7 +12,7 @@ import utila
 import utila.cli
 
 import queuemo
-import queuemo.worker.scheduler
+import queuemo.worker.startup
 
 PROCESS_NAME = 'queuemo'
 RUNTIME = 'runtime'
@@ -56,7 +56,7 @@ def main():
         return utila.INVALID_COMMAND
     configo.check_startup()
     # start scheduler
-    closed = queuemo.worker.scheduler.run(
+    closed = queuemo.worker.startup.run(
         runtime=runtime,
         waiting=waiting,
         verbose=verbose,

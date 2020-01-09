@@ -12,7 +12,7 @@ import os
 import configo.directory
 import utila
 
-import queuemo.worker.scheduler
+import queuemo.worker.startup
 import tests
 
 
@@ -22,11 +22,11 @@ def content(capture):
 
 @utila.skip_longrun
 def test_run_steps(capsys, testdir, monkeypatch):
-    queuemo.worker.scheduler.step(None)
+    queuemo.worker.startup.step(None)
     assert 'Wait' in content(capsys)
 
     with tests.patch_todo(testdir, monkeypatch):
-        queuemo.worker.scheduler.step('8166109011')
+        queuemo.worker.startup.step('8166109011')
         progress = content(capsys)
         assert 'Copy' in progress
         assert 'Start' in progress
@@ -41,5 +41,5 @@ def test_copy_job_to_workspace(monkeypatch):
             {configo.directory.TODO: tests.resources.TODO},
         )
 
-        temp_workspace = queuemo.worker.scheduler.copy(tests.resources.EXAMPLE_JOB) # yapf:disable
+        temp_workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB) # yapf:disable
         assert os.path.exists(temp_workspace), temp_workspace

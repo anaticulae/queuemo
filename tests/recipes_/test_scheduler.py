@@ -10,7 +10,7 @@
 import os
 
 import queuemo
-import queuemo.recipes.scheduler
+import queuemo.runtime.scheduler
 
 EXAMPLE = os.path.join(queuemo.ROOT, 'tests/example/scheduler')
 IMOM = os.path.join(EXAMPLE, 'imom')
@@ -21,22 +21,22 @@ for item in [EXAMPLE, IMOM, ERRORNEOUS]:
 
 
 def test_recipe_scheduler_collect():
-    collected = queuemo.recipes.scheduler.collect(IMOM)
+    collected = queuemo.runtime.scheduler.collect(IMOM)
     assert len(collected) == 5
 
 
 def test_recipe_scheduler_collect_norunmethod(capsys):
-    collected = queuemo.recipes.scheduler.collect(ERRORNEOUS)
+    collected = queuemo.runtime.scheduler.collect(ERRORNEOUS)
     assert collected == {}
     error = capsys.readouterr().err
     assert 'could not load recipe step' in error, error
 
 
 def test_recipe_scheduler_compose():
-    collected = queuemo.recipes.scheduler.collect(IMOM)
+    collected = queuemo.runtime.scheduler.collect(IMOM)
     parent = 'example'
 
-    composed = queuemo.recipes.scheduler.compose(collected, parent=parent)
+    composed = queuemo.runtime.scheduler.compose(collected, parent=parent)
     assert composed
     assert composed.before
     assert composed.main
@@ -49,7 +49,7 @@ def test_recipe_scheduler_schedule_alpha():
     """Test to schedule without scheduling order, use default alphabetic
     order"""
     items = [
-        queuemo.recipes.scheduler.RecipeStep(name=name) for name in [
+        queuemo.runtime.scheduler.RecipeStep(name=name) for name in [
             'hello',
             'mister',
             'tom',
@@ -57,21 +57,21 @@ def test_recipe_scheduler_schedule_alpha():
         ]
     ]
     expected = [
-        queuemo.recipes.scheduler.RecipeStep(name=name) for name in [
+        queuemo.runtime.scheduler.RecipeStep(name=name) for name in [
             'albert',
             'hello',
             'mister',
             'tom',
         ]
     ]
-    result = queuemo.recipes.scheduler.schedule(items)
+    result = queuemo.runtime.scheduler.schedule(items)
     assert result == expected
 
 
 def test_recipe_scheduler_schedule_mixed():
     order = ['mister', 'hello']
     steps = [
-        queuemo.recipes.scheduler.RecipeStep(name=name) for name in [
+        queuemo.runtime.scheduler.RecipeStep(name=name) for name in [
             'tom',
             'hello',
             'mister',
@@ -79,12 +79,12 @@ def test_recipe_scheduler_schedule_mixed():
         ]
     ]
     expected = [
-        queuemo.recipes.scheduler.RecipeStep(name=name) for name in [
+        queuemo.runtime.scheduler.RecipeStep(name=name) for name in [
             'mister',
             'hello',
             'albert',
             'tom',
         ]
     ]
-    result = queuemo.recipes.scheduler.schedule(steps, order)
+    result = queuemo.runtime.scheduler.schedule(steps, order)
     assert result == expected

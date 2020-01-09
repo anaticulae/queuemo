@@ -35,7 +35,7 @@ import utila
 import utila.test
 
 import queuemo
-import queuemo.recipes.runner
+import queuemo.runtime.runtime
 
 # TODO: CHECK ONLY REQUIRED RUNNER
 RUNNER = [
@@ -49,16 +49,16 @@ RUNNER = [
 ]
 RECIPES = os.path.join(queuemo.ROOT, 'queuemo', 'recipes')
 
-VALIDATION = queuemo.recipes.scheduler.load(os.path.join(RECIPES, 'validation'))
-FASTVIEW = queuemo.recipes.scheduler.load(os.path.join(RECIPES, 'fastview'))
-RESULT = queuemo.recipes.scheduler.load(os.path.join(RECIPES, 'result'))
-PUBLISH = queuemo.recipes.scheduler.load(os.path.join(RECIPES, 'publish'))
+VALIDATION = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'validation'))
+FASTVIEW = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'fastview'))
+RESULT = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'result'))
+PUBLISH = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'publish'))
 
 
 def run(workspace: str, document: str, outpath: str) -> int:
     check(workspace)
 
-    runtime = queuemo.recipes.runner.RecipeRuntime(
+    runtime = queuemo.runtime.runtime.RecipeRuntime(
         workspace=workspace,
         document=document,
         outpath=outpath,

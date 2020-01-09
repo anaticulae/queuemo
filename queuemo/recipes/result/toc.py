@@ -7,10 +7,10 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import queuemo.recipes
-import queuemo.recipes.api
+import queuemo.runnable
+import queuemo.runtime.api
 
 
-def run(flow: queuemo.recipes.api.RecipeIO):
-    queuemo.recipes.groupme(flow.general, flow.tmppath)
-    queuemo.recipes.decider_toc(flow.tmppath, flow.tmppath)
+def run(flow: queuemo.runtime.api.RecipeIO):
+    queuemo.runnable.groupme(flow.general, flow.tmppath)
+    queuemo.runnable.decider_toc(flow.tmppath, flow.tmppath)

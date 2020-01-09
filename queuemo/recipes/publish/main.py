@@ -8,9 +8,9 @@
 # =============================================================================
 import link
 
-import queuemo.recipes.api
+import queuemo.runtime.api
 
 
-def run(flow: queuemo.recipes.api.RecipeIO):
+def run(flow: queuemo.runtime.api.RecipeIO):
     # copy todo folder to result and create done folder
     link.publish(flow.document)

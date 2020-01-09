@@ -15,7 +15,7 @@ import pytest
 import utila
 
 import queuemo
-import queuemo.recipes.runner
+import queuemo.runtime.runtime
 import tests
 import tests.resources
 
@@ -48,7 +48,7 @@ def runtime(
         document,
         recipes,
         monkeypatch,
-) -> queuemo.recipes.runner.RecipeRuntime:
+) -> queuemo.runtime.runtime.RecipeRuntime:
     workspace = str(workspace)
 
     if not isinstance(recipes, list):
@@ -56,7 +56,7 @@ def runtime(
 
     with tests.patch_todo(workspace, monkeypatch, copy=True):
         outpath = link.todo(document)
-        current = queuemo.recipes.runner.RecipeRuntime(
+        current = queuemo.runtime.runtime.RecipeRuntime(
             workspace=workspace,
             document=document,
             outpath=outpath,
