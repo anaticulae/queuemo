@@ -8,29 +8,31 @@
 # =============================================================================
 import os
 
+import link
 import pytest
 import utila
 
 import queuemo.recipe
 import queuemo.recipes.runner
 import tests
+import tests.fixtures.todo
 import tests.resources
-from tests.fixtures.todo import runtime
 
 
 def run_resultview(workspace, jobid, monkeypatch):
-    outpath = os.path.join(workspace, 'outpath')
-    with runtime(
+    with tests.fixtures.todo.runtime(
             workspace,
             jobid,
             recipes=[
                 queuemo.recipe.VALIDATION,
+                queuemo.recipe.FASTVIEW,
                 queuemo.recipe.RESULT,
             ],
             monkeypatch=monkeypatch,
-            outpath=outpath,
     ) as rt:  # pylint:disable=C0103
         completed = rt.finish()
+        # ensure that published worked
+        assert os.path.exists(link.ready(jobid)), link.ready(jobid)
     return completed
 
 

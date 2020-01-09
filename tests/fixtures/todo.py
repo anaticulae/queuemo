@@ -10,6 +10,7 @@
 import contextlib
 import os
 
+import link
 import pytest
 import utila
 
@@ -47,17 +48,14 @@ def runtime(
         document,
         recipes,
         monkeypatch,
-        outpath=None,
 ) -> queuemo.recipes.runner.RecipeRuntime:
     workspace = str(workspace)
 
-    if outpath is None:
-        outpath = workspace
     if not isinstance(recipes, list):
         recipes = [recipes]
 
     with tests.patch_todo(workspace, monkeypatch, copy=True):
-        workspace = os.path.join(os.environ['SHARED_TODO'])
+        outpath = link.todo(document)
         current = queuemo.recipes.runner.RecipeRuntime(
             workspace=workspace,
             document=document,

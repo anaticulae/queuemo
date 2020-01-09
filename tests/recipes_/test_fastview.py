@@ -6,7 +6,6 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-import os
 
 import pytest
 import utila
@@ -16,8 +15,8 @@ import queuemo.recipes.fastview
 import queuemo.recipes.runner
 import queuemo.recipes.scheduler
 import tests
+import tests.fixtures.todo
 import tests.resources
-from tests.fixtures.todo import runtime
 
 
 @utila.skip_longrun
@@ -53,13 +52,11 @@ def test_recipe_fastview_run_example(jobid, testdir, monkeypatch):  # pylint:dis
 
 
 def run_fastview(workspace, jobid, monkeypatch):
-    outpath = os.path.join(workspace, 'outpath')
-    with runtime(
+    with tests.fixtures.todo.runtime(
             workspace,
             jobid,
             recipes=[queuemo.recipe.VALIDATION, queuemo.recipe.FASTVIEW],
             monkeypatch=monkeypatch,
-            outpath=outpath,
     ) as rt:  # pylint:disable=C0103
         completed = rt.finish()
     return completed
