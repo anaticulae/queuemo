@@ -23,12 +23,4 @@ What can be archived very fast?
 
 How does the fast view work?
 ----------------------------
-
-1. Invoke general which contains the fast view scheduler
-
-API
----
-
-- Name of used folder and job is defined by location and file name
-
 """

@@ -6,6 +6,31 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Composition of recipes
+======================
+
+.. note :: outdated approach, TODO: UPDATE
+
+DataMining: PDF ->
+    RawMaker        -> text.yaml ->
+    GroupMe         -> chapter.yaml ->
+
+Analysis/Reporting:
+
+    Statistica      -> statistic.yaml ->
+
+Decider:
+
+    MathStyle       -> style.yaml                   WordStyle
+
+Feedback:
+
+    Feedback        -> feedback.yaml                Feedback
+
+Presentation:
+
+    HTML VIEW
+"""
 import os
 
 import queuemo

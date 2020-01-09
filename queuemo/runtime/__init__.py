@@ -9,25 +9,6 @@
 """Recipes Runtime
 ===============
 
-DataMining: PDF ->
-    RawMaker        -> text.yaml ->
-    GroupMe         -> chapter.yaml ->
-
-Analysis/Reporting:
-
-    Statistica      -> statistic.yaml ->
-
-Decider:
-
-    MathStyle       -> style.yaml                   WordStyle
-
-Feedback:
-
-    Feedback        -> feedback.yaml                Feedback
-
-Presentation:
-
-    HTML VIEW
 
 """
 

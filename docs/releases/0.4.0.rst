@@ -11,7 +11,7 @@ test data
 general
 -------
 
-* [ ] support recipes API to automatically detect connections
+* [/] support recipes API to automatically detect connections
 
 refactor
 --------
@@ -23,9 +23,9 @@ refactor
 documentation
 -------------
 
-* [ ] document purpose of fastview
+* [x] document purpose of fastview
 
-* [ ] document purpose of resultview
+* [x] document purpose of resultview
 
 code quality
 ------------

@@ -6,7 +6,17 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Runtime
+=======
 
+The runtime executes the defined schedules and organizes the creation of
+paths and the dataflow between the recipe steps.
+
+API
+---
+
+- Name of used folder and job is defined by location and file name
+"""
 import os
 
 import utila
