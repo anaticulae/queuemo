@@ -50,7 +50,6 @@ RUNNER = [
 
 
 def run(workspace: str, document: str, outpath: str) -> int:
-    import queuemo.runtime.runtime
     check(workspace)
 
     runtime = queuemo.runtime.runtime.RecipeRuntime(
