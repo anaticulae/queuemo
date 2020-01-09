@@ -14,13 +14,13 @@ import link
 import queuemo
 import queuemo.recipe
 import tests
-from tests.fixtures.todo import runtime
+import tests.fixtures.todo
 
 
 def test_recipe_validation(testdir, monkeypatch):  # pylint:disable=W0621
     """Ensure to create validation result via `pdfinfo` tool"""
     workspace = str(testdir)
-    with runtime(
+    with tests.fixtures.todo.runtime(
             workspace,
             tests.resources.EXAMPLE_JOB,
             queuemo.recipe.VALIDATION,
@@ -37,7 +37,7 @@ def test_recipe_validation_failure(testdir, monkeypatch, capsys):  # pylint:disa
     """Ensure that validation tool stops with validation error on
     invalid, broken resource"""
     workspace = str(testdir)
-    with runtime(
+    with tests.fixtures.todo.runtime(
             workspace,
             'broken_resource',
             queuemo.recipe.VALIDATION,
