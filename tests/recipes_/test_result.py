@@ -49,22 +49,24 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
 
 
 @utila.skip_longrun
-@pytest.mark.parametrize('jobid', [
-    '2324123123',
-    pytest.param(
-        'howtowrite_pages9',
-        marks=pytest.mark.xfail(reason='fix bug in groupme'),
-    ),
-    'page_116_images_toc_formular',
-    'page_38',
-    'page_72_noimages_toc',
-    'page_78_images_toc',
-    'page_83_noimages_toc',
-    pytest.param(
-        'page_89_noimages_toc',
-        marks=pytest.mark.xfail(reason='fix bug in groupme'),
-    ),
-])
+@pytest.mark.parametrize(
+    'jobid',
+    [
+        '2324123123',
+        pytest.param(
+            'howtowrite_pages9',
+            marks=pytest.mark.xfail(reason='fix bug in groupme'),
+        ),
+        # 'page_116_images_toc_formular',
+        # 'page_38',
+        # 'page_72_noimages_toc',
+        # 'page_78_images_toc',
+        'page_83_noimages_toc',
+        pytest.param(
+            'page_89_noimages_toc',
+            marks=pytest.mark.xfail(reason='fix bug in groupme'),
+        ),
+    ])
 def test_recipe_result_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
     completed = run_resultview(

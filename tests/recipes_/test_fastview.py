@@ -32,14 +32,16 @@ def test_recipe_fastview_run_single(testdir, monkeypatch):  # pylint:disable=W06
 
 
 @utila.skip_longrun
-@pytest.mark.parametrize('jobid', [
-    '2324123123',
-    'page_116_images_toc_formular',
-    'page_72_noimages_toc',
-    'page_78_images_toc',
-    'page_83_noimages_toc',
-    'page_89_noimages_toc',
-])
+@pytest.mark.parametrize(
+    'jobid',
+    [
+        '2324123123',
+        # 'page_116_images_toc_formular',
+        # 'page_72_noimages_toc',
+        # 'page_78_images_toc',
+        # 'page_83_noimages_toc',
+        'page_89_noimages_toc',
+    ])
 def test_recipe_fastview_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
 
