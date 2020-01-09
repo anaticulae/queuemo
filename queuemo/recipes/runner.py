@@ -40,7 +40,7 @@ class RecipeRuntime:
 
     def append(self, item: queuemo.recipes.scheduler.ComposedRecipe):
         """Add composed recipe to todo list"""
-        assert isinstance(item, queuemo.recipes.scheduler.ComposedRecipe)
+        assert isinstance(item, queuemo.recipes.scheduler.ComposedRecipe), item
         self.todo.append(item)
 
     def next_step(self) -> bool:
@@ -72,6 +72,13 @@ class RecipeRuntime:
             utila.error(error)
             return False
         return True
+
+    def finish(self):
+        assert self.todo, 'nothing todo'
+        current = None
+        while self.todo:
+            current = self.next_step()
+        return current
 
     def __len__(self):
         return len(self.todo)

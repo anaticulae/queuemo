@@ -9,10 +9,17 @@
 
 import os
 
+import link
 import utila
 
 import queuemo.recipes.api
 import queuemo.recipes.runner
+
+
+def before(flow: queuemo.recipes.api.RecipeIO):
+    if link.current(flow.document) == link.ProcessState.VERIFIED:
+        # if fastview is not started before, start analysis with resultview
+        link.start_analysis(flow.document)
 
 
 def run(flow: queuemo.recipes.api.RecipeIO):

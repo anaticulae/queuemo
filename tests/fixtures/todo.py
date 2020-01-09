@@ -15,6 +15,7 @@ import utila
 
 import queuemo
 import queuemo.recipes.runner
+import tests
 import tests.resources
 
 
@@ -35,9 +36,9 @@ def example_8166(testdir):
 
 
 def copy_todo(jobid: str, destination: str):
-    source = os.path.join(tests.resources.TODO, jobid, jobid)
+    source = os.path.join(tests.resources.TODO, jobid)
     destination = os.path.join(destination, jobid)
-    utila.file_copy(source, destination)
+    utila.copy_content(source, destination)
 
 
 @contextlib.contextmanager
@@ -46,14 +47,17 @@ def runtime(
         document,
         recipes,
         monkeypatch,
+        outpath=None,
 ) -> queuemo.recipes.runner.RecipeRuntime:
     workspace = str(workspace)
-    todopath = os.path.join(workspace, '_todo')
-    outpath = os.path.join(workspace, 'outpath')
+
+    if outpath is None:
+        outpath = workspace
     if not isinstance(recipes, list):
         recipes = [recipes]
 
-    with tests.patch_todo(todopath, monkeypatch, copy=False):
+    with tests.patch_todo(workspace, monkeypatch, copy=True):
+        workspace = os.path.join(os.environ['SHARED_TODO'])
         current = queuemo.recipes.runner.RecipeRuntime(
             workspace=workspace,
             document=document,

@@ -7,27 +7,26 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 import json
-import os
 
+import link
 import utila
 
 import queuemo.recipes.api
 import queuemo.recipes.runner
 
 
+def before(flow: queuemo.recipes.api.RecipeIO):
+    link.start_progress(flow.document)
+
+
 def run(flow: queuemo.recipes.api.RecipeIO) -> list:
     """Run validation to check that """
-    completed = utila.run(f'pdfinfo -i {flow.sourcepath} -o {flow.outpath}')
-    utila.log(f'write validation result to: {flow.outpath}')
-
-    if completed.returncode:
-        utila.error(completed.stderr + completed.stdout)
-    assert completed.returncode == 0
+    link.verify(flow.document)
 
 
 def after(flow: queuemo.recipes.api.RecipeIO):
     # TODO: add pdfinfo --status to check if validation was successful
-    pdfinfo = os.path.join(flow.outpath, 'pdfinfo.json')
+    pdfinfo = link.pdfinfo(flow.document)
     loaded = utila.file_read(pdfinfo)
     validated = json.loads(loaded)
     if validated:

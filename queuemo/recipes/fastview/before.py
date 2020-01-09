@@ -8,13 +8,19 @@
 # =============================================================================
 import os
 
+import link
 import utila
 
 import queuemo.recipes.api
 import queuemo.recipes.runner
 
 
+def before(flow: queuemo.recipes.api.RecipeIO):
+    link.start_analysis(flow.document)
+
+
 def run(flow: queuemo.recipes.api.RecipeIO) -> list:
+
     # TODO: REMOVE AFTER UPGRADING RAWMAKER WHICH SUPPORTS FILES AS INPUT
     pdf = os.path.join(flow.tmppath, 'work.pdf')
     utila.file_copy(flow.sourcepath, pdf)

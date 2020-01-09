@@ -33,13 +33,15 @@ def patch_todo(testdir, monkeypatch, copy=True):
     from configo.directory import READY
     from configo.directory import TODO as ENV_TODO
 
-    os.makedirs(os.path.join(testdir, 'ready'))
-    todopath = os.path.join(testdir, 'todo')
+    todopath = os.path.join(testdir, 'todo_')
+    readypath = os.path.join(testdir, 'ready_')
+    os.makedirs(readypath, exist_ok=True)
     if copy:
         # Copy content from todo
+        # TODO: DO NOT COPY WHOLE DATA TREE
         shutil.copytree(tests.resources.TODO, todopath)
     else:
-        os.makedirs(todopath)
+        os.makedirs(todopath, exist_ok=True)
 
     copy = dict(os.environ)
     with monkeypatch.context() as context:
@@ -47,8 +49,8 @@ def patch_todo(testdir, monkeypatch, copy=True):
         # have to set every single variable again, like accesing rawmaker,
         # sections etc.
         copy[COMMON] = testdir
-        copy[ENV_TODO] = os.path.join(testdir, 'todo')
-        copy[READY] = os.path.join(testdir, 'ready')
+        copy[ENV_TODO] = todopath
+        copy[READY] = readypath
         context.setattr(os, 'environ', copy)
         yield
 

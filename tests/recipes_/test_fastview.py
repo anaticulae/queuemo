@@ -17,21 +17,18 @@ import queuemo.recipes.runner
 import queuemo.recipes.scheduler
 import tests
 import tests.resources
+from tests.fixtures.todo import runtime
 
 
 @utila.skip_longrun
-def test_recipe_fastview_run_single(testdir):  # pylint:disable=W0621
+def test_recipe_fastview_run_single(testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
-    tests.fixtures.todo.copy_todo(tests.resources.EXAMPLE_JOB, workspace)
-    outpath = os.path.join(workspace, 'outpath')
 
-    runtime = queuemo.recipes.runner.RecipeRuntime(
-        workspace=workspace,
-        document=tests.resources.EXAMPLE_JOB,
-        outpath=outpath,
+    completed = run_fastview(
+        workspace,
+        tests.resources.EXAMPLE_JOB,
+        monkeypatch,
     )
-    runtime.append(queuemo.recipe.FASTVIEW)
-    completed = runtime.next_step()
     assert completed
 
 
@@ -44,16 +41,25 @@ def test_recipe_fastview_run_single(testdir):  # pylint:disable=W0621
     'page_83_noimages_toc',
     'page_89_noimages_toc',
 ])
-def test_recipe_fastview_run_example(jobid, testdir):  # pylint:disable=W0621
+def test_recipe_fastview_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
-    tests.fixtures.todo.copy_todo(jobid, workspace)
-    outpath = os.path.join(workspace, 'outpath')
 
-    runtime = queuemo.recipes.runner.RecipeRuntime(
-        workspace=workspace,
-        document=jobid,
-        outpath=outpath,
+    completed = run_fastview(
+        workspace,
+        jobid,
+        monkeypatch,
     )
-    runtime.append(queuemo.recipe.FASTVIEW)
-    completed = runtime.next_step()
     assert completed
+
+
+def run_fastview(workspace, jobid, monkeypatch):
+    outpath = os.path.join(workspace, 'outpath')
+    with runtime(
+            workspace,
+            jobid,
+            recipes=[queuemo.recipe.VALIDATION, queuemo.recipe.FASTVIEW],
+            monkeypatch=monkeypatch,
+            outpath=outpath,
+    ) as rt:  # pylint:disable=C0103
+        completed = rt.finish()
+    return completed

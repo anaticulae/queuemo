@@ -23,7 +23,7 @@ class RecipeIO:
     @property
     def sourcepath(self) -> str:
         """Path where pdf document is stored with file extention."""
-        resource = os.path.join(self.workspace, self.document)
+        resource = os.path.join(self.workspace, self.document, self.document)
         assert os.path.exists(resource), resource
         return resource
 

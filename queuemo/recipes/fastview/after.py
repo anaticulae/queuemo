@@ -7,9 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
-import utila
+import link
 
 import queuemo.recipes.api
 
@@ -19,5 +17,4 @@ def run(flow: queuemo.recipes.api.RecipeIO) -> list:
     completed."""
     # TODO: FOLDER MUST EXISTS, remove later
     # TODO: ADD STATUS INFORMATION LATER
-    donepath = os.path.join(flow.outpath, 'done')
-    utila.file_create(donepath)
+    link.finish_fastview(flow.document)

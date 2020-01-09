@@ -7,17 +7,19 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
+import link
+
 import queuemo
 import queuemo.recipe
 import tests
-from tests.fixtures.todo import copy_todo
 from tests.fixtures.todo import runtime
 
 
 def test_recipe_validation(testdir, monkeypatch):  # pylint:disable=W0621
     """Ensure to create validation result via `pdfinfo` tool"""
     workspace = str(testdir)
-    copy_todo(tests.resources.EXAMPLE_JOB, workspace)
     with runtime(
             workspace,
             tests.resources.EXAMPLE_JOB,
@@ -26,14 +28,15 @@ def test_recipe_validation(testdir, monkeypatch):  # pylint:disable=W0621
     ) as rt:  # pylint:disable=C0103
         with tests.increased_filecount(workspace, 'json'):
             completed = rt.next_step()
+        pdfinfo = link.pdfinfo(tests.resources.EXAMPLE_JOB)
     assert completed
+    assert os.path.exists(pdfinfo), pdfinfo
 
 
 def test_recipe_validation_failure(testdir, monkeypatch, capsys):  # pylint:disable=W0621
     """Ensure that validation tool stops with validation error on
     invalid, broken resource"""
     workspace = str(testdir)
-    copy_todo('broken_resource', workspace)
     with runtime(
             workspace,
             'broken_resource',

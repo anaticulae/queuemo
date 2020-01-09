@@ -16,9 +16,9 @@ general
 refactor
 --------
 
-* [ ] simplify fastview and use recipes API
+* [x] simplify fastview and use recipes API
 
-* [ ] simplify resultview and use recipes API
+* [x] simplify resultview and use recipes API
 
 documentation
 -------------
