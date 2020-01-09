@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.4.1
+
+### Fix
+
+* do not start a job twice (22126a72fc35)
+
 ## v0.4.0
 
 ### Feature
