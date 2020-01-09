@@ -8,23 +8,11 @@
 # =============================================================================
 """Load different recipes from this package."""
 import os
-from functools import partial
-from os.path import exists
-from os.path import join
-from os.path import split
-from typing import List
+import typing
 
+import rawmaker.cli as cli
+import utila
 import utila.test
-from rawmaker.cli import BOXES_FLOW
-from rawmaker.cli import CHAR_MARGIN
-from utila import SUCCESS
-from utila import copy_content
-from utila import error
-from utila import log
-
-from queuemo import ROOT
-
-PDF_FILE = 'work.pdf'
 
 DECIDER_FONTS = 'decider_fonts'
 FEED_DECIDER_BORDER = 'feedback_decider_border'
@@ -40,7 +28,7 @@ COMMON_VIEW_WORK = 'commonview'
 
 def run(
         runnable: str,
-        inpath: List[str],
+        inpath: typing.List[str],
         outpath: str = None,
         parameter: str = None,
         prefix: str = '',
@@ -49,7 +37,7 @@ def run(
     if isinstance(inpath, str):
         inpath = [inpath]
     for item in inpath:
-        assert exists(item), item
+        assert os.path.exists(item), item
 
     if prefix:
         prefix = '--prefix ' + prefix
@@ -68,18 +56,18 @@ def run(
         prefix,
         cmds,
     )
-    log('running: %s' % command)
+    utila.log('running: %s' % command)
     completed = utila.test.run(command)
 
-    log(completed.stdout)
-    assert completed.returncode == SUCCESS, completed.stdout + completed.stderr
-    assert exists(outpath)
+    utila.log(completed.stdout)
+    assert completed.returncode == utila.SUCCESS, completed.stdout + completed.stderr
+    assert os.path.exists(outpath)
 
     return completed.returncode
 
 
-CHAR_MARGIN_DEFAULT = float(CHAR_MARGIN.defaultvar)
-BOXES_FLOW_DEFAULT = float(BOXES_FLOW.defaultvar)
+CHAR_MARGIN_DEFAULT = float(cli.CHAR_MARGIN.defaultvar)
+BOXES_FLOW_DEFAULT = float(cli.BOXES_FLOW.defaultvar)
 
 
 def rawmaker(
@@ -103,8 +91,8 @@ def rawmaker(
     """
     if isinstance(inpath, str):
         inpath = [inpath]
-    kwargs[CHAR_MARGIN.name] = char_margin
-    kwargs[BOXES_FLOW.name] = boxes_flow
+    kwargs[cli.CHAR_MARGIN.name] = char_margin
+    kwargs[cli.BOXES_FLOW.name] = boxes_flow
     returncode = run(
         'rawmaker',
         inpath,
@@ -136,7 +124,7 @@ def sections(workspace: str, inputs: str, output: str = None):
 
 def feedback_analysis_statistica(
         workspace: str,
-        input_: List[str],
+        input_: typing.List[str],
         output: str = None,
 ):
     run('feedback_statistica', workspace, input_, output)
@@ -195,7 +183,7 @@ def feedback_view(inpath: str, output: str = None):
 
 def determine_name(filepath):
     assert filepath, str(filepath)
-    _, name = split(filepath)
+    _, name = os.path.split(filepath)
     name = name.replace('.py', '')
     return name
 
@@ -214,16 +202,16 @@ RUNNER = [
 def check(workspace: str):
     ret = 0
     for item in RUNNER:
-        log(' check %s ' % item, end='')
+        utila.log(' check %s ' % item, end='')
         result = utila.test.run('%s --version' % item, workspace)
-        log(result.stdout.strip())
+        utila.log(result.stdout.strip())
         if result.returncode:
-            error('Could not run %s' % item)
-            error(str(result))
+            utila.error('Could not run %s' % item)
+            utila.error(str(result))
         ret += result.returncode
     if ret:
         exit(ret)
-    log()  # add newline
+    utila.log()  # add newline
 
 
 def assert_validdocument(document: str):
