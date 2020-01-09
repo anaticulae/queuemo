@@ -9,7 +9,6 @@
 import dataclasses
 import os
 
-import configo
 import link
 import utila
 

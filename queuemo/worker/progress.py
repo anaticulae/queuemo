@@ -23,6 +23,7 @@ def update(jobid: int, progress: int):
 
 
 def start(jobid: int):
+    # TODO: Remove, replace with link
     path = progress_file(jobid)
     assert not os.path.exists(path), path
 
@@ -31,6 +32,7 @@ def start(jobid: int):
 
 
 def inprogress(jobid: int) -> bool:
+    # TODO: Remove, replace with link
     path = progress_file(jobid)
     return os.path.exists(path)
 

@@ -78,7 +78,6 @@ def step(job, waiting=WAITING, verbose: bool = True):
             utila.log('  Start job')
         work(workspace)
 
-        # push_result(workspace)
         if verbose:
             utila.log('Finished')
 
@@ -125,39 +124,6 @@ def copy(job):
     shutil.copytree(path, workspace)
 
     return workspace
-
-
-def push_result(workspace):
-    assert os.path.exists(workspace), str(workspace)
-    result = os.path.join(workspace, 'result')
-    assert os.path.exists(result), str(result)
-
-    ready_before = link.count_ready()
-
-    index = jobid(workspace)
-    ready_path = os.path.join(configo.ready(), index)
-
-    utila.log('Push result to: %s' % ready_path)
-    # Copy results
-    shutil.copytree(result, os.path.join(ready_path, 'result'))
-    # Copy info.yaml
-    info = utila.file_read(os.path.join(workspace, link.JOB_FILE_NAME))
-    utila.file_create(os.path.join(ready_path, link.JOB_FILE_NAME), info)
-
-    ready_after = link.count_ready()
-
-    assert ready_before + 1 == ready_after
-
-    assert configo.todo(), configo.todo()
-    assert index, index
-    current_todo = os.path.join(configo.todo(), index)
-    assert os.path.exists(current_todo), str(current_todo)
-    utila.log('Remove todo: %s' % current_todo)
-    shutil.rmtree(current_todo)
-    # Wait till deletion is completed
-    # TODO: Investigate here! Increase sleep? Check if todo is already in ready
-    time.sleep(1)
-    utila.log('Remove temp: %s' % workspace)
 
 
 def work(workspace):

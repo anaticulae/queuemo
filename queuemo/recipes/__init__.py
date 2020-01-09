@@ -23,7 +23,6 @@ from utila import error
 from utila import log
 
 from queuemo import ROOT
-from queuemo.tabstructure import load as load_tabstructure
 
 PDF_FILE = 'work.pdf'
 
@@ -37,10 +36,6 @@ FEEDBACK = 'feedback'
 RAWMAKER_OUTPUT = 'rawmaker'
 
 COMMON_VIEW_WORK = 'commonview'
-
-LAYOUT_PATH = join(ROOT, 'queuemo/layout.tab')
-assert exists(LAYOUT_PATH), str(LAYOUT_PATH)
-OUTPUT_LAYOUT = load_tabstructure(LAYOUT_PATH)
 
 
 def run(
@@ -196,37 +191,6 @@ def feedback_view(inpath: str, output: str = None):
     missing_outdir = os.path.join(output, 'feedback__view_pages')
     os.makedirs(missing_outdir, exist_ok=True)
     run(f'{FEEDBACK} --view', inpath, output)
-
-
-def copy(workspace: str, input_: str, output: str):
-    inputpath = join(workspace, input_)
-    outputpath = join(workspace, output) if output is not None else inputpath
-
-    assert exists(inputpath), inputpath
-
-    copy_content(inputpath, outputpath, recursive=True)
-
-
-def publish(rawspace: str, input_: str, output: str):
-    # TODO: add method publish_html, publish_image?
-    return
-    output = OUTPUT_LAYOUT.look(output)
-    output = join('../result', output)
-
-    inputpath = join(rawspace, input_)
-
-    output = join(output, 'index.html')
-    outputpath = join(rawspace, output)
-
-    assert exists(inputpath), inputpath
-
-    copy_content(inputpath, outputpath, recursive=True)
-
-
-# TODO: Make defining publishing structure easier, see below
-# statistica:6
-#     chapter:5
-#         words:4
 
 
 def determine_name(filepath):

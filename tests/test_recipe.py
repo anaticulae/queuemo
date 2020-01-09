@@ -7,107 +7,22 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-import shutil
-
-import pytest
 import utila
 
-import queuemo.recipes.setup as setup
-from queuemo.recipe import run as run_recipe
-from queuemo.recipes import COMMON_VIEW_WORK
-from queuemo.recipes.analysis import before as analysis_before
-from queuemo.recipes.commonview import after as commonview_after
-from queuemo.recipes.commonview import before as commonview_before
-from queuemo.recipes.commonview import run as commonview_run
-from queuemo.recipes.docsplit import before as docsplit_before
-from queuemo.recipes.docsplit import run as docsplit_run
-from queuemo.recipes.docsplit import workingpath as docsplit_workingpath
-from queuemo.recipes.extractraw import OUTPATH as RAWMAKER_OUTPATH
-from queuemo.recipes.extractraw import run as run_extractraw
-from queuemo.worker.scheduler import copy
-from tests import patch_todo
-from tests.resources import EXAMPLE_JOB
-from tests.resources import EXAMPLE_PDF
-
-
-@pytest.fixture
-def rawspace(testdir) -> str:
-    workspace = str(testdir)
-    workpdf = os.path.join(workspace,)
-    rawspacepath = os.path.join(workspace, 'raw')
-    # TODO: REMOVE AFTER UPGRADE
-    shutil.copy(EXAMPLE_PDF, workspace)
-    setup.run(workspace, EXAMPLE_JOB)
-
-    assert os.path.exists(workpdf), str(workpdf)
-    return rawspacepath
-
-
-@pytest.fixture
-def rawmaker_result(rawspace):  # pylint:disable=W0621
-    expected_result = os.path.join(rawspace, RAWMAKER_OUTPATH)
-    run_extractraw(rawspace)
-    assert os.path.exists(expected_result), str(expected_result)
-    return rawspace, expected_result
-
-
-@pytest.fixture
-def docsplit_result(rawmaker_result):  # pylint:disable=W0621
-    """Run rawmaker twice and extract sections"""
-    rawspace, _ = rawmaker_result  # pylint:disable=W0621
-    docsplit_before(rawspace)
-    docsplit_run(rawspace)
-
-    return rawspace, docsplit_workingpath(rawspace)
+import queuemo.recipe
+import queuemo.worker.scheduler
+import tests
+import tests.resources
 
 
 @utila.skip_longrun
 def test_recipe_run(testdir, monkeypatch):
     root = str(testdir)
-    with patch_todo(testdir, monkeypatch):
-        workspace = copy(EXAMPLE_JOB)
-        result = run_recipe(workspace, EXAMPLE_JOB, root)
+    with tests.patch_todo(testdir, monkeypatch):
+        workspace = queuemo.worker.scheduler.copy(tests.resources.EXAMPLE_JOB)
+        result = queuemo.recipe.run(
+            workspace,
+            tests.resources.EXAMPLE_JOB,
+            root,
+        )
     assert result, result
-
-
-def test_recipe_workspace_setup(rawspace):  # pylint:disable=W0621
-    rawspacepath = rawspace
-    assert os.path.exists(rawspacepath)
-
-
-@pytest.mark.xfail(reason='refactor scheduler')
-@utila.skip_longrun
-def test_recipe_extractraw_run(rawmaker_result):  # pylint:disable=W0621
-    result = os.listdir(rawmaker_result[1])
-
-    # this value may change in the future, but it is not so important. Existing
-    # files signals working feature.
-    circa_eight = 8
-    assert len(result) > circa_eight, str(result)
-
-
-@pytest.mark.xfail(reason='refactor scheduler')
-@utila.skip_longrun
-def test_recipe_docsplit_run(docsplit_result):  # pylint:disable=W0621
-    _, docsplitpath = docsplit_result
-    result = os.listdir(docsplitpath)
-    circa_fifteen = 15
-    assert len(result) >= circa_fifteen, str(result)
-
-
-@pytest.mark.xfail(reason='broken interface')
-@utila.skip_longrun
-def test_recipe_commonview_run(docsplit_result):  # pylint:disable=W0621
-    rawspace_, _ = docsplit_result
-
-    analysis_before(rawspace_)
-
-    commonview_before(rawspace_)
-    commonview_run(rawspace_)
-    commonview_after(rawspace_)
-
-    workingpath = os.path.join(rawspace_, COMMON_VIEW_WORK)
-    result = os.listdir(workingpath)
-
-    assert len(result) > 20, str(result)

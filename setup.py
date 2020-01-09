@@ -35,9 +35,6 @@ DATA_FILES = [
     ('config', [
         'config/decider_fonts_config__ugly_fonts.yaml',
     ]),
-    ('queuemo', [
-        'queuemo/layout.tab',
-    ]),
 ]
 
 if __name__ == "__main__":

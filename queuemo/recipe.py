@@ -35,13 +35,7 @@ import utila
 import utila.test
 
 import queuemo
-import queuemo.api
-import queuemo.recipes.analysis
-import queuemo.recipes.commonview
-import queuemo.recipes.docsplit
-import queuemo.recipes.extractraw
 import queuemo.recipes.runner
-import queuemo.recipes.setup
 
 # TODO: CHECK ONLY REQUIRED RUNNER
 RUNNER = [
