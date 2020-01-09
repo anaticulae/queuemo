@@ -27,6 +27,7 @@ def run_resultview(workspace, jobid, monkeypatch):
                 queuemo.recipe.VALIDATION,
                 queuemo.recipe.FASTVIEW,
                 queuemo.recipe.RESULT,
+                queuemo.recipe.PUBLISH,
             ],
             monkeypatch=monkeypatch,
     ) as rt:  # pylint:disable=C0103

@@ -17,8 +17,3 @@ def run(flow: queuemo.recipes.api.RecipeIO):
     completed."""
     # TODO: ADD STATUS INFORMATION LATER
     link.finish_resultview(flow.document)
-
-
-def after(flow: queuemo.recipes.api.RecipeIO):
-    # copy todo folder to result and create done folder
-    link.publish(flow.document)
