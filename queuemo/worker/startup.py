@@ -103,7 +103,7 @@ def nextjob() -> int:
             continue
         if queuemo.worker.progress.inprogress(jobnumber):
             continue
-        queuemo.worker.progress.start(jobnumber)
+        # return next job, start it by recipe runner
         return jobnumber
     return None
 
