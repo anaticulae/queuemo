@@ -6,3 +6,21 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+import os
+
+import queuemo
+import queuemo.runtime.scheduler
+
+RECIPES = os.path.join(queuemo.ROOT, 'queuemo', 'recipes')
+
+VALIDATION = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'validation'))
+FASTVIEW = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'fastview'))
+RESULT = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'result'))
+PUBLISH = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'publish'))
+
+ORDER = [
+    VALIDATION,
+    FASTVIEW,
+    RESULT,
+    PUBLISH,
+]

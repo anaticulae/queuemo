@@ -10,7 +10,6 @@
 import pytest
 import utila
 
-import queuemo.recipe
 import queuemo.recipes.fastview
 import queuemo.runtime.runtime
 import queuemo.runtime.scheduler
@@ -57,7 +56,7 @@ def run_fastview(workspace, jobid, monkeypatch):
     with tests.fixtures.todo.runtime(
             workspace,
             jobid,
-            recipes=[queuemo.recipe.VALIDATION, queuemo.recipe.FASTVIEW],
+            recipes=[queuemo.recipes.VALIDATION, queuemo.recipes.FASTVIEW],
             monkeypatch=monkeypatch,
     ) as rt:  # pylint:disable=C0103
         completed = rt.finish()

@@ -12,7 +12,7 @@ import os
 import link
 
 import queuemo
-import queuemo.recipe
+import queuemo.recipes
 import tests
 import tests.fixtures.todo
 
@@ -23,7 +23,7 @@ def test_recipe_validation(testdir, monkeypatch):  # pylint:disable=W0621
     with tests.fixtures.todo.runtime(
             workspace,
             tests.resources.EXAMPLE_JOB,
-            queuemo.recipe.VALIDATION,
+            queuemo.recipes.VALIDATION,
             monkeypatch,
     ) as rt:  # pylint:disable=C0103
         with tests.increased_filecount(workspace, 'json'):
@@ -40,7 +40,7 @@ def test_recipe_validation_failure(testdir, monkeypatch, capsys):  # pylint:disa
     with tests.fixtures.todo.runtime(
             workspace,
             'broken_resource',
-            queuemo.recipe.VALIDATION,
+            queuemo.recipes.VALIDATION,
             monkeypatch,
     ) as rt:  # pylint:disable=C0103
         with tests.increased_filecount(workspace, 'json'):

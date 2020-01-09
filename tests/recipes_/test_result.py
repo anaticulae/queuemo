@@ -12,7 +12,7 @@ import link
 import pytest
 import utila
 
-import queuemo.recipe
+import queuemo.recipes
 import queuemo.runtime.runtime
 import tests
 import tests.fixtures.todo
@@ -23,12 +23,7 @@ def run_resultview(workspace, jobid, monkeypatch):
     with tests.fixtures.todo.runtime(
             workspace,
             jobid,
-            recipes=[
-                queuemo.recipe.VALIDATION,
-                queuemo.recipe.FASTVIEW,
-                queuemo.recipe.RESULT,
-                queuemo.recipe.PUBLISH,
-            ],
+            recipes=queuemo.recipes.ORDER,
             monkeypatch=monkeypatch,
     ) as rt:  # pylint:disable=C0103
         completed = rt.finish()

@@ -16,7 +16,8 @@ import link
 import utila
 
 import queuemo
-import queuemo.recipe
+import queuemo.recipes
+import queuemo.runtime
 import queuemo.worker.progress
 
 MAX_RUNTIME = 60 * 60 * 24 * 365  # Run one year
@@ -131,7 +132,7 @@ def work(workspace):
     current = jobid(workspace)
     outpath = os.path.join(configo.todo(), current)
 
-    result = queuemo.recipe.run(workspace, jobid(workspace), outpath=outpath)
+    result = queuemo.runtime.run(workspace, jobid(workspace), outpath=outpath)
 
     update_info(outpath, result)
 

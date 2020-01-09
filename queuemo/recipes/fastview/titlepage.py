@@ -29,7 +29,6 @@ after
 publish linter result
 
 """
-import queuemo.recipe
 import queuemo.runnable
 import queuemo.runtime.api
 
