@@ -15,6 +15,5 @@ import queuemo.runtime.api
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     """Create a file named close to signal update hander that process is
     completed."""
-    # TODO: FOLDER MUST EXISTS, remove later
     # TODO: ADD STATUS INFORMATION LATER
     link.finish_fastview(flow.document)

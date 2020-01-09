@@ -104,30 +104,8 @@ def rawmaker(
     return returncode
 
 
-def analysis_statistica(workspace: str, inputs: str, output: str = None):
-    run('analysis_statistica', workspace, inputs, output)
-
-
 def groupme(inpath: str, output: str = None):
     run('groupme', inpath, output)
-
-
-def sections(workspace: str, inputs: str, output: str = None):
-    run(
-        SECTIONS,
-        workspace,
-        inputs,
-        output,
-        parameter='-j=4',
-    )
-
-
-def feedback_analysis_statistica(
-        workspace: str,
-        input_: typing.List[str],
-        output: str = None,
-):
-    run('feedback_statistica', workspace, input_, output)
 
 
 def detector(inpath: str, outpath: str = None):
@@ -138,40 +116,12 @@ def detector_titlepage(inpath: str, outpath: str = None):
     run('detector --titlepage', inpath, outpath)
 
 
-def decider_decider(workspace: str, input_: str, output: str = None):
-    run('decider', workspace, input_, output)
-
-
 def decider_titlepage(inpath: str, output: str = None):
     run('decider --titlepage', inpath, output)
 
 
 def decider_toc(inpath: str, output: str = None):
     run('decider --toc', inpath, output)
-
-
-def decider_border(workspace: str, input_: str, output: str = None):
-    run('decider_border', workspace, input_, output)
-
-
-def decider_fonts(workspace: str, input_: str, output: str = None):
-    run(DECIDER_FONTS, workspace, input_, output)
-
-
-def feedback_decider_border(workspace: str, input_: str, output: str = None):
-    run(FEED_DECIDER_BORDER, workspace, input_, output)
-
-
-def feedback_decider_fonts(workspace: str, input_: str, output: str = None):
-    run(FEED_DECIDER_FONTS, workspace, input_, output)
-
-
-def words(workspace: str, input_: str, output: str = None):
-    run(WORDS, workspace, input_, output, parameter='-j=4')
-
-
-def feedback(workspace: str, input_: str, output: str = None):
-    run(FEEDBACK, workspace, input_, output)
 
 
 def feedback_view(inpath: str, output: str = None):
