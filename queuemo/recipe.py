@@ -43,6 +43,7 @@ import queuemo.recipes.extractraw
 import queuemo.recipes.runner
 import queuemo.recipes.setup
 
+# TODO: CHECK ONLY REQUIRED RUNNER
 RUNNER = [
     'analysis_statistica',
     'decider_border',
@@ -50,6 +51,7 @@ RUNNER = [
     'feedback_statistica',
     'groupme',
     'rawmaker',
+    'pdfinfo',
 ]
 RECIPES = os.path.join(queuemo.ROOT, 'queuemo', 'recipes')
 
