@@ -30,7 +30,6 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     completed = queuemo.runnable.rawmaker(
         inpath=pdf,
         outpath=flow.tmppath,
-        pages='0:5',
     )
     assert completed == utila.SUCCESS, str(completed)
     return [completed]
