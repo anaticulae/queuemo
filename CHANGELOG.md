@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v0.4.2
+
+### Feature
+
+* extract and present whole document (bb2f256d72fa)
+* publish linter results to result view also (d75ed89baee2)
+* reduce runtime of rawmaker application (b55e35df6903)
+
 ## v0.4.1
 
 ### Fix
