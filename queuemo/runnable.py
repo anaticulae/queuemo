@@ -97,7 +97,7 @@ def rawmaker(
         'rawmaker',
         inpath,
         outpath,
-        '-j=4',
+        '-j=8',
         prefix,
         **kwargs,
     )
