@@ -124,6 +124,10 @@ def decider_toc(inpath: str, output: str = None):
     run('decider --toc', inpath, output)
 
 
+def decider_border_detecion(inpath: str, output: str = None):
+    run('decider_border --detection', inpath, output)
+
+
 def feedback_view(inpath: str, output: str = None):
     # TODO: Remove after feedview is working correctly
     missing_outdir = os.path.join(output, 'feedback__view_pages')

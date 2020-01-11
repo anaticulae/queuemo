@@ -12,6 +12,15 @@ import queuemo.runnable
 import queuemo.runtime.api
 
 
+def before(flow: queuemo.runtime.api.RecipeIO):
+    queuemo.runnable.decider_border_detecion(
+        inpath=[
+            flow.general,
+        ],
+        output=flow.general,
+    )
+
+
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.feedback_view(
         inpath=[

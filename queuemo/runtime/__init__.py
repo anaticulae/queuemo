@@ -22,7 +22,6 @@ import queuemo.recipes
 RUNNER = [
     'analysis_statistica',
     'decider_border',
-    'feedback_decider_border',
     'feedback_statistica',
     'groupme',
     'rawmaker',
