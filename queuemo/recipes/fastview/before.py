@@ -21,7 +21,6 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
-
     # TODO: REMOVE AFTER UPGRADING RAWMAKER WHICH SUPPORTS FILES AS INPUT
     pdf = os.path.join(flow.tmppath, 'work.pdf')
     utila.file_copy(flow.sourcepath, pdf)
@@ -36,6 +35,14 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
         char_margin=100,
         line_margin=0.1,
     )
+    assert completed == utila.SUCCESS, str(completed)
 
+    # TODO: RUN IN PARALLEL
+    # TODO: ADD TOC SELECTOR to find locatino of table of content
+    completed = queuemo.runnable.rawmaker(
+        inpath=pdf,
+        outpath=flow.tmppath,
+        pages='0:10',
+    )
     assert completed == utila.SUCCESS, str(completed)
     return [completed]

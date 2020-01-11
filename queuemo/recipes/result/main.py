@@ -9,6 +9,5 @@
 
 ORDER = [
     'validation',
-    'toc',
     'view',
 ]

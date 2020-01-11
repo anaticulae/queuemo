@@ -25,7 +25,6 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.feedback_view(
         inpath=[
             flow.general,
-            flow.package('toc'),
         ],
         output=flow.tmppath,
     )

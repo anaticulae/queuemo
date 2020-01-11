@@ -10,7 +10,13 @@
 import queuemo.runnable
 import queuemo.runtime.api
 
+PREFIX = '05'
+
 
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.groupme(flow.general, flow.tmppath)
     queuemo.runnable.decider_toc(flow.tmppath, flow.tmppath)
+
+
+def after(flow: queuemo.runtime.api.RecipeIO):
+    flow.publish_linting()
