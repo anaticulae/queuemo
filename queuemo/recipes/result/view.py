@@ -17,14 +17,16 @@ def before(flow: queuemo.runtime.api.RecipeIO):
         inpath=[
             flow.general,
         ],
-        output=flow.general,
+        output=flow.tmppath,
     )
+    flow.publish_linting(fastview=False)
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.feedback_view(
         inpath=[
             flow.general,
+            flow.tmppath,
         ],
         output=flow.tmppath,
     )
