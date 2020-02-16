@@ -11,7 +11,6 @@ import configo
 import utila
 import utila.cli
 
-import queuemo
 import queuemo.worker.startup
 
 PROCESS_NAME = 'queuemo'
