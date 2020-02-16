@@ -8,6 +8,7 @@
 # =============================================================================
 import dataclasses
 import os
+import textwrap
 
 import link
 import utila
@@ -72,3 +73,14 @@ class RecipeIO:
         if folder is not None:
             source = os.path.join(self.tmppath, folder)
         utila.copy_content(source, self.outpath, pattern=pattern)
+
+    def __str__(self):
+        return textwrap.dedent(f"""\
+            document:   {self.document}
+            general:    {self.general}
+            main:       {self.main}
+            outpath:    {self.outpath}
+            sourcepath: {self.sourcepath}
+            tmppath:    {self.tmppath}
+            workspace:  {self.workspace}
+        """)
