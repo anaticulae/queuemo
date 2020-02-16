@@ -13,6 +13,12 @@ import textwrap
 import link
 import utila
 
+import queuemo.utils
+
+# TODO: REMOVE AFTER UPGRADING UTILA
+utila.file.copy_content = queuemo.utils.copy_content
+utila.copy_content = queuemo.utils.copy_content
+
 
 @dataclasses.dataclass
 class RecipeIO:
