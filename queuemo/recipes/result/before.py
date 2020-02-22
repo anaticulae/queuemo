@@ -32,4 +32,10 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         outpath=flow.tmppath,
     )
     assert completed == utila.SUCCESS, str(completed)
+
+    completed = queuemo.runnable.linero(
+        inpath=flow.tmppath,
+        output=flow.tmppath,
+    )
+    assert completed == utila.SUCCESS, str(completed)
     return [completed]

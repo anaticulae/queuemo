@@ -13,12 +13,6 @@ import textwrap
 import link
 import utila
 
-import queuemo.utils
-
-# TODO: REMOVE AFTER UPGRADING UTILA
-utila.file.copy_content = queuemo.utils.copy_content
-utila.copy_content = queuemo.utils.copy_content
-
 
 @dataclasses.dataclass
 class RecipeIO:
@@ -63,7 +57,7 @@ class RecipeIO:
     def publish_linting(self, fastview: bool = True, verbose: bool = False):
         """Publish to fastview and if exists to result also"""
         if fastview:
-            queuemo.utils.copy_content(
+            utila.copy_content(
                 self.tmppath,
                 self.outpath,
                 pattern='*_user.yaml',
@@ -72,7 +66,7 @@ class RecipeIO:
         resultview = link.resultview(self.document)
         # TODO: CHECK TO AVOID COPING DOUBLE WHEN USING IN RESULT VIEW
         if os.path.exists(resultview):
-            queuemo.utils.copy_content(
+            utila.copy_content(
                 self.tmppath,
                 resultview,
                 pattern='*_user.yaml',

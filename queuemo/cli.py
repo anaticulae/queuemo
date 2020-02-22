@@ -40,9 +40,9 @@ COMMANDS = [
 def main():
     parser = utila.cli.create_parser(
         todo=COMMANDS,
+        config=utila.ParserConfiguration(verboseflag=True),
         prog=PROCESS_NAME,
         version=queuemo.__version__,
-        verboseflag=True,
     )
     args = utila.parse(parser)
     try:

@@ -10,4 +10,5 @@
 
 import queuemo.cli
 
-queuemo.cli.main()
+if __name__ == "__main__":
+    queuemo.cli.main()

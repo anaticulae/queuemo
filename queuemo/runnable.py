@@ -10,9 +10,10 @@
 import os
 import typing
 
-import rawmaker.cli as cli
 import utila
 import utila.test
+
+import rawmaker.cli as cli
 
 DECIDER_FONTS = 'decider_fonts'
 FEED_DECIDER_BORDER = 'feedback_decider_border'
@@ -102,6 +103,10 @@ def rawmaker(
         **kwargs,
     )
     return returncode
+
+
+def linero(inpath: str, output: str = None):
+    return run('linero', inpath, output)
 
 
 def groupme(inpath: str, output: str = None):
