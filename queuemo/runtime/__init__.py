@@ -19,6 +19,7 @@ import queuemo
 import queuemo.recipes
 
 # TODO: CHECK ONLY REQUIRED RUNNER
+# DUPLICATED: SEE OTHER RUNNER!
 RUNNER = [
     'analysis_statistica',
     'decider_border',
