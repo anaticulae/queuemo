@@ -33,6 +33,16 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     assert completed == utila.SUCCESS, str(completed)
 
+    completed = queuemo.runnable.rawmaker(
+        inpath=pdf,
+        outpath=flow.tmppath,
+        prefix='oneline',
+        boxes_flow=1.0,
+        char_margin=100,
+        line_margin=0.1,
+    )
+    assert completed == utila.SUCCESS, str(completed)
+
     completed = queuemo.runnable.linero(
         inpath=flow.tmppath,
         output=flow.tmppath,
