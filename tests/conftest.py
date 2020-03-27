@@ -14,10 +14,9 @@ import tests.update
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
-if not 'PYTEST_XDIST_WORKER' in os.environ:
-    # master process only
-    # ensure to avoid race condition if more than one thread tries to
-    # install or use rawmaker
+def pytest_sessionstart(session):  # pylint:disable=W0613
+    if 'PYTEST_XDIST_WORKER' in os.environ:
+        return
 
     if 'GENERATE' in os.environ or utila.test.LONGRUN:
         utila.log('install requirements')
@@ -27,5 +26,5 @@ if not 'PYTEST_XDIST_WORKER' in os.environ:
 
         tests.update.extract_examples()
 
-for item in tests.resources.REQUIRED_RESOURCES:
-    assert os.path.exists(item), str(item)
+    for item in tests.resources.REQUIRED_RESOURCES:
+        assert os.path.exists(item), str(item)
