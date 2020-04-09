@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v0.4.3
+
+### Feature
+
+* run rawmaker oneline configuration for decider module (fa06d3bb3809)
+* add border distance check to result view (13839a84bd67)
+* make publish step selectable (f49914f64de6)
+* add copy method which supports logging copy-operations (9e1b0837e7ae)
+* add __str__ to extend debugging facility (bd47f15e1606)
+* add toc validator to fast view analysis (de77d95597df)
+
+### Fix
+
+* put border validation results to correct folder (8e1b14a98034)
+
 ## v0.4.2
 
 ### Feature
