@@ -20,7 +20,7 @@ def content(capture):
     return capture.readouterr().out
 
 
-@utila.skip_longrun
+@utila.skip_nightly
 def test_run_steps(capsys, testdir, monkeypatch):
     queuemo.worker.startup.step(None)
     assert 'Wait' in content(capsys)

@@ -43,7 +43,6 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
     assert completed
 
 
-@utila.skip_longrun
 @pytest.mark.parametrize(
     'jobid',
     [
@@ -56,6 +55,7 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
         'page_83_noimages_toc',
         'page_89_noimages_toc',
     ])
+@utila.skip_nightly
 def test_recipe_result_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
     completed = run_resultview(

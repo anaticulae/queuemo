@@ -40,7 +40,7 @@ def test_run_one_job(monkeypatch, testdir, capsys):
     )
 
 
-@utila.skip_longrun
+@utila.skip_nightly
 def test_run_queuemo(testdir):
     command = 'queuemo --runtime=2'
     root = str(testdir)
