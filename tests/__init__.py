@@ -8,11 +8,8 @@
 #==============================================================================
 
 import contextlib
-import glob
 import os
 import shutil
-
-import utila
 
 import tests.resources
 
@@ -22,7 +19,8 @@ def patch_todo(testdir, monkeypatch, copy=True):
     """Change todo path to avoid overriding test data.
 
     Args:
-        testdir: path where working data is written
+        testdir(fixture): path where working data is written
+        monkeypatch(fixture): to patch environment variables
         copy(bool): sync data of todo folder
     Yields:
         None: in current working location with setuped environment variables
@@ -53,17 +51,3 @@ def patch_todo(testdir, monkeypatch, copy=True):
         copy[READY] = readypath
         context.setattr(os, 'environ', copy)
         yield
-
-
-@contextlib.contextmanager
-def increased_filecount(path: str, ending: str = None):
-    """Ensure to create some files while running operations in yieldet
-    state."""
-    # TODO: MOVE TO UTILA TEST
-    assert os.path.exists(path), str(path)
-    pattern = '**/*.*' if ending is None else f'**/*.{ending}'
-    with utila.chdir(path):
-        before = list(glob.glob(pattern, recursive=True))
-        yield
-        after = list(glob.glob(pattern, recursive=True))
-    assert len(after) > len(before), f'{before}\n\n{after}'
