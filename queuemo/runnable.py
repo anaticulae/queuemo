@@ -73,19 +73,20 @@ BOXES_FLOW_DEFAULT = float(cli.BOXES_FLOW.defaultvar)
 def rawmaker(
         inpath: str,
         outpath: str = None,
-        prefix='',
+        prefix: str = '',
         char_margin: float = CHAR_MARGIN_DEFAULT,
         boxes_flow: float = BOXES_FLOW_DEFAULT,
         **kwargs,
 ) -> int:
-    """Run external rawmaker
+    """Run external rawmaker.
 
     Args:
-        workspace(str): working path were input/output is relativ
         inpath(str): relative input path
         outpath(str): relative output path
         prefix(str): to extend the output name with a prefix
-        kwargs(dict):
+        char_margin(float): maximal distance between two chars
+        boxes_flow(float): ratio betwee horizontal and vertical analysis
+        kwargs(dict): ???
     Returns:
         0 if process succeeded else failure code
     """

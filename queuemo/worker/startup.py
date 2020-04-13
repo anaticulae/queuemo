@@ -109,13 +109,7 @@ def nextjob() -> int:
 
 
 def copy(job):
-    """Copy job to temporary workspace folder
-
-    Args:
-        job(int):
-    Returns:
-        path to temporary workspace
-    """
+    """Copy job to temporary workspace folder."""
     path = os.path.join(configo.todo(), job)
     assert os.path.exists(path), str(path)
 
