@@ -136,6 +136,13 @@ def decider_border_distance(inpath: str, output: str = None):
     run('decider_border --distance', inpath, output)
 
 
+def feedback_images(inpath: str, output: str = None):
+    # TODO: Remove after feedview is working correctly
+    missing_outdir = os.path.join(output, 'feedback__view_pages')
+    os.makedirs(missing_outdir, exist_ok=True)
+    run(f'{FEEDBACK} --images', inpath, output)
+
+
 def feedback_view(inpath: str, output: str = None):
     # TODO: Remove after feedview is working correctly
     missing_outdir = os.path.join(output, 'feedback__view_pages')

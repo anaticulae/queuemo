@@ -35,6 +35,12 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    queuemo.runnable.feedback_images(
+        inpath=[
+            flow.general,
+        ],
+        output=flow.tmppath,
+    )
     queuemo.runnable.feedback_view(
         inpath=[
             flow.general,
@@ -46,3 +52,5 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     # For example generate: 0.html, 1.html etc. nor package_0.html,
     # package_1.html
     flow.publish(folder='feedback__view_pages', pattern='*.html')
+    flow.publish(folder='feedback__view_pages', pattern='*.jpg')
+    flow.publish(folder='feedback__view_pages', pattern='*.png')
