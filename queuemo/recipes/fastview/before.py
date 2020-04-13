@@ -6,7 +6,6 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-import os
 
 import link
 import utila
@@ -21,12 +20,8 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
-    # TODO: REMOVE AFTER UPGRADING RAWMAKER WHICH SUPPORTS FILES AS INPUT
-    pdf = os.path.join(flow.tmppath, 'work.pdf')
-    utila.file_copy(flow.sourcepath, pdf)
-
     completed = queuemo.runnable.rawmaker(
-        inpath=pdf,
+        inpath=flow.sourcepath,
         outpath=flow.tmppath,
         prefix='oneline',
         pages='0',
@@ -40,7 +35,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     # TODO: RUN IN PARALLEL
     # TODO: ADD TOC SELECTOR to find locatino of table of content
     completed = queuemo.runnable.rawmaker(
-        inpath=pdf,
+        inpath=flow.sourcepath,
         outpath=flow.tmppath,
         pages='0:10',
     )
