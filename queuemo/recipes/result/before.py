@@ -24,8 +24,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
-    pdf = os.path.join(flow.tmppath, 'work.pdf')
-    utila.file_copy(flow.sourcepath, pdf)
+    pdf = flow.sourcepath
 
     completed = queuemo.runnable.rawmaker(
         inpath=pdf,
