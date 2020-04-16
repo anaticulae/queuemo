@@ -10,14 +10,14 @@
 ===========
 
 The result view contains a page based analysis of the document. The view
-is generated after running all the linters. This view is presented as
+is generated after running all the linter's. This view is presented as
 main view to the user.
 
 Requirements:
 
-* The result view must be able to continously procudes new linting.
-  Therfore the view must be updateable and the new findings should come
-  in as messages which increases the error counter.
+* The result view must be able to continuously produces new linting.
+  Therefore the view must be update able and the new findings should
+  come in as messages which increases the error counter.
 
 * There are no hard timing requirements, but 5 minutes must be the upper
   limit to have a nice user experience.
@@ -25,5 +25,4 @@ Requirements:
 Features:
 
 * Table of content
-
 """
