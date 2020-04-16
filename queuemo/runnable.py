@@ -137,6 +137,14 @@ def decider_border_distance(inpath: str, output: str = None):
     run('decider_border --distance', inpath, output)
 
 
+def textflow_lineending(inpath: str, output: str = None):
+    run('textflow --lineending', inpath, output)
+
+
+def decider_textflow_lineending(inpath: str, output: str = None):
+    run('decider_textflow --lineending', inpath, output)
+
+
 def feedback_images(inpath: str, output: str = None):
     # TODO: Remove after feedview is working correctly
     missing_outdir = os.path.join(output, 'feedback__view_pages')

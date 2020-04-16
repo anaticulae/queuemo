@@ -9,5 +9,6 @@
 
 ORDER = [
     'validation',
+    'textflow',
     'view',
 ]

@@ -43,6 +43,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     queuemo.runnable.feedback_view(
         inpath=[
+            flow.package('textflow'),
             flow.general,
             flow.tmppath,
         ],
