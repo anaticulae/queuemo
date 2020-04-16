@@ -7,7 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
+import concurrent
+import functools
 
 import link
 import utila
@@ -26,25 +27,43 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 def run(flow: queuemo.runtime.api.RecipeIO):
     pdf = flow.sourcepath
 
-    completed = queuemo.runnable.rawmaker(
-        inpath=pdf,
-        outpath=flow.tmppath,
-    )
-    assert completed == utila.SUCCESS, str(completed)
+    todo = []
+    todo.append(
+        functools.partial(
+            queuemo.runnable.rawmaker,
+            inpath=pdf,
+            outpath=flow.tmppath,
+        ))
+    todo.append(
+        functools.partial(
+            queuemo.runnable.rawmaker,
+            inpath=pdf,
+            outpath=flow.tmppath,
+            prefix='oneline',
+            boxes_flow=1.0,
+            char_margin=100,
+            line_margin=0.1,
+        ))
+    completed = run_parallel(*todo)
 
-    completed = queuemo.runnable.rawmaker(
-        inpath=pdf,
-        outpath=flow.tmppath,
-        prefix='oneline',
-        boxes_flow=1.0,
-        char_margin=100,
-        line_margin=0.1,
-    )
-    assert completed == utila.SUCCESS, str(completed)
-
+    # ensure rawmaker is completed before running linero
     completed = queuemo.runnable.linero(
         inpath=flow.tmppath,
         output=flow.tmppath,
     )
     assert completed == utila.SUCCESS, str(completed)
     return [completed]
+
+
+def run_parallel(*items, worker=2) -> int:
+    ret = 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=worker) as executor:
+        futures = {executor.submit(item): item for item in items}
+        for future in concurrent.futures.as_completed(futures):
+            try:
+                future.result()
+            except Exception as error:  # pylint:disable=broad-except
+                utila.error(f'{future} failed.')
+                utila.error(error)
+                ret += 1
+    return ret
