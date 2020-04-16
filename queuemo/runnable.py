@@ -110,7 +110,7 @@ def linero(inpath: str, output: str = None):
 
 
 def groupme(inpath: str, output: str = None):
-    run('groupme', inpath, output)
+    run('groupme -j8', inpath, output)
 
 
 def detector(inpath: str, outpath: str = None):
