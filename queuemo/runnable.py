@@ -171,7 +171,7 @@ RUNNER = [
     'decider_border',
     'feedback',
     'feedback_decider_border',
-    'feedback_statistica',
+    # 'feedback_statistica',
     'groupme',
     'rawmaker',
 ]

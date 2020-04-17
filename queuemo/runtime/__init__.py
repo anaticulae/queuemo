@@ -21,9 +21,9 @@ import queuemo.recipes
 # TODO: CHECK ONLY REQUIRED RUNNER
 # DUPLICATED: SEE OTHER RUNNER!
 RUNNER = [
-    'analysis_statistica',
+    # 'analysis_statistica',
     'decider_border',
-    'feedback_statistica',
+    # 'feedback_statistica',
     'groupme',
     'rawmaker',
     'pdfinfo',
