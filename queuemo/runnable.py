@@ -138,11 +138,15 @@ def decider_border_distance(inpath: str, output: str = None):
 
 
 def textflow_lineending(inpath: str, output: str = None):
-    run('textflow --lineending', inpath, output)
+    # TODO: Enable later; activate after utila supports selective inputs
+    # run('textflow --lineending', inpath, output)
+    run('textflow', inpath, output)
 
 
 def decider_textflow_lineending(inpath: str, output: str = None):
-    run('decider_textflow --lineending', inpath, output)
+    # TODO: Enable later; activate after utila supports selective inputs
+    # run('decider_textflow --lineending', inpath, output)
+    run('decider_textflow', inpath, output)
 
 
 def feedback_images(inpath: str, output: str = None):
