@@ -171,26 +171,26 @@ def determine_name(filepath):
 
 
 RUNNER = [
-    'analysis_statistica',
     'decider_border',
+    'decider_textflow',
     'feedback',
     'feedback_decider_border',
-    # 'feedback_statistica',
     'groupme',
     'rawmaker',
+    'textflow',
 ]
 
 
-def check(workspace: str):
-    ret = 0
-    for item in RUNNER:
-        utila.log(' check %s ' % item, end='')
-        result = utila.test.run('%s --version' % item, workspace)
-        utila.log(result.stdout.strip())
-        if result.returncode:
-            utila.error('Could not run %s' % item)
-            utila.error(str(result))
-        ret += result.returncode
+def check(runner=None):
+    if runner is None:
+        runner = RUNNER
+    # TODO: ADD AFTER UPGRADIG UTILA add --version --verbose
+    todo = [f'{process} --version' for process in runner]
+    # TODO USE VERBOSE FLAG ON RUN_PARALLEL
+    for item in runner:
+        utila.log(f'check: {item}')
+    # run in parallel to reduce startup time
+    ret = utila.run_parallel(todo)
     if ret:
         exit(ret)
     utila.log()  # add newline

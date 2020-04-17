@@ -17,6 +17,7 @@ import utila.test
 
 import queuemo
 import queuemo.recipes
+import queuemo.runnable
 
 # TODO: CHECK ONLY REQUIRED RUNNER
 # DUPLICATED: SEE OTHER RUNNER!
@@ -31,7 +32,7 @@ RUNNER = [
 
 
 def run(workspace: str, document: str, outpath: str) -> int:
-    check(workspace)
+    queuemo.runnable.check(RUNNER)
 
     runtime = queuemo.runtime.runtime.RecipeRuntime(
         workspace=workspace,
@@ -53,18 +54,3 @@ def run(workspace: str, document: str, outpath: str) -> int:
 
     # TODO: We need a custom result
     return 95
-
-
-def check(workspace: str):
-    ret = 0
-    for item in RUNNER:
-        utila.log(' check %s ' % item, end='')
-        result = utila.test.run('%s --version' % item, workspace)
-        utila.log(result.stdout.strip())
-        if result.returncode:
-            utila.error('Could not run %s' % item)
-            utila.error(str(result))
-        ret += result.returncode
-    if ret:
-        exit(ret)
-    utila.log()  # add newline
