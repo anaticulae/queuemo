@@ -12,17 +12,28 @@ import queuemo.runnable
 import queuemo.runtime.api
 
 
+def before(flow: queuemo.runtime.api.RecipeIO):
+    queuemo.runnable.groupme(
+        inpath=[flow.general],
+        output=flow.general,
+    )
+    queuemo.runnable.sections(
+        inpath=[flow.general],
+        output=flow.general,
+    )
+    queuemo.runnable.words(
+        inpath=[flow.general],
+        output=flow.general,
+    )
+
+
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.textflow_lineending(
-        inpath=[
-            flow.general,
-        ],
+        inpath=[flow.general],
         output=flow.tmppath,
     )
     queuemo.runnable.decider_textflow_lineending(
-        inpath=[
-            flow.tmppath,
-        ],
+        inpath=[flow.tmppath],
         output=flow.tmppath,
     )
 

@@ -113,6 +113,14 @@ def groupme(inpath: str, output: str = None):
     run('groupme -j8', inpath, output)
 
 
+def sections(inpath: str, output: str = None):
+    run('sections -j8', inpath, output)
+
+
+def words(inpath: str, output: str = None):
+    run('words -j8', inpath, output)
+
+
 def detector(inpath: str, outpath: str = None):
     run('detector', inpath, outpath)
 
