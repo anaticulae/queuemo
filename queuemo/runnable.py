@@ -42,8 +42,7 @@ def run(
     if prefix:
         prefix = '--prefix ' + prefix
 
-    cmds = ['--%s %s' % (param, value) for (param, value) in kwargs.items()]
-    cmds = ' '.join(cmds)
+    cmds = kwargs_to_parameter(kwargs)
     # single inputpath does not produces -i, see str.join docu
     inputpath = ' -i '.join(inpath)
 
@@ -64,6 +63,21 @@ def run(
     assert os.path.exists(outpath)
 
     return completed.returncode
+
+
+def kwargs_to_parameter(args: dict) -> str:
+    if not args:
+        return ''
+    cmds = []
+    for param, value in args.items():
+        if value is True:
+            cmds.append(f'--{param}')
+        elif value is False:
+            continue
+        else:
+            cmds.append(f'--{param} {value}')
+    result = ' '.join(cmds)
+    return result
 
 
 CHAR_MARGIN_DEFAULT = float(cli.CHAR_MARGIN.defaultvar)
