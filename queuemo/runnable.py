@@ -185,13 +185,6 @@ def feedback_view(inpath: str, output: str = None):
     run(f'{FEEDBACK} --view', inpath, output)
 
 
-def determine_name(filepath):
-    assert filepath, str(filepath)
-    _, name = os.path.split(filepath)
-    name = name.replace('.py', '')
-    return name
-
-
 RUNNER = [
     'decider_border',
     'decider_textflow',
