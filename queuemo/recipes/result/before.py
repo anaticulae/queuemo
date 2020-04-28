@@ -33,6 +33,13 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             queuemo.runnable.rawmaker,
             inpath=pdf,
             outpath=flow.tmppath,
+            text=True,
+            font=True,
+            border=True,
+            boxes=True,
+            images=True,
+            line=True,
+            toc=True,
         ))
     todo.append(
         functools.partial(
@@ -43,6 +50,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             boxes_flow=1.0,
             char_margin=100,
             line_margin=0.1,
+            text=True,
         ))
     completed = run_parallel(*todo)
 
