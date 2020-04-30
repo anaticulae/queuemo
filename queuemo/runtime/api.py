@@ -34,17 +34,11 @@ class RecipeIO:
         if self.tmppath.endswith('.tmp'):
             return self.tmppath
         result = os.path.join(self.tmppath, '../.tmp')
-        # TODO: REMOVE AFTER FIXING UTILA.COPY_CONTENT, there is a problem
-        result = os.path.normpath(result)
         return result
 
     @property
     def main(self) -> str:
         parent = os.path.join(self.outpath, '..')
-        # TODO: REMOVE AFTER FIXING UTILA.COPY_CONTENT, there is a problem
-        # with detecting file path correctly which leads to create an
-        # unnecessary folder.
-        parent = os.path.normpath(parent)
         return parent
 
     def package(self, item) -> str:
