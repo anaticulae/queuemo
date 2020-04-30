@@ -2,6 +2,26 @@
 
 Every noteable change is logged here.
 
+## v0.5.0
+
+### Feature
+
+* public words sentence result (1e2eef4e7ff9)
+* reduces executed steps (fee27e31f809)
+* enable converting boolean to flag (4a0a33274d4a)
+* add textflow decider to runnable (0072c82fcc98)
+* reduce startup time and remove duplicated code (4a3e1bb300f0)
+* run groupme with multiple processes (fd5c03fc3bd8)
+* run rawmaker extractor in parallel (13961e541ed7)
+* add textflow validation and publishing step (eebb29ca0816)
+* extract images and publish (ec2d840647b5)
+
+### Fix
+
+* enable required analysis (12186ef4afb8)
+* do not copy cause rawmaker supports inpath without file ext (5e154c1b920b)
+* use new rawmaker feature and access file directly (58027cbe5b4a)
+
 ## v0.4.3
 
 ### Feature
