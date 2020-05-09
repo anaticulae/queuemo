@@ -40,7 +40,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
         pages='0:10',
         text=True,
         fonts=True,
-        toc=True,
+        outlines=True,
         line=True,
         border=True,
         boxes=True,

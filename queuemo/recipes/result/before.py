@@ -39,7 +39,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             boxes=True,
             images=True,
             line=True,
-            toc=True,
+            outlines=True,
         ))
     todo.append(
         functools.partial(
