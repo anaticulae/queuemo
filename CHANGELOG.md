@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.5.2
+
+### Fix
+
+* decrease job count only when job was successfully selected (44331b9b9038)
+
 ## v0.5.1
 
 ### Feature
