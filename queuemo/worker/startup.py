@@ -51,8 +51,9 @@ def run(
     while tick < runtime and jobs > 0:
         job = nextjob()
         try:
-            jobs -= 1
-            utila.log(f'jobs remaining: {jobs}')
+            if job is not None:
+                jobs -= 1
+                utila.log(f'jobs remaining: {jobs}')
             step(job, waiting=waiting, verbose=verbose)
         except Exception:  # pylint: disable=broad-except
             utila.log_stacktrace()
