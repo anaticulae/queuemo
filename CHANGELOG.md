@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.5.1
+
+### Feature
+
+* add second counter to determine ending of scheduler (11308719f8e3)
+
 ## v0.5.0
 
 ### Feature
