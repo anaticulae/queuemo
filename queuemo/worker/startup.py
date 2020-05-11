@@ -22,11 +22,13 @@ import queuemo.worker.progress
 
 MAX_RUNTIME = 60 * 60 * 24 * 365  # Run one year
 WAITING = 1000  # ms, 1 second
+JOBSLEFT = 1000
 
 
 def run(
         runtime: float = MAX_RUNTIME,
         waiting: float = WAITING,
+        jobs: int = JOBSLEFT,
         verbose: bool = True,
 ) -> int:
     """Run the scheduler
@@ -34,6 +36,8 @@ def run(
     Args:
         runtime(float): runtime in seconds
         waiting(float): waiting time in mili-seconds
+        jobs(int): maximal number of executed jobs, decrease for every
+                   step and stop if no jobs are left.
         verbose(bool): increase logging if True
     Returns:
         SUCCESS when scheduler ends, or Exception, when runtime error occurs
@@ -44,9 +48,11 @@ def run(
     if not waiting:
         waiting = 1
     tick = 0
-    while tick < runtime:
+    while tick < runtime and jobs > 0:
         job = nextjob()
         try:
+            jobs -= 1
+            utila.log(f'jobs remaining: {jobs}')
             step(job, waiting=waiting, verbose=verbose)
         except Exception:  # pylint: disable=broad-except
             utila.log_stacktrace()
