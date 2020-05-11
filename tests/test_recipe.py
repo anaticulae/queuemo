@@ -15,7 +15,7 @@ import tests
 import tests.resources
 
 
-@utila.skip_longrun
+@utila.skip_nightly
 def test_recipe_run(testdir, monkeypatch):
     root = str(testdir)
     with tests.patch_todo(testdir, monkeypatch):
