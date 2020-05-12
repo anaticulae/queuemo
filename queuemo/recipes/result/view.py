@@ -13,12 +13,6 @@ import queuemo.runtime.api
 
 
 def before(flow: queuemo.runtime.api.RecipeIO):
-    queuemo.runnable.groupme(
-        inpath=[
-            flow.general,
-        ],
-        output=flow.general,
-    )
     queuemo.runnable.decider_border_detecion(
         inpath=[
             flow.general,
