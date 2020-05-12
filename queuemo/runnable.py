@@ -151,6 +151,10 @@ def decider_toc(inpath: str, output: str = None):
     run('decider --toc', inpath, output)
 
 
+def decider_footnote(inpath: str, output: str = None):
+    run('decider --footnote', inpath, output)
+
+
 def decider_border_detecion(inpath: str, output: str = None):
     run('decider_border --detection', inpath, output)
 
