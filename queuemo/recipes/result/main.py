@@ -11,5 +11,6 @@ ORDER = [
     'validation',
     'textflow',
     'footnote',
+    'doctextstyle',
     'view',
 ]

@@ -169,6 +169,16 @@ def textflow_lineending(inpath: str, output: str = None):
     run('textflow', inpath, output)
 
 
+def doctextstyle(inpath: str, output: str = None):
+    run('doctextstyle', inpath, output)
+
+
+def decider_textstyle_headlines(inpath: str, output: str = None):
+    # TODO: Enable later; activate after utila supports selective inputs
+    # run('decider_textflow --lineending', inpath, output)
+    run('decider_textstyle --headlines', inpath, output)
+
+
 def decider_textflow_lineending(inpath: str, output: str = None):
     # TODO: Enable later; activate after utila supports selective inputs
     # run('decider_textflow --lineending', inpath, output)
