@@ -53,7 +53,7 @@ def run(
         try:
             if job is not None:
                 jobs -= 1
-                utila.log(f'jobs remaining: {jobs}')
+                utila.log(f'\njobs remaining: {jobs}')
             step(job, waiting=waiting, verbose=verbose)
         except Exception:  # pylint: disable=broad-except
             utila.log_stacktrace()
