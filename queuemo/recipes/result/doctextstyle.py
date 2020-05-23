@@ -38,6 +38,10 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         inpath=[flow.tmppath, flow.general],
         output=flow.tmppath,
     )
+    queuemo.runnable.decider_textstyle_text(
+        inpath=[flow.tmppath, flow.general],
+        output=flow.tmppath,
+    )
 
 
 def after(flow: queuemo.runtime.api.RecipeIO):

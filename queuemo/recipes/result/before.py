@@ -51,6 +51,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             char_margin=100,
             line_margin=0.1,
             text=True,
+            fonts=True,
         ))
     completed = run_parallel(*todo)
 
