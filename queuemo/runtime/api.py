@@ -58,6 +58,7 @@ class RecipeIO:
                 verbose=verbose,
             )
         resultview = link.resultview(self.document)
+        # TODO: !!!THIS STEP COPIES FINDINGS TWICE!!! CHECK IT WEG
         # TODO: CHECK TO AVOID COPING DOUBLE WHEN USING IN RESULT VIEW
         if os.path.exists(resultview):
             utila.copy_content(
