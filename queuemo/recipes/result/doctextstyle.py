@@ -59,3 +59,9 @@ def after(flow: queuemo.runtime.api.RecipeIO):
         pattern='doctextstyle__textstyle.yaml',
         verbose=True,
     )
+    utila.copy_content(
+        flow.general,
+        resultview,
+        pattern='rawmaker_*fonts_*.yaml',
+        verbose=True,
+    )
