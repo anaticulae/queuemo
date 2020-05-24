@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v0.6.0
+
+### Feature
+
+* copy font information to resolve hashes in doctextstyle (8940a8a205f5)
+* add content text style linter (8eb466f846f0)
+* publish detected text style master (cf3ae8b94e79)
+* add decider_textstyle to judge document headline style (85fa7fb66676)
+* add footnote step to verify footnotes in footer (7800359e038f)
+* run groupme at start once (7d0c6a8402b9)
+
+### Fix
+
+* always start on a new line (a0d33dbabcd2)
+
 ## v0.5.2
 
 ### Fix

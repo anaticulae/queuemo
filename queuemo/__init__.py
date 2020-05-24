@@ -9,6 +9,6 @@
 
 import os
 
-__version__ = '0.5.2'
+__version__ = '0.6.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
