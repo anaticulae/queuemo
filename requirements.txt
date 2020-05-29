@@ -1,13 +1,13 @@
 PyYAML==5.1
 
 # Internal packages
-configo==0.6.6
-link==0.4.5
-utila==1.22.1
+configo==0.6.7
+link==0.4.6
+utila==1.22.2
 
 # Features packages
 # analysis==0.1.33
-decider==0.15.4
-feedback==0.12.4
-hey==2.7.1
-rawmaker==1.20.3
+decider==0.18.1
+feedback==0.12.5
+hey==2.7.5
+rawmaker==1.21.1

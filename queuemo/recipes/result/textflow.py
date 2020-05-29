@@ -26,6 +26,10 @@ def before(flow: queuemo.runtime.api.RecipeIO):
         inpath=[flow.general],
         output=flow.general,
     )
+    queuemo.runnable.doctextstyle(
+        inpath=flow.general,
+        output=flow.general,
+    )
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
@@ -34,7 +38,10 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         output=flow.tmppath,
     )
     queuemo.runnable.decider_textflow_lineending(
-        inpath=[flow.tmppath],
+        inpath=[
+            flow.tmppath,
+            flow.general,
+        ],
         output=flow.tmppath,
     )
 

@@ -148,11 +148,11 @@ def decider_titlepage(inpath: str, output: str = None):
 
 
 def decider_toc(inpath: str, output: str = None):
-    run('decider --toc', inpath, output)
+    run('decider_toc', inpath, output)
 
 
 def decider_footnote(inpath: str, output: str = None):
-    run('decider --footnote', inpath, output)
+    run('decider_footnote', inpath, output)
 
 
 def decider_border_detecion(inpath: str, output: str = None):
