@@ -37,6 +37,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     queuemo.runnable.feedback_view(
         inpath=[
+            flow.package('doctextstyle'),
             flow.package('footnote'),
             flow.package('textflow'),
             flow.general,

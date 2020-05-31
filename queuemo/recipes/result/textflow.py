@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
 import link
 import utila
 
@@ -51,11 +49,10 @@ def after(flow: queuemo.runtime.api.RecipeIO):
 
     resultview = link.resultview(flow.document)
 
-    # TODO: REMOVE LATER
-    if os.path.exists(resultview):
-        utila.copy_content(
-            flow.tmppath,
-            resultview,
-            pattern='words__word_result.yaml',
-            verbose=True,
-        )
+    # TODO: REMOVE LATER?
+    utila.copy_content(
+        flow.general,
+        resultview,
+        pattern='words__word_result.yaml',
+        verbose=True,
+    )
