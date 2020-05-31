@@ -54,9 +54,7 @@ def run(
     completed = utila.test.run(cmd)
 
     utila.log(completed.stdout)
-    assert completed.returncode == utila.SUCCESS, completed.stdout + completed.stderr
-    assert os.path.exists(outpath)
-
+    assert os.path.exists(outpath), str(outpath)
     return completed.returncode
 
 
