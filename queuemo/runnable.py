@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 """Load different recipes from this package."""
+
 import os
-import typing
 
 import rawmaker.cli as cli
 import utila
@@ -28,7 +28,7 @@ COMMON_VIEW_WORK = 'commonview'
 
 def run(
         runnable: str,
-        inpath: typing.List[str],
+        inpath: utila.Strings,
         outpath: str = None,
         parameter: str = None,
         prefix: str = '',
