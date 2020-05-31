@@ -33,7 +33,7 @@ def run(
         parameter: str = None,
         prefix: str = '',
         **kwargs,
-):
+) -> int:
     if isinstance(inpath, str):
         inpath = [inpath]
     # beautify path: remove ../..
@@ -41,7 +41,6 @@ def run(
     inpath = [os.path.normpath(item) for item in inpath]
     for item in inpath:
         assert os.path.exists(item), item
-
     if prefix:
         prefix = '--prefix ' + prefix
 
@@ -50,16 +49,9 @@ def run(
     inputpath = ' -i '.join(inpath)
 
     parameter = ' ' if parameter is None else parameter
-    command = '%s %s -i %s -o %s %s %s' % (
-        runnable,
-        parameter,
-        inputpath,
-        outpath,
-        prefix,
-        cmds,
-    )
-    utila.log('running: %s' % command)
-    completed = utila.test.run(command)
+    cmd = f'{runnable} {parameter} -i {inputpath} -o {outpath} {prefix} {cmds}'
+    utila.log(f'running: {cmd}')
+    completed = utila.test.run(cmd)
 
     utila.log(completed.stdout)
     assert completed.returncode == utila.SUCCESS, completed.stdout + completed.stderr
