@@ -29,13 +29,16 @@ COMMON_VIEW_WORK = 'commonview'
 def run(
         runnable: str,
         inpath: utila.Strings,
-        outpath: str = None,
+        outpath: str,
         parameter: str = None,
         prefix: str = '',
         **kwargs,
 ):
     if isinstance(inpath, str):
         inpath = [inpath]
+    # beautify path: remove ../..
+    outpath = os.path.normpath(outpath)
+    inpath = [os.path.normpath(item) for item in inpath]
     for item in inpath:
         assert os.path.exists(item), item
 
