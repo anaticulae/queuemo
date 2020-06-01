@@ -7,9 +7,12 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import configo
 import utila
 import utila.cli
+import utila.logger
 
 import queuemo.worker.startup
 
@@ -46,6 +49,8 @@ COMMANDS = [
 
 @utila.saveme
 def main():
+    logger_start()
+
     parser = utila.cli.create_parser(
         todo=COMMANDS,
         config=utila.ParserConfiguration(verboseflag=True),
@@ -77,3 +82,15 @@ def main():
     )
 
     return closed
+
+
+def logger_start():
+    # TODO: REPLACE WITH utila.FILE_TIME
+    tmp = configo.tmp(True)
+    datefile = f'{utila.today()}_{utila.current(seconds=True)}'
+    datefile = datefile.replace(':', '_')
+    datefile = datefile.replace('.', '_')
+    logfile = f'{datefile}.log'
+    outpath = os.path.join(tmp, logfile)
+    utila.logger.OUTFILE = outpath
+    utila.log(f'write global log to {outpath}')
