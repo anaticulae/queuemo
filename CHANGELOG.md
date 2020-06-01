@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.6.2
+
+### Feature
+
+* beautify input paths (28dff947d9f4)
+
+### Fix
+
+* copy missing data (e758650bfe4e)
+
 ## v0.6.1
 
 ## v0.6.0
