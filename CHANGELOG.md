@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v0.6.3
+
+### Feature
+
+* extend title page collector to more than page zero (871e1920bf3a)
+* add method to log cli output to file (e0a5818c78b0)
+
 ## v0.6.2
 
 ### Feature
