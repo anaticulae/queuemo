@@ -85,12 +85,8 @@ def main():
 
 
 def logger_start():
-    # TODO: REPLACE WITH utila.FILE_TIME
     tmp = configo.tmp(True)
-    datefile = f'{utila.today()}_{utila.current(seconds=True)}'
-    datefile = datefile.replace(':', '_')
-    datefile = datefile.replace('.', '_')
-    logfile = f'{datefile}.log'
+    logfile = f'{utila.filetime()}.log'
     outpath = os.path.join(tmp, logfile)
-    utila.logger.OUTFILE = outpath
     utila.log(f'write global log to {outpath}')
+    utila.logger.OUTFILE = outpath
