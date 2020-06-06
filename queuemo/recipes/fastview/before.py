@@ -38,12 +38,13 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
         inpath=flow.sourcepath,
         outpath=flow.tmppath,
         pages='0:10',
-        text=True,
-        fonts=True,
-        outlines=True,
-        line=True,
         border=True,
         boxes=True,
+        fonts=True,
+        horizontals=True,
+        line=True,
+        outlines=True,
+        text=True,
     )
     assert completed == utila.SUCCESS, str(completed)
 

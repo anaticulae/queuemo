@@ -15,7 +15,13 @@ PREFIX = '05'
 
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.groupme(flow.general, flow.tmppath)
-    queuemo.runnable.decider_toc(flow.tmppath, flow.tmppath)
+    queuemo.runnable.decider_toc(
+        inpath=[
+            flow.general,
+            flow.tmppath,
+        ],
+        output=flow.tmppath,
+    )
 
 
 def after(flow: queuemo.runtime.api.RecipeIO):
