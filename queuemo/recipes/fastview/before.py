@@ -24,7 +24,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
         inpath=flow.sourcepath,
         outpath=flow.tmppath,
         prefix='oneline',
-        pages='0',
+        pages='0:5',
         boxes_flow=1.0,
         char_margin=100,
         line_margin=0.1,
