@@ -30,7 +30,7 @@ def test_recipe_fastview_run_single(testdir, monkeypatch):  # pylint:disable=W06
     assert completed
 
 
-@utila.skip_longrun
+@utila.skip_nightly
 @pytest.mark.parametrize(
     'jobid',
     [

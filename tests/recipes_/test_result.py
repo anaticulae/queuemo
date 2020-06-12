@@ -32,7 +32,7 @@ def run_resultview(workspace, jobid, monkeypatch):
     return completed
 
 
-@utila.skip_longrun
+@utila.skip_nightly
 def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
     completed = run_resultview(
