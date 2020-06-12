@@ -8,38 +8,13 @@
 # =============================================================================
 
 import contextlib
-import os
 
 import link
-import pytest
-import utila
 
 import queuemo
 import queuemo.runtime.runtime
 import tests
 import tests.resources
-
-
-@pytest.fixture
-def example_8166(testdir):
-    root = str(testdir)
-    source = os.path.join(
-        tests.resources.TODO,
-        tests.resources.EXAMPLE_JOB,
-        tests.resources.EXAMPLE_JOB,
-    )
-    destination = os.path.join(
-        root,
-        tests.resources.EXAMPLE_JOB,
-    )
-    utila.file_copy(source, destination)
-    return root
-
-
-def copy_todo(jobid: str, destination: str):
-    source = os.path.join(tests.resources.TODO, jobid)
-    destination = os.path.join(destination, jobid)
-    utila.copy_content(source, destination)
 
 
 @contextlib.contextmanager

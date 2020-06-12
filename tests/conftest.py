@@ -6,26 +6,24 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-import os
 
-import utila
+import power
+import pytest
 
+import queuemo
 import tests.update
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
+PACKAGE = queuemo.PROCESS
 
-def pytest_sessionstart(session):  # pylint:disable=W0613
-    if 'PYTEST_XDIST_WORKER' in os.environ:
-        return
+power.setup(queuemo.ROOT)
 
-    if 'GENERATE' in os.environ or utila.test.LONGRUN:
-        utila.log('install requirements')
-        tests.update.install_requirements()
 
-        tests.update.sync_resources()
+@pytest.mark.usefixtures('session')
+def pytest_sessionstart():
+    power.run()
 
-        tests.update.extract_examples()
 
-    for item in tests.resources.REQUIRED_RESOURCES:
-        assert os.path.exists(item), str(item)
+def extract():
+    tests.update.extract_examples()
