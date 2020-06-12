@@ -155,6 +155,7 @@ def run(
                 continue
             utila.call(item)
             try:
+                utila.debug(current_flow)
                 action(current_flow)
             except RuntimeControl as control:
                 raise control
