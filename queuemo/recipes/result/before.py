@@ -33,14 +33,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             queuemo.runnable.rawmaker,
             inpath=pdf,
             outpath=flow.tmppath,
-            border=True,
-            boxes=True,
-            font=True,
-            horizontals=True,
-            images=True,
-            line=True,
-            outlines=True,
-            text=True,
+            all=True,
         ))
     todo.append(
         functools.partial(
