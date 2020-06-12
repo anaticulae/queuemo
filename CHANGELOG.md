@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v0.6.4
+
+### Fix
+
+* inform about missing resource (608e84ab7566)
+
 ## v0.6.3
 
 ### Feature
