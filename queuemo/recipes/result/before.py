@@ -25,8 +25,25 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
-    pdf = flow.sourcepath
+    unpack_pdf(flow)
 
+    determine_sections(flow)
+
+    # ensure rawmaker is completed before running linero
+    completed = queuemo.runnable.linero(
+        inpath=flow.tmppath,
+        output=flow.tmppath,
+    )
+    queuemo.runnable.groupme(
+        inpath=[flow.tmppath],
+        output=flow.tmppath,
+    )
+    assert completed == utila.SUCCESS, str(completed)
+    return [completed]
+
+
+def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
+    pdf = flow.sourcepath
     todo = []
     todo.append(
         functools.partial(
@@ -48,20 +65,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             fonts=True,
         ))
     completed = run_parallel(*todo)
-
-    determine_sections(flow)
-
-    # ensure rawmaker is completed before running linero
-    completed = queuemo.runnable.linero(
-        inpath=flow.tmppath,
-        output=flow.tmppath,
-    )
-    queuemo.runnable.groupme(
-        inpath=[flow.tmppath],
-        output=flow.tmppath,
-    )
-    assert completed == utila.SUCCESS, str(completed)
-    return [completed]
+    assert completed == utila.SUCCESS, 'could not extract pdf'
 
 
 def determine_sections(flow: queuemo.runtime.api.RecipeIO):
