@@ -132,8 +132,8 @@ def detector(inpath: str, outpath: str = None):
     run('detector', inpath, outpath)
 
 
-def detector_titlepage(inpath: str, outpath: str = None):
-    run('detector --titlepage', inpath, outpath)
+def detector_titlepage(inpath: str, outpath: str = None, **kwargs):
+    run('detector --titlepage', inpath, outpath, **kwargs)
 
 
 def decider_titlepage(inpath: str, output: str = None):

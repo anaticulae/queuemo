@@ -10,6 +10,7 @@
 import link
 import utila
 
+import queuemo.recipes.result.before
 import queuemo.runnable
 import queuemo.runtime.api
 import queuemo.runtime.runtime
@@ -47,6 +48,8 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
         text=True,
     )
     assert completed == utila.SUCCESS, str(completed)
+
+    queuemo.recipes.result.before.determine_sections(flow)
 
     completed = queuemo.runnable.linero(
         inpath=flow.tmppath,

@@ -7,14 +7,25 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw.sections
+
 import queuemo.runnable
 import queuemo.runtime.api
+import queuemo.utils
 
 PREFIX = '05'
 
-
 def run(flow: queuemo.runtime.api.RecipeIO):
-    queuemo.runnable.groupme(flow.general, flow.tmppath)
+    tocpage = queuemo.utils.select_pages(
+        flow.general,
+        select=iamraw.sections.TableOfContent,
+    )
+    queuemo.runnable.groupme(
+        flow.general,
+        flow.tmppath,
+        toc=True,
+        pages=tocpage,
+    )
     queuemo.runnable.decider_toc(
         inpath=[
             flow.general,

@@ -7,3 +7,36 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 """Store experimental code here."""
+
+import sections.path
+import serializeraw
+import utila
+
+
+def select_pages(path: str, select) -> str:
+    assert isinstance(select, object.__class__), f'class not: {type(select)}'
+    pages = select_section(path, select=select)
+    if pages:
+        return pages2str(pages)
+    return ':'
+
+
+def select_section(path: str, select) -> tuple:
+    assert isinstance(select, object.__class__), f'class not: {type(select)}'
+    path = sections.path.sections_(path)
+    section_ = serializeraw.load_sections(path)
+
+    flat = []
+    for level in section_:
+        # TODO: REPLACE WITH NICE ITERATOR TO IMPROVE CODE STYLE
+        flat.append(level)
+        flat.extend(level[:])
+
+    for item in flat:
+        if item.__class__ == select:
+            return (item.start, item.end + 1)
+    return None
+
+
+def pages2str(pages: tuple) -> str:
+    return ':'.join([str(item) for item in pages])

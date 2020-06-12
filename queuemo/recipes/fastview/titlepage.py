@@ -29,14 +29,26 @@ after
 publish linter result
 
 """
+
+import iamraw.sections
+
 import queuemo.runnable
 import queuemo.runtime.api
+import queuemo.utils
 
 PREFIX = '01'
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
-    queuemo.runnable.detector_titlepage(flow.general, flow.tmppath)
+    titlepage = queuemo.utils.select_pages(
+        flow.general,
+        select=iamraw.sections.TitlePage,
+    )
+    queuemo.runnable.detector_titlepage(
+        flow.general,
+        flow.tmppath,
+        pages=titlepage,
+    )
     queuemo.runnable.decider_titlepage(flow.tmppath, flow.tmppath)
 
 
