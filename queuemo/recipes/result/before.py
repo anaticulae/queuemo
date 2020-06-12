@@ -49,6 +49,8 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         ))
     completed = run_parallel(*todo)
 
+    determine_sections(flow)
+
     # ensure rawmaker is completed before running linero
     completed = queuemo.runnable.linero(
         inpath=flow.tmppath,
@@ -60,6 +62,21 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     assert completed == utila.SUCCESS, str(completed)
     return [completed]
+
+
+def determine_sections(flow: queuemo.runtime.api.RecipeIO):
+    queuemo.runnable.groupme(
+        inpath=[flow.tmppath],
+        output=flow.tmppath,
+        pagenumbers=True,
+        footer=True,
+    )
+
+    # determine to run area of feature detection
+    queuemo.runnable.sections(
+        inpath=flow.tmppath,
+        output=flow.tmppath,
+    )
 
 
 def run_parallel(*items, worker=2) -> int:

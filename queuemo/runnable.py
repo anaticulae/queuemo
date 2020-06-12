@@ -116,8 +116,8 @@ def linero(inpath: str, output: str = None):
     return run('linero', inpath, output)
 
 
-def groupme(inpath: str, output: str = None):
-    run('groupme -j8', inpath, output)
+def groupme(inpath: str, output: str = None, **kwargs):
+    run('groupme -j8', inpath, output, **kwargs)
 
 
 def sections(inpath: str, output: str = None):
