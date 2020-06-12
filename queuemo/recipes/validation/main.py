@@ -6,7 +6,9 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import json
+import os
 
 import link
 import utila
@@ -16,6 +18,8 @@ import queuemo.runtime.runtime
 
 
 def before(flow: queuemo.runtime.api.RecipeIO):
+    todo = link.todo(flow.document)
+    assert os.path.exists(todo), f'todo does not exists: {todo}'
     link.start_progress(flow.document)
 
 
