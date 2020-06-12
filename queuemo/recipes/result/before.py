@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import concurrent
 import functools
 
 import link
@@ -16,6 +15,7 @@ import utila
 import queuemo.runnable
 import queuemo.runtime.api
 import queuemo.runtime.runtime
+import queuemo.utils
 
 
 def before(flow: queuemo.runtime.api.RecipeIO):
@@ -64,7 +64,7 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             text=True,
             fonts=True,
         ))
-    completed = run_parallel(*todo)
+    completed = queuemo.utils.run_parallel(*todo)
     assert completed == utila.SUCCESS, 'could not extract pdf'
 
 
@@ -81,17 +81,3 @@ def determine_sections(flow: queuemo.runtime.api.RecipeIO):
         inpath=flow.tmppath,
         output=flow.tmppath,
     )
-
-
-def run_parallel(*items, worker=2) -> int:
-    ret = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=worker) as executor:
-        futures = {executor.submit(item): item for item in items}
-        for future in concurrent.futures.as_completed(futures):
-            try:
-                future.result()
-            except Exception as error:  # pylint:disable=broad-except
-                utila.error(f'{future} failed.')
-                utila.error(error)
-                ret += 1
-    return ret
