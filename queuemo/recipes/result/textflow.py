@@ -7,29 +7,42 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw.sections
 import link
 import utila
 
 import queuemo.recipes
 import queuemo.runnable
 import queuemo.runtime.api
+import queuemo.utils
 
 
 def before(flow: queuemo.runtime.api.RecipeIO):
+    pages = queuemo.utils.select_pages(
+        flow.general,
+        select=iamraw.sections.MainPart,
+    )
     queuemo.runnable.words(
         inpath=[flow.general],
         output=flow.general,
+        pages=pages,
     )
     queuemo.runnable.doctextstyle(
         inpath=flow.general,
         output=flow.general,
+        pages=pages,
     )
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    pages = queuemo.utils.select_pages(
+        flow.general,
+        select=iamraw.sections.MainPart,
+    )
     queuemo.runnable.textflow_lineending(
         inpath=[flow.general],
         output=flow.tmppath,
+        # pages=pages,
     )
     queuemo.runnable.decider_textflow_lineending(
         inpath=[
@@ -37,6 +50,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.general,
         ],
         output=flow.tmppath,
+        pages=pages,
     )
 
 

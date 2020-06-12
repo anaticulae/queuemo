@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import iamraw.sections
 import link
 import utila
 
@@ -17,9 +18,14 @@ import queuemo.runtime.api
 
 # TODO: DUPLICATED IN TEXTFLOW, ADD AUTOMATIC SCHEDULER LATER
 def before(flow: queuemo.runtime.api.RecipeIO):
+    pages = queuemo.utils.select_pages(
+        flow.general,
+        select=iamraw.sections.MainPart,
+    )
     queuemo.runnable.words(
         inpath=[flow.general],
         output=flow.general,
+        pages=pages,
     )
 
 

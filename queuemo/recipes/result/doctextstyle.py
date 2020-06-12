@@ -9,34 +9,48 @@
 
 import os
 
+import iamraw.sections
 import link
 import utila
 
 import queuemo.recipes
 import queuemo.runnable
 import queuemo.runtime.api
+import queuemo.utils
 
 
 # TODO: DUPLICATED IN TEXTFLOW, ADD AUTOMATIC SCHEDULER LATER
 def before(flow: queuemo.runtime.api.RecipeIO):
+    content = queuemo.utils.select_pages(
+        flow.general,
+        select=iamraw.sections.MainPart,
+    )
     queuemo.runnable.words(
         inpath=[flow.general],
         output=flow.general,
+        pages=content,
     )
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    content = queuemo.utils.select_pages(
+        flow.general,
+        select=iamraw.sections.MainPart,
+    )
     queuemo.runnable.doctextstyle(
         inpath=[flow.general],
         output=flow.tmppath,
+        pages=content,
     )
     queuemo.runnable.decider_textstyle_headlines(
         inpath=[flow.tmppath, flow.general],
         output=flow.tmppath,
+        pages=content,
     )
     queuemo.runnable.decider_textstyle_text(
         inpath=[flow.tmppath, flow.general],
         output=flow.tmppath,
+        pages=content,
     )
 
 

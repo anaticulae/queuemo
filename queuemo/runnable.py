@@ -124,12 +124,8 @@ def sections(inpath: str, output: str = None):
     run('sections -j8', inpath, output)
 
 
-def words(inpath: str, output: str = None):
-    run('words -j8', inpath, output)
-
-
-def detector(inpath: str, outpath: str = None):
-    run('detector', inpath, outpath)
+def words(inpath: str, output: str = None, **kwargs):
+    run('words -j8', inpath, output, **kwargs)
 
 
 def detector_titlepage(inpath: str, outpath: str = None, **kwargs):
@@ -156,30 +152,30 @@ def decider_border_distance(inpath: str, output: str = None):
     run('decider_border --distance', inpath, output)
 
 
-def textflow_lineending(inpath: str, output: str = None):
+def textflow_lineending(inpath: str, output: str = None, **kwargs):
     # TODO: Enable later; activate after utila supports selective inputs
     # run('textflow --lineending', inpath, output)
-    run('textflow', inpath, output)
+    run('textflow', inpath, output, **kwargs)
 
 
-def doctextstyle(inpath: str, output: str = None):
-    run('doctextstyle', inpath, output)
+def doctextstyle(inpath: str, output: str = None, **kwargs):
+    run('doctextstyle', inpath, output, **kwargs)
 
 
-def decider_textstyle_headlines(inpath: str, output: str = None):
+def decider_textstyle_headlines(inpath: str, output: str = None, **kwargs):
     # TODO: Enable later; activate after utila supports selective inputs
     # run('decider_textflow --lineending', inpath, output)
-    run('decider_textstyle --headlines', inpath, output)
+    run('decider_textstyle --headlines', inpath, output, **kwargs)
 
 
-def decider_textstyle_text(inpath: str, output: str = None):
-    run('decider_textstyle --text', inpath, output)
+def decider_textstyle_text(inpath: str, output: str = None, **kwargs):
+    run('decider_textstyle --text', inpath, output, **kwargs)
 
 
-def decider_textflow_lineending(inpath: str, output: str = None):
+def decider_textflow_lineending(inpath: str, output: str = None, **kwargs):
     # TODO: Enable later; activate after utila supports selective inputs
     # run('decider_textflow --lineending', inpath, output)
-    run('decider_textflow', inpath, output)
+    run('decider_textflow', inpath, output, **kwargs)
 
 
 def feedback_images(inpath: str, output: str = None):
