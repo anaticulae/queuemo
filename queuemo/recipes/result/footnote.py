@@ -17,10 +17,6 @@ import queuemo.runtime.api
 
 # TODO: DUPLICATED IN TEXTFLOW, ADD AUTOMATIC SCHEDULER LATER
 def before(flow: queuemo.runtime.api.RecipeIO):
-    queuemo.runnable.sections(
-        inpath=[flow.general],
-        output=flow.general,
-    )
     queuemo.runnable.words(
         inpath=[flow.general],
         output=flow.general,
