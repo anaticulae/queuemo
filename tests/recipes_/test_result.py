@@ -46,16 +46,16 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
 @pytest.mark.parametrize(
     'jobid',
     [
-        '2324123123',
-        'howtowrite_pages9',
+        pytest.param('2324123123', marks=utila.skip_longrun),
+        pytest.param('howtowrite_pages9', marks=utila.skip_longrun),
         # 'page_116_images_toc_formular',
         # 'page_38',
         # 'page_72_noimages_toc',
         # 'page_78_images_toc',
-        'page_83_noimages_toc',
-        'page_89_noimages_toc',
+        pytest.param('page_83_noimages_toc', marks=utila.skip_nightly),
+        pytest.param('page_89_noimages_toc', marks=utila.skip_nightly),
+        pytest.param('homework25', marks=utila.skip_longrun),
     ])
-@utila.skip_nightly
 def test_recipe_result_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
     completed = run_resultview(

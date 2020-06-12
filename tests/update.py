@@ -29,6 +29,7 @@ def extract_examples():
     create_example(power.ORDER009_PDF)
 
     create_example(power.ORDER038_PDF)
+    create_example(power.HOMEWORK025_PDF)
 
     create_example(
         power.DOCU09_PDF,
