@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import functools
+
 import link
 import utila
 
@@ -21,33 +23,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
-    completed = queuemo.runnable.rawmaker(
-        inpath=flow.sourcepath,
-        outpath=flow.tmppath,
-        prefix='oneline',
-        pages='0:5',
-        boxes_flow=1.0,
-        char_margin=100,
-        line_margin=0.1,
-        text=True,
-    )
-    assert completed == utila.SUCCESS, str(completed)
-
-    # TODO: RUN IN PARALLEL
-    # TODO: ADD TOC SELECTOR to find locatino of table of content
-    completed = queuemo.runnable.rawmaker(
-        inpath=flow.sourcepath,
-        outpath=flow.tmppath,
-        pages='0:10',
-        border=True,
-        boxes=True,
-        fonts=True,
-        horizontals=True,
-        line=True,
-        outlines=True,
-        text=True,
-    )
-    assert completed == utila.SUCCESS, str(completed)
+    unpack_pdf(flow)
 
     queuemo.recipes.result.before.determine_sections(flow)
 
@@ -58,3 +34,32 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     assert completed == utila.SUCCESS, str(completed)
 
     return [completed]
+
+
+def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
+    pdf = flow.sourcepath
+    todo = []
+    todo.append(
+        functools.partial(
+            queuemo.runnable.rawmaker,
+            inpath=pdf,
+            outpath=flow.tmppath,
+            all=True,
+            images=False,
+            pages='0:10',
+        ))
+    todo.append(
+        functools.partial(
+            queuemo.runnable.rawmaker,
+            inpath=pdf,
+            outpath=flow.tmppath,
+            prefix='oneline',
+            boxes_flow=1.0,
+            char_margin=100,
+            line_margin=0.1,
+            text=True,
+            fonts=True,
+            pages='0:5',
+        ))
+    completed = queuemo.utils.run_parallel(*todo)
+    assert completed == utila.SUCCESS, 'could not extract pdf'
