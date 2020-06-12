@@ -26,22 +26,10 @@ with open(join(ROOT, 'requirements.txt'), mode='rt', encoding='utf8') as fp:
         line for line in fp.readlines() if line and '#' not in line
     ]
 
-DATA_FILES = [
-    ('.', [
-        'CHANGELOG.md',
-        'README.md',
-        'requirements.txt',
-    ]),
-    ('config', [
-        'config/decider_fonts_config__ugly_fonts.yaml',
-    ]),
-]
-
 if __name__ == "__main__":
     setup(
         author='Helmut Konrad Fahrendholz',
         author_email='info@checkitweg.de',
-        data_files=DATA_FILES,
         description='queuemo',
         include_package_data=True,
         install_requires=INSTALL_REQUIRES,
