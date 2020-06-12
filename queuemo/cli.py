@@ -86,7 +86,7 @@ def main():
 
 def logger_start():
     tmp = configo.tmp(True)
-    logfile = f'{utila.filetime()}.log'
+    logfile = f'{utila.filetime()}_{utila.tmpname(10)}.log'
     outpath = os.path.join(tmp, logfile)
     utila.log(f'write global log to {outpath}')
     utila.logger.OUTFILE = outpath
