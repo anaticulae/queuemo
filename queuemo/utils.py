@@ -16,10 +16,14 @@ import utila
 
 
 def select_pages(path: str, select) -> str:
+    """\
+    Support merging multiple selected pages.
+    """
     assert isinstance(select, object.__class__), f'class not: {type(select)}'
     pages = select_section(path, select=select)
     if pages:
-        return pages2str(pages)
+        pages = pages2str(pages)
+        return pages
     return ':'
 
 
@@ -34,19 +38,26 @@ def select_section(path: str, select) -> tuple:
         flat.append(level)
         flat.extend(level[:])
 
+    collected = []
     for item in flat:
         if item.__class__ == select:
-            return (item.start, item.end)
-    return None
+            collected.append((item.start, item.end))
+    return collected
 
 
 def pages2str(pages: tuple) -> str:
-    """\
+    """Merges tuple or list of tuples to `cli` --pages format.
+
     >>> pages2str((5,5))
     '5'
     >>> pages2str((1,5))
     '1:5'
+    >>> pages2str([(1,5), (9,9)])
+    '1:5,9'
     """
+    if isinstance(pages, list):
+        collected = [pages2str(item) for item in pages]
+        return ','.join(collected)
     if (pages[0]) == pages[1]:
         return str(pages[0])
     return ':'.join([str(item) for item in pages])
