@@ -172,6 +172,14 @@ def decider_textstyle_text(inpath: str, output: str = None, **kwargs):
     run('decider_textstyle --text', inpath, output, **kwargs)
 
 
+def bibliography(inpath: str, output: str = None, **kwargs):
+    run('detector --bibliography', inpath, output, **kwargs)
+
+
+def decider_bibliography(inpath: str, output: str = None):
+    run('decider --bibliography', inpath, output)
+
+
 def decider_textflow_lineending(inpath: str, output: str = None, **kwargs):
     # TODO: Enable later; activate after utila supports selective inputs
     # run('decider_textflow --lineending', inpath, output)

@@ -12,5 +12,6 @@ ORDER = [
     'textflow',
     'footnote',
     'doctextstyle',
+    'bibliography',
     'view',
 ]
