@@ -36,11 +36,19 @@ def select_section(path: str, select) -> tuple:
 
     for item in flat:
         if item.__class__ == select:
-            return (item.start, item.end + 1)
+            return (item.start, item.end)
     return None
 
 
 def pages2str(pages: tuple) -> str:
+    """\
+    >>> pages2str((5,5))
+    '5'
+    >>> pages2str((1,5))
+    '1:5'
+    """
+    if (pages[0]) == pages[1]:
+        return str(pages[0])
     return ':'.join([str(item) for item in pages])
 
 
