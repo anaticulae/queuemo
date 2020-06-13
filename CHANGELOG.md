@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v0.7.1
+
+### Feature
+
+* support merging multiple areas (10987bcfae92)
+* add bibliography runnable to extract and judge bibliography (69597efd5e50)
+
+### Documentation
+
+* fix spelling content error (f3cd1780f9ec)
+
 ## v0.7.0
 
 ### Feature
