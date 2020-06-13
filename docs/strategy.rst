@@ -15,10 +15,10 @@ naming
 * Process: A process is a algorithm which transform data and has in- and out-
   ports.
 
-* Port: A port is a connection which is fluwn by data.
+* Port: A port is a connection which is flown by data.
 
-* Outputdata: The outputdata is proced by the process. The naming of the data
-  fits into the following pattern:
+* Outputdata: The output data is processed by the process. The naming of
+  the data fits into the pattern:
 
     .. code-block:: none
 
@@ -26,5 +26,5 @@ naming
         process__featureA_datum_b
         process__featureB_datum_a
 
-* Datapool: A datapool is represented by one folder. The folder contains
-  different data. The folder is named by the process itself.
+* Datapool: A datapool is represented by one or more folder. The folder
+  contains different data. The folder is named by the process itself.
