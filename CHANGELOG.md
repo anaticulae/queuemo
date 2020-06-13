@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v0.7.0
+
+### Feature
+
+* simplify pages pattern (a1011c2aef05)
+* log path information in debug mode for every recipe step (52dc46a4e043)
+* shrink feature analysis to expected areas (55b7c0a9a9cf)
+* select toc and titlepage based on sections extractor (90b2d39db6dd)
+* add sections step to determine location of potential toc etc (b6affc68d8c6)
+* use rawmaker all flag to make interface robust against changes (6f46bd5fa7f6)
+
+### Fix
+
+* run sections once (bbb2fb50f6cc)
+* ensure to have unique log file (ee3b664aea37)
+* add missing test data generation after changing generator (00c683f65d8c)
+
 ## v0.6.4
 
 ### Fix
