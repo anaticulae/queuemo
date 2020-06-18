@@ -32,6 +32,11 @@ def before(flow: queuemo.runtime.api.RecipeIO):
         output=flow.general,
         pages=pages,
     )
+    queuemo.runnable.magic(
+        inpath=flow.general,
+        output=flow.general,
+        pages=pages,
+    )
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):

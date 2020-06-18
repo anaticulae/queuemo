@@ -162,6 +162,10 @@ def doctextstyle(inpath: str, output: str = None, **kwargs):
     run('doctextstyle', inpath, output, **kwargs)
 
 
+def magic(inpath: str, output: str = None, **kwargs):
+    run('magic', inpath, output, **kwargs)
+
+
 def decider_textstyle_headlines(inpath: str, output: str = None, **kwargs):
     # TODO: Enable later; activate after utila supports selective inputs
     # run('decider_textflow --lineending', inpath, output)
