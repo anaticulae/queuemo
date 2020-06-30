@@ -46,6 +46,7 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             outpath=flow.tmppath,
             all=True,
             images=False,
+            figures=False,
             pages='0:10',
         ))
     todo.append(
