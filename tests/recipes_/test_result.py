@@ -10,7 +10,7 @@ import os
 
 import link
 import pytest
-import utila
+import utilatest
 
 import queuemo.recipes
 import queuemo.runtime.runtime
@@ -32,7 +32,7 @@ def run_resultview(workspace, jobid, monkeypatch):
     return completed
 
 
-@utila.skip_nightly
+@utilatest.skip_nightly
 def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
     completed = run_resultview(
@@ -46,15 +46,15 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
 @pytest.mark.parametrize(
     'jobid',
     [
-        pytest.param('2324123123', marks=utila.skip_longrun),
-        pytest.param('howtowrite_pages9', marks=utila.skip_longrun),
+        pytest.param('2324123123', marks=utilatest.skip_longrun),
+        pytest.param('howtowrite_pages9', marks=utilatest.skip_longrun),
         # 'page_116_images_toc_formular',
         # 'page_38',
         # 'page_72_noimages_toc',
         # 'page_78_images_toc',
-        pytest.param('page_83_noimages_toc', marks=utila.skip_nightly),
-        pytest.param('page_89_noimages_toc', marks=utila.skip_nightly),
-        pytest.param('homework25', marks=utila.skip_longrun),
+        pytest.param('page_83_noimages_toc', marks=utilatest.skip_nightly),
+        pytest.param('page_89_noimages_toc', marks=utilatest.skip_nightly),
+        pytest.param('homework25', marks=utilatest.skip_longrun),
     ])
 def test_recipe_result_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)

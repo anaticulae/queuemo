@@ -1,13 +1,22 @@
+# =============================================================================
+# C O P Y R I G H T
+# -----------------------------------------------------------------------------
+# Copyright (c) 2020 by Helmut Konrad Fahrendholz. All rights reserved.
+# This file is property of Helmut Konrad Fahrendholz. Any unauthorized copy,
+# use or distribution is an offensive act against international law and may
+# be prosecuted under federal law. Its content is company confidential.
+# =============================================================================
+
 PyYAML==5.1
 
 # Internal packages
-configo==0.6.12
-link==0.4.10
-utila==1.25.1
+configo==0.6.16
+link==0.4.14
+utila==2.3.0
 
 # Features packages
 # analysis==0.1.33
-decider==0.21.3
-feedback==0.13.2
-hey==3.2.0
-rawmaker==1.22.3
+decider==0.22.3
+feedback==0.14.1
+hey==3.5.2
+rawmaker==2.1.1

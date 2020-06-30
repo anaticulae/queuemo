@@ -7,4 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-power==0.10.3
+utilatest==0.1.2
+
+power==0.10.9

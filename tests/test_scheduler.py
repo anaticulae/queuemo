@@ -10,7 +10,7 @@
 import os
 
 import configo.directory
-import utila
+import utilatest
 
 import queuemo.worker.startup
 import tests
@@ -20,7 +20,7 @@ def content(capture):
     return capture.readouterr().out
 
 
-@utila.skip_nightly
+@utilatest.skip_nightly
 def test_run_steps(capsys, testdir, monkeypatch):
     queuemo.worker.startup.step(None)
     assert 'Wait' in content(capsys)

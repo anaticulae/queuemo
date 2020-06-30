@@ -13,6 +13,7 @@ import sys
 import configo.directory
 import pytest
 import utila
+import utilatest
 
 import queuemo
 import queuemo.cli
@@ -40,7 +41,7 @@ def test_run_one_job(monkeypatch, testdir, capsys):
     )
 
 
-@utila.skip_nightly
+@utilatest.skip_nightly
 def test_run_queuemo(testdir):
     command = 'queuemo --runtime=2'
     root = str(testdir)

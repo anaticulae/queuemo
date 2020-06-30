@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utila
+import utilatest
 
 import queuemo.runtime
 import queuemo.worker.startup
@@ -15,7 +15,7 @@ import tests
 import tests.resources
 
 
-@utila.skip_nightly
+@utilatest.skip_nightly
 def test_recipe_run(testdir, monkeypatch):
     root = str(testdir)
     with tests.patch_todo(testdir, monkeypatch):

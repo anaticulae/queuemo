@@ -12,7 +12,6 @@ import os
 
 import rawmaker.cli as cli
 import utila
-import utila.test
 
 DECIDER_FONTS = 'decider_fonts'
 FEED_DECIDER_BORDER = 'feedback_decider_border'
@@ -51,7 +50,7 @@ def run(
     parameter = ' ' if parameter is None else parameter
     cmd = f'{runnable} {parameter} -i {inputpath} -o {outpath} {prefix} {cmds}'
     utila.log(f'running: {cmd}')
-    completed = utila.test.run(cmd)
+    completed = utila.run(cmd)
 
     utila.log(completed.stdout)
     assert os.path.exists(outpath), str(outpath)

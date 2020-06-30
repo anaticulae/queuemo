@@ -13,7 +13,6 @@
 """
 
 import utila
-import utila.test
 
 import queuemo
 import queuemo.recipes
