@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.7.3
+
+### Feature
+
+* run new figure step (3fcd18cde16f)
+
+### Fix
+
+* skip non necessary step (5daed63ef9fe)
+
 ## v0.7.2
 
 ## v0.7.1
