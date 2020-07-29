@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v0.7.4
+
+### Feature
+
+* highlight start of recipe (ad9d654bbedb)
+
+### Fix
+
+* information (a670ce0cff21)
+
 ## v0.7.3
 
 ### Feature
