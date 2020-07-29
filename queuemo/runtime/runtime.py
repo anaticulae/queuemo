@@ -132,7 +132,9 @@ def run(
     """
     tmp = os.path.join(flow.tmppath, '.tmp')
     for current in composition.schedule:
+        utila.info('*' * 120)
         utila.info(f'run {current.name}')
+        utila.info('*' * 120)
         name = current.name
         if current.prefix:
             # add prefix to result of scheduling step
