@@ -157,6 +157,10 @@ def textflow_lineending(inpath: str, output: str = None, **kwargs):
     run('textflow', inpath, output, **kwargs)
 
 
+def textflow_quotes(inpath: str, output: str = None, **kwargs):
+    run('textflow --quotation --blockquote', inpath, output, **kwargs)
+
+
 def doctextstyle(inpath: str, output: str = None, **kwargs):
     run('doctextstyle', inpath, output, **kwargs)
 

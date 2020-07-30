@@ -30,6 +30,11 @@ def before(flow: queuemo.runtime.api.RecipeIO):
         output=flow.general,
         pages=content,
     )
+    queuemo.runnable.textflow_quotes(
+        inpath=[flow.general],
+        output=flow.general,
+        pages=content,
+    )
     # required for detecting tables
     queuemo.runnable.magic(
         inpath=flow.general,
