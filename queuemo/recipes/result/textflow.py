@@ -32,6 +32,16 @@ def before(flow: queuemo.runtime.api.RecipeIO):
         output=flow.general,
         pages=pages,
     )
+    queuemo.runnable.caption(
+        inpath=flow.general,
+        output=flow.general,
+        pages=pages,
+    )
+    queuemo.runnable.detector_formula(
+        inpath=flow.general,
+        outpath=flow.general,
+        pages=pages,
+    )
     queuemo.runnable.magic(
         inpath=flow.general,
         output=flow.general,

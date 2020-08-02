@@ -127,6 +127,10 @@ def words(inpath: str, output: str = None, **kwargs):
     run('words -j8', inpath, output, **kwargs)
 
 
+def detector_formula(inpath: str, outpath: str, **kwargs):
+    run('detector --formula', inpath, outpath, **kwargs)
+
+
 def detector_titlepage(inpath: str, outpath: str = None, **kwargs):
     run('detector --titlepage', inpath, outpath, **kwargs)
 
@@ -163,6 +167,10 @@ def textflow_quotes(inpath: str, output: str = None, **kwargs):
 
 def doctextstyle(inpath: str, output: str = None, **kwargs):
     run('doctextstyle', inpath, output, **kwargs)
+
+
+def caption(inpath: str, output: str = None, **kwargs):
+    run('caption', inpath, output, **kwargs)
 
 
 def magic(inpath: str, output: str = None, **kwargs):
