@@ -230,7 +230,7 @@ def check(runner=None):
     if runner is None:
         runner = RUNNER
     # TODO: ADD AFTER UPGRADIG UTILA add --version --verbose
-    todo = [f'{process} --version' for process in runner]
+    todo = [f'{process} --version --verbose' for process in runner]
     # TODO USE VERBOSE FLAG ON RUN_PARALLEL
     for item in runner:
         utila.log(f'check: {item}')
