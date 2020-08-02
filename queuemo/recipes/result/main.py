@@ -9,6 +9,7 @@
 
 ORDER = [
     'validation',
+    'imgfig',
     'textflow',
     'footnote',
     'doctextstyle',

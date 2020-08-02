@@ -40,6 +40,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.package('doctextstyle'),
             flow.package('footnote'),
             flow.package('textflow'),
+            flow.package('imgfig'),
             flow.general,
             flow.tmppath,
         ],

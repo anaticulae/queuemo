@@ -147,6 +147,10 @@ def decider_footnote(inpath: str, output: str = None):
     run('decider_footnote', inpath, output)
 
 
+def decider_imgfig(inpath: str, output: str = None):
+    run('decider_imgfig', inpath, output)
+
+
 def decider_border_detecion(inpath: str, output: str = None):
     run('decider_border --detection', inpath, output)
 
