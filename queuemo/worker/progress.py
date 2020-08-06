@@ -6,17 +6,19 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import os
 
 import configo
 import utila
 
 PROGRESS_FILENAME = 'inprogress'
+DELETED_FILENAME = 'deleted'
 
 
 def update(jobid: int, progress: int):
     assert 0 <= progress <= 100, f'progress is out of range: {progress}'
-    path = progress_file(jobid)
+    path = progress_filepath(jobid)
     assert os.path.exists(path), path
     progress = str(progress).zfill(3)
     utila.file_replace(path, progress)
@@ -24,7 +26,7 @@ def update(jobid: int, progress: int):
 
 def start(jobid: int):
     # TODO: Remove, replace with link
-    path = progress_file(jobid)
+    path = progress_filepath(jobid)
     assert not os.path.exists(path), path
 
     # Mark folder as in progress and start with 0 percent
@@ -33,11 +35,24 @@ def start(jobid: int):
 
 def inprogress(jobid: int) -> bool:
     # TODO: Remove, replace with link
-    path = progress_file(jobid)
+    path = progress_filepath(jobid)
     return os.path.exists(path)
 
 
-def progress_file(jobid: int) -> str:
+def deleted(jobid: int) -> bool:
+    path = deleted_filepath(jobid)
+    return os.path.exists(path)
+
+
+def progress_filepath(jobid: int) -> str:
+    """File which signals that computation is in progress and document
+    is already processing."""
     todopath = configo.todo(True)
     result = os.path.join(todopath, jobid, PROGRESS_FILENAME)
+    return result
+
+
+def deleted_filepath(jobid: int) -> str:
+    todopath = configo.todo(True)
+    result = os.path.join(todopath, jobid, DELETED_FILENAME)
     return result

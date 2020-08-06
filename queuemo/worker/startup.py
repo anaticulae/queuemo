@@ -110,6 +110,8 @@ def nextjob() -> int:
             continue
         if queuemo.worker.progress.inprogress(jobnumber):
             continue
+        if queuemo.worker.progress.deleted(jobnumber):
+            continue
         # return next job, start it by recipe runner
         return jobnumber
     return None
