@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v0.8.0
+
+### Feature
+
+* add imgfig runnable to analyze quality of images/figures (1fab0f074429)
+* log version of used runnable (c050f8dbf365)
+* add caption and formula extraction as magic data source (02cbf6ddbb5b)
+
+### Fix
+
+* do not start deleted jobs (fedf36a3cfe2)
+* adjust step logging (b553cee266bd)
+* add missing quotes extraction (20729f0ec740)
+
 ## v0.7.4
 
 ### Feature
