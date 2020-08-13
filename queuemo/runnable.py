@@ -50,7 +50,8 @@ def run(
     parameter = ' ' if parameter is None else parameter
     cmd = f'{runnable} {parameter} -i {inputpath} -o {outpath} {prefix} {cmds}'
     utila.log(f'running: {cmd}')
-    completed = utila.run(cmd)
+    with utila.profile():
+        completed = utila.run(cmd)
 
     utila.log(completed.stdout)
     assert os.path.exists(outpath), str(outpath)

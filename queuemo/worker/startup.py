@@ -84,7 +84,8 @@ def step(job, waiting=WAITING, verbose: bool = True):
 
         if verbose:
             utila.log('  Start job')
-        work(workspace)
+        with utila.profile(workspace):
+            work(workspace)
 
         if verbose:
             utila.log('Finished')
