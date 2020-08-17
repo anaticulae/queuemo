@@ -34,11 +34,13 @@ class RecipeIO:
         if self.tmppath.endswith('.tmp'):
             return self.tmppath
         result = os.path.join(self.tmppath, '../.tmp')
+        result = os.path.normpath(result)
         return result
 
     @property
     def main(self) -> str:
         parent = os.path.join(self.outpath, '..')
+        parent = os.path.normpath(parent)
         return parent
 
     def package(self, item) -> str:
