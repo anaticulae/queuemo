@@ -71,12 +71,6 @@ class RecipeIO:
             )
         assert fastview or os.path.exists(resultview), 'no copy executed'
 
-    def publish_main(self, folder=None, pattern='*.*'):
-        source = self.tmppath
-        if folder is not None:
-            source = os.path.join(self.tmppath, folder)
-        utila.copy_content(source, self.main, pattern=pattern)
-
     def publish(self, folder=None, pattern='*.*'):
         source = self.tmppath
         if folder is not None:
