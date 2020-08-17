@@ -50,26 +50,14 @@ class RecipeIO:
         assert os.path.exists(path), path
         return path
 
-    def publish_linting(self, fastview: bool = True, verbose: bool = False):
+    def publish_linting(self, verbose: bool = False):
         """Publish to fastview and if exists to result also"""
-        if fastview:
-            utila.copy_content(
-                self.tmppath,
-                self.outpath,
-                pattern='*_user.yaml',
-                verbose=verbose,
-            )
-        resultview = link.resultview(self.document)
-        # TODO: !!!THIS STEP COPIES FINDINGS TWICE!!! CHECK IT WEG
-        # TODO: CHECK TO AVOID COPING DOUBLE WHEN USING IN RESULT VIEW
-        if os.path.exists(resultview):
-            utila.copy_content(
-                self.tmppath,
-                resultview,
-                pattern='*_user.yaml',
-                verbose=verbose,
-            )
-        assert fastview or os.path.exists(resultview), 'no copy executed'
+        utila.copy_content(
+            self.tmppath,
+            self.outpath,
+            pattern='*_user.yaml',
+            verbose=verbose,
+        )
 
     def publish(self, folder=None, pattern='*.*'):
         source = self.tmppath

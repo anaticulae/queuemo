@@ -25,7 +25,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):
         ],
         output=flow.tmppath,
     )
-    flow.publish_linting(fastview=False)
+    flow.publish_linting()
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
