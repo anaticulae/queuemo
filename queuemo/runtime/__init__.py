@@ -30,7 +30,7 @@ RUNNER = [
 ]
 
 
-def run(workspace: str, document: str, outpath: str) -> int:
+def run(workspace: str, document: str, outpath: str):
     queuemo.runnable.check(RUNNER)
 
     runtime = queuemo.runtime.runtime.RecipeRuntime(
@@ -50,6 +50,3 @@ def run(workspace: str, document: str, outpath: str) -> int:
         if not current:
             # Failure
             break
-
-    # TODO: We need a custom result
-    return 95

@@ -136,19 +136,7 @@ def work(workspace):
     current = jobid(workspace)
     outpath = os.path.join(configo.todo(), current)
 
-    result = queuemo.runtime.run(workspace, jobid(workspace), outpath=outpath)
-
-    update_info(outpath, result)
-
-
-def update_info(workspace, result: int):
-    info_path = os.path.join(workspace, link.JOB_FILE_NAME)
-    assert os.path.exists(info_path), str(info_path)
-    info = link.load_job(info_path)
-    info.result = '%d' % result
-
-    utila.file_remove(info_path)  # remove old one to replace with new one
-    link.dump_job(info_path, info)
+    queuemo.runtime.run(workspace, jobid(workspace), outpath=outpath)
 
 
 def jobid(path: str) -> int:
