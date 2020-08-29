@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v1.0.0
+
+### Feature
+
+* remove outdated result value (ab52ea08305c)
+* add profiling step to determine pdf analyzing time (af3dfcc4519d)
+
+### Fix
+
+* avoid copy findings twice (77da1824599f)
+* simplify output path (a06272a1413b)
+
 ## v0.8.0
 
 ### Feature
