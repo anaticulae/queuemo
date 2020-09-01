@@ -161,7 +161,8 @@ def run(
                 action(current_flow)
             except RuntimeControl as control:
                 raise control
-            except Exception:
+            except Exception as error:
                 utila.error(f'could not run: {item}')
+                utila.error(error)
                 utila.logger.log_stacktrace()
-                raise RuntimeError(f'{current.name}: {item}')
+                raise RuntimeError(f'{current.name}: {item}') from error
