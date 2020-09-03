@@ -81,3 +81,10 @@ def after(flow: queuemo.runtime.api.RecipeIO):
         pattern='words__word_result.yaml',
         verbose=True,
     )
+
+    utila.copy_content(
+        flow.general,
+        resultview,
+        pattern='caption__general_general.yaml',
+        verbose=True,
+    )
