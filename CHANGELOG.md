@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.0.3
+
+### Feature
+
+* copy caption data to result view (cfe84f39c283)
+* add verbose error logging (b8da0444c5dd)
+
 ## v1.0.2
 
 ## v1.0.1
