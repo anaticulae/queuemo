@@ -17,36 +17,10 @@ import queuemo.runtime.api
 import queuemo.utils
 
 
-def before(flow: queuemo.runtime.api.RecipeIO):
-    pages = queuemo.utils.select_pages(
-        flow.general,
-        select=iamraw.sections.MainPart,
-    )
-    queuemo.runnable.words(
-        inpath=[flow.general],
-        output=flow.general,
-        pages=pages,
-    )
-    queuemo.runnable.doctextstyle(
-        inpath=flow.general,
-        output=flow.general,
-        pages=pages,
-    )
-    queuemo.runnable.caption(
-        inpath=flow.general,
-        output=flow.general,
-        pages=pages,
-    )
-    queuemo.runnable.detector_formula(
-        inpath=flow.general,
-        outpath=flow.general,
-        pages=pages,
-    )
-    queuemo.runnable.magic(
-        inpath=flow.general,
-        output=flow.general,
-        pages=pages,
-    )
+def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
+    # RUN MAGIC BEFORE
+    # TODO: ADD TEST THAT MAGIC EXISTS?
+    pass
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
@@ -61,6 +35,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     queuemo.runnable.decider_textflow_lineending(
         inpath=[
+            flow.package('doctextstyle'),
             flow.tmppath,
             flow.general,
         ],
@@ -79,12 +54,5 @@ def after(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         resultview,
         pattern='words__word_result.yaml',
-        verbose=True,
-    )
-
-    utila.copy_content(
-        flow.general,
-        resultview,
-        pattern='caption__general_general.yaml',
         verbose=True,
     )

@@ -20,37 +20,10 @@ import queuemo.utils
 
 
 # TODO: DUPLICATED IN TEXTFLOW, ADD AUTOMATIC SCHEDULER LATER
-def before(flow: queuemo.runtime.api.RecipeIO):
-    content = queuemo.utils.select_pages(
-        flow.general,
-        select=iamraw.sections.MainPart,
-    )
-    queuemo.runnable.words(
-        inpath=[flow.general],
-        output=flow.general,
-        pages=content,
-    )
-    queuemo.runnable.textflow_quotes(
-        inpath=[flow.general],
-        output=flow.general,
-        pages=content,
-    )
-    queuemo.runnable.caption(
-        inpath=[flow.general],
-        output=flow.general,
-        pages=content,
-    )
-    queuemo.runnable.detector_formula(
-        inpath=[flow.general],
-        outpath=flow.general,
-        pages=content,
-    )
-    # required for detecting tables
-    queuemo.runnable.magic(
-        inpath=flow.general,
-        output=flow.general,
-        pages=content,
-    )
+def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
+    # RUN MAGIC BEFORE
+    # TODO: ADD TEST THAT MAGIC EXISTS?
+    pass
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
