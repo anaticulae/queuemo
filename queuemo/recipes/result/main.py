@@ -10,7 +10,6 @@
 import queuemo.runtime.api
 
 ORDER = [
-    'validation',
     'imgfig',
     'magic',
     'doctextstyle',
