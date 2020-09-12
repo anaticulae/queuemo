@@ -221,7 +221,6 @@ def schedule(steps: RecipeSteps, orderby: list = None) -> RecipeSteps:
         else:
             result.append(found)
             steps.remove(found)
-    # add the rest which was not scheduled
-    for item in steps:
-        result.append(item)
+    # add unscheduled tasks
+    result.extend(steps)
     return result
