@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import queuemo.runtime.api
+
 ORDER = [
     'validation',
     'imgfig',
@@ -16,3 +18,7 @@ ORDER = [
     'bibliography',
     'view',
 ]
+
+
+def run(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
+    pass

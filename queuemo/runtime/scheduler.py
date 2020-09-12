@@ -84,6 +84,8 @@ class RecipeStep:
 
 RecipeSteps = typing.List[RecipeStep]
 
+ORDER = 'ORDER'
+
 
 @dataclasses.dataclass
 class ComposedRecipe:
@@ -102,7 +104,7 @@ class ComposedRecipe:
         if self.main:
             result.append(self.main)
             if self.steps:
-                order = self.main.order if hasattr(self.main, 'order') else None
+                order = getattr(self.main, ORDER.lower(), None)
                 scheduled = schedule(self.steps, order)
                 result.extend(scheduled)
         else:
@@ -150,7 +152,7 @@ def collect(path: str) -> dict:
             continue
 
         step = RecipeStep(name=item)
-        for value_name in ['before', 'run', 'after', 'order', 'PREFIX']:
+        for value_name in ['before', 'run', 'after', ORDER, 'PREFIX']:
             with contextlib.suppress(AttributeError):
                 value = getattr(module, value_name)
                 value_name = value_name.lower()

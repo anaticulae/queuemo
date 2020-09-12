@@ -22,7 +22,11 @@ for item in [EXAMPLE, IMOM, ERRORNEOUS]:
 
 def test_recipe_scheduler_collect():
     collected = queuemo.runtime.scheduler.collect(IMOM)
-    assert len(collected) == 5
+    expected = {
+        'after', 'bc_step', 'before', 'da_step', 'failure', 'main', 'runme'
+    }
+    current = set(collected.keys())
+    assert current == expected
 
 
 def test_recipe_scheduler_collect_norunmethod(capsys):
@@ -30,6 +34,14 @@ def test_recipe_scheduler_collect_norunmethod(capsys):
     assert collected == {}
     error = capsys.readouterr().err
     assert 'could not load recipe step' in error, error
+
+
+def test_load_and_order():
+    """Ensure that uppercased ORDER is schedule correctly."""
+    loaded = queuemo.runtime.scheduler.load(IMOM)
+    names = [item.name for item in loaded.schedule]
+    expected = ['before', 'main', 'da_step', 'bc_step', 'runme', 'after']
+    assert names == expected
 
 
 def test_recipe_scheduler_compose():
