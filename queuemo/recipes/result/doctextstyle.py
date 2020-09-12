@@ -35,6 +35,16 @@ def before(flow: queuemo.runtime.api.RecipeIO):
         output=flow.general,
         pages=content,
     )
+    queuemo.runnable.caption(
+        inpath=[flow.general],
+        output=flow.general,
+        pages=content,
+    )
+    queuemo.runnable.detector_formula(
+        inpath=[flow.general],
+        outpath=flow.general,
+        pages=content,
+    )
     # required for detecting tables
     queuemo.runnable.magic(
         inpath=flow.general,
