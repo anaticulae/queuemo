@@ -131,6 +131,9 @@ def run(
         RuntimeControl: if some step signals to hold
     """
     tmp = os.path.join(flow.tmppath, '.tmp')
+    utila.log('\n' + '@' * 80)
+    utila.log(f'{composition.name}'.center(80))
+    utila.log('@' * 80)
     for current in composition.schedule:
         utila.log('\n' + '*' * 80)
         utila.log(f'{current.name}'.center(80))
