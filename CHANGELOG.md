@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v1.1.0
+
+### Feature
+
+* log start of ComposedRecipe (0c041d2fe26d)
+* add magic step to run computation only once (d376ea24007a)
+
+### Fix
+
+* remove non existing validation step from scheduler (aa01ed9768e8)
+* ensure that `ORDER` is used when for process scheduling (3f8d455fc85f)
+* add missing input resources (a0e5688a7efe)
+
 ## v1.0.4
 
 ## v1.0.3
