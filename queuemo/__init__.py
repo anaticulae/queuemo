@@ -14,3 +14,5 @@ __version__ = '1.1.1'
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 PROCESS = 'queuemo'
+
+INTERACTIVE = False  # if True, pause on every scheduler step

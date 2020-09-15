@@ -17,6 +17,7 @@ API
 
 - Name of used folder and job is defined by location and file name
 """
+
 import os
 
 import utila
@@ -24,6 +25,7 @@ import utila.logger
 
 import queuemo.runtime.api
 import queuemo.runtime.scheduler
+import queuemo.utils
 
 
 class RecipeRuntime:
@@ -169,3 +171,5 @@ def run(
                 utila.error(error)
                 utila.logger.log_stacktrace()
                 raise RuntimeError(f'{current.name}: {item}') from error
+        if queuemo.INTERACTIVE:
+            queuemo.utils.wait()

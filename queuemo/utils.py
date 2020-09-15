@@ -79,7 +79,7 @@ def run_parallel(*items, worker=2) -> int:
 
 def wait():
     """Ask user to continue program."""
-    answer = input('continue?')
+    answer = input('continue?\n')
     answer = answer.strip().lower()
     if answer in ('no', 'n'):
         exit(utila.SUCCESS)

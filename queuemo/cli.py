@@ -14,6 +14,7 @@ import utila
 import utila.cli
 import utila.logger
 
+import queuemo
 import queuemo.worker.startup
 
 PROCESS_NAME = 'queuemo'
@@ -21,6 +22,7 @@ RUNTIME = 'runtime'
 WAITING = 'waiting'
 JOBS = 'jobs'
 VERBOSE = 'verbose'
+INTERACTIVE = 'interactive'
 
 COMMANDS = [
     utila.Parameter(
@@ -44,6 +46,10 @@ COMMANDS = [
             'default': 1000,
         },
     ),
+    utila.Flag(
+        longcut=INTERACTIVE,
+        message='pause on every recipe step and ask to continue',
+    ),
 ]
 
 
@@ -58,6 +64,9 @@ def main():
         version=queuemo.__version__,
     )
     args = utila.parse(parser)
+    queuemo.INTERACTIVE = args[INTERACTIVE]
+    if queuemo.INTERACTIVE:
+        utila.log('use interactive mode')
     try:
         runtime, waiting = int(args[RUNTIME]), int(args[WAITING])
         jobsleft = int(args[JOBS])
