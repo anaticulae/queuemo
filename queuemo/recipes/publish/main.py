@@ -6,7 +6,9 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import link
+import utila
 
 import queuemo.runtime.api
 
@@ -14,3 +16,23 @@ import queuemo.runtime.api
 def run(flow: queuemo.runtime.api.RecipeIO):
     # copy todo folder to result and create done folder
     link.publish(flow.document)
+
+
+def after(flow: queuemo.runtime.api.RecipeIO):
+    utila.log(f'publish log')
+    ready = link.ready(flow.document)
+
+    if utila.logger.OUTFILE:
+        utila.copy_content(
+            utila.logger.OUTFILE,
+            ready,
+            verbose=True,
+        )
+    else:
+        utila.error('no utila.logger.OUTFILE defined, could not publish')
+
+    # document completed
+    utila.log()
+    for _ in range(4):
+        utila.log('#' * 80)
+    utila.log()
