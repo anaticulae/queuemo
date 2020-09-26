@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v1.2.0
+
+### Feature
+
+* publish log after completing document (a3cbbba7f8c4)
+* add --interactive flag to manually step thru execution (797205147a58)
+* add method to ask user for continuing (c2bd72c4ab9f)
+
 ## v1.1.1
 
 ## v1.1.0
