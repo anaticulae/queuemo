@@ -31,7 +31,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.textflow_lineending(
         inpath=[flow.general],
         output=flow.tmppath,
-        # pages=pages,
+        pages=pages,
     )
     queuemo.runnable.decider_textflow_lineending(
         inpath=[
