@@ -56,6 +56,7 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
         pytest.param('page_89_noimages_toc', marks=utilatest.skip_nightly),
         pytest.param('homework25', marks=utilatest.skip_longrun),
     ])
+@utilatest.skip_nightly
 def test_recipe_result_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
     workspace = str(testdir)
     completed = run_resultview(
