@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.2.2
+
+### Fix
+
+* words is already done for magic (0fa5f434767a)
+* add missing page shrink (c473e937df8c)
+
 ## v1.2.1
 
 ## v1.2.0
