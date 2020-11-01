@@ -75,7 +75,7 @@ def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
         monkeypatch,
         testdir,
         capsys,
-        returncode_=utila.INVALID_COMMAND,
+        expected=utila.INVALID_COMMAND,
     )
 
 
@@ -94,20 +94,17 @@ def test_incremental_verbose_flag(verbose, monkeypatch, testdir, capsys):
 
 
 def run_queuemo(
-        command,
+        cmd,
         monkeypatch,
         testdir,
         capsys,
-        returncode_=utila.SUCCESS,
-):  #pylint: disable=W0613
-    if isinstance(command, str):
-        command = command.split()
-
+        expected=utila.SUCCESS,
+):
+    cmd = cmd.split() if isinstance(cmd, str) else cmd
     with monkeypatch.context() as context:
         # Remove all environment vars
-        context.setattr(sys, 'argv', [queuemo.cli.PROCESS_NAME] + command)
-
+        context.setattr(sys, 'argv', [queuemo.cli.PROCESS_NAME] + cmd)
         with pytest.raises(SystemExit) as result:
             queuemo.cli.main()
-        assert utila.returncode(result) == returncode_, str(result)
+        assert utila.returncode(result) == expected, str(result)
     return capsys
