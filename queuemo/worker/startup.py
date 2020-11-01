@@ -6,7 +6,8 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""Watchdog for todo folder to listen to incoming jobs"""
+"""Watchdog of todo folder to listen for incoming jobs."""
+
 import os
 import shutil
 import time
