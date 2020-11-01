@@ -73,13 +73,9 @@ def main():
         verbose = int(args[VERBOSE]) if args[VERBOSE] else 0
         utila.level_setup(verbose)
     except ValueError:
-        msg = 'invalid start parameter: `%s`, `%s`, `%s`, `%s`'
-        utila.error(msg % (
-            args[RUNTIME],
-            args[WAITING],
-            args[VERBOSE],
-            args[JOBS],
-        ))
+        msg = (f'invalid start parameter: `{args[RUNTIME]}`, `{args[WAITING]}`,'
+               f' `{args[VERBOSE]}`, `{args[JOBS]}`')
+        utila.error(msg)
         return utila.INVALID_COMMAND
     configo.check_startup()
     # start scheduler
