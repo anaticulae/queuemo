@@ -10,7 +10,12 @@
 import contextlib
 import os
 import shutil
+import sys
 
+import pytest
+import utila
+
+import queuemo.cli
 import tests.resources
 
 
@@ -51,3 +56,24 @@ def patch_todo(testdir, monkeypatch, copy=True):
         copy[READY] = readypath
         context.setattr(os, 'environ', copy)
         yield
+
+
+def run_queuemo(
+        cmd,
+        monkeypatch,
+        testdir,
+        capsys,
+        process=queuemo.cli.PROCESS_NAME,
+        runnable=queuemo.cli.main,
+        expected=utila.SUCCESS,
+):
+    cmd = cmd.split() if isinstance(cmd, str) else cmd
+    with monkeypatch.context() as context:
+        # Remove all environment vars
+        context.setattr(sys, 'argv', [process] + cmd)
+        with pytest.raises(SystemExit) as result:
+            runnable()
+        assert utila.returncode(result) == expected, str(result)
+    return capsys
+
+

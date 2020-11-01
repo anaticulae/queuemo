@@ -8,7 +8,6 @@
 # =============================================================================
 
 import os
-import sys
 
 import configo.directory
 import pytest
@@ -17,12 +16,13 @@ import utilatest
 
 import queuemo
 import queuemo.cli
+import queuemo.single
 import tests
 import tests.resources
 
 
 def test_run_main(monkeypatch, testdir, capsys):
-    run_queuemo('--version', monkeypatch, testdir, capsys)
+    tests.run_queuemo('--version', monkeypatch, testdir, capsys)
 
 
 def test_run_one_job(monkeypatch, testdir, capsys):
@@ -33,7 +33,7 @@ def test_run_one_job(monkeypatch, testdir, capsys):
         '10',  # mili
         '-VV',
     ]
-    run_queuemo(
+    tests.run_queuemo(
         command,
         monkeypatch,
         testdir,
@@ -70,7 +70,7 @@ def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
         '--%s' % queuemo.cli.WAITING,
         'woho',  # invalid input
     ]
-    run_queuemo(
+    tests.run_queuemo(
         command,
         monkeypatch,
         testdir,
@@ -85,26 +85,9 @@ def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
     ('--verbose'),
 ])
 def test_incremental_verbose_flag(verbose, monkeypatch, testdir, capsys):
-    run_queuemo(
+    tests.run_queuemo(
         [verbose],
         monkeypatch,
         testdir,
         capsys,
     )
-
-
-def run_queuemo(
-        cmd,
-        monkeypatch,
-        testdir,
-        capsys,
-        expected=utila.SUCCESS,
-):
-    cmd = cmd.split() if isinstance(cmd, str) else cmd
-    with monkeypatch.context() as context:
-        # Remove all environment vars
-        context.setattr(sys, 'argv', [queuemo.cli.PROCESS_NAME] + cmd)
-        with pytest.raises(SystemExit) as result:
-            queuemo.cli.main()
-        assert utila.returncode(result) == expected, str(result)
-    return capsys
