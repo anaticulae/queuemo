@@ -16,6 +16,8 @@ import pytest
 import utila
 
 import queuemo.cli
+import queuemo.single
+import tests.__patch__
 import tests.resources
 
 
@@ -77,3 +79,19 @@ def run_queuemo(
     return capsys
 
 
+def run_single(
+        cmd,
+        monkeypatch,
+        testdir,
+        capsys,
+        expected=utila.SUCCESS,
+):
+    return run_queuemo(
+        cmd,
+        monkeypatch,
+        testdir,
+        capsys,
+        process='queuemo_single',
+        runnable=queuemo.single.main,
+        expected=expected,
+    )
