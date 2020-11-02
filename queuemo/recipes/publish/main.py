@@ -33,6 +33,5 @@ def after(flow: queuemo.runtime.api.RecipeIO):
 
     # document completed
     utila.log()
-    for _ in range(4):
-        utila.log('#' * 80)
+    utila.log((('#' * 80) + utila.NEWLINE) * 4)
     utila.log()
