@@ -6,9 +6,9 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+
 import os
 
-import link
 import pytest
 import utilatest
 
@@ -27,8 +27,11 @@ def run_resultview(workspace, jobid, monkeypatch):
             monkeypatch=monkeypatch,
     ) as runner:
         completed = runner.finish()
+        # Hint: do not use link, cause multiprocessed tests modify global
+        # variables.
+        readypath = os.path.join(workspace, 'ready_', jobid)
         # ensure that published worked
-        assert os.path.exists(link.ready(jobid)), link.ready(jobid)
+        assert os.path.exists(readypath), readypath
     return completed
 
 
