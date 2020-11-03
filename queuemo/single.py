@@ -13,6 +13,7 @@ import os
 import configo
 import utila
 import utila.cli
+import utila.logger
 
 import queuemo
 import queuemo.runtime.execute
@@ -37,11 +38,13 @@ def main() -> int:
         version=queuemo.__version__,
     )
     args = utila.parse(parser)
-    inpath, _ = utila.sources(
+    inpath, _, verbose = utila.sources(
         args,
         singleinput=True,
         use_cwd=False,
+        verbose=True,
     )
+    utila.logger.level_setup(utila.Level(verbose))
     inpath = inpath[0]
     if os.path.isfile(inpath):
         utila.error(f'require directory: {inpath}')
