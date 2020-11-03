@@ -68,7 +68,10 @@ class RecipeRuntime:
         current = self.todo.pop(0)
         try:
             tmppath = os.path.join(self.workspace, current.name)
-            outpath = os.path.join(self.outpath, current.name)
+            if self.outpath:
+                outpath = os.path.join(self.outpath, current.name)
+            else:
+                outpath = None
             flow = queuemo.runtime.api.RecipeIO(
                 workspace=self.workspace,
                 document=self.document,
@@ -104,7 +107,7 @@ class Stop(RuntimeControl):
     pass
 
 
-def run(
+def run(  # pylint:disable=R1260
         composition: queuemo.runtime.scheduler.ComposedRecipe,
         flow: queuemo.runtime.api.RecipeIO,
 ):
@@ -145,7 +148,10 @@ def run(
             # add prefix to result of scheduling step
             name = f'{current.prefix}_{current.name}'
         tmppath = os.path.join(flow.tmppath, name)
-        outpath = os.path.join(flow.outpath, name)
+        if flow.outpath:
+            outpath = os.path.join(flow.outpath, name)
+        else:
+            outpath = None
         if current.name in ['before', 'after', 'main']:
             tmppath = tmp
             outpath = flow.outpath

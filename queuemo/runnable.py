@@ -242,6 +242,7 @@ def check(runner=None):
     # run in parallel to reduce startup time
     ret = utila.run_parallel(todo)
     if ret:
+        utila.error('runs with error')
         exit(ret)
     utila.log()  # add newline
 

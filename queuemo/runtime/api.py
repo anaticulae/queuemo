@@ -39,6 +39,8 @@ class RecipeIO:
 
     @property
     def main(self) -> str:
+        if not self.outpath:
+            return None
         parent = os.path.join(self.outpath, '..')
         parent = os.path.normpath(parent)
         return parent
@@ -52,6 +54,9 @@ class RecipeIO:
 
     def publish_linting(self, verbose: bool = False):
         """Publish to fastview and if exists to result also"""
+        if not self.outpath:
+            utila.log('skip publishing')
+            return
         utila.copy_content(
             self.tmppath,
             self.outpath,
@@ -63,7 +68,11 @@ class RecipeIO:
         source = self.tmppath
         if folder is not None:
             source = os.path.join(self.tmppath, folder)
-        utila.copy_content(source, self.outpath, pattern=pattern)
+        if self.outpath:
+            utila.copy_content(source, self.outpath, pattern=pattern)
+        else:
+            todo = link.todo(self.document)
+            utila.copy_content(source, todo, pattern=pattern)
 
     def __str__(self):
         return textwrap.dedent(f"""\

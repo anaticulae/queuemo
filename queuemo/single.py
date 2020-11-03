@@ -10,6 +10,7 @@
 
 import os
 
+import configo
 import utila
 import utila.cli
 
@@ -30,18 +31,35 @@ def main() -> int:
         todo=COMMANDS,
         config=utila.ParserConfiguration(
             inputparameter=True,
-            outputparameter=True,
+            outputparameter=False,
         ),
         prog='queuemo_single',
         version=queuemo.__version__,
     )
     args = utila.parse(parser)
-    inpath, outpath = utila.sources(args, singleinput=True)
+    inpath, _ = utila.sources(
+        args,
+        singleinput=True,
+        use_cwd=False,
+    )
+    inpath = inpath[0]
     if os.path.isfile(inpath):
         utila.error(f'require directory: {inpath}')
-        exit(utila.INVALID_COMMAND)
+        return utila.INVALID_COMMAND
+    outpath = inpath
 
-    os.makedirs(outpath, exist_ok=True)
+    # patch todo output path. TODO: INVESTIGATE HERE?
+    todopath = os.path.normpath(os.path.join(inpath, os.path.pardir))
+    configo.todo = lambda _=False: todopath
+    configo.ready = lambda _=False: todopath
+
     utila.log(f'write result to: {outpath}')
+
+    tmpdir = utila.tmpdir(configo.tmp())
     jobid = queuemo.worker.startup.jobid(inpath)
-    queuemo.runtime.execute.run_document(inpath, jobid, outpath=outpath)
+    queuemo.runtime.execute.run_document(
+        workspace=tmpdir,
+        document=jobid,
+        outpath=outpath,
+    )
+    return utila.SUCCESS
