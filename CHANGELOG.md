@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v1.3.0
+
+### Feature
+
+* add verbose flag (ce4c9d9ac5ec)
+* run queuemo in single folder (3b784acf62d6)
+* add basic single runtime infrastructure (167b8140f68c)
+
 ## v1.2.3
 
 ## v1.2.2
