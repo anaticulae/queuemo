@@ -148,4 +148,4 @@ def jobid(path: str) -> int:
     info_path = os.path.join(path, link.JOB_FILE_NAME)
     assert os.path.exists(info_path), str(info_path)
     info = link.load_job(info_path)
-    return info.index
+    return info.name
