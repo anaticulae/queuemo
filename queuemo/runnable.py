@@ -128,6 +128,10 @@ def words(inpath: str, output: str = None, **kwargs):
     run('words -j8', inpath, output, **kwargs)
 
 
+def words_links(inpath: str, output: str = None, **kwargs):
+    run('words --links', inpath, output, **kwargs)
+
+
 def detector_formula(inpath: str, outpath: str, **kwargs):
     run('detector --formula', inpath, outpath, **kwargs)
 
@@ -198,6 +202,10 @@ def bibliography(inpath: str, output: str = None, **kwargs):
 
 def decider_bibliography(inpath: str, output: str = None):
     run('decider --bibliography', inpath, output)
+
+
+def decider_links(inpath: str, output: str = None):
+    run('decider --links', inpath, output)
 
 
 def decider_textflow_lineending(inpath: str, output: str = None, **kwargs):
