@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.3.3
+
+### Feature
+
+* add decider links step (d326678c21f7)
+
 ## v1.3.2
 
 ## v1.3.1
