@@ -20,7 +20,10 @@ import queuemo.utils
 def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
     # RUN MAGIC BEFORE
     # TODO: ADD TEST THAT MAGIC EXISTS?
-    pass
+    queuemo.runnable.docref(
+        inpath=[flow.general],
+        output=flow.tmppath,
+    )
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
