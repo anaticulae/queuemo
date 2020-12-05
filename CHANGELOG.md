@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.4.0
+
+### Feature
+
+* add smarty run and decide step (ed68ca908aee)
+* add required docref step (6a9baa3de67f)
+
 ## v1.3.3
 
 ### Feature
