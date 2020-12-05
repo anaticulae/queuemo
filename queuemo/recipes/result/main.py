@@ -17,6 +17,7 @@ ORDER = [
     'footnote',
     'bibliography',
     'links',
+    'smarty',
     'view',
 ]
 

@@ -190,6 +190,14 @@ def docref(inpath: str, output: str = None, **kwargs):
     run('docref', inpath, output, **kwargs)
 
 
+def smarty(inpath: str, output: str = None, **kwargs):
+    run('smarty', inpath, output, **kwargs)
+
+
+def decider_smarty(inpath: str, output: str = None, **kwargs):
+    run('decider_smarty', inpath, output, **kwargs)
+
+
 def decider_textstyle_headlines(inpath: str, output: str = None, **kwargs):
     # TODO: Enable later; activate after utila supports selective inputs
     # run('decider_textflow --lineending', inpath, output)
