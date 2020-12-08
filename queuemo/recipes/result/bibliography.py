@@ -7,7 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import iamraw.sections
+import link
+import utila
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -33,3 +37,14 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 def after(flow: queuemo.runtime.api.RecipeIO):
     flow.publish_linting()
+
+    resultview = link.resultview(flow.document)
+    # TODO: REMOVE LATER
+    if not os.path.exists(resultview):
+        return
+    utila.copy_content(
+        flow.tmppath,
+        resultview,
+        pattern='detector__bibliography_detected.yaml',
+        verbose=True,
+    )
