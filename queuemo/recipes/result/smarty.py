@@ -17,7 +17,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         output=flow.tmppath,
     )
     queuemo.runnable.decider_smarty(
-        inpath=[flow.tmppath],
+        inpath=[flow.tmppath, flow.general],
         output=flow.tmppath,
     )
 
