@@ -30,7 +30,10 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         pages=bibliography,
     )
     queuemo.runnable.decider_bibliography(
-        inpath=[flow.tmppath],
+        inpath=[
+            flow.tmppath,
+            flow.general,
+        ],
         output=flow.tmppath,
     )
 

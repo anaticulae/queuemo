@@ -198,6 +198,10 @@ def decider_smarty(inpath: str, output: str = None, **kwargs):
     run('decider_smarty', inpath, output, **kwargs)
 
 
+def decider_bibliography(inpath: str, output: str = None, **kwargs):
+    run('decider_bibliography', inpath, output, **kwargs)
+
+
 def decider_textstyle_headlines(inpath: str, output: str = None, **kwargs):
     # TODO: Enable later; activate after utila supports selective inputs
     # run('decider_textflow --lineending', inpath, output)
@@ -210,10 +214,6 @@ def decider_textstyle_text(inpath: str, output: str = None, **kwargs):
 
 def bibliography(inpath: str, output: str = None, **kwargs):
     run('detector --bibliography', inpath, output, **kwargs)
-
-
-def decider_bibliography(inpath: str, output: str = None):
-    run('decider --bibliography', inpath, output)
 
 
 def decider_links(inpath: str, output: str = None):
