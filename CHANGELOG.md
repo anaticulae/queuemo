@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v1.4.1
+
+### Feature
+
+* use new bib decider (ddfb1f5192ab)
+* publish extracted bib to display to user (74986576e12d)
+
+### Fix
+
+* add missing input resource (00fb4b321358)
+
 ## v1.4.0
 
 ### Feature
