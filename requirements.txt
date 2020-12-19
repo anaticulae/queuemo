@@ -19,7 +19,6 @@ utila==2.16.1
 feedback==1.5.15
 hey==5.5.4
 rawmaker==2.9.4
-chapter==0.1.1
 
 decider==1.0.1
 decider_ref==1.2.1
