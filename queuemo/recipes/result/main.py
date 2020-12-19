@@ -16,6 +16,7 @@ ORDER = [
     'textflow',
     'footnote',
     'bibliography',
+    'chapter',
     'links',
     'smarty',
     'view',
