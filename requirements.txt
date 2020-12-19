@@ -20,6 +20,6 @@ feedback==1.5.15
 hey==5.5.4
 rawmaker==2.9.4
 
-decider==1.0.1
-decider_ref==1.2.1
-decider_con==0.1.0
+decider==1.0.2
+decider_ref==1.2.2
+decider_con==0.1.2
