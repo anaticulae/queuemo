@@ -24,11 +24,16 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         select=iamraw.sections.Bibliography,
     )
 
-    queuemo.runnable.bibliography(
+    queuemo.runnable.detector_bibliography(
         inpath=[flow.general],
         output=flow.tmppath,
         pages=bibliography,
     )
+    queuemo.runnable.docref_bibliography(
+        inpath=[flow.general],
+        output=flow.tmppath,
+    )
+
     queuemo.runnable.decider_bibliography(
         inpath=[
             flow.tmppath,

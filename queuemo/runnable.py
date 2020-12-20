@@ -190,6 +190,10 @@ def docref(inpath: str, output: str = None, **kwargs):
     run('docref', inpath, output, **kwargs)
 
 
+def docref_bibliography(inpath: str, output: str = None, **kwargs):
+    run('docref --bibliography', inpath, output, **kwargs)
+
+
 def chapter(inpath: str, output: str = None, **kwargs):
     run('chapter', inpath, output, **kwargs)
 
@@ -220,7 +224,7 @@ def decider_textstyle_text(inpath: str, output: str = None, **kwargs):
     run('decider_textstyle --text', inpath, output, **kwargs)
 
 
-def bibliography(inpath: str, output: str = None, **kwargs):
+def detector_bibliography(inpath: str, output: str = None, **kwargs):
     run('detector --bibliography', inpath, output, **kwargs)
 
 
