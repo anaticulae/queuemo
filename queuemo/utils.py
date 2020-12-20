@@ -8,8 +8,6 @@
 # =============================================================================
 """Store experimental code here."""
 
-import concurrent
-
 import sections.path
 import serializeraw
 import utila
@@ -61,20 +59,6 @@ def pages2str(pages: tuple) -> str:
     if (pages[0]) == pages[1]:
         return str(pages[0])
     return ':'.join([str(item) for item in pages])
-
-
-def run_parallel(*items, worker=2) -> int:
-    ret = 0
-    with concurrent.futures.ThreadPoolExecutor(max_workers=worker) as executor:
-        futures = {executor.submit(item): item for item in items}
-        for future in concurrent.futures.as_completed(futures):
-            try:
-                future.result()
-            except Exception as error:  # pylint:disable=broad-except
-                utila.error(f'{future} failed.')
-                utila.error(error)
-                ret += 1
-    return ret
 
 
 def wait():

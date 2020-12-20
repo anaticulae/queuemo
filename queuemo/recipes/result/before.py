@@ -15,7 +15,6 @@ import utila
 import queuemo.runnable
 import queuemo.runtime.api
 import queuemo.runtime.runtime
-import queuemo.utils
 
 
 def before(flow: queuemo.runtime.api.RecipeIO):
@@ -64,8 +63,8 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             text=True,
             fonts=True,
         ))
-    completed = queuemo.utils.run_parallel(*todo)
-    assert completed == utila.SUCCESS, 'could not extract pdf'
+    completed = utila.fork(*todo, worker=2, process=True)
+    assert isinstance(completed, list), 'could not extract pdf'
 
 
 def determine_sections(flow: queuemo.runtime.api.RecipeIO):

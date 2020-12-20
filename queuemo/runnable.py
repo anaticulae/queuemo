@@ -272,8 +272,8 @@ def check(runner=None):
     for item in runner:
         utila.log(f'check: {item}')
     # run in parallel to reduce startup time
-    ret = utila.run_parallel(todo)
-    if ret:
+    ret = utila.fork(todo, worker=len(RUNNER), process=False)
+    if not isinstance(ret, list):
         utila.error('runs with error')
         exit(ret)
     utila.log()  # add newline
