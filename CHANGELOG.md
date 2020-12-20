@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v1.5.0
+
+### Feature
+
+* add chapter step (9b2ca07bce36)
+* add chapter and chapter decider runner (1e928c7c5a69)
+
+### Fix
+
+* add missing extraction step (c302e475cbcd)
+
+### Documentation
+
+* extend documentation of bibliography (940bf31777a6)
+
 ## v1.4.2
 
 ## v1.4.1
