@@ -24,6 +24,7 @@ def extract_examples():
     create_example(power.MASTER072_PDF)
     create_example(power.MASTER078_PDF)
     create_example(power.MASTER083_PDF)
+    create_example(power.BACHELOR085_PDF)
     create_example(power.MASTER089_PDF)
     create_example(power.MASTER116_PDF)
     create_example(power.ORDER009_PDF)
