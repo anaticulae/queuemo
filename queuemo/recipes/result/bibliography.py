@@ -6,6 +6,17 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Bibliography
+============
+
+1a. Extract area of bibliography
+1b. Extract bibliography in detected area
+
+2. Extract references to bibliography in the whole document
+
+3a. Judge area of bibliography
+3b. Judge reference to area of bibliography
+"""
 
 import os
 
