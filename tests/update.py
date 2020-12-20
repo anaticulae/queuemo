@@ -16,21 +16,17 @@ import utila
 
 import tests.resources
 
+# TODO: REFACTOR TEST DATA GENERATOR
 
-def extract_examples():
+
+def extract_examples(files):
     todo = os.path.join(power.generated(), 'todo')
+    if os.path.exists(todo):
+        return
     os.makedirs(todo)
 
-    create_example(power.MASTER072_PDF)
-    create_example(power.MASTER078_PDF)
-    create_example(power.MASTER083_PDF)
-    create_example(power.BACHELOR085_PDF)
-    create_example(power.MASTER089_PDF)
-    create_example(power.MASTER116_PDF)
-    create_example(power.ORDER009_PDF)
-
-    create_example(power.ORDER038_PDF)
-    create_example(power.HOME025_PDF)
+    for item in files:
+        create_example(item)
 
     create_example(
         power.DOCU09_PDF,

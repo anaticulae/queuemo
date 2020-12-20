@@ -19,11 +19,23 @@ PACKAGE = queuemo.PROCESS
 
 power.setup(queuemo.ROOT)
 
+RESOURCES_TODO = [
+    power.MASTER072_PDF,
+    power.MASTER078_PDF,
+    power.MASTER083_PDF,
+    power.BACHELOR085_PDF,
+    power.MASTER089_PDF,
+    power.MASTER116_PDF,
+    power.ORDER009_PDF,
+    power.ORDER038_PDF,
+    power.HOME025_PDF,
+]
+
 
 @pytest.mark.usefixtures('session')
 def pytest_sessionstart():
     power.run()
 
 
-def extract():
-    tests.update.extract_examples()
+def extract_todo(files):
+    tests.update.extract_examples(files)
