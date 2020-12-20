@@ -55,8 +55,8 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
     pytest.param('8166109011', marks=utilatest.skip_longrun),
     pytest.param('homework25', marks=utilatest.skip_longrun),
     pytest.param('howtowrite_pages9', marks=utilatest.skip_longrun),
-    pytest.param('page_83_noimages_toc', marks=utilatest.skip_nightly),
-    pytest.param('page_89_noimages_toc', marks=utilatest.skip_nightly),
+    pytest.param('master083', marks=utilatest.skip_nightly),
+    pytest.param('master089', marks=utilatest.skip_nightly),
 ])
 def test_recipe_result_run_example(jobid, testdir, monkeypatch):
     completed = run_resultview(

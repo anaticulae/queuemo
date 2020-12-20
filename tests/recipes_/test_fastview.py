@@ -38,7 +38,7 @@ def test_recipe_fastview_run_single(testdir, monkeypatch):  # pylint:disable=W06
         # 'page_72_noimages_toc',
         # 'page_78_images_toc',
         # 'page_83_noimages_toc',
-        'page_89_noimages_toc',
+        'master089',
     ])
 @utilatest.skip_longrun
 def test_recipe_fastview_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
