@@ -11,8 +11,10 @@ import json
 import os
 
 import link
+import serializeraw
 import utila
 
+import queuemo.runnable
 import queuemo.runtime.api
 import queuemo.runtime.runtime
 
@@ -26,14 +28,30 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     """Run validation to check that """
     link.verify(flow.document)
-
-
-def after(flow: queuemo.runtime.api.RecipeIO):
     # TODO: add pdfinfo --status to check if validation was successful
     pdfinfo = link.pdfinfo(flow.document)
     loaded = utila.file_read(pdfinfo)
     validated = json.loads(loaded)
     if validated:
         return
-    utila.log(f'invalid resource {flow.sourcepath}, stop analysis.')
+    utila.error(f'invalid resource {flow.sourcepath}, stop analysis.')
     raise queuemo.runtime.runtime.Stop('invald pdf resource')
+
+
+def after(flow: queuemo.runtime.api.RecipeIO):
+    # check that document contains some text content
+    todo = os.path.join(link.todo(flow.document), flow.document)
+    queuemo.runnable.rawmaker(
+        inpath=todo,
+        outpath=flow.tmppath,
+        text=True,
+        pages='0:10',
+    )
+    content = any([
+        len(page) for page in serializeraw.create_pagetextnavigators_frompath(
+            flow.tmppath)
+    ])
+    if content:
+        return
+    utila.error(f'no text in resource {flow.sourcepath}, stop analysis.')
+    raise queuemo.runtime.runtime.Stop('no text content')

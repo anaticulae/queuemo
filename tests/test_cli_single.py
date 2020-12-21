@@ -57,6 +57,23 @@ def test_run_single(monkeypatch, testdir, capsys):
     assert os.path.exists(os.path.join(workspace, 'result/__optimized__'))
 
 
+def test_no_text_content(testdir):
+    """Stop analysis of `figure only` documents. Some pdf printer, print
+    all content to figures, therefore no text is detected and avg text
+    size produces errors. We stop analysis before running into this
+    error."""
+    # create queuemo todo
+    workspace = link.create_todo(power.BACHELOR085_PDF, todopath=testdir.tmpdir)
+
+    # run single queuemo instance in workspace, write output to same workspace
+    cmd = f'queuemo_single -i {workspace} -V'
+    completed = utila.run(cmd, cwd=testdir.tmpdir)
+    stderr = completed.stderr
+
+    assert '[ERROR] no text in resource' in stderr
+    assert 'stop analysis' in stderr
+
+
 # # @utilatest.nightly
 # def test_run_single_different_sink(monkeypatch, testdir):
 #     # create queuemo todo

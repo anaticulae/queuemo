@@ -47,5 +47,5 @@ def test_recipe_validation_failure(testdir, monkeypatch, capsys):  # pylint:disa
         with utilatest.increased_filecount(workspace, 'json'):
             completed = rt.next_step()
     assert completed is False
-    log = capsys.readouterr().out
-    assert 'invalid resource' in log, log
+    error = utilatest.stderr(capsys)
+    assert 'invalid resource' in error, error
