@@ -14,8 +14,8 @@ import utilatest
 
 import queuemo
 import queuemo.recipes
-import tests
 import tests.fixtures.todo
+import tests.resources
 
 
 def test_recipe_validation(testdir, monkeypatch):  # pylint:disable=W0621
