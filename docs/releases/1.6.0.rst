@@ -1,0 +1,25 @@
+.. _1_6_0:
+
+RP 1.6.0
+========
+
+* [ ] add document progress
+
+* [ ] add decorator to mark essential steps
+
+* [ ] add fail on error flag
+
+code quality
+------------
+
+before
+~~~~~~
+
+* Total coverage: 88.20%
+* Your code has been rated at 10.0/10
+
+after
+~~~~~
+
+* Total coverage: XX.XX%
+* Your code has been rated at 10.0/10
