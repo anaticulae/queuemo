@@ -19,11 +19,9 @@ import tests.resources
 
 
 @utilatest.skip_longrun
-def test_recipe_fastview_run_single(testdir, monkeypatch):  # pylint:disable=W0621
-    workspace = str(testdir)
-
+def test_recipe_fastview_run_single(testdir, monkeypatch):
     completed = run_fastview(
-        workspace,
+        testdir.tmpdir,
         tests.resources.EXAMPLE_JOB,
         monkeypatch,
     )
@@ -41,11 +39,9 @@ def test_recipe_fastview_run_single(testdir, monkeypatch):  # pylint:disable=W06
         'master089',
     ])
 @utilatest.skip_longrun
-def test_recipe_fastview_run_example(jobid, testdir, monkeypatch):  # pylint:disable=W0621
-    workspace = str(testdir)
-
+def test_recipe_fastview_run_example(jobid, testdir, monkeypatch):
     completed = run_fastview(
-        workspace,
+        testdir.tmpdir,
         jobid,
         monkeypatch,
     )

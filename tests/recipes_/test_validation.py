@@ -20,14 +20,13 @@ import tests.resources
 
 def test_recipe_validation(testdir, monkeypatch):  # pylint:disable=W0621
     """Ensure to create validation result via `pdfinfo` tool"""
-    workspace = str(testdir)
     with tests.fixtures.todo.runtime(
-            workspace,
+            testdir.tmpdir,
             tests.resources.EXAMPLE_JOB,
             queuemo.recipes.VALIDATION,
             monkeypatch,
     ) as rt:  # pylint:disable=C0103
-        with utilatest.increased_filecount(workspace, 'json'):
+        with utilatest.increased_filecount(testdir.tmpdir, 'json'):
             completed = rt.next_step()
         pdfinfo = link.pdfinfo(tests.resources.EXAMPLE_JOB)
     assert completed
@@ -37,14 +36,13 @@ def test_recipe_validation(testdir, monkeypatch):  # pylint:disable=W0621
 def test_recipe_validation_failure(testdir, monkeypatch, capsys):  # pylint:disable=W0621
     """Ensure that validation tool stops with validation error on
     invalid, broken resource"""
-    workspace = str(testdir)
     with tests.fixtures.todo.runtime(
-            workspace,
+            testdir.tmpdir,
             'broken_resource',
             queuemo.recipes.VALIDATION,
             monkeypatch,
     ) as rt:  # pylint:disable=C0103
-        with utilatest.increased_filecount(workspace, 'json'):
+        with utilatest.increased_filecount(testdir.tmpdir, 'json'):
             completed = rt.next_step()
     assert completed is False
     error = utilatest.stderr(capsys)
