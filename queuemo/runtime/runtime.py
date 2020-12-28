@@ -107,7 +107,7 @@ class Stop(RuntimeControl):
     pass
 
 
-def run(  # pylint:disable=R1260
+def run(
         composition: queuemo.runtime.scheduler.ComposedRecipe,
         flow: queuemo.runtime.api.RecipeIO,
 ):
@@ -136,23 +136,16 @@ def run(  # pylint:disable=R1260
         RuntimeControl: if some step signals to hold
     """
     tmp = os.path.join(flow.tmppath, '.tmp')
-    utila.log('\n' + '@' * 80)
-    utila.log(f'{composition.name}'.center(80))
-    utila.log('@' * 80)
+    print_banner(composition.name, symbol='@')
     for current in composition.schedule:
-        utila.log('\n' + '*' * 80)
-        utila.log(f'{current.name}'.center(80))
-        utila.log('*' * 80 + '\n')
+        print_banner(current.name, symbol='*')
         name = current.name
         if current.prefix:
             # add prefix to result of scheduling step
             name = f'{current.prefix}_{current.name}'
         tmppath = os.path.join(flow.tmppath, name)
-        if flow.outpath:
-            outpath = os.path.join(flow.outpath, name)
-        else:
-            outpath = None
-        if current.name in ['before', 'after', 'main']:
+        outpath = os.path.join(flow.outpath, name) if flow.outpath else None
+        if current.name in ['before', 'after', 'main']:  # TODO: INCLUDE PREFIX?
             tmppath = tmp
             outpath = flow.outpath
         current_flow = queuemo.runtime.api.RecipeIO(
@@ -179,3 +172,9 @@ def run(  # pylint:disable=R1260
                 raise RuntimeError(f'{current.name}: {item}') from error
         if queuemo.INTERACTIVE:
             queuemo.utils.wait()
+
+
+def print_banner(text, symbol='*'):
+    utila.log('\n' + symbol * 80)
+    utila.log(f'{text}'.center(80))
+    utila.log(symbol * 80 + '\n')
