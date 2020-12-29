@@ -205,7 +205,7 @@ def schedule(steps: RecipeSteps, orderby: list = None) -> RecipeSteps:
     Returns:
         sorted `steps`
     """
-    steps = steps[:]  # copy to avoid chaning source list
+    steps = steps[:]  # copy to avoid changing source list
     steps = sorted(steps, key=lambda x: x.name)
     if orderby is None:
         return steps
