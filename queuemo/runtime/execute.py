@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import link
+
 import queuemo.recipes
 import queuemo.runtime.runtime
 
@@ -22,9 +24,15 @@ def run_document(workspace: str, document: str, outpath: str):
 
     for item in queuemo.recipes.ORDER:
         runtime.append(item)
+    maxsteps = len(runtime)
 
     while True:
         current = runtime.next_step()
+        link.update_progress_step(
+            document,
+            value=maxsteps - len(runtime),
+            maxvalue=maxsteps,
+        )
         if current is None:
             # Done, everthing completed successful.
             break
