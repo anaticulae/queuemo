@@ -19,7 +19,6 @@ import utila
 import queuemo
 import queuemo.recipes
 import queuemo.runtime.execute
-import queuemo.worker.progress
 
 MAX_RUNTIME = 60 * 60 * 24 * 365  # Run one year
 WAITING = 1000  # ms, 1 second
@@ -110,9 +109,9 @@ def nextjob() -> int:
             # require input folder, not a single file
             utila.error(f'file: not a input resource: {itempath}')
             continue
-        if queuemo.worker.progress.inprogress(jobnumber):
+        if link.inprogressed(jobnumber):
             continue
-        if queuemo.worker.progress.deleted(jobnumber):
+        if link.deleted(jobnumber):
             continue
         # return next job, start it by recipe runner
         return jobnumber
