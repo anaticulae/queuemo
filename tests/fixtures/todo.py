@@ -8,8 +8,7 @@
 # =============================================================================
 
 import contextlib
-
-import link
+import os
 
 import queuemo
 import queuemo.runtime.runtime
@@ -30,7 +29,10 @@ def runtime(
         recipes = [recipes]
 
     with tests.patch_todo(workspace, monkeypatch, copy=True):
-        outpath = link.todo(document)
+        # Hint: do not use link, cause multiprocessed tests modify global
+        # variables.
+        # outpath = link.todo(document)
+        outpath = os.path.join(workspace, 'todo_', document)
         current = queuemo.runtime.runtime.RecipeRuntime(
             workspace=workspace,
             document=document,
