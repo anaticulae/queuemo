@@ -38,4 +38,5 @@ def run_document(workspace: str, document: str, outpath: str):
             break
         if not current:
             # Failure
+            link.fail(document)
             break
