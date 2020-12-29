@@ -138,7 +138,7 @@ def work(workspace):
 
     queuemo.runtime.execute.run_document(
         workspace,
-        jobid(workspace),
+        documentid=jobid(workspace),
         outpath=outpath,
     )
 

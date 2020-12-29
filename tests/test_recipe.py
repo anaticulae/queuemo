@@ -23,7 +23,7 @@ def test_recipe_run(testdir, monkeypatch):
         workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB)
         queuemo.runtime.execute.run_document(
             workspace,
-            tests.resources.EXAMPLE_JOB,
-            root,
+            documentid=tests.resources.EXAMPLE_JOB,
+            outpath=root,
         )
     # TODO: VERIFY RESULT WITH ASSERTION

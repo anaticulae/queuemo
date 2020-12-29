@@ -62,7 +62,7 @@ def main() -> int:
     jobid = queuemo.worker.startup.jobid(inpath)
     queuemo.runtime.execute.run_document(
         workspace=tmpdir,
-        document=jobid,
+        documentid=jobid,
         outpath=outpath,
     )
     return utila.SUCCESS

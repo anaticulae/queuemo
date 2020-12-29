@@ -13,12 +13,12 @@ import queuemo.recipes
 import queuemo.runtime.runtime
 
 
-def run_document(workspace: str, document: str, outpath: str):
+def run_document(workspace: str, documentid: str, outpath: str):
     # queuemo.runnable.check(RUNNER)
 
     runtime = queuemo.runtime.runtime.RecipeRuntime(
         workspace=workspace,
-        document=document,
+        document=documentid,
         outpath=outpath,
     )
 
@@ -29,7 +29,7 @@ def run_document(workspace: str, document: str, outpath: str):
     while True:
         current = runtime.next_step()
         link.update_progress_step(
-            document,
+            documentid,
             value=maxsteps - len(runtime),
             maxvalue=maxsteps,
         )
@@ -38,5 +38,5 @@ def run_document(workspace: str, document: str, outpath: str):
             break
         if not current:
             # Failure
-            link.fail(document)
+            link.fail(documentid)
             break
