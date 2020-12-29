@@ -12,6 +12,7 @@ import os
 import shutil
 import sys
 
+import configo.directory
 import pytest
 import utila
 
@@ -33,11 +34,6 @@ def patch_todo(testdir, monkeypatch, copy=True):
         None: in current working location with setuped environment variables
     """
     testdir = str(testdir)
-    # TODO: REFACTOR
-    from configo.directory import COMMON
-    from configo.directory import READY
-    from configo.directory import TODO as ENV_TODO
-
     todopath = os.path.join(testdir, 'todo_')
     readypath = os.path.join(testdir, 'ready_')
     os.makedirs(readypath, exist_ok=True)
@@ -48,15 +44,13 @@ def patch_todo(testdir, monkeypatch, copy=True):
     else:
         os.makedirs(todopath, exist_ok=True)
 
-    copy = dict(os.environ)
     with monkeypatch.context() as context:
         # Overwrite env vars instead of replacing. If we replace the vars we
         # have to set every single variable again, like accesing rawmaker,
         # sections etc.
-        copy[COMMON] = testdir
-        copy[ENV_TODO] = todopath
-        copy[READY] = readypath
-        context.setattr(os, 'environ', copy)
+        context.setenv(configo.directory.COMMON, testdir)
+        context.setenv(configo.directory.TODO, todopath)
+        context.setenv(configo.directory.READY, readypath)
         yield
 
 
