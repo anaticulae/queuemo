@@ -11,8 +11,6 @@ import pytest
 import utilatest
 
 import queuemo.recipes.fastview
-import queuemo.runtime.runtime
-import queuemo.runtime.scheduler
 import tests
 import tests.fixtures.todo
 import tests.resources

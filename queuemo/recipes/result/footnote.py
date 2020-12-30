@@ -10,7 +10,6 @@
 import link
 import utila
 
-import queuemo.recipes
 import queuemo.runnable
 import queuemo.runtime.api
 

@@ -14,7 +14,6 @@ import utila
 
 import queuemo.runnable
 import queuemo.runtime.api
-import queuemo.runtime.runtime
 
 
 def before(flow: queuemo.runtime.api.RecipeIO):

@@ -17,7 +17,6 @@ import link
 import utila
 
 import queuemo
-import queuemo.recipes
 import queuemo.runtime.execute
 
 MAX_RUNTIME = 60 * 60 * 24 * 365  # Run one year

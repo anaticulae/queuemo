@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import queuemo.recipes
 import queuemo.runnable
 import queuemo.runtime.api
 

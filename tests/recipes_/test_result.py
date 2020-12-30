@@ -13,7 +13,6 @@ import pytest
 import utilatest
 
 import queuemo.recipes
-import queuemo.runtime.runtime
 import tests
 import tests.fixtures.todo
 import tests.resources
