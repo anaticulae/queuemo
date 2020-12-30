@@ -12,16 +12,19 @@ import functools
 import link
 import utila
 
+import queuemo
 import queuemo.runnable
 import queuemo.runtime.api
 
 
+@queuemo.required
 def before(flow: queuemo.runtime.api.RecipeIO):
     if link.current(flow.document) == link.ProcessState.VERIFIED:
         # if fastview is not started before, start analysis with resultview
         link.start_analysis(flow.document)
 
 
+@queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO):
     unpack_pdf(flow)
 

@@ -5,7 +5,7 @@ RP 1.6.0
 
 * [x] add document progress
 
-* [ ] add decorator to mark essential steps
+* [x] add decorator to mark essential steps
 
 * [ ] add fail on error flag
 

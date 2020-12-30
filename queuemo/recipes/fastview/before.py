@@ -12,15 +12,18 @@ import functools
 import link
 import utila
 
+import queuemo
 import queuemo.recipes.result.before
 import queuemo.runnable
 import queuemo.runtime.api
 
 
+@queuemo.required
 def before(flow: queuemo.runtime.api.RecipeIO):
     link.start_analysis(flow.document)
 
 
+@queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     unpack_pdf(flow)
 

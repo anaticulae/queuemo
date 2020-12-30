@@ -11,6 +11,7 @@ import queuemo.runnable
 import queuemo.runtime.api
 
 
+@queuemo.required
 def before(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.decider_border_detecion(
         inpath=[
@@ -27,6 +28,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):
     flow.publish_linting()
 
 
+@queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.feedback_images(
         inpath=[

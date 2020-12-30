@@ -14,17 +14,20 @@ import link
 import serializeraw
 import utila
 
+import queuemo
 import queuemo.runnable
 import queuemo.runtime.api
 import queuemo.runtime.runtime
 
 
+@queuemo.required
 def before(flow: queuemo.runtime.api.RecipeIO):
     todo = link.todo(flow.document)
     assert os.path.exists(todo), f'todo does not exists: {todo}'
     link.start_progress(flow.document)
 
 
+@queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     """Run validation to check that """
     link.verify(flow.document)
@@ -38,6 +41,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     raise queuemo.runtime.runtime.Stop('invald pdf resource')
 
 
+@queuemo.required
 def after(flow: queuemo.runtime.api.RecipeIO):
     # check that document contains some text content
     todo = os.path.join(link.todo(flow.document), flow.document)

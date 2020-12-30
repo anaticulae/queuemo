@@ -10,14 +10,17 @@
 import link
 import utila
 
+import queuemo
 import queuemo.runtime.api
 
 
+@queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO):
     # copy todo folder to result and create done folder
     link.publish(flow.document)
 
 
+@queuemo.required
 def after(flow: queuemo.runtime.api.RecipeIO):
     utila.log(f'publish log')
     ready = link.ready(flow.document)
