@@ -89,6 +89,7 @@ ORDER = 'ORDER'
 
 @dataclasses.dataclass
 class ComposedRecipe:
+
     name: str = None
     before: RecipeStep = None
     main: RecipeStep = None
@@ -119,6 +120,9 @@ class ComposedRecipe:
 
     def __iter__(self):
         return iter(self.schedule)
+
+    def __len__(self):
+        return len(list(self.schedule))
 
     def append(self, item):
         self.steps.append(item)  # pylint:disable=E1101

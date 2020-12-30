@@ -55,7 +55,7 @@ class RecipeRuntime:
         assert isinstance(item, queuemo.runtime.scheduler.ComposedRecipe), item
         self.todo.append(item)
 
-    def next_step(self) -> bool:
+    def next_step(self, tick=None) -> bool:
         """Run next composed recipe.
 
         Returns:
@@ -78,7 +78,9 @@ class RecipeRuntime:
                 tmppath=tmppath,
                 outpath=outpath,
             )
-            run(current, flow)
+            run(current, flow, tick)
+            if tick:
+                tick()
         except RuntimeControl as error:
             utila.info(error)
             # TODO Should we return NONE, to signal that process is over?
@@ -88,15 +90,18 @@ class RecipeRuntime:
             return False
         return True
 
-    def finish(self):
+    def finish(self, tick=None):
         assert self.todo, 'nothing todo'
         current = None
         while self.todo:
-            current = self.next_step()
+            current = self.next_step(tick)
         return current
 
     def __len__(self):
         return len(self.todo)
+
+    def __getitem__(self, index):
+        return self.todo[index]
 
 
 class RuntimeControl(RuntimeError):
@@ -107,9 +112,10 @@ class Stop(RuntimeControl):
     pass
 
 
-def run(
+def run(  # pylint:disable=R1260
         composition: queuemo.runtime.scheduler.ComposedRecipe,
         flow: queuemo.runtime.api.RecipeIO,
+        tick: callable = None,
 ):
     """Run composed steps in the order defined by `Scheduler`.
     Use `flow` to determine the location where data must copy to.
@@ -131,6 +137,7 @@ def run(
     Args:
         composition: composed recipe which is loaded from an local path
         flow: define the location where data transfer must handled
+        tick: inform user about step progress
     Raises:
         RuntimeError: if some failure occurs while executing a RecipeStep
         RuntimeControl: if some step signals to hold
@@ -172,6 +179,8 @@ def run(
                 raise RuntimeError(f'{current.name}: {item}') from error
         if queuemo.INTERACTIVE:
             queuemo.utils.wait()
+        if tick:
+            tick()
 
 
 def print_banner(text, symbol='*'):

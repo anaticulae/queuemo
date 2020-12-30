@@ -3,7 +3,7 @@
 RP 1.6.0
 ========
 
-* [ ] add document progress
+* [x] add document progress
 
 * [ ] add decorator to mark essential steps
 

@@ -24,15 +24,21 @@ def run_document(workspace: str, documentid: str, outpath: str):
 
     for item in queuemo.recipes.ORDER:
         runtime.append(item)
-    maxsteps = len(runtime)
+    # TODO: INVESTIGATE ABOUT 3
+    maxsteps = sum(len(step) for step in runtime) + 3
 
-    while True:
-        current = runtime.next_step()
+    def tick():
         link.update_progress_step(
             documentid,
-            value=maxsteps - len(runtime),
+            value=tick.number,
             maxvalue=maxsteps,
         )
+        tick.number += 1
+
+    tick.number = 0
+
+    while True:
+        current = runtime.next_step(tick)
         if current is None:
             # Done, everthing completed successful.
             break
