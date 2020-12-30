@@ -87,6 +87,15 @@ RecipeSteps = typing.List[RecipeStep]
 ORDER = 'ORDER'
 
 
+def required(func):
+    func.required = True
+    return func
+
+
+def isrequired(func):
+    return hasattr(func, 'required')
+
+
 @dataclasses.dataclass
 class ComposedRecipe:
 

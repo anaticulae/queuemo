@@ -23,6 +23,7 @@ import os
 import utila
 import utila.logger
 
+import queuemo
 import queuemo.runtime.api
 import queuemo.runtime.scheduler
 import queuemo.utils
@@ -116,6 +117,7 @@ def run(  # pylint:disable=R1260
         composition: queuemo.runtime.scheduler.ComposedRecipe,
         flow: queuemo.runtime.api.RecipeIO,
         tick: callable = None,
+        failfast: bool = False,
 ):
     """Run composed steps in the order defined by `Scheduler`.
     Use `flow` to determine the location where data must copy to.
@@ -138,6 +140,7 @@ def run(  # pylint:disable=R1260
         composition: composed recipe which is loaded from an local path
         flow: define the location where data transfer must handled
         tick: inform user about step progress
+        failfast: ignore required flag. Shut down scheduler by first error
     Raises:
         RuntimeError: if some failure occurs while executing a RecipeStep
         RuntimeControl: if some step signals to hold
@@ -172,11 +175,14 @@ def run(  # pylint:disable=R1260
                 action(current_flow)
             except RuntimeControl as control:
                 raise control
-            except Exception as error:
+            except Exception as error:  # pylint:disable=broad-except
                 utila.error(f'could not run: {item}')
                 utila.error(error)
                 utila.logger.log_stacktrace()
-                raise RuntimeError(f'{current.name}: {item}') from error
+                if queuemo.isrequired(action) or failfast:
+                    # do not stop scheduler if step is not marked as
+                    # required.
+                    raise RuntimeError(f'{current.name}:{item}') from error
         if queuemo.INTERACTIVE:
             queuemo.utils.wait()
         if tick:
