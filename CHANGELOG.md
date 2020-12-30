@@ -2,6 +2,24 @@
 
 Every noteable change is logged here.
 
+## v1.6.0
+
+### Feature
+
+* add failfast flag to shut down on first error (b8e236b52c57)
+* mark essential scheduler steps (db272c86a1f9)
+* add required decorator to run scheduler with errors (da46f99cc6a7)
+* introduce tick to inform about progress (f1fade62cd71)
+* info user about failed analysis (096b9736ec40)
+* update progress for after every runtime step (62cacdd53040)
+* stop analysing empty text documents (e1aad8b26a66)
+
+### Fix
+
+* do not depend on global environment state (ec3dfdaf2024)
+* add missing import (16eb8d403dfc)
+* adjust resource generator (0dd80eaa961e)
+
 ## v1.5.0
 
 ### Feature
