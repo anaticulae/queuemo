@@ -50,6 +50,10 @@ COMMANDS = [
         longcut=INTERACTIVE,
         message='pause on every recipe step and ask to continue',
     ),
+    utila.Flag(
+        longcut='failfast',
+        message='fail on first error',
+    ),
 ]
 
 
@@ -65,6 +69,7 @@ def main():
     )
     args = utila.parse(parser)
     queuemo.INTERACTIVE = args[INTERACTIVE]
+    failfast = args.get('failfast', False)
     if queuemo.INTERACTIVE:
         utila.log('use interactive mode')
     try:
@@ -84,8 +89,8 @@ def main():
         waiting=waiting,
         jobs=jobsleft,
         verbose=verbose,
+        failfast=failfast,
     )
-
     return closed
 
 

@@ -37,6 +37,7 @@ class RecipeRuntime:
             workspace: str,
             document: str,
             outpath: str,
+            failfast: bool = False,
     ):
         """Initialize RectipeRuntime.
 
@@ -45,11 +46,13 @@ class RecipeRuntime:
                             the temporary files are created
             document(str): identifier of processed document
             outpath(str): write results to
+            failfast(bool): shut down scheduler on first error
         """
         self.todo = []
         self.workspace = workspace
         self.document = document
         self.outpath = outpath
+        self.failfast = failfast
 
     def append(self, item: queuemo.runtime.scheduler.ComposedRecipe):
         """Add composed recipe to todo list"""
@@ -79,7 +82,7 @@ class RecipeRuntime:
                 tmppath=tmppath,
                 outpath=outpath,
             )
-            run(current, flow, tick)
+            run(current, flow, tick=tick, failfast=self.failfast)
             if tick:
                 tick()
         except RuntimeControl as error:

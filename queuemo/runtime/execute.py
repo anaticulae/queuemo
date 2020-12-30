@@ -13,13 +13,19 @@ import queuemo.recipes
 import queuemo.runtime.runtime
 
 
-def run_document(workspace: str, documentid: str, outpath: str):
+def run_document(
+        workspace: str,
+        documentid: str,
+        outpath: str,
+        failfast: bool = False,
+):
     # queuemo.runnable.check(RUNNER)
 
     runtime = queuemo.runtime.runtime.RecipeRuntime(
         workspace=workspace,
         document=documentid,
         outpath=outpath,
+        failfast=failfast,
     )
 
     for item in queuemo.recipes.ORDER:

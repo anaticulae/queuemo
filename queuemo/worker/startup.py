@@ -29,6 +29,7 @@ def run(
         waiting: float = WAITING,
         jobs: int = JOBSLEFT,
         verbose: bool = True,
+        failfast: bool = False,
 ) -> int:
     """Run the scheduler
 
@@ -38,6 +39,7 @@ def run(
         jobs(int): maximal number of executed jobs, decrease for every
                    step and stop if no jobs are left.
         verbose(bool): increase logging if True
+        failfast(bool): shut down on first failure
     Returns:
         SUCCESS when scheduler ends, or Exception, when runtime error occurs
     """
@@ -53,7 +55,7 @@ def run(
             if job is not None:
                 jobs -= 1
                 utila.log(f'\njobs remaining: {jobs}')
-            step(job, waiting=waiting, verbose=verbose)
+            step(job, waiting=waiting, verbose=verbose, failfast=failfast)
         except Exception:  # pylint: disable=broad-except
             utila.log_stacktrace()
             utila.error('\nClose scheduler: %d' % tick)
@@ -66,7 +68,7 @@ def run(
     return utila.SUCCESS
 
 
-def step(job, waiting=WAITING, verbose: bool = True):
+def step(job, waiting=WAITING, verbose: bool = True, failfast: bool = False):
     if not job:
         if verbose:
             utila.log('Wait...')
@@ -84,7 +86,7 @@ def step(job, waiting=WAITING, verbose: bool = True):
         if verbose:
             utila.log('  Start job')
         with utila.profile(workspace):
-            work(workspace)
+            work(workspace, failfast=failfast)
 
         if verbose:
             utila.log('Finished')
@@ -130,7 +132,7 @@ def copy(job):
     return workspace
 
 
-def work(workspace):
+def work(workspace, failfast: bool = False):
     assert os.path.exists(workspace), str(workspace)
     current = jobid(workspace)
     outpath = os.path.join(configo.todo(), current)
@@ -139,6 +141,7 @@ def work(workspace):
         workspace,
         documentid=jobid(workspace),
         outpath=outpath,
+        failfast=failfast,
     )
 
 
