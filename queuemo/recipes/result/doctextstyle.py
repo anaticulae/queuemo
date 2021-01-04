@@ -41,7 +41,11 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         pages=content,
     )
     queuemo.runnable.decider_textstyle_text(
-        inpath=[flow.tmppath, flow.general],
+        inpath=[
+            flow.package('magic'),  # required to skip tables etc.
+            flow.tmppath,
+            flow.general,
+        ],
         output=flow.tmppath,
         pages=content,
     )
