@@ -169,9 +169,7 @@ def decider_border_distance(inpath: str, output: str = None):
 
 
 def textflow_lineending(inpath: str, output: str = None, **kwargs):
-    # TODO: Enable later; activate after utila supports selective inputs
-    # run('textflow --lineending', inpath, output)
-    run('textflow', inpath, output, **kwargs)
+    run('textflow --lineending', inpath, output, **kwargs)
 
 
 def textflow_quotes(inpath: str, output: str = None, **kwargs):
