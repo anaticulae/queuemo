@@ -2,6 +2,23 @@
 
 Every noteable change is logged here.
 
+## v1.7.0
+
+### Feature
+
+* add textflow word spaces validator (a56a84814fa1)
+* run wordspace runnable (bdc3ad6d7da6)
+* add text space extractor (f2338be33926)
+
+### Fix
+
+* enable selective resource input (20a996598823)
+* add missing magic resource (aca312265842)
+
+### Documentation
+
+* Happy New Year! (d42913bf01c7)
+
 ## v1.6.0
 
 ### Feature
