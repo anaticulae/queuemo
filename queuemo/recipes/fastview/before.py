@@ -64,7 +64,5 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             fonts=True,
             pages='0:5',
         ))
-    completed = utila.fork(*todo, worker=2, process=True)
-    assert isinstance(completed, list), 'could not extract pdf'
-    # TODO: USE RETURNCODE FLAG AFTER UPGRADING UTILA
-    # assert completed == utila.SUCCESS, 'could not extract pdf'
+    completed = utila.fork(*todo, worker=2, process=True, returncode=True)
+    assert completed == utila.SUCCESS, 'could not extract pdf'
