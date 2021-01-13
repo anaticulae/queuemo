@@ -116,6 +116,10 @@ def linero(inpath: str, output: str = None):
     return run('linero', inpath, output)
 
 
+def spacestation(inpath: str, output: str = None, **kwargs):
+    run('spacestation', inpath, output, **kwargs)
+
+
 def groupme(inpath: str, output: str = None, **kwargs):
     run('groupme -j8', inpath, output, **kwargs)
 
