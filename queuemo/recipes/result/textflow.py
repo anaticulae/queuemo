@@ -44,6 +44,12 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         output=flow.tmppath,
         pages=pages,
     )
+    # TODO: REQUIRED FOR VIEW MOVE TO OTHER STEP?
+    queuemo.runnable.textflow_alignment(
+        inpath=[flow.general],
+        output=flow.tmppath,
+        pages=pages,
+    )
 
 
 def after(flow: queuemo.runtime.api.RecipeIO):

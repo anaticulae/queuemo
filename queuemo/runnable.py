@@ -168,8 +168,16 @@ def decider_border_distance(inpath: str, output: str = None):
     run('decider_border --distance', inpath, output)
 
 
+def textflow_alignment(inpath: str, output: str = None, **kwargs):
+    run('textflow --alignment', inpath, output, **kwargs)
+
+
 def textflow_lineending(inpath: str, output: str = None, **kwargs):
     run('textflow --lineending', inpath, output, **kwargs)
+
+
+def textflow_wordspace(inpath: str, output: str = None, **kwargs):
+    run('textflow --wordspace', inpath, output, **kwargs)
 
 
 def textflow_quotes(inpath: str, output: str = None, **kwargs):
