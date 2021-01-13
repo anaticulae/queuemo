@@ -23,3 +23,4 @@ rawmaker==2.10.2
 decider==1.0.3
 decider_ref==1.2.2
 decider_con==0.1.2
+decider_lay==0.3.0
