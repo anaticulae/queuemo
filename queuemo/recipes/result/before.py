@@ -65,7 +65,14 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             text=True,
             fonts=True,
         ))
-    completed = utila.fork(*todo, worker=2, process=True, returncode=True)
+    # word space extractor
+    todo.append(
+        functools.partial(
+            queuemo.runnable.spacestation,
+            inpath=pdf,
+            output=flow.tmppath,
+        ))
+    completed = utila.fork(*todo, worker=3, process=True, returncode=True)
     assert completed == utila.SUCCESS, 'could not extract pdf'
 
 
