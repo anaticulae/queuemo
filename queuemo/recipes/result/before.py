@@ -45,16 +45,14 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
     pdf = flow.sourcepath
-    todo = []
-    todo.append(
-        functools.partial(
+    with utila.GeorgFork() as fork:  # pylint:disable=E1101
+        fork.append(
             queuemo.runnable.rawmaker,
             inpath=pdf,
             outpath=flow.tmppath,
             all=True,
-        ))
-    todo.append(
-        functools.partial(
+        )
+        fork.append(
             queuemo.runnable.rawmaker,
             inpath=pdf,
             outpath=flow.tmppath,
@@ -64,16 +62,13 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             line_margin=0.1,
             text=True,
             fonts=True,
-        ))
-    # word space extractor
-    todo.append(
-        functools.partial(
+        )
+        fork.append(
             queuemo.runnable.spacestation,
             inpath=pdf,
             output=flow.tmppath,
-        ))
-    completed = utila.fork(*todo, worker=3, process=True, returncode=True)
-    assert completed == utila.SUCCESS, 'could not extract pdf'
+        )
+    assert fork.result == utila.SUCCESS, 'could not extract pdf'
 
 
 def determine_sections(flow: queuemo.runtime.api.RecipeIO):
