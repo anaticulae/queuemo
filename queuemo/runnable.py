@@ -153,7 +153,7 @@ def decider_toc(inpath: str, output: str = None):
 
 
 def decider_footnote(inpath: str, output: str = None):
-    run('decider_footnote', inpath, output)
+    run('decider_footnote -j8', inpath, output)
 
 
 def decider_imgfig(inpath: str, output: str = None):
@@ -181,7 +181,7 @@ def textflow_wordspace(inpath: str, output: str = None, **kwargs):
 
 
 def textflow_quotes(inpath: str, output: str = None, **kwargs):
-    run('textflow --quotation --blockquote', inpath, output, **kwargs)
+    run('textflow --quotation --blockquote -j2', inpath, output, **kwargs)
 
 
 def doctextstyle(inpath: str, output: str = None, **kwargs):
@@ -189,7 +189,7 @@ def doctextstyle(inpath: str, output: str = None, **kwargs):
 
 
 def caption(inpath: str, output: str = None, **kwargs):
-    run('caption', inpath, output, **kwargs)
+    run('caption -j8', inpath, output, **kwargs)
 
 
 def magic(inpath: str, output: str = None, **kwargs):
@@ -197,7 +197,7 @@ def magic(inpath: str, output: str = None, **kwargs):
 
 
 def docref(inpath: str, output: str = None, **kwargs):
-    run('docref', inpath, output, **kwargs)
+    run('docref -j4', inpath, output, **kwargs)
 
 
 def docref_bibliography(inpath: str, output: str = None, **kwargs):
@@ -245,14 +245,14 @@ def decider_links(inpath: str, output: str = None):
 def decider_textflow_lineending(inpath: str, output: str = None, **kwargs):
     # TODO: Enable later; activate after utila supports selective inputs
     # run('decider_textflow --lineending', inpath, output)
-    run('decider_textflow', inpath, output, **kwargs)
+    run('decider_textflow -j8', inpath, output, **kwargs)
 
 
 def feedback_images(inpath: str, output: str = None):
     # TODO: Remove after feedview is working correctly
     missing_outdir = os.path.join(output, 'feedback__view_pages')
     os.makedirs(missing_outdir, exist_ok=True)
-    run(f'{FEEDBACK} --images --figures', inpath, output)
+    run(f'{FEEDBACK} --images --figures -j2', inpath, output)
 
 
 def feedback_view(inpath: str, output: str = None):
