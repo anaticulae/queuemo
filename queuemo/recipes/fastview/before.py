@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
-
 import link
 import utila
 
@@ -34,15 +32,13 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
         output=flow.tmppath,
     )
     assert completed == utila.SUCCESS, str(completed)
-
     return [completed]
 
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
     pdf = flow.sourcepath
-    todo = []
-    todo.append(
-        functools.partial(
+    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+        runtime.fork(
             queuemo.runnable.rawmaker,
             inpath=pdf,
             outpath=flow.tmppath,
@@ -50,9 +46,8 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             images=False,
             figures=False,
             pages='0:10',
-        ))
-    todo.append(
-        functools.partial(
+        )
+        runtime.fork(
             queuemo.runnable.rawmaker,
             inpath=pdf,
             outpath=flow.tmppath,
@@ -63,6 +58,5 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             text=True,
             fonts=True,
             pages='0:5',
-        ))
-    completed = utila.fork(*todo, worker=2, process=True, returncode=True)
-    assert completed == utila.SUCCESS, 'could not extract pdf'
+        )
+    assert runtime.result == utila.SUCCESS, 'could not extract pdf'

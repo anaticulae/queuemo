@@ -22,15 +22,16 @@ import queuemo.utils
 def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
     # RUN MAGIC BEFORE
     # TODO: ADD TEST THAT MAGIC EXISTS?
-    pages = queuemo.utils.select_pages(
-        flow.general,
-        select=iamraw.sections.MainPart,
-    )
-    queuemo.runnable.textflow_wordspace(
-        inpath=[flow.general],
-        output=flow.tmppath,
-        pages=pages,
-    )
+    # pages = queuemo.utils.select_pages(
+    #     flow.general,
+    #     select=iamraw.sections.MainPart,
+    # )
+    # queuemo.runnable.textflow_wordspace(
+    #     inpath=[flow.general],
+    #     output=flow.tmppath,
+    #     pages=pages,
+    # )
+    pass
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
@@ -38,25 +39,36 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         select=iamraw.sections.MainPart,
     )
-    queuemo.runnable.doctextstyle(
-        inpath=[flow.general],
-        output=flow.tmppath,
-        pages=content,
-    )
-    queuemo.runnable.decider_textstyle_headlines(
-        inpath=[flow.tmppath, flow.general],
-        output=flow.tmppath,
-        pages=content,
-    )
-    queuemo.runnable.decider_textstyle_text(
-        inpath=[
-            flow.package('magic'),  # required to skip tables etc.
-            flow.tmppath,
-            flow.general,
-        ],
-        output=flow.tmppath,
-        pages=content,
-    )
+    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+        runtime.fork(
+            queuemo.runnable.textflow_wordspace,
+            inpath=[flow.general],
+            output=flow.tmppath,
+            pages=content,
+        )
+        runtime.fork(
+            queuemo.runnable.doctextstyle,
+            inpath=[flow.general],
+            output=flow.tmppath,
+            pages=content,
+        )
+    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+        runtime.fork(
+            queuemo.runnable.decider_textstyle_headlines,
+            inpath=[flow.tmppath, flow.general],
+            output=flow.tmppath,
+            pages=content,
+        )
+        runtime.fork(
+            queuemo.runnable.decider_textstyle_text,
+            inpath=[
+                flow.package('magic'),  # required to skip tables etc.
+                flow.tmppath,
+                flow.general,
+            ],
+            output=flow.tmppath,
+            pages=content,
+        )
 
 
 def after(flow: queuemo.runtime.api.RecipeIO):

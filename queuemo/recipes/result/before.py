@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import functools
-
 import link
 import utila
 
@@ -45,14 +43,15 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
     pdf = flow.sourcepath
-    with utila.GeorgFork() as fork:  # pylint:disable=E1101
-        fork.append(
+    with utila.GeorgFork(worker=2) as runtime:  # pylint:disable=E1101
+        # use 2 worker to start spacestation after finishing first rawmaker
+        runtime.fork(
             queuemo.runnable.rawmaker,
             inpath=pdf,
             outpath=flow.tmppath,
             all=True,
         )
-        fork.append(
+        runtime.fork(
             queuemo.runnable.rawmaker,
             inpath=pdf,
             outpath=flow.tmppath,
@@ -62,13 +61,14 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             line_margin=0.1,
             text=True,
             fonts=True,
+            process=1,
         )
-        fork.append(
+        runtime.fork(
             queuemo.runnable.spacestation,
             inpath=pdf,
             output=flow.tmppath,
         )
-    assert fork.result == utila.SUCCESS, 'could not extract pdf'
+    assert runtime.result == utila.SUCCESS, 'could not extract pdf'
 
 
 def determine_sections(flow: queuemo.runtime.api.RecipeIO):

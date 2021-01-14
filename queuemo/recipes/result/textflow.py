@@ -30,11 +30,20 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         select=iamraw.sections.MainPart,
     )
-    queuemo.runnable.textflow_lineending(
-        inpath=[flow.general],
-        output=flow.tmppath,
-        pages=pages,
-    )
+    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+        runtime.fork(
+            queuemo.runnable.textflow_lineending,
+            inpath=[flow.general],
+            output=flow.tmppath,
+            pages=pages,
+        )
+        # TODO: REQUIRED FOR VIEW MOVE TO OTHER STEP?
+        runtime.fork(
+            queuemo.runnable.textflow_alignment,
+            inpath=[flow.general],
+            output=flow.tmppath,
+            pages=pages,
+        )
     queuemo.runnable.decider_textflow_lineending(
         inpath=[
             flow.package('doctextstyle'),
@@ -44,12 +53,12 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         output=flow.tmppath,
         pages=pages,
     )
-    # TODO: REQUIRED FOR VIEW MOVE TO OTHER STEP?
-    queuemo.runnable.textflow_alignment(
-        inpath=[flow.general],
-        output=flow.tmppath,
-        pages=pages,
-    )
+    # # TODO: REQUIRED FOR VIEW MOVE TO OTHER STEP?
+    # queuemo.runnable.textflow_alignment(
+    #     inpath=[flow.general],
+    #     output=flow.tmppath,
+    #     pages=pages,
+    # )
 
 
 def after(flow: queuemo.runtime.api.RecipeIO):

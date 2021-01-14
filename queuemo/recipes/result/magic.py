@@ -20,24 +20,28 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         select=iamraw.sections.MainPart,
     )
-    queuemo.runnable.words(
-        inpath=[flow.general],
-        output=flow.general,
-        pages=content,
-    )
+    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+        runtime.fork(
+            queuemo.runnable.words,
+            inpath=[flow.general],
+            output=flow.general,
+            pages=content,
+        )
+        runtime.fork(
+            queuemo.runnable.caption,
+            inpath=[flow.general],
+            output=flow.general,
+            pages=content,
+        )
+        runtime.fork(
+            queuemo.runnable.detector_formula,
+            inpath=[flow.general],
+            outpath=flow.general,
+            pages=content,
+        )
     queuemo.runnable.textflow_quotes(
         inpath=[flow.general],
         output=flow.general,
-        pages=content,
-    )
-    queuemo.runnable.caption(
-        inpath=[flow.general],
-        output=flow.general,
-        pages=content,
-    )
-    queuemo.runnable.detector_formula(
-        inpath=[flow.general],
-        outpath=flow.general,
         pages=content,
     )
     # required for detecting tables

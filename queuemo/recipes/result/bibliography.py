@@ -35,16 +35,20 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         select=iamraw.sections.Bibliography,
     )
 
-    queuemo.runnable.detector_bibliography(
-        inpath=[flow.general],
-        output=flow.tmppath,
-        pages=bibliography,
-    )
-    queuemo.runnable.docref_bibliography(
-        inpath=[flow.general],
-        output=flow.tmppath,
-    )
-
+    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+        runtime.fork(
+            queuemo.runnable.detector_bibliography,
+            inpath=[flow.general],
+            output=flow.tmppath,
+            pages=bibliography,
+        )
+        runtime.fork(
+            queuemo.runnable.docref_bibliography,
+            inpath=[
+                flow.general,
+            ],
+            output=flow.tmppath,
+        )
     queuemo.runnable.decider_bibliography(
         inpath=[
             flow.tmppath,
