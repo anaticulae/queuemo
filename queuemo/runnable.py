@@ -80,6 +80,7 @@ BOXES_FLOW_DEFAULT = float(cli.BOXES_FLOW.defaultvar)
 def rawmaker(
         inpath: str,
         outpath: str = None,
+        process: int = 8,
         prefix: str = '',
         char_margin: float = CHAR_MARGIN_DEFAULT,
         boxes_flow: float = BOXES_FLOW_DEFAULT,
@@ -90,6 +91,7 @@ def rawmaker(
     Args:
         inpath(str): relative input path
         outpath(str): relative output path
+        process(int): use amount of parallel runner
         prefix(str): to extend the output name with a prefix
         char_margin(float): maximal distance between two chars
         boxes_flow(float): ratio betwee horizontal and vertical analysis
@@ -105,7 +107,7 @@ def rawmaker(
         'rawmaker',
         inpath,
         outpath,
-        '-j=8',
+        f'-j={process}',
         prefix,
         **kwargs,
     )
