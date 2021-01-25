@@ -71,3 +71,9 @@ def after(flow: queuemo.runtime.api.RecipeIO):
         pattern='detector__bibliography_detected.yaml',
         verbose=True,
     )
+    utila.copy_content(
+        flow.tmppath,
+        os.path.join(resultview, 'view'),
+        pattern='decider_bibliography__plot_year_histogram.png',
+        verbose=True,
+    )
