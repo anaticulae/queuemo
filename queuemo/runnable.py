@@ -59,6 +59,10 @@ def run(
 
 
 def kwargs_to_parameter(args: dict) -> str:
+    """\
+    >>> kwargs_to_parameter(dict(footer=False, pagenumbers=False))
+    '--footer! --pagenumbers!'
+    """
     if not args:
         return ''
     cmds = []
@@ -66,6 +70,8 @@ def kwargs_to_parameter(args: dict) -> str:
         if value is True:
             cmds.append(f'--{param}')
         elif value is False:
+            # TODO: VERIFY LATER
+            cmds.append(f'--{param}!')
             continue
         else:
             cmds.append(f'--{param} {value}')
