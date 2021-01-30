@@ -220,6 +220,10 @@ def smarty(inpath: str, output: str = None, **kwargs):
     run('smarty', inpath, output, **kwargs)
 
 
+def decider_abbreviation(inpath: str, output: str = None, **kwargs):
+    run('decider_abbreviation', inpath, output, **kwargs)
+
+
 def decider_smarty(inpath: str, output: str = None, **kwargs):
     run('decider_smarty', inpath, output, **kwargs)
 
