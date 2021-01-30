@@ -39,7 +39,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         select=iamraw.sections.MainPart,
     )
-    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+    with utila.GeorgFork() as runtime:
         runtime.fork(
             queuemo.runnable.textflow_wordspace,
             inpath=[flow.general],
@@ -52,7 +52,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             output=flow.tmppath,
             pages=content,
         )
-    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+    with utila.GeorgFork() as runtime:
         runtime.fork(
             queuemo.runnable.decider_textstyle_headlines,
             inpath=[flow.tmppath, flow.general],

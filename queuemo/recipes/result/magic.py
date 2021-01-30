@@ -20,7 +20,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         select=iamraw.sections.MainPart,
     )
-    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+    with utila.GeorgFork() as runtime:
         runtime.fork(
             queuemo.runnable.words,
             inpath=[flow.general],

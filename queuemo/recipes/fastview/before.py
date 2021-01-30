@@ -37,7 +37,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
     pdf = flow.sourcepath
-    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+    with utila.GeorgFork() as runtime:
         runtime.fork(
             queuemo.runnable.rawmaker,
             inpath=pdf,

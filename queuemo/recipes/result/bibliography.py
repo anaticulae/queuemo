@@ -35,7 +35,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         select=iamraw.sections.Bibliography,
     )
 
-    with utila.GeorgFork() as runtime:  # pylint:disable=E1101
+    with utila.GeorgFork() as runtime:
         runtime.fork(
             queuemo.runnable.detector_bibliography,
             inpath=[flow.general],
