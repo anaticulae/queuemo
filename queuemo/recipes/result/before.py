@@ -36,6 +36,9 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.groupme(
         inpath=[flow.tmppath],
         output=flow.tmppath,
+        footer=False,
+        pagenumbers=False,
+        abbreviation=False,
     )
     assert completed == utila.SUCCESS, str(completed)
     return [completed]
