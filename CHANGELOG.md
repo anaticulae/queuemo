@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.8.0
+
+### Feature
+
+* add intro decider step (9f7dd0ce5aa4)
+* copy bib overview image to result view (06cae1a47776)
+* add option to run rawmaker with fewer processes (322f925dd661)
+* fork, fork, fork (77bef9620c37)
+* parallelize runtime (b2dce14d442c)
+
 ## v1.7.0
 
 ### Feature
