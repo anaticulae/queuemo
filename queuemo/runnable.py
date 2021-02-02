@@ -6,23 +6,15 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
-"""Load different recipes from this package."""
+"""Runner overview
+===============
+"""
 
 import os
 
-import rawmaker.cli as cli
+import rawmaker.cli as rawmaker_cli
 import utila
 
-DECIDER_FONTS = 'decider_fonts'
-FEED_DECIDER_BORDER = 'feedback_decider_border'
-FEED_DECIDER_FONTS = 'feedback_decider_fonts'
-GROUPME = 'groupme'
-SECTIONS = 'sections'
-WORDS = 'words'
-FEEDBACK = 'feedback'
-RAWMAKER_OUTPUT = 'rawmaker'
-
-COMMON_VIEW_WORK = 'commonview'
 
 
 def run(
@@ -83,8 +75,8 @@ def kwargs_to_parameter(args: dict) -> str:
     return result
 
 
-CHAR_MARGIN_DEFAULT = float(cli.CHAR_MARGIN.defaultvar)
-BOXES_FLOW_DEFAULT = float(cli.BOXES_FLOW.defaultvar)
+CHAR_MARGIN_DEFAULT = float(rawmaker_cli.CHAR_MARGIN.defaultvar)
+BOXES_FLOW_DEFAULT = float(rawmaker_cli.BOXES_FLOW.defaultvar)
 
 
 def rawmaker(
@@ -111,8 +103,8 @@ def rawmaker(
     """
     if isinstance(inpath, str):
         inpath = [inpath]
-    kwargs[cli.CHAR_MARGIN.name] = char_margin
-    kwargs[cli.BOXES_FLOW.name] = boxes_flow
+    kwargs[rawmaker_cli.CHAR_MARGIN.name] = char_margin
+    kwargs[rawmaker_cli.BOXES_FLOW.name] = boxes_flow
     returncode = run(
         'rawmaker',
         inpath,
@@ -268,14 +260,14 @@ def feedback_images(inpath: str, output: str = None):
     # TODO: Remove after feedview is working correctly
     missing_outdir = os.path.join(output, 'feedback__view_pages')
     os.makedirs(missing_outdir, exist_ok=True)
-    run(f'{FEEDBACK} --images --figures -j2', inpath, output)
+    run(f'feedback --images --figures -j2', inpath, output)
 
 
 def feedback_view(inpath: str, output: str = None):
     # TODO: Remove after feedview is working correctly
     missing_outdir = os.path.join(output, 'feedback__view_pages')
     os.makedirs(missing_outdir, exist_ok=True)
-    run(f'{FEEDBACK} --view', inpath, output)
+    run(f'feedback --view', inpath, output)
 
 
 RUNNER = [
