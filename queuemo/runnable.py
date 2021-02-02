@@ -15,6 +15,7 @@ import os
 import rawmaker.cli as rawmaker_cli
 import utila
 
+TIMEOUT_DEFAULT = 60 * 10  # ten minutes per step
 
 
 def run(
@@ -23,6 +24,7 @@ def run(
         outpath: str,
         parameter: str = None,
         prefix: str = '',
+        timeout=None,
         **kwargs,
 ) -> int:
     inpath, outpath, prefix = prepare_run(inpath, outpath, prefix)
@@ -31,9 +33,14 @@ def run(
     parameter = ' ' if parameter is None else parameter
     cmd = f'{runnable} {parameter} -i {inpath} -o {outpath} {prefix} {cmds}'
 
+    timeout = utila.Timeout(
+        seconds=timeout if timeout is not None else TIMEOUT_DEFAULT,
+        gracefully=False,
+    )
     utila.log(f'running: {cmd}')
+    utila.debug(f'timeout: {timeout.seconds}')
     with utila.profile(runnable):
-        completed = utila.run(cmd)
+        completed = utila.run(cmd, timeout=timeout)
 
     utila.log(completed.stdout)
     assert os.path.exists(outpath), str(outpath)
