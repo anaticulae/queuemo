@@ -7,12 +7,15 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import configo
 import link
 import utila
 
 import queuemo
 import queuemo.runnable
 import queuemo.runtime.api
+
+TIMEOUT_RESULT_LINERO = configo.HV_INT_PLUS(default=120)
 
 
 @queuemo.required
@@ -28,10 +31,15 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
     determine_sections(flow)
 
+    timeout = utila.Timeout(
+        seconds=TIMEOUT_RESULT_LINERO.value,
+        gracefully=True,
+    )
     # ensure rawmaker is completed before running linero
     completed = queuemo.runnable.linero(
         inpath=flow.tmppath,
         output=flow.tmppath,
+        timeout=timeout,
     )
     queuemo.runnable.groupme(
         inpath=[flow.tmppath],

@@ -33,10 +33,11 @@ def run(
     parameter = ' ' if parameter is None else parameter
     cmd = f'{runnable} {parameter} -i {inpath} -o {outpath} {prefix} {cmds}'
 
-    timeout = utila.Timeout(
-        seconds=timeout if timeout is not None else TIMEOUT_DEFAULT,
-        gracefully=False,
-    )
+    if timeout is None or isinstance(timeout, (float, int)):
+        timeout = utila.Timeout(
+            seconds=timeout if timeout is not None else TIMEOUT_DEFAULT,
+            gracefully=False,
+        )
     utila.log(f'running: {cmd}')
     utila.debug(f'timeout: {timeout.seconds}')
     with utila.profile(runnable):
@@ -44,7 +45,7 @@ def run(
 
     utila.log(completed.stdout)
     assert os.path.exists(outpath), str(outpath)
-    return completed.returncode
+    return completed
 
 
 def prepare_run(inpath, outpath, prefix):
@@ -123,8 +124,8 @@ def rawmaker(
     return returncode
 
 
-def linero(inpath: str, output: str = None, **kwargs):
-    return run('linero', inpath, output, **kwargs)
+def linero(inpath: str, output: str = None, timeout: int = None, **kwargs):
+    return run('linero', inpath, output, timeout=timeout, **kwargs)
 
 
 def spacestation(inpath: str, output: str = None, **kwargs):
