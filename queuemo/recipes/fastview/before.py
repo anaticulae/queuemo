@@ -30,13 +30,11 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
 
     queuemo.recipes.result.before.determine_sections(flow)
 
-    completed = queuemo.runnable.linero(
+    queuemo.runnable.linero(
         inpath=flow.tmppath,
         output=flow.tmppath,
         timeout=TIMEOUT_FASTVIEW_LINERO.value,
     )
-    assert completed == utila.SUCCESS, str(completed)
-    return [completed]
 
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):

@@ -36,7 +36,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         gracefully=True,
     )
     # ensure rawmaker is completed before running linero
-    completed = queuemo.runnable.linero(
+    queuemo.runnable.linero(
         inpath=flow.tmppath,
         output=flow.tmppath,
         timeout=timeout,
@@ -48,8 +48,6 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         pagenumbers=False,
         abbreviation=False,
     )
-    assert completed == utila.SUCCESS, str(completed)
-    return [completed]
 
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
