@@ -57,6 +57,7 @@ def test_run_single(monkeypatch, testdir, capsys):
     assert os.path.exists(os.path.join(workspace, 'result/__optimized__'))
 
 
+@utilatest.longrun
 def test_no_text_content(testdir):
     """Stop analysis of `figure only` documents. Some pdf printer, print
     all content to figures, therefore no text is detected and avg text
