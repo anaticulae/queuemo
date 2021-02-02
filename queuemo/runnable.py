@@ -123,8 +123,8 @@ def rawmaker(
     return returncode
 
 
-def linero(inpath: str, output: str = None):
-    return run('linero', inpath, output)
+def linero(inpath: str, output: str = None, **kwargs):
+    return run('linero', inpath, output, **kwargs)
 
 
 def spacestation(inpath: str, output: str = None, **kwargs):
