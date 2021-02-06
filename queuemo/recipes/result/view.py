@@ -85,6 +85,6 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     utila.copy_content(
         flow.tmppath,
         os.path.join(resultview, 'view'),
-        pattern='feedback__plot_findings_histogram.png',
+        pattern='feedback__plot_*.png',
         verbose=True,
     )
