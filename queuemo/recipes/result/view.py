@@ -38,15 +38,21 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     queuemo.runnable.feedback_view(
         inpath=[
-            flow.package('doctextstyle'),
-            flow.package('footnote'),
-            flow.package('textflow'),
-            flow.package('imgfig'),
             flow.general,
             flow.tmppath,
-        ],
+        ] + findings(flow),
         output=flow.tmppath,
     )
+
+
+def findings(flow) -> list:
+    result = [
+        flow.package('doctextstyle'),
+        flow.package('footnote'),
+        flow.package('textflow'),
+        flow.package('imgfig'),
+    ]
+    return result
 
 
 def after(flow: queuemo.runtime.api.RecipeIO):
