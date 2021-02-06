@@ -47,6 +47,9 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         ],
         output=flow.tmppath,
     )
+
+
+def after(flow: queuemo.runtime.api.RecipeIO):
     # TODO: Support utila to create result without package feedback
     # For example generate: 0.html, 1.html etc. nor package_0.html,
     # package_1.html
