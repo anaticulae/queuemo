@@ -7,6 +7,11 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
+import link
+import utila
+
 import queuemo.runnable
 import queuemo.runtime.api
 
@@ -43,6 +48,13 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         ] + findings(flow),
         output=flow.tmppath,
     )
+    queuemo.runnable.feedback_plot(
+        inpath=[
+            flow.general,
+            flow.tmppath,  # TODO: WHICH IS CORRECT PATH
+        ] + findings(flow),
+        output=flow.tmppath,
+    )
 
 
 def findings(flow) -> list:
@@ -62,3 +74,11 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     flow.publish(folder='feedback__view_pages', pattern='*.html')
     flow.publish(folder='feedback__view_pages', pattern='*.jpg')
     flow.publish(folder='feedback__view_pages', pattern='*.png')
+
+    resultview = link.resultview(flow.document)
+    utila.copy_content(
+        flow.tmppath,
+        os.path.join(resultview, 'view'),
+        pattern='feedback__plot_findings_histogram.png',
+        verbose=True,
+    )

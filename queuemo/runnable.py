@@ -278,6 +278,10 @@ def feedback_view(inpath: str, output: str = None):
     run(f'feedback --view', inpath, output)
 
 
+def feedback_plot(inpath: str, output: str = None):
+    run(f'feedback --plot', inpath, output)
+
+
 RUNNER = [
     'decider_border',
     'decider_textflow',
