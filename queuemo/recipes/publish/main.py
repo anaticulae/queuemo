@@ -37,7 +37,8 @@ def after(flow: queuemo.runtime.api.RecipeIO):
             verbose=True,
         )
     else:
-        utila.error('no utila.logger.OUTFILE defined, could not publish')
+        utila.error(('no utila.logger.OUTFILE defined,'
+                     ' could not publish log file'))
 
     # document completed
     utila.log()
