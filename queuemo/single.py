@@ -11,6 +11,7 @@
 import os
 
 import configo
+import link
 import utila
 import utila.cli
 import utila.logger
@@ -19,7 +20,9 @@ import queuemo
 import queuemo.runtime.execute
 import queuemo.worker.startup
 
-COMMANDS = []
+COMMANDS = [
+    utila.Flag(longcut='create'),
+]
 DESCRIPTION = """\
 Run queuemo recipe for given -i input and write to -o folder.
 """
@@ -32,13 +35,13 @@ def main() -> int:
         todo=COMMANDS,
         config=utila.ParserConfiguration(
             inputparameter=True,
-            outputparameter=False,
+            outputparameter=True,
         ),
         prog='queuemo_single',
         version=queuemo.__version__,
     )
     args = utila.parse(parser)
-    inpath, _, verbose = utila.sources(
+    inpath, outpath, verbose = utila.sources(
         args,
         singleinput=True,
         use_cwd=False,
@@ -47,8 +50,13 @@ def main() -> int:
     utila.logger.level_setup(utila.Level(verbose))
     inpath = inpath[0]
     if os.path.isfile(inpath):
-        utila.error(f'require directory: {inpath}')
-        return utila.INVALID_COMMAND
+        if args.get('create', False):
+            inpath = create_todo(inpath, outpath)
+            if inpath == utila.FAILURE:
+                return utila.FAILURE
+        else:
+            utila.error(f'require directory: {inpath} or use --create flag')
+            return utila.INVALID_COMMAND
     outpath = inpath
 
     # patch todo output path. TODO: INVESTIGATE HERE?
@@ -66,3 +74,25 @@ def main() -> int:
         outpath=outpath,
     )
     return utila.SUCCESS
+
+
+def create_todo(inpath, outpath):
+    if outpath:
+        outpath, outname = os.path.split(outpath)
+    else:
+        outpath = os.getcwd()
+        filename = str(os.path.split(inpath)[1])
+        # remove file name
+        outname = filename.replace('.pdf', '')
+    try:
+        outpath = link.create_todo(
+            inpath,
+            todopath=outpath,
+            todoname=outname,
+            exist_ok=True,
+        )
+    except OSError:
+        utila.error(f'{os.path.join(outpath, outname)} already exists')
+        return utila.FAILURE
+    utila.log(f'create job description in {outpath}')
+    return outpath
