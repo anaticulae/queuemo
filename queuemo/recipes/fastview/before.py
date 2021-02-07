@@ -12,7 +12,7 @@ import link
 import utila
 
 import queuemo
-import queuemo.recipes.result.before
+import queuemo.recipes.utils
 import queuemo.runnable
 import queuemo.runtime.api
 
@@ -28,7 +28,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     unpack_pdf(flow)
 
-    queuemo.recipes.result.before.determine_sections(flow)
+    queuemo.recipes.utils.determine_sections(flow)
 
     queuemo.runnable.linero(
         inpath=flow.tmppath,

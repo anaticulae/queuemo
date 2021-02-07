@@ -12,6 +12,7 @@ import link
 import utila
 
 import queuemo
+import queuemo.recipes.utils
 import queuemo.runnable
 import queuemo.runtime.api
 
@@ -29,7 +30,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 def run(flow: queuemo.runtime.api.RecipeIO):
     unpack_pdf(flow)
 
-    determine_sections(flow)
+    queuemo.recipes.utils.determine_sections(flow)
 
     timeout = utila.Timeout(
         seconds=TIMEOUT_RESULT_LINERO.value,
@@ -78,18 +79,3 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             output=flow.tmppath,
         )
     assert runtime.result == utila.SUCCESS, 'could not extract pdf'
-
-
-def determine_sections(flow: queuemo.runtime.api.RecipeIO):
-    queuemo.runnable.groupme(
-        inpath=[flow.tmppath],
-        output=flow.tmppath,
-        pagenumbers=True,
-        footer=True,
-    )
-
-    # determine to run area of feature detection
-    queuemo.runnable.sections(
-        inpath=flow.tmppath,
-        output=flow.tmppath,
-    )
