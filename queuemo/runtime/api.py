@@ -6,6 +6,36 @@
 # use or distribution is an offensive act against international law and may
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
+"""Runtime API
+===========
+
+PathStructure
+-------------
+
+WorkDir
+    Workspace document z4YgqnjU0Q6dCa5r
+        z4YgqnjU0Q6dCa5r: pdf file with content
+        fastview
+        result
+            imgfig
+            intro
+            view
+        info.yaml
+        inprogress
+        pdfinfo.json
+    Workspace document Bobomaster
+        ...
+        ...
+        ...
+        info.yaml
+        inprogress
+        pdfinfo.json
+
+TmpDir
+    z4YgqnjU0Q6dCa5r
+    Bobomaster
+"""
+
 import dataclasses
 import os
 import textwrap
