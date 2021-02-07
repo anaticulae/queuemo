@@ -38,7 +38,7 @@ def run(
             seconds=timeout if timeout is not None else TIMEOUT_DEFAULT,
             gracefully=False,
         )
-    utila.log(f'running: {cmd}')
+    utila.log(f'>> {cmd} <<')
     utila.debug(f'timeout: {timeout.seconds}')
     with utila.profile(runnable):
         completed = utila.run(cmd, timeout=timeout)
