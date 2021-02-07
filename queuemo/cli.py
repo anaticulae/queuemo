@@ -14,9 +14,6 @@ import utila
 import utila.cli
 import utila.logger
 
-import queuemo
-import queuemo.worker.startup
-
 PROCESS_NAME = 'queuemo'
 RUNTIME = 'runtime'
 WAITING = 'waiting'
@@ -59,8 +56,8 @@ COMMANDS = [
 
 @utila.saveme
 def main():
+    import queuemo
     logger_start()
-
     parser = utila.cli.create_parser(
         todo=COMMANDS,
         config=utila.ParserConfiguration(verboseflag=True),
@@ -83,6 +80,8 @@ def main():
         utila.error(msg)
         return utila.INVALID_COMMAND
     configo.check_startup()
+    import queuemo.__hack__  # REMOVE AFTER FIXING SCHEDULE LOADER
+    import queuemo.worker.startup  # load later
     # start scheduler
     closed = queuemo.worker.startup.run(
         runtime=runtime,
