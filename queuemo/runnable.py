@@ -33,6 +33,22 @@ def run(
         prefix: str = '',
         **kwargs,
 ) -> int:
+    inpath, outpath, prefix = prepare_run(inpath, outpath, prefix)
+    cmds = kwargs_to_parameter(kwargs)
+
+    parameter = ' ' if parameter is None else parameter
+    cmd = f'{runnable} {parameter} -i {inpath} -o {outpath} {prefix} {cmds}'
+
+    utila.log(f'running: {cmd}')
+    with utila.profile(runnable):
+        completed = utila.run(cmd)
+
+    utila.log(completed.stdout)
+    assert os.path.exists(outpath), str(outpath)
+    return completed.returncode
+
+
+def prepare_run(inpath, outpath, prefix):
     if isinstance(inpath, str):
         inpath = [inpath]
     # beautify path: remove ../..
@@ -40,22 +56,10 @@ def run(
     inpath = [os.path.normpath(item) for item in inpath]
     for item in inpath:
         assert os.path.exists(item), item
-    if prefix:
-        prefix = '--prefix ' + prefix
-
-    cmds = kwargs_to_parameter(kwargs)
     # single inputpath does not produces -i, see str.join docu
-    inputpath = ' -i '.join(inpath)
-
-    parameter = ' ' if parameter is None else parameter
-    cmd = f'{runnable} {parameter} -i {inputpath} -o {outpath} {prefix} {cmds}'
-    utila.log(f'running: {cmd}')
-    with utila.profile():
-        completed = utila.run(cmd)
-
-    utila.log(completed.stdout)
-    assert os.path.exists(outpath), str(outpath)
-    return completed.returncode
+    inpath: str = ' -i '.join(inpath)
+    prefix = f'--prefix={prefix}' if prefix else ''
+    return inpath, outpath, prefix
 
 
 def kwargs_to_parameter(args: dict) -> str:
