@@ -2,6 +2,27 @@
 
 Every noteable change is logged here.
 
+## v1.9.0
+
+### Feature
+
+* write queuemo version after publishing (3819935647e5)
+* publish more than one figure (9858faf1819b)
+* generate and publish finding histogram (1a812ce48aa3)
+* limit execution time (c38b59e6b02c)
+* add kwargs parameter to linero (2c824a57b6c3)
+* add global step runtime timeout (8f29dd95a173)
+* add abbreviation decider step (3e1e9895c439)
+* add command exclude pattern (7f25e301d51e)
+
+### Fix
+
+* clarify logger message (c3bde4e1006a)
+* load recipes code later (23d7b5e62f2b)
+* decrease logging verbosity (f449eb5b182b)
+* shorten invocation log (136209eb9e88)
+* add missing finding result provider (99847c367398)
+
 ## v1.8.0
 
 ### Feature
