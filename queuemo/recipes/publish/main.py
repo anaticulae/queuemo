@@ -19,7 +19,10 @@ import queuemo.runtime.api
 @queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO):
     # copy todo folder to result and create done folder
-    link.publish(flow.document)
+    if link.todo(flow.document) != link.ready(flow.document):
+        # if todo and ready is the same folder, publish is not necessary
+        # anymore.
+        link.publish(flow.document)
 
     # TODO: MOVE TO LINK finish_resultview
     write_queuemo_version(flow.document)
@@ -39,6 +42,11 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     else:
         utila.error(('no utila.logger.OUTFILE defined,'
                      ' could not publish log file'))
+
+    if link.todo(flow.document) == link.ready(flow.document):
+        # create done flag, link does it only in not equal mode, don't
+        # know why. TODO: INVESTIGATE LATER AND MOVE TO LINK CODE
+        utila.file_create(link.done(flow.document))
 
     # document completed
     utila.log()
