@@ -9,7 +9,7 @@
 
 # Internal packages
 configo==0.9.0
-link==2.3.2
+link==2.4.0
 utila==2.20.1
 
 # Features packages
