@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.10.2
+
+### Fix
+
+* replace default file name (5a3c73bc1abe)
+
 ## v1.10.1
 
 ## v1.10.0
