@@ -2,6 +2,20 @@
 
 Every noteable change is logged here.
 
+## v1.10.0
+
+### Feature
+
+* add --create flag to create and run job (d0cc5f39bdaf)
+
+### Fix
+
+* avoid resource conflicts in queuemo single publish mode (c29170c0c32d)
+
+### Documentation
+
+* add document structure information (22e0d840e404)
+
 ## v1.9.0
 
 ### Feature
