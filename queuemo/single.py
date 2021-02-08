@@ -77,18 +77,19 @@ def main() -> int:
 
 
 def create_todo(inpath, outpath):
+    filename = str(os.path.split(inpath)[1])
     if outpath:
         outpath, outname = os.path.split(outpath)
     else:
         outpath = os.getcwd()
-        filename = str(os.path.split(inpath)[1])
         # remove file name
         outname = filename.replace('.pdf', '')
     try:
         outpath = link.create_todo(
-            inpath,
-            todopath=outpath,
+            file=inpath,
+            filename=filename,
             todoname=outname,
+            todopath=outpath,
             exist_ok=True,
         )
     except OSError:
