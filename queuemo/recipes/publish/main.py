@@ -26,6 +26,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
     # TODO: MOVE TO LINK finish_resultview
     write_queuemo_version(flow.document)
+    publish_statistics(flow.document)
 
 
 @queuemo.required
@@ -59,3 +60,11 @@ def write_queuemo_version(document: str):
     debug = os.path.join(ready, 'debug')
     # queuemo 1.8.0 to debug file
     utila.run(f'queuemo -v -V >> {debug}')
+
+
+def publish_statistics(document: str):
+    # TODO: MOVE TO LINK?
+    # TODO: DISABLE BEFORE GOING LIVE?
+    ready = link.ready(document)
+    cmd = f'qcon -i {ready} --publish'
+    utila.run(cmd)
