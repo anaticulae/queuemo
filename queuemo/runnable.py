@@ -15,7 +15,8 @@ import os
 import rawmaker.cli as rawmaker_cli
 import utila
 
-TIMEOUT_DEFAULT = 60 * 10  # ten minutes per step
+# TODO: DECREASE BEFORE GOING LIVE!
+TIMEOUT_DEFAULT = 60 * 10 * 2  # twenty minutes per step
 
 
 def run(
