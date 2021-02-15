@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.10.3
+
+### Feature
+
+* increase maximum step time (26646b7dec8f)
+* publish document analysis results to database (098072b6cfbb)
+
 ## v1.10.2
 
 ### Fix
