@@ -10,15 +10,15 @@
 # Internal packages
 configo==0.9.0
 link==2.4.1
-utila==2.20.1
+utila==2.23.0
 
 # Features packages
 # analysis==0.1.33
-feedback==1.8.0
+feedback==1.8.1
 hey==5.6.5
-rawmaker==2.13.1
+rawmaker==2.13.2
 
-decider==2.6.0
-decider_ref==1.7.1
+decider==2.7.2
+decider_ref==1.8.1
 decider_con==0.2.0
-decider_lay==0.5.0
+decider_lay==0.5.1
