@@ -11,6 +11,7 @@ import contextlib
 import os
 import shutil
 import sys
+import threading
 
 import configo.directory
 import pytest
@@ -20,6 +21,8 @@ import queuemo.cli
 import queuemo.single
 import tests.__patch__
 import tests.resources
+
+LOCK = threading.Lock()
 
 
 @contextlib.contextmanager
@@ -33,25 +36,26 @@ def patch_todo(testdir, monkeypatch, copy=True):
     Yields:
         None: in current working location with setuped environment variables
     """
-    testdir = str(testdir)
-    todopath = os.path.join(testdir, 'todo_')
-    readypath = os.path.join(testdir, 'ready_')
-    os.makedirs(readypath, exist_ok=True)
-    if copy:
-        # Copy content from todo
-        # TODO: DO NOT COPY WHOLE DATA TREE
-        shutil.copytree(tests.resources.TODO, todopath)
-    else:
-        os.makedirs(todopath, exist_ok=True)
+    with LOCK:
+        testdir = str(testdir)
+        todopath = os.path.join(testdir, 'todo_')
+        readypath = os.path.join(testdir, 'ready_')
+        os.makedirs(readypath, exist_ok=True)
+        if copy:
+            # Copy content from todo
+            # TODO: DO NOT COPY WHOLE DATA TREE
+            shutil.copytree(tests.resources.TODO, todopath)
+        else:
+            os.makedirs(todopath, exist_ok=True)
 
-    with monkeypatch.context() as context:
-        # Overwrite env vars instead of replacing. If we replace the vars we
-        # have to set every single variable again, like accesing rawmaker,
-        # sections etc.
-        context.setenv(configo.directory.COMMON, testdir)
-        context.setenv(configo.directory.TODO, todopath)
-        context.setenv(configo.directory.READY, readypath)
-        yield
+        with monkeypatch.context() as context:
+            # Overwrite env vars instead of replacing. If we replace the
+            # vars we have to set every single variable again, like
+            # accesing rawmaker, sections etc.
+            context.setenv(configo.directory.COMMON, testdir)
+            context.setenv(configo.directory.TODO, todopath)
+            context.setenv(configo.directory.READY, readypath)
+            yield
 
 
 def run_queuemo(
