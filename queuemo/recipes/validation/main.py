@@ -15,6 +15,7 @@ import serializeraw
 import utila
 
 import queuemo
+import queuemo.recipes.logger
 import queuemo.runnable
 import queuemo.runtime.api
 import queuemo.runtime.runtime
@@ -22,6 +23,9 @@ import queuemo.runtime.runtime
 
 @queuemo.required
 def before(flow: queuemo.runtime.api.RecipeIO):
+    # set logging start mark
+    queuemo.recipes.logger.start()
+
     todo = link.todo(flow.document)
     assert os.path.exists(todo), f'todo does not exists: {todo}'
     link.start_progress(flow.document)

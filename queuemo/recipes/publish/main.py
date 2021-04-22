@@ -13,6 +13,7 @@ import link
 import utila
 
 import queuemo
+import queuemo.recipes.logger
 import queuemo.runtime.api
 
 
@@ -35,11 +36,11 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     ready = link.ready(flow.document)
 
     if utila.logger.OUTFILE:
-        utila.copy_content(
-            utila.logger.OUTFILE,
-            ready,
-            verbose=True,
-        )
+        content = queuemo.recipes.logger.content()
+        logpath = os.path.join(ready, 'done.log')
+        # write current document log to result
+        utila.log(f'write log to: {logpath}')
+        utila.file_create(logpath, content)
     else:
         utila.error(('no utila.logger.OUTFILE defined,'
                      ' could not publish log file'))

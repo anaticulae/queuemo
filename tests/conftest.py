@@ -11,6 +11,7 @@ import power
 import pytest
 
 import queuemo
+import queuemo.cli
 import tests.update
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
@@ -35,6 +36,8 @@ RESOURCES_TODO = [
 @pytest.mark.usefixtures('session')
 def pytest_sessionstart():
     power.run()
+    # TODO: HACK BUT WORKS FOR THE MOMENT
+    queuemo.cli.logger_start()
 
 
 def extract_todo(files):
