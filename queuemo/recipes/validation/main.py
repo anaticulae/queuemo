@@ -51,10 +51,8 @@ def after(flow: queuemo.runtime.api.RecipeIO):
         text=True,
         pages='0:10',
     )
-    content = any([
-        len(page) for page in serializeraw.create_pagetextnavigators_frompath(
-            flow.tmppath)
-    ])
+    ptns = serializeraw.create_pagetextnavigators_frompath(flow.tmppath)
+    content = any([len(page) for page in ptns])
     if content:
         return
     utila.error(f'no text in resource {flow.sourcepath}, stop analysis.')
