@@ -8,9 +8,9 @@
 # =============================================================================
 
 # Internal packages
-configo==0.9.0
-link==2.5.0
-utila==2.27.0
+configo==0.10.0
+link==2.5.1
+utila==2.34.1
 
 abel==0.6.0
 
@@ -18,9 +18,9 @@ abel==0.6.0
 # analysis==0.1.33
 feedback==1.8.1
 hey==5.11.1
-rawmaker==2.15.0
+rawmaker==2.16.0
 
-decider==2.7.2
+decider==2.7.3
 decider_ref==1.8.1
 decider_con==0.2.0
 decider_lay==0.5.1
