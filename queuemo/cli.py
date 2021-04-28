@@ -24,9 +24,9 @@ INTERACTIVE = 'interactive'
 COMMANDS = [
     utila.Parameter(
         longcut=RUNTIME,
-        message='runtime in seconds',
+        message='runtime in ticks',
         args={
-            'default': 1,
+            'default': 100,
         },
     ),
     utila.Parameter(

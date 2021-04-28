@@ -85,9 +85,5 @@ def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
     ('--verbose'),
 ])
 def test_incremental_verbose_flag(verbose, monkeypatch, testdir, capsys):
-    tests.run_queuemo(
-        [verbose],
-        monkeypatch,
-        testdir,
-        capsys,
-    )
+    cmd = f'{verbose} --runtime 0'
+    tests.run_queuemo(cmd, monkeypatch, testdir, capsys)
