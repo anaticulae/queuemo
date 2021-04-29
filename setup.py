@@ -52,7 +52,6 @@ if __name__ == "__main__":
         packages=[
             'queuemo',
             'queuemo.recipes',
-            'queuemo.recipes.decider',
             'queuemo.recipes.fastview',
             'queuemo.recipes.publish',
             'queuemo.recipes.result',
