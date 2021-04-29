@@ -45,6 +45,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.groupme(
         inpath=[flow.tmppath],
         output=flow.tmppath,
+        toc=False,
         footer=False,
         pagenumbers=False,
         abbreviation=False,

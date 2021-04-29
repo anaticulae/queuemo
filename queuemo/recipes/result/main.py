@@ -10,6 +10,7 @@
 import queuemo.runtime.api
 
 ORDER = [
+    'toc',
     'abbreviation',
     'intro',
     'imgfig',
