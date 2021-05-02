@@ -23,7 +23,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         select=iamraw.sections.TableOfContent,
     )
     if pages == ':':
-        utila.info('could not detect TableOfContent page-numbers')
+        utila.log('could not detect TableOfContent page-numbers')
         return
     queuemo.runnable.groupme(
         inpath=[flow.general],
