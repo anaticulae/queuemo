@@ -58,6 +58,7 @@ def decide_title(flow: queuemo.runtime.api.RecipeIO):
 
 def decide_toc(flow: queuemo.runtime.api.RecipeIO):
     sources = [flow.general, flow.tmppath]
+    # TODO: REPLACE WITH PATH AFTER UPGRADING IAMRAW
     if not queuemo.utils.exists('groupme__toc_toc.yaml', sources):
         utila.error('could not locate groupme__toc_toc.yaml, skip decider_toc')
         return

@@ -10,7 +10,10 @@
 ===
 """
 
+import os
+
 import iamraw.sections
+import serializeraw
 import utila
 
 import queuemo.runnable
@@ -24,6 +27,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     if pages == ':':
         utila.log('could not detect TableOfContent page-numbers')
+        create_backup_toc(flow.general)
         return
     queuemo.runnable.groupme(
         inpath=[flow.general],
@@ -31,3 +35,10 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         toc=True,
         pages=pages,
     )
+
+
+def create_backup_toc(outpath: str):
+    outpath = os.path.join(outpath, 'groupme__toc_toc.yaml')
+    utila.log(f'write empty toc: {outpath}')
+    dumped = serializeraw.dump_toc(iamraw.Toc())
+    utila.file_create(outpath, dumped)
