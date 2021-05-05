@@ -31,6 +31,7 @@ publish linter result
 """
 
 import iamraw.sections
+import utila
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -56,11 +57,12 @@ def decide_title(flow: queuemo.runtime.api.RecipeIO):
 
 
 def decide_toc(flow: queuemo.runtime.api.RecipeIO):
+    sources = [flow.general, flow.tmppath]
+    if not queuemo.utils.exists('groupme__toc_toc.yaml', sources):
+        utila.error('could not locate groupme__toc_toc.yaml, skip decider_toc')
+        return
     queuemo.runnable.decider_toc(
-        inpath=[
-            flow.general,
-            flow.tmppath,
-        ],
+        inpath=sources,
         output=flow.tmppath,
     )
 
