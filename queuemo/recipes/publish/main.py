@@ -23,7 +23,10 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     if link.todo(flow.document) != link.ready(flow.document):
         # if todo and ready is the same folder, publish is not necessary
         # anymore.
-        link.publish(flow.document)
+        link.publish(
+            flow.document,
+            skip_resultview=skip_resultview,
+        )
 
     # TODO: MOVE TO LINK finish_resultview
     write_queuemo_version(flow.document)
@@ -69,3 +72,13 @@ def publish_statistics(document: str):
     ready = link.ready(document)
     cmd = f'qcon -i {ready} --publish'
     utila.run(cmd)
+
+
+def skip_resultview(path) -> bool:
+    import queuemo.recipes.result.main
+    SKIP = list(queuemo.recipes.result.main.ORDER)
+    SKIP.remove('view')
+    if any([item in path for item in SKIP]):
+        utila.log(f'skip: {path}')
+        return True
+    return False
