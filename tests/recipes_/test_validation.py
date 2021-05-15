@@ -18,7 +18,8 @@ import tests.fixtures.todo
 import tests.resources
 
 
-def test_recipe_validation(testdir, monkeypatch):  # pylint:disable=W0621
+@utilatest.longrun
+def test_recipe_validation(testdir, monkeypatch):
     """Ensure to create validation result via `pdfinfo` tool"""
     with tests.fixtures.todo.runtime(
             testdir.tmpdir,
@@ -33,7 +34,8 @@ def test_recipe_validation(testdir, monkeypatch):  # pylint:disable=W0621
     assert os.path.exists(pdfinfo), pdfinfo
 
 
-def test_recipe_validation_failure(testdir, monkeypatch, capsys):  # pylint:disable=W0621
+@utilatest.longrun
+def test_recipe_validation_failure(testdir, monkeypatch, capsys):
     """Ensure that validation tool stops with validation error on
     invalid, broken resource"""
     with tests.fixtures.todo.runtime(
