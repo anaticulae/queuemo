@@ -17,6 +17,7 @@ import utila.cli
 import utila.logger
 
 import queuemo
+import queuemo.cli
 import queuemo.runtime.execute
 import queuemo.worker.startup
 
@@ -47,6 +48,7 @@ def main() -> int:
         use_cwd=False,
         verbose=True,
     )
+    queuemo.cli.logger_start()
     utila.logger.level_setup(utila.Level(verbose))
     inpath = inpath[0]
     if os.path.isfile(inpath):
