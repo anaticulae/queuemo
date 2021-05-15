@@ -75,10 +75,10 @@ def publish_statistics(document: str):
 
 
 def skip_resultview(path) -> bool:
-    import queuemo.recipes.result.main
-    SKIP = list(queuemo.recipes.result.main.ORDER)
-    SKIP.remove('view')
-    if any([item in path for item in SKIP]):
+    import queuemo.recipes.result.main  # pylint:disable=W0621
+    skip = list(queuemo.recipes.result.main.ORDER)
+    skip.remove('view')
+    if any([item in path for item in skip]):
         utila.log(f'skip: {path}')
         return True
     return False
