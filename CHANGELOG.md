@@ -2,6 +2,24 @@
 
 Every noteable change is logged here.
 
+## v1.11.0
+
+### Feature
+
+* do not publish everything (615aff4e02cc)
+* create backup toc to allow decider_toc to create missing toc linting (9ab22f9cc5f3)
+* move toc extractor to separate step (8f2afb437d35)
+* increase default waiting time (7a46b7663ab0)
+* write document log only (790648af8bf0)
+
+### Fix
+
+* hack is not required (357264b506ee)
+* ensure that logger is started (000fe7d29471)
+* skip toc decision if toc does not exists (ede22d970941)
+* reduce required logging level (ad08b60f5aeb)
+* skip abbreviation parser (4fdce08f3cc7)
+
 ## v1.10.5
 
 ## v1.10.4
