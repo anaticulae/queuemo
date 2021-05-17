@@ -15,6 +15,7 @@ import utila.cli
 import utila.logger
 
 import queuemo
+import queuemo.worker.startup
 
 PROCESS_NAME = 'queuemo'
 RUNTIME = 'runtime'
