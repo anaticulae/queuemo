@@ -33,11 +33,11 @@ class RecipeRuntime:
     """The RecipeRuntime manages to executes a list of ComposedRecipes."""
 
     def __init__(
-            self,
-            workspace: str,
-            document: str,
-            outpath: str,
-            failfast: bool = False,
+        self,
+        workspace: str,
+        document: str,
+        outpath: str,
+        failfast: bool = False,
     ):
         """Initialize RectipeRuntime.
 
@@ -117,10 +117,10 @@ class Stop(RuntimeControl):
 
 
 def run(  # pylint:disable=R1260
-        composition: queuemo.runtime.scheduler.ComposedRecipe,
-        flow: queuemo.runtime.api.RecipeIO,
-        tick: callable = None,
-        failfast: bool = False,
+    composition: queuemo.runtime.scheduler.ComposedRecipe,
+    flow: queuemo.runtime.api.RecipeIO,
+    tick: callable = None,
+    failfast: bool = False,
 ):
     """Run composed steps in the order defined by `Scheduler`.
     Use `flow` to determine the location where data must copy to.

@@ -14,10 +14,10 @@ import queuemo.runtime.runtime
 
 
 def run_document(
-        workspace: str,
-        documentid: str,
-        outpath: str,
-        failfast: bool = False,
+    workspace: str,
+    documentid: str,
+    outpath: str,
+    failfast: bool = False,
 ):
     # queuemo.runnable.check(RUNNER)
 

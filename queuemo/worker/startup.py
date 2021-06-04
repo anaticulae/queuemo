@@ -25,11 +25,11 @@ JOBSLEFT = 1000
 
 
 def run(
-        runtime: float = MAX_RUNTIME,
-        waiting: float = WAITING,
-        jobs: int = JOBSLEFT,
-        verbose: bool = True,
-        failfast: bool = False,
+    runtime: float = MAX_RUNTIME,
+    waiting: float = WAITING,
+    jobs: int = JOBSLEFT,
+    verbose: bool = True,
+    failfast: bool = False,
 ) -> int:
     """Run the scheduler
 

@@ -20,13 +20,13 @@ TIMEOUT_DEFAULT = 60 * 10 * 2  # twenty minutes per step
 
 
 def run(
-        runnable: str,
-        inpath: utila.Strings,
-        outpath: str,
-        parameter: str = None,
-        prefix: str = '',
-        timeout=None,
-        **kwargs,
+    runnable: str,
+    inpath: utila.Strings,
+    outpath: str,
+    parameter: str = None,
+    prefix: str = '',
+    timeout=None,
+    **kwargs,
 ) -> int:
     inpath, outpath, prefix = prepare_run(inpath, outpath, prefix)
     cmds = kwargs_to_parameter(kwargs)
@@ -88,13 +88,13 @@ BOXES_FLOW_DEFAULT = float(rawmaker_cli.BOXES_FLOW.defaultvar)
 
 
 def rawmaker(
-        inpath: str,
-        outpath: str = None,
-        process: int = 8,
-        prefix: str = '',
-        char_margin: float = CHAR_MARGIN_DEFAULT,
-        boxes_flow: float = BOXES_FLOW_DEFAULT,
-        **kwargs,
+    inpath: str,
+    outpath: str = None,
+    process: int = 8,
+    prefix: str = '',
+    char_margin: float = CHAR_MARGIN_DEFAULT,
+    boxes_flow: float = BOXES_FLOW_DEFAULT,
+    **kwargs,
 ) -> int:
     """Run external rawmaker.
 

@@ -18,10 +18,10 @@ import tests.resources
 
 @contextlib.contextmanager
 def runtime(
-        workspace,
-        document,
-        recipes,
-        monkeypatch,
+    workspace,
+    document,
+    recipes,
+    monkeypatch,
 ) -> queuemo.runtime.runtime.RecipeRuntime:
     workspace = str(workspace)
 

@@ -59,13 +59,13 @@ def patch_todo(testdir, monkeypatch, copy=True):
 
 
 def run_queuemo(
-        cmd,
-        monkeypatch,
-        testdir,
-        capsys,
-        process=queuemo.cli.PROCESS_NAME,
-        runnable=queuemo.cli.main,
-        expected=utila.SUCCESS,
+    cmd,
+    monkeypatch,
+    testdir,
+    capsys,
+    process=queuemo.cli.PROCESS_NAME,
+    runnable=queuemo.cli.main,
+    expected=utila.SUCCESS,
 ):
     cmd = cmd.split() if isinstance(cmd, str) else cmd
     with monkeypatch.context() as context:
@@ -78,11 +78,11 @@ def run_queuemo(
 
 
 def run_single(
-        cmd,
-        monkeypatch,
-        testdir,
-        capsys,
-        expected=utila.SUCCESS,
+    cmd,
+    monkeypatch,
+    testdir,
+    capsys,
+    expected=utila.SUCCESS,
 ):
     return run_queuemo(
         cmd,
