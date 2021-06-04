@@ -42,7 +42,7 @@ def main() -> int:
         version=queuemo.__version__,
     )
     args = utila.parse(parser)
-    inpath, outpath, verbose = utila.sources(
+    inpath, outpath, verbose = utila.sources(  # pylint:disable=W0632
         args,
         singleinput=True,
         use_cwd=False,

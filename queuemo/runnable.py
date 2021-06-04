@@ -11,6 +11,7 @@
 """
 
 import os
+import sys
 
 import rawmaker.cli as rawmaker_cli
 import utila
@@ -268,18 +269,18 @@ def feedback_images(inpath: str, output: str = None):
     # TODO: Remove after feedview is working correctly
     missing_outdir = os.path.join(output, 'feedback__view_pages')
     os.makedirs(missing_outdir, exist_ok=True)
-    run(f'feedback --images --figures -j2', inpath, output)
+    run('feedback --images --figures -j2', inpath, output)
 
 
 def feedback_view(inpath: str, output: str = None):
     # TODO: Remove after feedview is working correctly
     missing_outdir = os.path.join(output, 'feedback__view_pages')
     os.makedirs(missing_outdir, exist_ok=True)
-    run(f'feedback --view', inpath, output)
+    run('feedback --view', inpath, output)
 
 
 def feedback_plot(inpath: str, output: str = None):
-    run(f'feedback --plot', inpath, output)
+    run('feedback --plot', inpath, output)
 
 
 RUNNER = [
@@ -305,7 +306,7 @@ def check(runner=None):
     ret = utila.fork(todo, worker=len(RUNNER), process=False)
     if not isinstance(ret, list):
         utila.error('runs with error')
-        exit(ret)
+        sys.exit(ret)
     utila.log()  # add newline
 
 

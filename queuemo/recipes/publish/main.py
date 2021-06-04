@@ -35,7 +35,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 @queuemo.required
 def after(flow: queuemo.runtime.api.RecipeIO):
-    utila.log(f'publish log')
+    utila.log('publish log')
     ready = link.ready(flow.document)
 
     if utila.logger.OUTFILE:

@@ -30,7 +30,6 @@ def patch_todo(testdir, monkeypatch, copy=True):
     """Change todo path to avoid overriding test data.
 
     Args:
-        testdir(fixture): path where working data is written
         monkeypatch(fixture): to patch environment variables
         copy(bool): sync data of todo folder
     Yields:

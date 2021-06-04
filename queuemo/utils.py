@@ -9,6 +9,7 @@
 """Store experimental code here."""
 
 import os
+import sys
 
 import sections.path
 import serializeraw
@@ -68,7 +69,7 @@ def wait():
     answer = input('continue?\n')
     answer = answer.strip().lower()
     if answer in ('no', 'n'):
-        exit(utila.SUCCESS)
+        sys.exit(utila.SUCCESS)
 
 
 def exists(filename: str, sources: list) -> bool:
