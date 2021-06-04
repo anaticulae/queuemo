@@ -77,7 +77,6 @@ def kwargs_to_parameter(args: dict) -> str:
         elif value is False:
             # TODO: VERIFY LATER
             cmds.append(f'--{param}!')
-            continue
         else:
             cmds.append(f'--{param} {value}')
     result = ' '.join(cmds)
