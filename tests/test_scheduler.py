@@ -40,6 +40,5 @@ def test_copy_job_to_workspace(monkeypatch):
             'environ',
             {configo.directory.TODO: tests.resources.TODO},
         )
-
-        temp_workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB) # yapf:disable
-        assert os.path.exists(temp_workspace), temp_workspace
+        workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB)
+        assert os.path.exists(workspace), workspace
