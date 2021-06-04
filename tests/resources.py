@@ -12,7 +12,6 @@ import os
 import queuemo
 
 RESOURCES = os.path.join(queuemo.ROOT, 'tests/resources')
-assert os.path.exists(RESOURCES), RESOURCES
 
 GENERATED = os.path.join(RESOURCES, 'generated')
 TODO = os.path.join(GENERATED, 'todo')
