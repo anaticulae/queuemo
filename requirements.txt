@@ -12,7 +12,7 @@ configo==0.10.1
 link==2.6.0
 utila==2.35.0
 
-abel==0.6.1
+# abel==0.6.1
 
 # Features packages
 # analysis==0.1.33
