@@ -16,18 +16,14 @@ import queuemo.worker.startup
 import tests
 
 
-def content(capture):
-    return capture.readouterr().out
-
-
 @utilatest.skip_nightly
 def test_run_steps(capsys, testdir, monkeypatch):
     queuemo.worker.startup.step(None)
-    assert 'Wait' in content(capsys)
+    assert 'Wait' in utilatest.stdout(capsys)
 
     with tests.patch_todo(testdir, monkeypatch):
         queuemo.worker.startup.step('8166109011')
-        progress = content(capsys)
+        progress = utilatest.stdout(capsys)
         assert 'Copy' in progress
         assert 'Start' in progress
         assert 'Finish' in progress
