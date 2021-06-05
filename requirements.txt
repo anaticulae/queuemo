@@ -9,18 +9,18 @@
 
 # Internal packages
 configo==0.10.1
-link==2.6.0
+link==2.7.0
 utila==2.35.0
 
 # abel==0.6.1
 
 # Features packages
 # analysis==0.1.33
-feedback==1.8.3
-hey==5.11.3
+feedback==1.8.4
+hey==5.11.4
 rawmaker==2.17.5
 
 decider==2.8.0
-decider_ref==1.9.0
+decider_ref==1.9.1
 decider_con==0.2.1
 decider_lay==0.5.1
