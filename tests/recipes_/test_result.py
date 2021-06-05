@@ -53,7 +53,7 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
     pytest.param('2324123123', marks=utilatest.longrun),
     pytest.param('8166109011', marks=utilatest.longrun),
     pytest.param('homework25', marks=utilatest.longrun),
-    pytest.param('howtowrite_pages9', marks=utilatest.longrun),
+    pytest.param('order009', marks=utilatest.longrun),
     pytest.param('master083', marks=utilatest.nightly),
     pytest.param('master089', marks=utilatest.nightly),
 ])
