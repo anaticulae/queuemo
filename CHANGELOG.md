@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v1.11.1
+
+### Fix
+
+* do not skip too much data (2039033d6e11)
+* add missing import (cac257b396b8)
+* remove check to enable generating resources directory (467064f079d4)
+
 ## v1.11.0
 
 ### Feature
