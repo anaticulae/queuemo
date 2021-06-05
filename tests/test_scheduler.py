@@ -16,7 +16,7 @@ import queuemo.worker.startup
 import tests
 
 
-@utilatest.skip_nightly
+@utilatest.nightly
 def test_run_steps(capsys, testdir, monkeypatch):
     queuemo.worker.startup.step(None)
     assert 'Wait' in utilatest.stdout(capsys)

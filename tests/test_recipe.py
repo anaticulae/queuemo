@@ -16,7 +16,7 @@ import tests
 import tests.resources
 
 
-@utilatest.skip_nightly
+@utilatest.nightly
 def test_recipe_run(testdir, monkeypatch):
     root = str(testdir)
     with tests.patch_todo(testdir, monkeypatch):

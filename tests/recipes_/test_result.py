@@ -34,7 +34,7 @@ def run_resultview(workspace, jobid, monkeypatch):
     return completed
 
 
-@utilatest.skip_nightly
+@utilatest.nightly
 def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
     completed = run_resultview(
         testdir.tmpdir,
@@ -44,18 +44,18 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
     assert completed
 
 
-# pytest.param('8166109011', marks=utilatest.skip_longrun),
+# pytest.param('8166109011', marks=utilatest.longrun),
 # 'page_116_images_toc_formular',
 # 'page_38',
 # 'page_72_noimages_toc',
 # 'page_78_images_toc',
 @pytest.mark.parametrize('jobid', [
-    pytest.param('2324123123', marks=utilatest.skip_longrun),
-    pytest.param('8166109011', marks=utilatest.skip_longrun),
-    pytest.param('homework25', marks=utilatest.skip_longrun),
-    pytest.param('howtowrite_pages9', marks=utilatest.skip_longrun),
-    pytest.param('master083', marks=utilatest.skip_nightly),
-    pytest.param('master089', marks=utilatest.skip_nightly),
+    pytest.param('2324123123', marks=utilatest.longrun),
+    pytest.param('8166109011', marks=utilatest.longrun),
+    pytest.param('homework25', marks=utilatest.longrun),
+    pytest.param('howtowrite_pages9', marks=utilatest.longrun),
+    pytest.param('master083', marks=utilatest.nightly),
+    pytest.param('master089', marks=utilatest.nightly),
 ])
 @utilatest.nightly
 def test_recipe_result_run_example(jobid, testdir, monkeypatch):
