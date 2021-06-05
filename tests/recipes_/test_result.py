@@ -57,6 +57,7 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
     pytest.param('master083', marks=utilatest.skip_nightly),
     pytest.param('master089', marks=utilatest.skip_nightly),
 ])
+@utilatest.nightly
 def test_recipe_result_run_example(jobid, testdir, monkeypatch):
     completed = run_resultview(
         testdir.tmpdir,

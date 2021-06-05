@@ -16,7 +16,7 @@ import tests.fixtures.todo
 import tests.resources
 
 
-@utilatest.skip_longrun
+@utilatest.nightly
 def test_recipe_fastview_run_single(testdir, monkeypatch):
     completed = run_fastview(
         testdir.tmpdir,
@@ -36,7 +36,7 @@ def test_recipe_fastview_run_single(testdir, monkeypatch):
         # 'page_83_noimages_toc',
         'master089',
     ])
-@utilatest.skip_longrun
+@utilatest.nightly
 def test_recipe_fastview_run_example(jobid, testdir, monkeypatch):
     completed = run_fastview(
         testdir.tmpdir,
