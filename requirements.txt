@@ -10,7 +10,7 @@
 # Internal packages
 configo==0.10.1
 link==2.7.0
-utila==2.35.0
+utila==2.36.0
 
 # abel==0.6.1
 
