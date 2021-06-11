@@ -7,7 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import json
 import os
 
 import link
@@ -37,8 +36,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     link.verify(flow.document)
     # TODO: add pdfinfo --status to check if validation was successful
     pdfinfo = link.pdfinfo(flow.document)
-    loaded = utila.file_read(pdfinfo)
-    validated = json.loads(loaded)
+    validated = utila.yaml_from_raw_or_path(pdfinfo)
     if validated:
         return
     utila.error(f'invalid resource {flow.sourcepath}, stop analysis.')

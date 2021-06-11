@@ -27,7 +27,7 @@ def test_recipe_validation(testdir, monkeypatch):
             queuemo.recipes.VALIDATION,
             monkeypatch,
     ) as rt:  # pylint:disable=C0103
-        with utilatest.increased_filecount(testdir.tmpdir, 'json'):
+        with utilatest.increased_filecount(testdir.tmpdir, 'yaml'):
             completed = rt.next_step()
         pdfinfo = link.pdfinfo(tests.resources.EXAMPLE_JOB)
     assert completed
@@ -44,7 +44,7 @@ def test_recipe_validation_failure(testdir, monkeypatch, capsys):
             queuemo.recipes.VALIDATION,
             monkeypatch,
     ) as rt:  # pylint:disable=C0103
-        with utilatest.increased_filecount(testdir.tmpdir, 'json'):
+        with utilatest.increased_filecount(testdir.tmpdir, 'yaml'):
             completed = rt.next_step()
     assert completed is False
     error = utilatest.stderr(capsys)
