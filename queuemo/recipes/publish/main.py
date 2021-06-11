@@ -71,7 +71,13 @@ def publish_statistics(document: str):
     # TODO: DISABLE BEFORE GOING LIVE?
     ready = link.ready(document)
     cmd = f'qcon -i {ready} --publish'
-    utila.run(cmd)
+    completed = utila.run(
+        cmd,
+        expect=None,
+    )
+    if completed.returncode:
+        utila.error('could not publish `qcon`')
+        utila.error(completed)
 
 
 def skip_resultview(path) -> bool:
