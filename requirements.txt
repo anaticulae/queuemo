@@ -16,9 +16,9 @@ utila>=2.36.0<3.0.0
 
 # Features packages
 # analysis==0.1.33
-feedback==1.8.4
+feedback==1.8.5
 hey==5.11.4
-rawmaker==2.17.5
+rawmaker==2.18.0
 
 decider==2.8.0
 decider_ref==1.9.1
