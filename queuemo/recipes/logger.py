@@ -28,3 +28,8 @@ def start():
 def content():
     ensure_logger()
     return utila.file_read_lines(utila.logger.OUTFILE, start=LOGGERSTART)
+
+
+def complete():
+    ensure_logger()
+    return utila.file_read_lines(utila.logger.OUTFILE)
