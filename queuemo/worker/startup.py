@@ -18,6 +18,7 @@ import utila
 
 import queuemo
 import queuemo.runtime.execute
+import queuemo.runtime.status
 
 MAX_RUNTIME = 60 * 60 * 24 * 365  # Run one year
 WAITING = 1000  # ms, 1 second
@@ -50,6 +51,9 @@ def run(
         waiting = 1
     tick = 0
     while tick < runtime and jobs > 0:
+        if queuemo.runtime.status.isstoped():
+            utila.log('service is stoped, stop working')
+            break
         job = nextjob()
         try:
             if job is not None:
@@ -63,7 +67,6 @@ def run(
         tick += 1
         if not verbose and tick % 80 == 0:
             utila.log()  # write newline
-
     utila.log('\nTerminated: %d' % tick)
     return utila.SUCCESS
 
