@@ -15,6 +15,7 @@ import utila.cli
 import utila.logger
 
 import queuemo
+import queuemo.runtime.control
 import queuemo.worker.startup
 
 PROCESS_NAME = 'queuemo'
@@ -54,6 +55,10 @@ COMMANDS = [
         longcut='failfast',
         message='fail on first error',
     ),
+    utila.Flag(
+        longcut='http',
+        message='start http interface',
+    ),
 ]
 
 
@@ -82,6 +87,9 @@ def main():
         utila.error(msg)
         return utila.INVALID_COMMAND
     configo.check_startup()
+
+    if args['http']:
+        queuemo.runtime.control.start()
     # start scheduler
     closed = queuemo.worker.startup.run(
         runtime=runtime,

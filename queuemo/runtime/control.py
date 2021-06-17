@@ -18,7 +18,6 @@ import queuemo.recipes.logger
 import queuemo.runtime.status
 
 app = flask.Flask(__name__)
-
 STATUS = """
 <pre>
 THIS IS A QUEUEMO WORKER
