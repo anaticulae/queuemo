@@ -20,16 +20,16 @@ WorkDir
             imgfig
             intro
             view
-        info.yaml
+        pdfinfo.yaml
         inprogress
-        pdfinfo.json
+        jobinfo.yaml
     Workspace document Bobomaster
         ...
         ...
         ...
-        info.yaml
+        pdfinfo.yaml
         inprogress
-        pdfinfo.json
+        jobinfo.yaml
 
 TmpDir
     z4YgqnjU0Q6dCa5r
