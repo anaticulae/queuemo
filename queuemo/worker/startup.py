@@ -117,6 +117,8 @@ def nextjob() -> int:
             continue
         if link.deleted(jobnumber):
             continue
+        if link.failed(jobnumber):
+            continue
         # return next job, start it by recipe runner
         return jobnumber
     return None
