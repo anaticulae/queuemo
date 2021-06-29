@@ -34,10 +34,10 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     """Run validation to check that """
     link.verify(flow.document)
-    # TODO: add pdfinfo --status to check if validation was successful
+    # TODO: add pdfinfo --status to check if validation was successful????
     pdfinfo = link.pdfinfo(flow.document)
-    validated = utila.yaml_from_raw_or_path(pdfinfo)
-    if validated:
+    utila.debug(pdfinfo)
+    if pdfinfo:
         return
     utila.error(f'invalid resource {flow.sourcepath}, stop analysis.')
     raise queuemo.runtime.runtime.Stop('invald pdf resource')
