@@ -9,20 +9,20 @@
 
 # Internal packages
 configo>=0.10.1<1.0.0
-link>=2.8.0<3.0.0
-utila>=2.36.0<3.0.0
+link>=2.9.2<3.0.0
+utila>=2.37.0<3.0.0
 
 # abel==0.6.1
 
 # Features packages
 # analysis==0.1.33
-feedback==1.8.5
+feedback==1.8.6
 hey==5.11.4
-rawmaker==2.18.0
+rawmaker==2.19.1
 
-decider==2.8.0
-decider_ref==1.9.1
-decider_con==0.2.1
-decider_lay==0.5.1
+decider==2.10.0
+decider_ref==1.10.0
+decider_con==0.3.0
+decider_lay==0.7.0
 
 Flask==1.1.2
