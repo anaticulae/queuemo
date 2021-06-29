@@ -181,7 +181,7 @@ def run(  # pylint:disable=R1260
             except Exception as error:  # pylint:disable=broad-except
                 utila.error(f'could not run: {item}')
                 utila.error(error)
-                utila.logger.log_stacktrace()
+                utila.print_stacktrace()
                 if queuemo.isrequired(action) or failfast:
                     # do not stop scheduler if step is not marked as
                     # required.
