@@ -2,6 +2,29 @@
 
 Every noteable change is logged here.
 
+## v1.12.0
+
+### Feature
+
+* add cleaner to remove old jobs (a078c36a4d02)
+* add method to determine file time sine last change (0559d56e341f)
+* add http interface as cli flag (0db8b8c907f7)
+* add status and control font end (d53a6d304f99)
+* add method to access complete log (03bec5153c98)
+* add status flag to stop working (5c2cdc08c60c)
+* do not fail on qcon publish error (559651b97235)
+
+### Fix
+
+* skip invalid pdf after refactoring (1ada62ee13ba)
+* adjust validation step to new link API (5a0ad4625ae2)
+* do not access internal API (85ba28a5e7c9)
+* skip failed jobs (454a41a58cb6)
+
+### Documentation
+
+* adjust documentation (425681d780d6)
+
 ## v1.11.3
 
 ## v1.11.2
