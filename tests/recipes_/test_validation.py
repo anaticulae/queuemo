@@ -7,8 +7,6 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import os
-
 import link
 import utilatest
 
@@ -19,7 +17,7 @@ import tests.resources
 
 
 @utilatest.longrun
-def test_recipe_validation(testdir, monkeypatch):
+def test_recipe_validation_success(testdir, monkeypatch):
     """Ensure to create validation result via `pdfinfo` tool"""
     with tests.fixtures.todo.runtime(
             testdir.tmpdir,
@@ -31,7 +29,8 @@ def test_recipe_validation(testdir, monkeypatch):
             completed = rt.next_step()
         pdfinfo = link.pdfinfo(tests.resources.EXAMPLE_JOB)
     assert completed
-    assert os.path.exists(pdfinfo), pdfinfo
+    assert pdfinfo.version.major == 1
+    assert pdfinfo.version.minor == 5
 
 
 @utilatest.longrun
