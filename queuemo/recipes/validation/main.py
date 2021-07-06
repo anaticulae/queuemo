@@ -9,6 +9,7 @@
 
 import os
 
+import iamraw
 import link
 import serializeraw
 import utila
@@ -38,7 +39,8 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     pdfinfo = link.pdfinfo(flow.document)
     utila.debug(pdfinfo)
     if pdfinfo:
-        return
+        if pdfinfo != iamraw.InvalidPDF:
+            return
     utila.error(f'invalid resource {flow.sourcepath}, stop analysis.')
     raise queuemo.runtime.runtime.Stop('invald pdf resource')
 
