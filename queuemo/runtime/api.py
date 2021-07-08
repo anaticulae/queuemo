@@ -53,7 +53,7 @@ class RecipeIO:
 
     @property
     def sourcepath(self) -> str:
-        """Path where pdf document is stored with file extention."""
+        """Path where pdf document is stored without file extention."""
         todo = link.todo(self.document)
         resource = os.path.join(todo, self.document)
         assert os.path.exists(resource), resource
