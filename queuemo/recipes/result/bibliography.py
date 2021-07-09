@@ -34,7 +34,6 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         select=iamraw.sections.Bibliography,
     )
-
     with utila.GeorgFork() as runtime:
         runtime.fork(
             queuemo.runnable.detector_bibliography,
@@ -51,6 +50,8 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         )
     queuemo.runnable.decider_bibliography(
         inpath=[
+            flow.todopath,
+            flow.package('intro'),  # REMOVE AFTER CHANGING DECIDER_BIB
             flow.tmppath,
             flow.general,
         ],
@@ -60,7 +61,6 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 def after(flow: queuemo.runtime.api.RecipeIO):
     flow.publish_linting()
-
     resultview = link.resultview(flow.document)
     # TODO: REMOVE LATER
     if not os.path.exists(resultview):
