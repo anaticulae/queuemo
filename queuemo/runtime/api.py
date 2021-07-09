@@ -47,6 +47,7 @@ import utila
 @dataclasses.dataclass
 class RecipeIO:
     workspace: str = None
+    # documentid
     document: str = None
     tmppath: str = None
     outpath: str = None
@@ -54,8 +55,7 @@ class RecipeIO:
     @property
     def sourcepath(self) -> str:
         """Path where pdf document is stored without file extention."""
-        todo = link.todo(self.document)
-        resource = os.path.join(todo, self.document)
+        resource = os.path.join(self.todopath, self.document)
         assert os.path.exists(resource), resource
         return resource
 
@@ -74,6 +74,10 @@ class RecipeIO:
         parent = os.path.join(self.outpath, '..')
         parent = os.path.normpath(parent)
         return parent
+
+    @property
+    def todopath(self) -> str:
+        return link.todo(self.document)
 
     def package(self, item) -> str:
         """Path to package step."""
@@ -113,4 +117,5 @@ class RecipeIO:
             sourcepath: {self.sourcepath}
             tmppath:    {self.tmppath}
             workspace:  {self.workspace}
+            todopath:   {self.todopath}
         """)
