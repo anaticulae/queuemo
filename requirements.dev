@@ -9,6 +9,6 @@
 
 utilatest==0.7.1
 
-power==1.5.0
+power==1.6.0
 
 qcon>=0.6.2<1.0.0
