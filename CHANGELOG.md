@@ -2,6 +2,16 @@
 
 Every noteable change is logged here.
 
+## v1.13.0
+
+### Feature
+
+* replace linero with tablero (66153ec7f054)
+
+### Fix
+
+* adjust to new interface (1b38818088ea)
+
 ## v1.12.1
 
 ### Feature
