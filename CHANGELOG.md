@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v1.12.1
+
+### Feature
+
+* add pdfinfo resource to bib decider (5652385caad0)
+* add todo path (739fc191e727)
+
+### Fix
+
+* comment is not supported by baw tool (7e8e8d0abc2a)
+
+### Documentation
+
+* adjust method description (2ef88718c56b)
+
 ## v1.12.0
 
 ### Feature
