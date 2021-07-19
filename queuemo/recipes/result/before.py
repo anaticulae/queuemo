@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import configo
 import link
 import utila
@@ -16,7 +18,7 @@ import queuemo.recipes.utils
 import queuemo.runnable
 import queuemo.runtime.api
 
-TIMEOUT_RESULT_LINERO = configo.HV_INT_PLUS(default=120)
+TIMEOUT_RESULT_TABLERO = configo.HV_INT_PLUS(default=120)
 
 
 @queuemo.required
@@ -33,9 +35,18 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.recipes.utils.determine_sections(flow)
 
     timeout = utila.Timeout(
-        seconds=TIMEOUT_RESULT_LINERO.value,
+        seconds=TIMEOUT_RESULT_TABLERO.value,
         gracefully=True,
     )
+    queuemo.runnable.groupme(
+        inpath=flow.tmppath,
+        output=flow.tmppath,
+        pagenumbers=True,
+        footer=True,
+        content=True,
+    )
+    # TODO: REPLACE WITH TABLERO --rawfile later
+    utila.file_copy(flow.sourcepath, os.path.join(flow.tmppath, 'table'))
     # ensure rawmaker is completed before running tablero
     queuemo.runnable.tablero(
         inpath=flow.tmppath,
@@ -49,6 +60,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         footer=False,
         pagenumbers=False,
         abbreviation=False,
+        content=False,
     )
 
 

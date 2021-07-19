@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
 import configo
 import link
 import utila
@@ -30,6 +32,16 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
 
     queuemo.recipes.utils.determine_sections(flow)
 
+    # TODO: DO WE REQUIRE TABLES FOR FIRST 10 PAGES?
+    queuemo.runnable.groupme(
+        inpath=flow.tmppath,
+        output=flow.tmppath,
+        pagenumbers=True,
+        footer=True,
+        content=True,
+    )
+    # TODO: REPLACE WITH TABLERO --rawfile later
+    utila.file_copy(flow.sourcepath, os.path.join(flow.tmppath, 'table'))
     queuemo.runnable.tablero(
         inpath=flow.tmppath,
         output=flow.tmppath,
