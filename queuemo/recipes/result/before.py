@@ -36,8 +36,8 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         seconds=TIMEOUT_RESULT_LINERO.value,
         gracefully=True,
     )
-    # ensure rawmaker is completed before running linero
-    queuemo.runnable.linero(
+    # ensure rawmaker is completed before running tablero
+    queuemo.runnable.tablero(
         inpath=flow.tmppath,
         output=flow.tmppath,
         timeout=timeout,

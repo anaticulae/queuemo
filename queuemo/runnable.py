@@ -125,8 +125,8 @@ def rawmaker(
     return returncode
 
 
-def linero(inpath: str, output: str = None, timeout: int = None, **kwargs):
-    return run('linero', inpath, output, timeout=timeout, **kwargs)
+def tablero(inpath: str, output: str = None, timeout: int = None, **kwargs):
+    return run('tablero', inpath, output, timeout=timeout, **kwargs)
 
 
 def spacestation(inpath: str, output: str = None, **kwargs):

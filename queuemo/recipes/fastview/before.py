@@ -16,7 +16,7 @@ import queuemo.recipes.utils
 import queuemo.runnable
 import queuemo.runtime.api
 
-TIMEOUT_FASTVIEW_LINERO = configo.HV_INT_PLUS(default=60)
+TIMEOUT_FASTVIEW_TABLERO = configo.HV_INT_PLUS(default=60)
 
 
 @queuemo.required
@@ -30,10 +30,10 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
 
     queuemo.recipes.utils.determine_sections(flow)
 
-    queuemo.runnable.linero(
+    queuemo.runnable.tablero(
         inpath=flow.tmppath,
         output=flow.tmppath,
-        timeout=TIMEOUT_FASTVIEW_LINERO.value,
+        timeout=TIMEOUT_FASTVIEW_TABLERO.value,
     )
 
 
