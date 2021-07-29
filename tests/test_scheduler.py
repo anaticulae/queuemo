@@ -18,10 +18,9 @@ import tests
 
 @utilatest.nightly
 def test_run_steps(capsys, testdir, monkeypatch):
-    queuemo.worker.startup.step(None)
-    assert 'Wait' in utilatest.stdout(capsys)
-
     with tests.patch_todo(testdir, monkeypatch):
+        queuemo.worker.startup.step(None)
+        assert 'Wait' in utilatest.stdout(capsys)
         queuemo.worker.startup.step('8166109011')
         progress = utilatest.stdout(capsys)
         assert 'Copy' in progress
