@@ -137,6 +137,10 @@ def groupme(inpath: str, output: str = None, **kwargs):
     run('groupme -j8', inpath, output, **kwargs)
 
 
+def figureo(inpath: str, output: str = None, **kwargs):
+    return run('figureo', inpath, output, **kwargs)
+
+
 def sections(inpath: str, output: str = None):
     run('sections -j8', inpath, output)
 

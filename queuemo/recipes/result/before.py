@@ -53,6 +53,14 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         output=flow.tmppath,
         timeout=timeout,
     )
+    pdf = flow.sourcepath
+    queuemo.runnable.figureo(
+        inpath=[
+            pdf,
+            flow.tmppath,
+        ],
+        output=flow.tmppath,
+    )
     queuemo.runnable.groupme(
         inpath=[flow.tmppath],
         output=flow.tmppath,
