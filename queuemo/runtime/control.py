@@ -73,8 +73,8 @@ def freeport(firstport: int = 7000) -> int:
         port = firstport + port
         url = f'http://localhost:{port}'
         try:
-            with urllib.request.urlopen(url, timeout=1) as request:
-                if request.read():  # nosec
+            with urllib.request.urlopen(url, timeout=1) as request:  # nosec
+                if request.read():
                     continue
         except urllib.error.URLError:
             return port

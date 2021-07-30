@@ -30,7 +30,7 @@ def outdated():
     result = []
     for documentid in os.listdir(todopath):
         info = os.path.join(todopath, documentid, link.JOB_FILE_NAME)
-        if utila.file_age(info) < ONE_HOUR:  # pylint:disable=E1101
+        if utila.file_age(info) < ONE_HOUR:
             continue
         if link.failed(documentid):
             # already failed
