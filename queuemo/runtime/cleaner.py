@@ -32,6 +32,9 @@ def outdated():
         info = os.path.join(todopath, documentid, link.JOB_FILE_NAME)
         if utila.file_age(info) < ONE_HOUR:  # pylint:disable=E1101
             continue
+        if link.failed(documentid):
+            # already failed
+            continue
         if link.current(documentid) == link.ProcessState.PUBLISHED:
             continue
         if link.current(documentid) == link.ProcessState.ERROR:
