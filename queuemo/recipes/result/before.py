@@ -41,8 +41,8 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
         output=flow.tmppath,
-        pagenumbers=True,
-        footer=True,
+        # pagenumbers=True, already done by determine_sections
+        # footer=True,
         content=True,
     )
     # TODO: REPLACE WITH TABLERO --rawfile later
