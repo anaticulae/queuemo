@@ -10,17 +10,17 @@
 # Internal packages
 configo>=0.10.1<1.0.0
 link>=2.9.3<3.0.0
-utila>=2.42.0<3.0.0
+utila>=2.43.0<3.0.0
 
 # abel==0.6.1
 
 # Features packages
 # analysis==0.1.33
 feedback==1.8.7
-hey==5.11.7
+hey==5.11.8
 rawmaker==2.22.0
 tablero==0.4.1
-figureo==0.3.0
+figureo==0.5.0
 
 decider==2.10.0
 decider_ref==1.11.0
