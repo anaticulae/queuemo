@@ -10,7 +10,9 @@
 import os
 
 import configo
+import iamraw.sections
 import link
+import serializeraw
 import utila
 
 import queuemo
@@ -45,6 +47,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         # footer=True,
         content=True,
     )
+    valid_pages = valid_figures_tables(flow)
     # TODO: REPLACE WITH TABLERO --rawfile later
     utila.file_copy(flow.sourcepath, os.path.join(flow.tmppath, 'table'))
     # ensure rawmaker is completed before running tablero
@@ -52,6 +55,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         inpath=flow.tmppath,
         output=flow.tmppath,
         timeout=timeout,
+        pages=valid_pages,
     )
     pdf = flow.sourcepath
     queuemo.runnable.figureo(
@@ -60,6 +64,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.tmppath,
         ],
         output=flow.tmppath,
+        pages=valid_pages,
     )
     queuemo.runnable.groupme(
         inpath=[flow.tmppath],
@@ -100,3 +105,39 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             output=flow.tmppath,
         )
     assert runtime.result == utila.SUCCESS, 'could not extract pdf'
+
+
+NO_FIGURE_TABLES = (
+    iamraw.sections.Acknowledgments,
+    iamraw.sections.Bibliography,
+    iamraw.sections.FigureTable,
+    iamraw.sections.Glossary,
+    iamraw.sections.Index,
+    iamraw.sections.SymbolTable,
+    iamraw.sections.TableOfContent,
+    iamraw.sections.TableTable,
+    iamraw.sections.WhitePage,
+)
+
+
+def valid_figures_tables(flow: queuemo.runtime.api.RecipeIO) -> str:
+    sections = serializeraw.load_sections(flow.tmppath)
+    valid = []
+    for part in sections:
+        if isinstance(part, iamraw.sections.Introduction):
+            continue
+        if isinstance(part, iamraw.sections.CiteContent):
+            continue
+        if isinstance(part, iamraw.sections.MainPart):
+            for item in part:
+                for page in range(item.start, item.end + 1):
+                    valid.append(page)
+            continue
+        # Appendix or Unknown
+        for item in part:
+            if isinstance(item, NO_FIGURE_TABLES):
+                continue
+            for page in range(item.start, item.end + 1):
+                valid.append(page)
+    result = utila.simplify_pages(valid)
+    return result
