@@ -68,6 +68,8 @@ def kwargs_to_parameter(args: dict) -> str:
     """\
     >>> kwargs_to_parameter(dict(footer=False, pagenumbers=False))
     '--footer! --pagenumbers!'
+    >>> kwargs_to_parameter(dict(table='C:/file/pdf.pdf'))
+    '--table C:/file/pdf.pdf'
     """
     if not args:
         return ''
