@@ -48,12 +48,11 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         content=True,
     )
     valid_pages = valid_figures_tables(flow)
-    # TODO: REPLACE WITH TABLERO --rawfile later
-    utila.file_copy(flow.sourcepath, os.path.join(flow.tmppath, 'table'))
     # ensure rawmaker is completed before running tablero
     queuemo.runnable.tablero(
         inpath=flow.tmppath,
         output=flow.tmppath,
+        table=flow.sourcepath,
         timeout=timeout,
         pages=valid_pages,
     )

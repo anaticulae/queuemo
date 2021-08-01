@@ -42,7 +42,7 @@ def test_run_single_invalid_input(monkeypatch, testdir, capsys):
 @utilatest.nightly
 def test_run_single(monkeypatch, testdir, capsys):
     # create queuemo todo
-    workspace = link.create_todo(power.DOCU07_PDF, todopath=testdir.tmpdir)
+    workspace = link.create_todo(power.DOCU007_PDF, todopath=testdir.tmpdir)
 
     # run single queuemo instance in workspace, write output to same workspace
     cmd = f'-i {workspace} -V'
@@ -78,7 +78,7 @@ def test_no_text_content(testdir):
 # # @utilatest.nightly
 # def test_run_single_different_sink(monkeypatch, testdir):
 #     # create queuemo todo
-#     workspace = link.create_todo(power.DOCU07_PDF, todopath=testdir.tmpdir)
+#     workspace = link.create_todo(power.DOCU007_PDF, todopath=testdir.tmpdir)
 
 #     sink = os.path.join(testdir.tmpdir, 'different_sink')
 #     cmd = f'-i {workspace} -o {sink} -VVV'

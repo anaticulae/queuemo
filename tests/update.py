@@ -29,12 +29,12 @@ def extract_examples(files):
         create_example(item)
 
     create_example(
-        power.DOCU09_PDF,
+        power.DOCU009_PDF,
         todoname=tests.resources.EXAMPLE_JOB,
         filename='howto-cporting.pdf',  # TODO: decide what is correct, see below
     )
     create_example(
-        power.DOCU27_PDF,
+        power.DOCU027_PDF,
         todoname='2324123123',
         filename='The RestructuredText Book',
     )

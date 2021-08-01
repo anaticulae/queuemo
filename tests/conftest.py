@@ -16,9 +16,8 @@ import tests.update
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
-PACKAGE = queuemo.PROCESS
-
 power.setup(queuemo.ROOT)
+PACKAGE = queuemo.PROCESS
 
 RESOURCES_TODO = [
     power.MASTER072_PDF,

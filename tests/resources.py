@@ -9,12 +9,15 @@
 
 import os
 
+import power
+
 import queuemo
 
-RESOURCES = os.path.join(queuemo.ROOT, 'tests/resources')
+power.setup(queuemo.ROOT)
 
-GENERATED = os.path.join(RESOURCES, 'generated')
-TODO = os.path.join(GENERATED, 'todo')
+RESOURCES = power.generated()
+
+TODO = os.path.join(RESOURCES, 'todo')
 
 EXAMPLE_JOB = '8166109011'
 EXAMPLE_JOB_PATH = os.path.join(TODO, EXAMPLE_JOB)

@@ -17,6 +17,7 @@ import configo.directory
 import pytest
 import utila
 
+import queuemo
 import queuemo.cli
 import queuemo.single
 import tests.__patch__

@@ -40,11 +40,10 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
         footer=True,
         content=True,
     )
-    # TODO: REPLACE WITH TABLERO --rawfile later
-    utila.file_copy(flow.sourcepath, os.path.join(flow.tmppath, 'table'))
     queuemo.runnable.tablero(
         inpath=flow.tmppath,
         output=flow.tmppath,
+        table=flow.sourcepath,
         timeout=TIMEOUT_FASTVIEW_TABLERO.value,
     )
 
