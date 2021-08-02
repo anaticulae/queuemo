@@ -50,7 +50,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
     pdf = flow.sourcepath
-    with utila.GeorgFork() as runtime:
+    with utila.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.rawmaker,
             inpath=pdf,

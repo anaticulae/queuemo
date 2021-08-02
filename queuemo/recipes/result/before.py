@@ -78,7 +78,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
     pdf = flow.sourcepath
-    with utila.GeorgFork(worker=2) as runtime:
+    with utila.GeorgFork(worker=2, process=False) as runtime:
         # use 2 worker to start spacestation after finishing first rawmaker
         runtime.fork(
             queuemo.runnable.rawmaker,

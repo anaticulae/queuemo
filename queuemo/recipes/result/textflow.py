@@ -30,7 +30,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         select=iamraw.sections.MainPart,
     )
-    with utila.GeorgFork() as runtime:
+    with utila.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.textflow_lineending,
             inpath=[flow.general],
