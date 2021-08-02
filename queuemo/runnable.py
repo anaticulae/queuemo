@@ -34,13 +34,14 @@ def run(
 
     parameter = ' ' if parameter is None else parameter
     cmd = f'{runnable} {parameter} -i {inpath} -o {outpath} {prefix} {cmds}'
+    cmd = utila.normalize_whitespaces(cmd)
 
     if timeout is None or isinstance(timeout, (float, int)):
         timeout = utila.Timeout(
             seconds=timeout if timeout is not None else TIMEOUT_DEFAULT,
             gracefully=False,
         )
-    utila.log(f'>> {cmd} <<')
+    utila.log(f'>>{cmd}<<')
     utila.debug(f'timeout: {timeout.seconds}')
     with utila.profile(runnable):
         completed = utila.run(cmd, timeout=timeout)
