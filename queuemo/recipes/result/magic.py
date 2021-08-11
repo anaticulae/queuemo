@@ -24,13 +24,13 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         runtime.fork(
             queuemo.runnable.words,
             inpath=[flow.general],
-            output=flow.general,
+            outpath=flow.general,
             pages=content,
         )
         runtime.fork(
             queuemo.runnable.caption,
             inpath=[flow.general],
-            output=flow.general,
+            outpath=flow.general,
             pages=content,
         )
         runtime.fork(
@@ -41,13 +41,13 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         )
     queuemo.runnable.textflow_quotes(
         inpath=[flow.general],
-        output=flow.general,
+        outpath=flow.general,
         pages=content,
     )
     # required for detecting tables
     queuemo.runnable.magic(
         inpath=flow.general,
-        output=flow.general,
+        outpath=flow.general,
         pages=content,
     )
 

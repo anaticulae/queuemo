@@ -21,7 +21,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     queuemo.runnable.chapter(
         inpath=[flow.general],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         pages=pages,
     )
     queuemo.runnable.decider_chapter(
@@ -29,7 +29,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.tmppath,
             flow.general,
         ],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         pages=pages,
     )
 

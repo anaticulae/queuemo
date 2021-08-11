@@ -32,7 +32,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.general,
             flow.tmppath,
         ],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
 
 

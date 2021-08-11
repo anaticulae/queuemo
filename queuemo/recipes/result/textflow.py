@@ -21,7 +21,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
     # TODO: ADD TEST THAT MAGIC EXISTS?
     queuemo.runnable.docref(
         inpath=[flow.general],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
 
 
@@ -34,14 +34,14 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         runtime.fork(
             queuemo.runnable.textflow_lineending,
             inpath=[flow.general],
-            output=flow.tmppath,
+            outpath=flow.tmppath,
             pages=pages,
         )
         # TODO: REQUIRED FOR VIEW MOVE TO OTHER STEP?
         runtime.fork(
             queuemo.runnable.textflow_alignment,
             inpath=[flow.general],
-            output=flow.tmppath,
+            outpath=flow.tmppath,
             pages=pages,
         )
     queuemo.runnable.decider_textflow_lineending(
@@ -50,13 +50,13 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.tmppath,
             flow.general,
         ],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         pages=pages,
     )
     # # TODO: REQUIRED FOR VIEW MOVE TO OTHER STEP?
     # queuemo.runnable.textflow_alignment(
     #     inpath=[flow.general],
-    #     output=flow.tmppath,
+    #     outpath=flow.tmppath,
     #     pages=pages,
     # )
 

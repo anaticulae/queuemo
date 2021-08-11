@@ -61,7 +61,7 @@ def main() -> int:
             return utila.INVALID_COMMAND
     outpath = inpath
 
-    # patch todo output path. TODO: INVESTIGATE HERE?
+    # patch todo outpath path. TODO: INVESTIGATE HERE?
     todopath = os.path.normpath(os.path.join(inpath, os.path.pardir))
     configo.todo = lambda _=False: todopath
     configo.ready = lambda _=False: todopath

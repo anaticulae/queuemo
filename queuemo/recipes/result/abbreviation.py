@@ -30,7 +30,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.tmppath,
             flow.general,
         ],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         abbreviation=True,
         pages=pages,
     )
@@ -38,7 +38,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         inpath=[
             flow.tmppath,
         ],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
 
 

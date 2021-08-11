@@ -22,7 +22,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.decider_footnote(
         inpath=[flow.general],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
 
 

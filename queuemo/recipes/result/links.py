@@ -17,11 +17,11 @@ import queuemo.runtime.api
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.words_links(
         inpath=[flow.general],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
     queuemo.runnable.decider_links(
         inpath=[flow.tmppath],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
 
 

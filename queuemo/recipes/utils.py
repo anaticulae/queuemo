@@ -14,7 +14,7 @@ import queuemo.runtime.api
 def determine_sections(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.groupme(
         inpath=[flow.tmppath],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         pagenumbers=True,
         footer=True,
     )
@@ -22,5 +22,5 @@ def determine_sections(flow: queuemo.runtime.api.RecipeIO):
     # determine to run area of feature detection
     queuemo.runnable.sections(
         inpath=flow.tmppath,
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )

@@ -42,7 +42,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         # pagenumbers=True, already done by determine_sections
         # footer=True,
         content=True,
@@ -51,7 +51,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     # ensure rawmaker is completed before running tablero
     queuemo.runnable.tablero(
         inpath=flow.tmppath,
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         table=flow.sourcepath,
         timeout=timeout,
         pages=valid_pages,
@@ -62,16 +62,16 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             pdf,
             flow.tmppath,
         ],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         pages=valid_pages,
     )
     queuemo.runnable.rawmaker_cleanup(
         inpath=flow.tmppath,
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
     queuemo.runnable.groupme(
         inpath=[flow.tmppath],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         toc=False,
         footer=False,
         pagenumbers=False,
@@ -105,7 +105,7 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
         runtime.fork(
             queuemo.runnable.spacestation,
             inpath=pdf,
-            output=flow.tmppath,
+            outpath=flow.tmppath,
         )
     assert runtime.result == utila.SUCCESS, 'could not extract pdf'
 

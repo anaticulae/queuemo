@@ -104,9 +104,9 @@ def rawmaker(
 
     Args:
         inpath(str): relative input path
-        outpath(str): relative output path
+        outpath(str): relative outpath path
         process(int): use amount of parallel runner
-        prefix(str): to extend the output name with a prefix
+        prefix(str): to extend the outpath name with a prefix
         char_margin(float): maximal distance between two chars
         boxes_flow(float): ratio betwee horizontal and vertical analysis
         kwargs(dict): ???
@@ -128,36 +128,36 @@ def rawmaker(
     return returncode
 
 
-def tablero(inpath: str, output: str = None, timeout: int = None, **kwargs):
-    return run('tablero', inpath, output, timeout=timeout, **kwargs)
+def tablero(inpath: str, outpath: str = None, timeout: int = None, **kwargs):
+    return run('tablero', inpath, outpath, timeout=timeout, **kwargs)
 
 
-def spacestation(inpath: str, output: str = None, **kwargs):
-    run('spacestation', inpath, output, **kwargs)
+def spacestation(inpath: str, outpath: str = None, **kwargs):
+    run('spacestation', inpath, outpath, **kwargs)
 
 
-def groupme(inpath: str, output: str = None, **kwargs):
-    run('groupme -j8', inpath, output, **kwargs)
+def groupme(inpath: str, outpath: str = None, **kwargs):
+    run('groupme -j8', inpath, outpath, **kwargs)
 
 
-def rawmaker_cleanup(inpath: str, output: str = None, **kwargs):
-    return run('rawmaker_cleanup', inpath, output, **kwargs)
+def rawmaker_cleanup(inpath: str, outpath: str = None, **kwargs):
+    return run('rawmaker_cleanup', inpath, outpath, **kwargs)
 
 
-def figureo(inpath: str, output: str = None, **kwargs):
-    return run('figureo', inpath, output, **kwargs)
+def figureo(inpath: str, outpath: str = None, **kwargs):
+    return run('figureo', inpath, outpath, **kwargs)
 
 
-def sections(inpath: str, output: str = None):
-    run('sections -j8', inpath, output)
+def sections(inpath: str, outpath: str = None):
+    run('sections -j8', inpath, outpath)
 
 
-def words(inpath: str, output: str = None, **kwargs):
-    run('words -j8', inpath, output, **kwargs)
+def words(inpath: str, outpath: str = None, **kwargs):
+    run('words -j8', inpath, outpath, **kwargs)
 
 
-def words_links(inpath: str, output: str = None, **kwargs):
-    run('words --links', inpath, output, **kwargs)
+def words_links(inpath: str, outpath: str = None, **kwargs):
+    run('words --links', inpath, outpath, **kwargs)
 
 
 def detector_formula(inpath: str, outpath: str, **kwargs):
@@ -168,130 +168,130 @@ def detector_titlepage(inpath: str, outpath: str = None, **kwargs):
     run('detector --titlepage', inpath, outpath, **kwargs)
 
 
-def decider_titlepage(inpath: str, output: str = None):
-    run('decider --titlepage', inpath, output)
+def decider_titlepage(inpath: str, outpath: str = None):
+    run('decider --titlepage', inpath, outpath)
 
 
-def decider_toc(inpath: str, output: str = None):
-    run('decider_toc', inpath, output)
+def decider_toc(inpath: str, outpath: str = None):
+    run('decider_toc', inpath, outpath)
 
 
-def decider_footnote(inpath: str, output: str = None):
-    run('decider_footnote -j8', inpath, output)
+def decider_footnote(inpath: str, outpath: str = None):
+    run('decider_footnote -j8', inpath, outpath)
 
 
-def decider_imgfig(inpath: str, output: str = None):
-    run('decider_imgfig', inpath, output)
+def decider_imgfig(inpath: str, outpath: str = None):
+    run('decider_imgfig', inpath, outpath)
 
 
-def decider_border_detecion(inpath: str, output: str = None):
-    run('decider_border --detection', inpath, output)
+def decider_border_detecion(inpath: str, outpath: str = None):
+    run('decider_border --detection', inpath, outpath)
 
 
-def decider_border_distance(inpath: str, output: str = None):
-    run('decider_border --distance', inpath, output)
+def decider_border_distance(inpath: str, outpath: str = None):
+    run('decider_border --distance', inpath, outpath)
 
 
-def textflow_alignment(inpath: str, output: str = None, **kwargs):
-    run('textflow --alignment', inpath, output, **kwargs)
+def textflow_alignment(inpath: str, outpath: str = None, **kwargs):
+    run('textflow --alignment', inpath, outpath, **kwargs)
 
 
-def textflow_lineending(inpath: str, output: str = None, **kwargs):
-    run('textflow --lineending', inpath, output, **kwargs)
+def textflow_lineending(inpath: str, outpath: str = None, **kwargs):
+    run('textflow --lineending', inpath, outpath, **kwargs)
 
 
-def textflow_wordspace(inpath: str, output: str = None, **kwargs):
-    run('textflow --wordspace', inpath, output, **kwargs)
+def textflow_wordspace(inpath: str, outpath: str = None, **kwargs):
+    run('textflow --wordspace', inpath, outpath, **kwargs)
 
 
-def textflow_quotes(inpath: str, output: str = None, **kwargs):
-    run('textflow --quotation --blockquote -j2', inpath, output, **kwargs)
+def textflow_quotes(inpath: str, outpath: str = None, **kwargs):
+    run('textflow --quotation --blockquote -j2', inpath, outpath, **kwargs)
 
 
-def doctextstyle(inpath: str, output: str = None, **kwargs):
-    run('doctextstyle', inpath, output, **kwargs)
+def doctextstyle(inpath: str, outpath: str = None, **kwargs):
+    run('doctextstyle', inpath, outpath, **kwargs)
 
 
-def caption(inpath: str, output: str = None, **kwargs):
-    run('caption -j8', inpath, output, **kwargs)
+def caption(inpath: str, outpath: str = None, **kwargs):
+    run('caption -j8', inpath, outpath, **kwargs)
 
 
-def magic(inpath: str, output: str = None, **kwargs):
-    run('magic', inpath, output, **kwargs)
+def magic(inpath: str, outpath: str = None, **kwargs):
+    run('magic', inpath, outpath, **kwargs)
 
 
-def docref(inpath: str, output: str = None, **kwargs):
-    run('docref -j4', inpath, output, **kwargs)
+def docref(inpath: str, outpath: str = None, **kwargs):
+    run('docref -j4', inpath, outpath, **kwargs)
 
 
-def docref_bibliography(inpath: str, output: str = None, **kwargs):
-    run('docref --bibliography', inpath, output, **kwargs)
+def docref_bibliography(inpath: str, outpath: str = None, **kwargs):
+    run('docref --bibliography', inpath, outpath, **kwargs)
 
 
-def chapter(inpath: str, output: str = None, **kwargs):
-    run('chapter', inpath, output, **kwargs)
+def chapter(inpath: str, outpath: str = None, **kwargs):
+    run('chapter', inpath, outpath, **kwargs)
 
 
-def smarty(inpath: str, output: str = None, **kwargs):
-    run('smarty', inpath, output, **kwargs)
+def smarty(inpath: str, outpath: str = None, **kwargs):
+    run('smarty', inpath, outpath, **kwargs)
 
 
-def decider_abbreviation(inpath: str, output: str = None, **kwargs):
-    run('decider_abbreviation', inpath, output, **kwargs)
+def decider_abbreviation(inpath: str, outpath: str = None, **kwargs):
+    run('decider_abbreviation', inpath, outpath, **kwargs)
 
 
-def decider_smarty(inpath: str, output: str = None, **kwargs):
-    run('decider_smarty', inpath, output, **kwargs)
+def decider_smarty(inpath: str, outpath: str = None, **kwargs):
+    run('decider_smarty', inpath, outpath, **kwargs)
 
 
-def decider_bibliography(inpath: str, output: str = None, **kwargs):
-    run('decider_bibliography', inpath, output, **kwargs)
+def decider_bibliography(inpath: str, outpath: str = None, **kwargs):
+    run('decider_bibliography', inpath, outpath, **kwargs)
 
 
-def decider_chapter(inpath: str, output: str = None, **kwargs):
-    run('decider_chapter', inpath, output, **kwargs)
+def decider_chapter(inpath: str, outpath: str = None, **kwargs):
+    run('decider_chapter', inpath, outpath, **kwargs)
 
 
-def decider_textstyle_headlines(inpath: str, output: str = None, **kwargs):
+def decider_textstyle_headlines(inpath: str, outpath: str = None, **kwargs):
     # TODO: Enable later; activate after utila supports selective inputs
-    # run('decider_textflow --lineending', inpath, output)
-    run('decider_textstyle --headlines', inpath, output, **kwargs)
+    # run('decider_textflow --lineending', inpath, outpath)
+    run('decider_textstyle --headlines', inpath, outpath, **kwargs)
 
 
-def decider_textstyle_text(inpath: str, output: str = None, **kwargs):
-    run('decider_textstyle --text', inpath, output, **kwargs)
+def decider_textstyle_text(inpath: str, outpath: str = None, **kwargs):
+    run('decider_textstyle --text', inpath, outpath, **kwargs)
 
 
-def detector_bibliography(inpath: str, output: str = None, **kwargs):
-    run('detector --bibliography', inpath, output, **kwargs)
+def detector_bibliography(inpath: str, outpath: str = None, **kwargs):
+    run('detector --bibliography', inpath, outpath, **kwargs)
 
 
-def decider_links(inpath: str, output: str = None):
-    run('decider --links', inpath, output)
+def decider_links(inpath: str, outpath: str = None):
+    run('decider --links', inpath, outpath)
 
 
-def decider_textflow_lineending(inpath: str, output: str = None, **kwargs):
+def decider_textflow_lineending(inpath: str, outpath: str = None, **kwargs):
     # TODO: Enable later; activate after utila supports selective inputs
-    # run('decider_textflow --lineending', inpath, output)
-    run('decider_textflow -j8', inpath, output, **kwargs)
+    # run('decider_textflow --lineending', inpath, outpath)
+    run('decider_textflow -j8', inpath, outpath, **kwargs)
 
 
-def feedback_images(inpath: str, output: str = None):
+def feedback_images(inpath: str, outpath: str = None):
     # TODO: Remove after feedview is working correctly
-    missing_outdir = os.path.join(output, 'feedback__view_pages')
+    missing_outdir = os.path.join(outpath, 'feedback__view_pages')
     os.makedirs(missing_outdir, exist_ok=True)
-    run('feedback --images --figures -j2', inpath, output)
+    run('feedback --images --figures -j2', inpath, outpath)
 
 
-def feedback_view(inpath: str, output: str = None):
+def feedback_view(inpath: str, outpath: str = None):
     # TODO: Remove after feedview is working correctly
-    missing_outdir = os.path.join(output, 'feedback__view_pages')
+    missing_outdir = os.path.join(outpath, 'feedback__view_pages')
     os.makedirs(missing_outdir, exist_ok=True)
-    run('feedback --view', inpath, output)
+    run('feedback --view', inpath, outpath)
 
 
-def feedback_plot(inpath: str, output: str = None):
-    run('feedback --plot', inpath, output)
+def feedback_plot(inpath: str, outpath: str = None):
+    run('feedback --plot', inpath, outpath)
 
 
 RUNNER = [

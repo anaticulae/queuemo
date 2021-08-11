@@ -22,13 +22,13 @@ def before(flow: queuemo.runtime.api.RecipeIO):
         inpath=[
             flow.general,
         ],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
     queuemo.runnable.decider_border_distance(
         inpath=[
             flow.general,
         ],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
     flow.publish_linting()
 
@@ -39,21 +39,21 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         inpath=[
             flow.general,
         ],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
     queuemo.runnable.feedback_view(
         inpath=[
             flow.general,
             flow.tmppath,
         ] + findings(flow),
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
     queuemo.runnable.feedback_plot(
         inpath=[
             flow.general,
             flow.tmppath,  # TODO: WHICH IS CORRECT PATH
         ] + findings(flow),
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
 
 

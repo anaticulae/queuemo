@@ -38,7 +38,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         runtime.fork(
             queuemo.runnable.detector_bibliography,
             inpath=[flow.general],
-            output=flow.tmppath,
+            outpath=flow.tmppath,
             pages=bibliography,
         )
         runtime.fork(
@@ -46,7 +46,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             inpath=[
                 flow.general,
             ],
-            output=flow.tmppath,
+            outpath=flow.tmppath,
         )
     queuemo.runnable.decider_bibliography(
         inpath=[
@@ -55,7 +55,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.tmppath,
             flow.general,
         ],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
 
 

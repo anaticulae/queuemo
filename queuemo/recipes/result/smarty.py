@@ -14,11 +14,11 @@ import queuemo.runtime.api
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.smarty(
         inpath=[flow.general],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
     queuemo.runnable.decider_smarty(
         inpath=[flow.tmppath, flow.general],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
 
 

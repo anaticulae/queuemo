@@ -35,14 +35,14 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     # TODO: DO WE REQUIRE TABLES FOR FIRST 10 PAGES?
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         pagenumbers=True,
         footer=True,
         content=True,
     )
     queuemo.runnable.tablero(
         inpath=flow.tmppath,
-        output=flow.tmppath,
+        outpath=flow.tmppath,
         table=flow.sourcepath,
         timeout=TIMEOUT_FASTVIEW_TABLERO.value,
     )

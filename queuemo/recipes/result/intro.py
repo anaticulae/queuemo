@@ -64,7 +64,7 @@ def decide_toc(flow: queuemo.runtime.api.RecipeIO):
         return
     queuemo.runnable.decider_toc(
         inpath=sources,
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
 
 

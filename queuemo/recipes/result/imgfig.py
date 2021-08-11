@@ -14,7 +14,7 @@ import queuemo.runtime.api
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.decider_imgfig(
         inpath=[flow.general],
-        output=flow.tmppath,
+        outpath=flow.tmppath,
     )
 
 

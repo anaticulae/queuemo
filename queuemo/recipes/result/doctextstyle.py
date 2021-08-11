@@ -28,7 +28,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
     # )
     # queuemo.runnable.textflow_wordspace(
     #     inpath=[flow.general],
-    #     output=flow.tmppath,
+    #     outpath=flow.tmppath,
     #     pages=pages,
     # )
     pass
@@ -43,20 +43,20 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         runtime.fork(
             queuemo.runnable.textflow_wordspace,
             inpath=[flow.general],
-            output=flow.tmppath,
+            outpath=flow.tmppath,
             pages=content,
         )
         runtime.fork(
             queuemo.runnable.doctextstyle,
             inpath=[flow.general],
-            output=flow.tmppath,
+            outpath=flow.tmppath,
             pages=content,
         )
     with utila.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.decider_textstyle_headlines,
             inpath=[flow.tmppath, flow.general],
-            output=flow.tmppath,
+            outpath=flow.tmppath,
             pages=content,
         )
         runtime.fork(
@@ -66,7 +66,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
                 flow.tmppath,
                 flow.general,
             ],
-            output=flow.tmppath,
+            outpath=flow.tmppath,
             pages=content,
         )
 
