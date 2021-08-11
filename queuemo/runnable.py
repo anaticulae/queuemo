@@ -140,6 +140,10 @@ def groupme(inpath: str, output: str = None, **kwargs):
     run('groupme -j8', inpath, output, **kwargs)
 
 
+def rawmaker_cleanup(inpath: str, output: str = None, **kwargs):
+    return run('rawmaker_cleanup', inpath, output, **kwargs)
+
+
 def figureo(inpath: str, output: str = None, **kwargs):
     return run('figureo', inpath, output, **kwargs)
 

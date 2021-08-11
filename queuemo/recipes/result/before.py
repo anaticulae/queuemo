@@ -65,6 +65,10 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         output=flow.tmppath,
         pages=valid_pages,
     )
+    queuemo.runnable.rawmaker_cleanup(
+        inpath=flow.tmppath,
+        output=flow.tmppath,
+    )
     queuemo.runnable.groupme(
         inpath=[flow.tmppath],
         output=flow.tmppath,
