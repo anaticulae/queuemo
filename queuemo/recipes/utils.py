@@ -18,9 +18,9 @@ def determine_sections(flow: queuemo.runtime.api.RecipeIO):
         pagenumbers=True,
         footer=True,
     )
-
     # determine to run area of feature detection
     queuemo.runnable.sections(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
+        pdf=flow.sourcepath,
     )

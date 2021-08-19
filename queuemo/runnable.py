@@ -148,8 +148,8 @@ def figureo(inpath: str, outpath: str = None, **kwargs):
     return run('figureo', inpath, outpath, **kwargs)
 
 
-def sections(inpath: str, outpath: str = None):
-    run('sections -j8', inpath, outpath)
+def sections(inpath: str, outpath: str = None, **kwargs):
+    run('sections -j8', inpath, outpath, **kwargs)
 
 
 def words(inpath: str, outpath: str = None, **kwargs):
