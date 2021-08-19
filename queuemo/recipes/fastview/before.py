@@ -43,6 +43,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
         outpath=flow.tmppath,
         table=flow.sourcepath,
         timeout=TIMEOUT_FASTVIEW_TABLERO.value,
+        pages='0:10',
     )
 
 
