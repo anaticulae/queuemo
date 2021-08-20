@@ -106,8 +106,12 @@ def main():
 
 def logger_start():
     tmp = configo.tmp(True)
+    # create log folder
+    queuemo_tmp = os.path.join(tmp, 'queuemo/log/')
+    os.makedirs(queuemo_tmp, exist_ok=True)
+    # determine current file name
     logfile = f'{utila.filetime()}_{utila.tmpname(10)}.log'
-    outpath = os.path.join(tmp, logfile)
-    # do not write logger command when using --help or --version
+    outpath = os.path.join(queuemo_tmp, logfile)
+    # do not write logger command when using --help or --version XXX???
     utila.debug(f'write global log to {outpath}')
     utila.logger.OUTFILE = outpath
