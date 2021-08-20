@@ -27,7 +27,6 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.document,
             skip_resultview=skip_resultview,
         )
-
     # TODO: MOVE TO LINK finish_resultview
     write_queuemo_version(flow.document)
     publish_statistics(flow.document)
@@ -37,22 +36,14 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 def after(flow: queuemo.runtime.api.RecipeIO):
     utila.log('publish log')
     ready = link.ready(flow.document)
-
     if utila.logger.OUTFILE:
         content = queuemo.recipes.logger.content()
-        logpath = os.path.join(ready, 'done.log')
+        logpath = os.path.join(ready, 'done')
         # write current document log to result
         utila.log(f'write log to: {logpath}')
         utila.file_create(logpath, content)
     else:
-        utila.error(('no utila.logger.OUTFILE defined,'
-                     ' could not publish log file'))
-
-    if link.todo(flow.document) == link.ready(flow.document):
-        # create done flag, link does it only in not equal mode, don't
-        # know why. TODO: INVESTIGATE LATER AND MOVE TO LINK CODE
-        utila.file_create(link.done(flow.document))
-
+        utila.error('no utila.logger.OUTFILE defined could not publish logfile')
     # document completed
     utila.log()
     utila.log((('#' * 80) + utila.NEWLINE) * 4)
