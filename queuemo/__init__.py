@@ -13,7 +13,7 @@ import queuemo.__patch__
 from queuemo.runtime.scheduler import isrequired
 from queuemo.runtime.scheduler import required
 
-__version__ = '1.13.0'
+__version__ = '1.14.0'
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 

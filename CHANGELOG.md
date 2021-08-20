@@ -2,6 +2,24 @@
 
 Every noteable change is logged here.
 
+## v1.14.0
+
+### Feature
+
+* move logger outpath to separate directory (1e50e897f1e7)
+* add pdf input resource (ba99c24fa862)
+* run rawmaker_cleanup to ease further processing (0eacca3be5f5)
+* add method to determine area where figures and tables (0ba032b698b0)
+* run figureo to generate figure images (64eb9b85cefb)
+
+### Fix
+
+* shrink to first ten pages (94aaff2ba152)
+* ensure correct logging order (f5ee0c13cdf4)
+* remove white spaces (5794de7ea2ab)
+* disable step which is done before (d8f0512d6bb3)
+* skip already cleaned jobs (f2cd62fa60b6)
+
 ## v1.13.0
 
 ### Feature
