@@ -10,6 +10,7 @@
 ===============
 """
 
+import functools
 import os
 import sys
 
@@ -294,30 +295,58 @@ def feedback_plot(inpath: str, outpath: str = None):
     run('feedback --plot', inpath, outpath)
 
 
-RUNNER = [
-    'decider_border',
-    'decider_textflow',
-    'feedback',
-    'feedback_decider_border',
-    'groupme',
-    'rawmaker',
-    'textflow',
-]
+RUNNER = utila.splitlines("""
+caption
+chapter
+decider
+decider_abbreviation
+decider_bibliography
+decider_border
+decider_chapter
+decider_chapter
+decider_footnote
+decider_imgfig
+decider_smarty
+decider_textflow
+decider_textstyle
+decider_toc
+detector
+docref
+feedback
+figureo
+groupme
+magic
+queuemo
+rawmaker
+rawmaker_cleanup
+sections
+smarty
+spacestation
+tablero
+textflow
+words
+""")
 
 
 def check(runner=None):
     if runner is None:
         runner = RUNNER
-    # TODO: ADD AFTER UPGRADIG UTILA add --version --verbose
-    todo = [f'{process} --version --verbose' for process in runner]
-    # TODO USE VERBOSE FLAG ON RUN_PARALLEL
+    todo = [
+        functools.partial(utila.run, f'{process} -v -VVV')
+        for process in sorted(runner)
+    ]
     for item in runner:
-        utila.log(f'check: {item}')
+        utila.debug(f'check: {item}')
     # run in parallel to reduce startup time
-    ret = utila.fork(todo, worker=len(RUNNER), process=False)
+    ret = utila.fork(*todo, worker=len(RUNNER), process=False)
     if not isinstance(ret, list):
         utila.error('runs with error')
         sys.exit(ret)
+    for item in ret:
+        if item.returncode:
+            utila.error(item)
+            continue
+        utila.log(item.stdout.strip())
     utila.log()  # add newline
 
 

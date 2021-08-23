@@ -14,6 +14,7 @@ import utila
 
 import queuemo
 import queuemo.recipes.logger
+import queuemo.runnable
 import queuemo.runtime.api
 
 
@@ -27,7 +28,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.document,
             skip_resultview=skip_resultview,
         )
-    link.write_debug(flow.document, list=USED)
+    link.write_debug(flow.document, todo=queuemo.runnable.RUNNER)
     link.publish_statistics(flow.document)
 
 
@@ -47,39 +48,6 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     utila.log()
     utila.log((('#' * 80) + utila.NEWLINE) * 4)
     utila.log()
-
-
-USED = utila.splitlines("""
-caption
-chapter
-decider
-decider_abbreviation
-decider_bibliography
-decider_border
-decider_chapter
-decider_chapter
-decider_footnote
-decider_imgfig
-decider_smarty
-decider_textstyle
-decider_toc
-detector
-docref
-docstyle
-feedback
-figureo
-groupme
-magic
-queuemo
-rawmaker
-rawmaker_cleanup
-sections
-smarty
-spacestation
-tablero
-textflow
-words
-""")
 
 
 def skip_resultview(path) -> bool:
