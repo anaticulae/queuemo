@@ -65,7 +65,6 @@ COMMANDS = [
 
 @utila.saveme
 def main():
-    logger_start()
     parser = utila.cli.create_parser(
         todo=COMMANDS,
         config=utila.ParserConfiguration(),
@@ -75,6 +74,7 @@ def main():
     args = utila.parse(parser)
     queuemo.INTERACTIVE = args[INTERACTIVE]
     failfast = args.get('failfast', False)
+    logger_start()
     if queuemo.INTERACTIVE:
         utila.log('use interactive mode')
     try:
