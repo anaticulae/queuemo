@@ -18,8 +18,6 @@ import utila.logger
 
 import queuemo
 import queuemo.runnable
-import queuemo.runtime.control
-import queuemo.worker.startup
 
 RUNTIME = 'runtime'
 WAITING = 'waiting'
@@ -36,6 +34,8 @@ def main():
     # run showdebug
     if config.showdebug:
         return showdebug()
+    # TODO: DONT KNOW WHY GLOBAL IS REQUIRED
+    global queuemo  # pylint:disable=C0103,global-statement
     queuemo.INTERACTIVE = config.interactive
     logger_start()
     if config.interactive:
@@ -46,8 +46,11 @@ def main():
     link.remove_outdated()
     # run http interface if required
     if config.http:
+        # lower queuemo start time, flask requires a second of init time
+        import queuemo.runtime.control  # pylint:disable=W0621,C0415
         queuemo.runtime.control.start()
     # start scheduler
+    import queuemo.worker.startup  # pylint:disable=C0415
     closed = queuemo.worker.startup.run(
         runtime=config.runtime,
         waiting=config.waiting,
