@@ -68,7 +68,7 @@ def main():
     logger_start()
     parser = utila.cli.create_parser(
         todo=COMMANDS,
-        config=utila.ParserConfiguration(verboseflag=True),
+        config=utila.ParserConfiguration(),
         prog=PROCESS_NAME,
         version=queuemo.__version__,
     )
