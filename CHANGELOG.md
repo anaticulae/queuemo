@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v1.15.0
+
+### Feature
+
+* reduce response time (5c51c08d3e41)
+* add show debug command (1efb9e411f34)
+* use improved runnable list (ccece46bc000)
+* file extension is not required anymore (c4e297f96d7d)
+
 ## v1.14.0
 
 ### Feature
