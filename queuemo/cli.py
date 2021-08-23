@@ -27,6 +27,37 @@ JOBS = 'jobs'
 VERBOSE = 'verbose'
 INTERACTIVE = 'interactive'
 
+
+@utila.saveme
+def main():
+    config = evaluate_cli()
+    if config == utila.INVALID_COMMAND:
+        return utila.INVALID_COMMAND
+    # run showdebug
+    if config.showdebug:
+        return showdebug()
+    queuemo.INTERACTIVE = config.interactive
+    logger_start()
+    if config.interactive:
+        utila.log('use interactive mode')
+    # check startup
+    configo.check_startup()
+    # remove outdated maybe failed jobs
+    link.remove_outdated()
+    # run http interface if required
+    if config.http:
+        queuemo.runtime.control.start()
+    # start scheduler
+    closed = queuemo.worker.startup.run(
+        runtime=config.runtime,
+        waiting=config.waiting,
+        jobs=config.jobs,
+        verbose=config.verbose,
+        failfast=config.failfast,
+    )
+    return closed
+
+
 CMDS = [
     utila.Parameter(
         longcut=RUNTIME,
@@ -101,36 +132,6 @@ def evaluate_cli() -> Config:
     return config
 
 
-@utila.saveme
-def main():
-    config = evaluate_cli()
-    if config == utila.INVALID_COMMAND:
-        return utila.INVALID_COMMAND
-    # run showdebug
-    if config.showdebug:
-        return showdebug()
-    queuemo.INTERACTIVE = config.interactive
-    logger_start()
-    if config.interactive:
-        utila.log('use interactive mode')
-    # check startup
-    configo.check_startup()
-    # remove outdated maybe failed jobs
-    link.remove_outdated()
-    # run http interface if required
-    if config.http:
-        queuemo.runtime.control.start()
-    # start scheduler
-    closed = queuemo.worker.startup.run(
-        runtime=config.runtime,
-        waiting=config.waiting,
-        jobs=config.jobs,
-        verbose=config.verbose,
-        failfast=config.failfast,
-    )
-    return closed
-
-
 def logger_start():
     tmp = configo.tmp(True)
     # create log folder
@@ -139,7 +140,6 @@ def logger_start():
     # determine current file name
     logfile = f'{utila.filetime()}_{utila.tmpname(10)}.log'
     outpath = os.path.join(queuemo_tmp, logfile)
-    # do not write logger command when using --help or --version XXX???
     utila.debug(f'write global log to {outpath}')
     utila.logger.OUTFILE = outpath
 
