@@ -20,14 +20,13 @@ import queuemo.runnable
 import queuemo.runtime.control
 import queuemo.worker.startup
 
-PROCESS_NAME = 'queuemo'
 RUNTIME = 'runtime'
 WAITING = 'waiting'
 JOBS = 'jobs'
 VERBOSE = 'verbose'
 INTERACTIVE = 'interactive'
 
-COMMANDS = [
+CMDS = [
     utila.Parameter(
         longcut=RUNTIME,
         message='runtime in ticks',
@@ -71,9 +70,9 @@ COMMANDS = [
 @utila.saveme
 def main():
     parser = utila.cli.create_parser(
-        todo=COMMANDS,
+        todo=CMDS,
         config=utila.ParserConfiguration(),
-        prog=PROCESS_NAME,
+        prog=queuemo.PROCESS,
         version=queuemo.__version__,
     )
     args = utila.parse(parser)

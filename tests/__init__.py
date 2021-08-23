@@ -63,7 +63,7 @@ def run_queuemo(
     monkeypatch,
     testdir,
     capsys,
-    process=queuemo.cli.PROCESS_NAME,
+    process=queuemo.PROCESS,
     runnable=queuemo.cli.main,
     expected=utila.SUCCESS,
 ):
