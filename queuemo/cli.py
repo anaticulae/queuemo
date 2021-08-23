@@ -15,6 +15,7 @@ import utila.cli
 import utila.logger
 
 import queuemo
+import queuemo.runnable
 import queuemo.runtime.cleaner
 import queuemo.runtime.control
 import queuemo.worker.startup
@@ -60,6 +61,10 @@ COMMANDS = [
         longcut='http',
         message='start http interface',
     ),
+    utila.Flag(
+        longcut='showdebug',
+        message='show list of installed runnable and return',
+    ),
 ]
 
 
@@ -72,6 +77,8 @@ def main():
         version=queuemo.__version__,
     )
     args = utila.parse(parser)
+    if args['showdebug']:
+        return showdebug()
     queuemo.INTERACTIVE = args[INTERACTIVE]
     failfast = args.get('failfast', False)
     logger_start()
@@ -115,3 +122,8 @@ def logger_start():
     # do not write logger command when using --help or --version XXX???
     utila.debug(f'write global log to {outpath}')
     utila.logger.OUTFILE = outpath
+
+
+def showdebug():
+    queuemo.runnable.check()
+    return utila.SUCCESS
