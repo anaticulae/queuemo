@@ -10,13 +10,13 @@
 import os
 
 import configo
+import link
 import utila
 import utila.cli
 import utila.logger
 
 import queuemo
 import queuemo.runnable
-import queuemo.runtime.cleaner
 import queuemo.runtime.control
 import queuemo.worker.startup
 
@@ -96,7 +96,7 @@ def main():
         return utila.INVALID_COMMAND
     configo.check_startup()
     # remove outdated maybe failed jobs
-    queuemo.runtime.cleaner.remove_outdated()
+    link.remove_outdated()
     # run http interface if required
     if args['http']:
         queuemo.runtime.control.start()
