@@ -27,9 +27,8 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.document,
             skip_resultview=skip_resultview,
         )
-    # TODO: MOVE TO LINK finish_resultview
-    write_queuemo_version(flow.document)
-    publish_statistics(flow.document)
+    link.write_debug(flow.document, list=USED)
+    link.publish_statistics(flow.document)
 
 
 @queuemo.required
@@ -50,25 +49,37 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     utila.log()
 
 
-def write_queuemo_version(document: str):
-    ready = link.ready(document)
-    debug = os.path.join(ready, 'debug')
-    # queuemo 1.8.0 to debug file
-    utila.run(f'queuemo -v -V >> {debug}')
-
-
-def publish_statistics(document: str):
-    # TODO: MOVE TO LINK?
-    # TODO: DISABLE BEFORE GOING LIVE?
-    ready = link.ready(document)
-    cmd = f'qcon -i {ready} --publish'
-    completed = utila.run(
-        cmd,
-        expect=None,
-    )
-    if completed.returncode:
-        utila.error('could not publish `qcon`')
-        utila.error(completed)
+USED = utila.splitlines("""
+caption
+chapter
+decider
+decider_abbreviation
+decider_bibliography
+decider_border
+decider_chapter
+decider_chapter
+decider_footnote
+decider_imgfig
+decider_smarty
+decider_textstyle
+decider_toc
+detector
+docref
+docstyle
+feedback
+figureo
+groupme
+magic
+queuemo
+rawmaker
+rawmaker_cleanup
+sections
+smarty
+spacestation
+tablero
+textflow
+words
+""")
 
 
 def skip_resultview(path) -> bool:
