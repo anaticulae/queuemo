@@ -41,7 +41,7 @@ def after(flow: queuemo.runtime.api.RecipeIO):
         logpath = os.path.join(ready, 'done')
         # write current document log to result
         utila.log(f'write log to: {logpath}')
-        utila.file_create(logpath, content)
+        utila.file_replace(logpath, content)
     else:
         utila.error('no utila.logger.OUTFILE defined could not publish logfile')
     # document completed
