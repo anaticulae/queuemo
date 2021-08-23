@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import collections
 import os
 
 import configo
@@ -66,9 +67,13 @@ CMDS = [
     ),
 ]
 
+Config = collections.namedtuple(
+    'Config',
+    'interactive failfast showdebug runtime waiting jobs verbose http',
+)
 
-@utila.saveme
-def main():
+
+def evaluate_cli() -> Config:
     parser = utila.cli.create_parser(
         todo=CMDS,
         config=utila.ParserConfiguration(),
@@ -76,36 +81,52 @@ def main():
         version=queuemo.__version__,
     )
     args = utila.parse(parser)
-    if args['showdebug']:
-        return showdebug()
-    queuemo.INTERACTIVE = args[INTERACTIVE]
-    failfast = args.get('failfast', False)
-    logger_start()
-    if queuemo.INTERACTIVE:
-        utila.log('use interactive mode')
     try:
-        runtime, waiting = int(args[RUNTIME]), int(args[WAITING])
-        jobsleft = int(args[JOBS])
-        verbose = int(args[VERBOSE]) if args[VERBOSE] else 0
-        utila.level_setup(verbose)
+        config = Config(
+            args[INTERACTIVE],
+            args.get('failfast', False),
+            args.get('showdebug', False),
+            int(args[RUNTIME]),
+            int(args[WAITING]),
+            int(args[JOBS]),
+            int(args[VERBOSE]) if args[VERBOSE] else 0,
+            args['http'],
+        )
     except ValueError:
         msg = (f'invalid start parameter: `{args[RUNTIME]}`, `{args[WAITING]}`,'
                f' `{args[VERBOSE]}`, `{args[JOBS]}`')
         utila.error(msg)
         return utila.INVALID_COMMAND
+    utila.level_setup(config.verbose)
+    return config
+
+
+@utila.saveme
+def main():
+    config = evaluate_cli()
+    if config == utila.INVALID_COMMAND:
+        return utila.INVALID_COMMAND
+    # run showdebug
+    if config.showdebug:
+        return showdebug()
+    queuemo.INTERACTIVE = config.interactive
+    logger_start()
+    if config.interactive:
+        utila.log('use interactive mode')
+    # check startup
     configo.check_startup()
     # remove outdated maybe failed jobs
     link.remove_outdated()
     # run http interface if required
-    if args['http']:
+    if config.http:
         queuemo.runtime.control.start()
     # start scheduler
     closed = queuemo.worker.startup.run(
-        runtime=runtime,
-        waiting=waiting,
-        jobs=jobsleft,
-        verbose=verbose,
-        failfast=failfast,
+        runtime=config.runtime,
+        waiting=config.waiting,
+        jobs=config.jobs,
+        verbose=config.verbose,
+        failfast=config.failfast,
     )
     return closed
 
