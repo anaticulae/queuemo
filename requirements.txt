@@ -9,7 +9,7 @@
 
 # Internal packages
 configo>=0.11.0<1.0.0
-link>=2.9.3<3.0.0
+link>=2.10.0<3.0.0
 utila>=2.45.2<3.0.0
 
 # abel==0.6.1
@@ -20,7 +20,7 @@ feedback==1.9.0
 hey==5.11.9
 rawmaker==2.24.6
 tablero==0.6.0
-figureo==0.8.0
+figureo==0.8.1
 
 decider==2.10.0
 decider_ref==1.11.0
@@ -28,6 +28,6 @@ decider_con==0.3.0
 decider_lay==0.8.0
 
 # REMOVE LATER
-iamraw>=4.25.3<5.0.0
+iamraw>=4.25.4<5.0.0
 
 Flask==1.1.2
