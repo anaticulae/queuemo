@@ -181,8 +181,8 @@ def decider_footnote(inpath: str, outpath: str = None):
     run('decider_footnote -j8', inpath, outpath)
 
 
-def decider_imgfig(inpath: str, outpath: str = None):
-    run('decider_imgfig', inpath, outpath)
+def decider_imgfig(inpath: str, outpath: str = None, **kwargs):
+    run('decider_imgfig', inpath, outpath, **kwargs)
 
 
 def decider_border_detecion(inpath: str, outpath: str = None):
