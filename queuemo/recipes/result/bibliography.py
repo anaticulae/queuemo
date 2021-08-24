@@ -34,6 +34,13 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         select=iamraw.sections.Bibliography,
     )
+    bibliography_references = queuemo.utils.select_pages(
+        flow.general,
+        select=(
+            iamraw.sections.MainPart,
+            iamraw.sections.Appendix,
+        ),
+    )
     with utila.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.detector_bibliography,
@@ -47,6 +54,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
                 flow.general,
             ],
             outpath=flow.tmppath,
+            pages=bibliography_references,
         )
     queuemo.runnable.decider_bibliography(
         inpath=[
