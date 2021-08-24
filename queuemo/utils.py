@@ -32,13 +32,13 @@ def select_section(path: str, select) -> tuple:
     assert_classes(select)
     path = sections.path.sections_(path)
     section_ = serializeraw.load_sections(path)
-
+    # flatten sections
     flat = []
     for level in section_:
         # TODO: REPLACE WITH NICE ITERATOR TO IMPROVE CODE STYLE
         flat.append(level)
         flat.extend(level[:])
-
+    # select region
     collected = []
     for item in flat:
         if item.__class__ == select or\
