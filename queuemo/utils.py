@@ -20,7 +20,7 @@ def select_pages(path: str, select) -> str:
     """\
     Support merging multiple selected pages.
     """
-    assert isinstance(select, object.__class__), f'class not: {type(select)}'
+    assert_classes(select)
     pages = select_section(path, select=select)
     if pages:
         pages = pages2str(pages)
@@ -29,7 +29,7 @@ def select_pages(path: str, select) -> str:
 
 
 def select_section(path: str, select) -> tuple:
-    assert isinstance(select, object.__class__), f'class not: {type(select)}'
+    assert_classes(select)
     path = sections.path.sections_(path)
     section_ = serializeraw.load_sections(path)
 
@@ -41,7 +41,8 @@ def select_section(path: str, select) -> tuple:
 
     collected = []
     for item in flat:
-        if item.__class__ == select:
+        if item.__class__ == select or\
+               (isinstance(select, (tuple, list)) and item.__class__ in select):
             collected.append((item.start, item.end))
     return collected
 
@@ -77,3 +78,16 @@ def exists(filename: str, sources: list) -> bool:
         if os.path.exists(os.path.join(source, filename)):
             return True
     return False
+
+
+def assert_classes(items):
+    """\
+    >>> import iamraw.sections
+    >>> assert_classes(iamraw.sections.Bibliography)
+    >>> assert_classes((iamraw.sections.Bibliography, iamraw.sections.Appendix))
+    """
+    if isinstance(items, (list, tuple)):
+        for item in items:
+            assert_classes(item)
+        return
+    assert isinstance(items, object.__class__), f'class not: {type(items)}'
