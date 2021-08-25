@@ -133,6 +133,10 @@ def tablero(inpath: str, outpath: str = None, timeout: int = None, **kwargs):
     return run('tablero', inpath, outpath, timeout=timeout, **kwargs)
 
 
+def formulero(inpath: str, outpath: str = None, timeout: int = None, **kwargs):
+    return run('formulero', inpath, outpath, timeout=timeout, **kwargs)
+
+
 def spacestation(inpath: str, outpath: str = None, **kwargs):
     run('spacestation', inpath, outpath, **kwargs)
 

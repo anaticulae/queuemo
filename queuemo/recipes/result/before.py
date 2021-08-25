@@ -55,6 +55,12 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         pages=valid_pages,
     )
     pdf = flow.sourcepath
+    queuemo.runnable.formulero(
+        inpath=pdf,
+        outpath=flow.tmppath,
+        timeout=timeout,
+        pages=valid_pages,
+    )
     queuemo.runnable.figureo(
         inpath=[
             pdf,
