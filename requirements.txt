@@ -21,6 +21,7 @@ hey==5.11.9
 rawmaker==2.24.6
 tablero==0.6.0
 figureo==0.8.1
+formulero==0.2.0
 
 decider==2.10.0
 decider_ref==1.11.0
