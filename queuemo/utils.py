@@ -21,20 +21,20 @@ def select_pages(path: str, select) -> str:
     Support merging multiple selected pages.
     """
     assert_classes(select)
-    pages = select_section(path, select=select)
+    path = sections.path.sections_(path)
+    sectionx = serializeraw.load_sections(path)
+    pages = select_section(sectionx, select=select)
     if pages:
         pages = pages2str(pages)
         return pages
     return ':'
 
 
-def select_section(path: str, select) -> tuple:
+def select_section(sectionx, select) -> tuple:
     assert_classes(select)
-    path = sections.path.sections_(path)
-    section_ = serializeraw.load_sections(path)
     # flatten sections
     flat = []
-    for level in section_:
+    for level in sectionx:
         # TODO: REPLACE WITH NICE ITERATOR TO IMPROVE CODE STYLE
         flat.append(level)
         flat.extend(level[:])
