@@ -42,8 +42,9 @@ def main():
         utila.log('use interactive mode')
     # check startup
     configo.check_startup()
-    # remove outdated maybe failed jobs
-    link.remove_outdated()
+    if config.clean:
+        # remove outdated maybe failed jobs
+        link.remove_outdated()
     # run http interface if required
     if config.http:
         # lower queuemo start time, flask requires a second of init time
@@ -99,11 +100,15 @@ CMDS = [
         longcut='showdebug',
         message='show list of installed runnable and return',
     ),
+    utila.Flag(
+        longcut='clean',
+        message='clean outdated jobs',
+    ),
 ]
 
 Config = collections.namedtuple(
     'Config',
-    'interactive failfast showdebug runtime waiting jobs verbose http',
+    'interactive failfast showdebug clean runtime waiting jobs verbose http',
 )
 
 
@@ -120,6 +125,7 @@ def evaluate_cli() -> Config:
             args[INTERACTIVE],
             args.get('failfast', False),
             args.get('showdebug', False),
+            args.get('clean', False),
             int(args[RUNTIME]),
             int(args[WAITING]),
             int(args[JOBS]),
