@@ -46,7 +46,7 @@ def run_document(
     while True:
         current = runtime.next_step(tick)
         if current is None:
-            # Done, everthing completed successful.
+            # Done, everything completed successfully.
             break
         if not current:
             # Failure

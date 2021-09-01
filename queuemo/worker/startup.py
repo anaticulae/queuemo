@@ -52,7 +52,7 @@ def run(
     tick = 0
     while tick < runtime and jobs > 0:
         if queuemo.runtime.status.isstoped():
-            utila.log('service is stoped, stop working')
+            utila.log('service is stopped, stop working')
             break
         job = nextjob()
         try:
