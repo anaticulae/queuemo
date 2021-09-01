@@ -10,6 +10,7 @@
 import os
 
 import iamraw
+import layout
 import link
 import serializeraw
 import utila
@@ -45,6 +46,16 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     if pdfinfo == iamraw.InvalidPDF:
         utila.error(f'invalid resource {flow.sourcepath}, stop analysis.')
         raise queuemo.runtime.runtime.Stop('invald pdf resource')
+    if flow.config.skip_unsupported:
+        # TODO: REPLACE WITH ABEL LATER
+        document_layout = layout.document_layout(
+            flow.sourcepath,
+            pages=utila.ranged_tuple(0, 30),
+        )
+        if iamraw.Layout.DOUBLECOLUMN in document_layout:
+            msg = f'double column not supported: {flow.sourcepath}'
+            utila.error(msg)
+            raise queuemo.runtime.runtime.NotSupported(msg)
 
 
 @queuemo.required

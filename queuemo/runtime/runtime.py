@@ -116,6 +116,10 @@ class Stop(RuntimeControl):
     pass
 
 
+class NotSupported(Stop):
+    pass
+
+
 def run(  # pylint:disable=R1260
     composition: queuemo.runtime.scheduler.ComposedRecipe,
     flow: queuemo.runtime.api.RecipeIO,
