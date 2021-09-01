@@ -44,7 +44,6 @@ def run_document(
         tick.number += 1
 
     tick.number = 0
-
     while True:
         current = runtime.next_step(tick)
         if current is None:
@@ -52,5 +51,8 @@ def run_document(
             break
         if not current:
             # Failure
-            link.fail(documentid)
+            if not link.failed(documentid):
+                # already failed cause of unsupported document. check
+                # before to avoid overwriting error message
+                link.fail(documentid)
             break
