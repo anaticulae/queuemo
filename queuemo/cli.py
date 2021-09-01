@@ -115,7 +115,11 @@ Config = collections.namedtuple(
 def evaluate_cli() -> Config:
     parser = utila.cli.create_parser(
         todo=CMDS,
-        config=utila.ParserConfiguration(),
+        config=utila.ParserConfiguration(
+            waitingflag=False,
+            cacheflag=False,
+            pages=False,
+        ),
         prog=queuemo.PROCESS,
         version=queuemo.__version__,
     )
