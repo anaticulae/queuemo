@@ -9,28 +9,28 @@
 
 # Internal packages
 configo>=0.11.0<1.0.0
-link>=2.10.0<3.0.0
+link>=2.11.1<3.0.0
 utila>=2.47.0<3.0.0
 
 # abel==0.6.1
 # is resource extractable
-layout>=0.2.1<1.0.0
+layout>=0.2.2<1.0.0
 
 # Features packages
 # analysis==0.1.33
 feedback==1.9.0
-hey==5.11.9
+hey==5.12.0
 rawmaker==2.24.6
 tablero==0.6.0
 figureo==0.8.1
 formulero==0.2.0
 
-decider==2.10.0
-decider_ref==1.11.0
+decider==2.11.0
+decider_ref==1.12.0
 decider_con==0.3.0
 decider_lay==0.8.0
 
 # REMOVE LATER
-iamraw>=4.27.0<5.0.0
+iamraw>=4.28.1<5.0.0
 
 Flask==1.1.2
