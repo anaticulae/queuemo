@@ -12,6 +12,7 @@ import utilatest
 
 import queuemo
 import queuemo.recipes
+import queuemo.runtime.api
 import tests.fixtures.todo
 import tests.resources
 
@@ -48,3 +49,22 @@ def test_recipe_validation_failure(testdir, monkeypatch, capsys):
     assert completed is False
     error = utilatest.stderr(capsys)
     assert 'invalid resource' in error, error
+
+
+def test_validation_double_column_flag(testdir, monkeypatch):
+    """Inform user about not supported double layout extraction.
+
+    This test will may change later, after double column layout is
+    supported.
+    """
+    documentid = 'paper06column'
+    with tests.fixtures.todo.runtime(
+            testdir.tmpdir,
+            document=documentid,
+            recipes=queuemo.recipes.VALIDATION,
+            config=queuemo.runtime.api.RecipeConfig(skip_unsupported=True),
+            monkeypatch=monkeypatch,
+    ) as rt:
+        completed = rt.next_step()
+        assert not completed, 'exception not raised'
+        assert link.notsupported(documentid)

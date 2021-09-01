@@ -22,6 +22,7 @@ def runtime(
     document,
     recipes,
     monkeypatch,
+    config=None,
 ) -> queuemo.runtime.runtime.RecipeRuntime:
     workspace = str(workspace)
 
@@ -37,6 +38,7 @@ def runtime(
             workspace=workspace,
             document=document,
             outpath=outpath,
+            config=config,
         )
         for item in recipes:
             current.append(item)
