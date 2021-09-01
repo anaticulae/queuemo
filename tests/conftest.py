@@ -20,15 +20,16 @@ power.setup(queuemo.ROOT)
 PACKAGE = queuemo.PROCESS
 
 RESOURCES_TODO = [
+    power.BACHELOR085_PDF,
+    power.HOME025_PDF,
     power.MASTER072_PDF,
     power.MASTER078_PDF,
     power.MASTER083_PDF,
-    power.BACHELOR085_PDF,
     power.MASTER089_PDF,
     power.MASTER116_PDF,
     power.ORDER009_PDF,
     power.ORDER038_PDF,
-    power.HOME025_PDF,
+    power.PAPER06_PDF,
 ]
 
 
