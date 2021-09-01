@@ -21,6 +21,7 @@ API
 import copy
 import os
 
+import link
 import utila
 
 import queuemo
@@ -86,6 +87,10 @@ class RecipeRuntime:
             run(current, flow, tick=tick)
             if tick:
                 tick()
+        except NotSupported as error:
+            utila.error(error)
+            link.nosupport(self.document)
+            return False
         except RuntimeControl as error:
             utila.info(error)
             # TODO Should we return NONE, to signal that process is over?

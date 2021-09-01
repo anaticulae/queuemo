@@ -54,7 +54,6 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
         )
         if iamraw.Layout.DOUBLECOLUMN in document_layout:
             msg = f'double column not supported: {flow.sourcepath}'
-            utila.error(msg)
             raise queuemo.runtime.runtime.NotSupported(msg)
 
 
