@@ -25,7 +25,7 @@ import queuemo.runtime.runtime
 def before(flow: queuemo.runtime.api.RecipeIO):
     # set logging start mark
     queuemo.recipes.logger.start()
-
+    # ensure that todo path exists
     todo = link.todo(flow.document)
     assert os.path.exists(todo), f'todo does not exists: {todo}'
     link.start_progress(flow.document)
@@ -33,7 +33,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 
 @queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
-    """Run validation to check that """
+    """Run validation to check that document is analyzable."""
     link.verify(flow.document)
     # TODO: add pdfinfo --status to check if validation was successful????
     pdfinfo = link.pdfinfo(flow.document)
