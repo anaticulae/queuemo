@@ -22,7 +22,6 @@ import copy
 import os
 
 import utila
-import utila.logger
 
 import queuemo
 import queuemo.runtime.api
