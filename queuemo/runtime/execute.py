@@ -10,6 +10,7 @@
 import link
 
 import queuemo.recipes
+import queuemo.runtime.api
 import queuemo.runtime.runtime
 
 
@@ -17,15 +18,15 @@ def run_document(
     workspace: str,
     documentid: str,
     outpath: str,
-    failfast: bool = False,
     config=None,
 ):
+    if config is None:
+        config = queuemo.runtime.api.RecipeConfig()
     # queuemo.runnable.check(RUNNER)
     runtime = queuemo.runtime.runtime.RecipeRuntime(
         workspace=workspace,
         document=documentid,
         outpath=outpath,
-        failfast=failfast,
         config=config,
     )
 

@@ -46,8 +46,10 @@ import utila
 
 @dataclasses.dataclass
 class RecipeConfig:
+    failfast: bool = False
     # do not analyze not supported documents
     skip_unsupported: str = False
+    verbose: bool = True
 
 
 @dataclasses.dataclass

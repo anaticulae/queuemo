@@ -12,16 +12,18 @@ import os
 import configo.directory
 import utilatest
 
+import queuemo.runtime.api
 import queuemo.worker.startup
 import tests
 
 
 @utilatest.nightly
 def test_run_steps(capsys, testdir, monkeypatch):
+    config = queuemo.runtime.api.RecipeConfig()
     with tests.patch_todo(testdir, monkeypatch):
-        queuemo.worker.startup.step(None)
+        queuemo.worker.startup.step(job=None, config=config)
         assert 'Wait' in utilatest.stdout(capsys)
-        queuemo.worker.startup.step('8166109011')
+        queuemo.worker.startup.step(job='8166109011', config=config)
         progress = utilatest.stdout(capsys)
         assert 'Copy' in progress
         assert 'Start' in progress

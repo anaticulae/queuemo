@@ -18,6 +18,7 @@ import utila.logger
 
 import queuemo
 import queuemo.cli
+import queuemo.runtime.api
 import queuemo.runtime.execute
 import queuemo.worker.startup
 
@@ -60,20 +61,19 @@ def main() -> int:
             utila.error(f'require directory: {inpath} or use --create flag')
             return utila.INVALID_COMMAND
     outpath = inpath
-
+    utila.log(f'write result to: {outpath}')
     # patch todo outpath path. TODO: INVESTIGATE HERE?
     todopath = os.path.normpath(os.path.join(inpath, os.path.pardir))
     configo.todo = lambda _=False: todopath
     configo.ready = lambda _=False: todopath
-
-    utila.log(f'write result to: {outpath}')
-
+    # analyze single document
     tmpdir = utila.tmpdir(configo.tmp())
     jobid = queuemo.worker.startup.jobid(inpath)
     queuemo.runtime.execute.run_document(
         workspace=tmpdir,
         documentid=jobid,
         outpath=outpath,
+        config=queuemo.runtime.api.RecipeConfig(verbose=verbose),
     )
     return utila.SUCCESS
 

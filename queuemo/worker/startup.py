@@ -30,9 +30,9 @@ def run(
     runtime: float = MAX_RUNTIME,
     waiting: float = WAITING,
     jobs: int = JOBSLEFT,
-    verbose: bool = True,
     failfast: bool = False,
     skip_unsupported: bool = False,
+    verbose: bool = True,
 ) -> int:
     """Run the scheduler
 
@@ -41,15 +41,18 @@ def run(
         waiting(float): waiting time in mili-seconds
         jobs(int): maximal number of executed jobs, decrease for every
                    step and stop if no jobs are left.
-        verbose(bool): increase logging if True
         failfast(bool): shut down on first failure
         skip_unsupported(bool): do not analyze unsupported documents
+        verbose(bool): increase logging if True
     Returns:
         SUCCESS when scheduler ends, or Exception, when runtime error occurs
     """
     todopath = configo.todo(True)
     config = queuemo.runtime.api.RecipeConfig(
-        skip_unsupported=skip_unsupported,)
+        failfast=failfast,
+        skip_unsupported=skip_unsupported,
+        verbose=verbose,
+    )
     utila.log('start working on: %s' % todopath)
     utila.print_env()
     if not waiting:
@@ -67,8 +70,6 @@ def run(
             step(
                 job,
                 waiting=waiting,
-                verbose=verbose,
-                failfast=failfast,
                 config=config,
             )
         except Exception:  # pylint: disable=broad-except
@@ -84,31 +85,29 @@ def run(
 
 def step(
     job,
+    config: queuemo.runtime.api.RecipeConfig,
     waiting=WAITING,
-    verbose: bool = True,
-    failfast: bool = False,
-    config=None,
 ):
     if not job:
-        if verbose:
+        if config.verbose:
             utila.log('Wait...')
         else:
             utila.log('.', end='')
         time.sleep(waiting / 1000)  # miliseconds to seconds
     else:
-        if not verbose:
+        if not config.verbose:
             utila.log()  # write newline
         utila.log('Run job')
-        if verbose:
+        if config.verbose:
             utila.log('  Copy job')
         workspace = copy(job)
 
-        if verbose:
+        if config.verbose:
             utila.log('  Start job')
         with utila.profile(workspace):
-            work(workspace, failfast=failfast, config=config)
+            work(workspace, config=config)
 
-        if verbose:
+        if config.verbose:
             utila.log('Finished')
 
 
@@ -154,7 +153,7 @@ def copy(job):
     return workspace
 
 
-def work(workspace, failfast: bool = False, config=None):
+def work(workspace, config):
     assert os.path.exists(workspace), str(workspace)
     current = jobid(workspace)
     outpath = os.path.join(configo.todo(), current)
@@ -163,7 +162,6 @@ def work(workspace, failfast: bool = False, config=None):
         workspace,
         documentid=jobid(workspace),
         outpath=outpath,
-        failfast=failfast,
         config=config,
     )
 

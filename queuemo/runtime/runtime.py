@@ -37,7 +37,6 @@ class RecipeRuntime:
         workspace: str,
         document: str,
         outpath: str,
-        failfast: bool = False,
         config: queuemo.runtime.api.RecipeConfig = None,
     ):
         """Initialize RectipeRuntime.
@@ -47,14 +46,12 @@ class RecipeRuntime:
                             the temporary files are created
             document(str): identifier of processed document
             outpath(str): write results to
-            failfast(bool): shut down scheduler on first error
             config(RecipeConfig): pass config to recipes
         """
         self.todo = []
         self.workspace = workspace
         self.document = document
         self.outpath = outpath
-        self.failfast = failfast
         self.config = config if config else queuemo.runtime.api.RecipeConfig()
 
     def append(self, item: queuemo.runtime.scheduler.ComposedRecipe):
@@ -86,7 +83,7 @@ class RecipeRuntime:
                 outpath=outpath,
                 config=self.config,
             )
-            run(current, flow, tick=tick, failfast=self.failfast)
+            run(current, flow, tick=tick)
             if tick:
                 tick()
         except RuntimeControl as error:
@@ -128,7 +125,6 @@ def run(  # pylint:disable=R1260
     composition: queuemo.runtime.scheduler.ComposedRecipe,
     flow: queuemo.runtime.api.RecipeIO,
     tick: callable = None,
-    failfast: bool = False,
 ):
     """Run composed steps in the order defined by `Scheduler`.
     Use `flow` to determine the location where data must copy to.
@@ -151,7 +147,8 @@ def run(  # pylint:disable=R1260
         composition: composed recipe which is loaded from an local path
         flow: define the location where data transfer must handled
         tick: inform user about step progress
-        failfast: ignore required flag. Shut down scheduler by first error
+    Hint:
+        config.failfast: ignore required flag. Shut down scheduler by first error
     Raises:
         RuntimeError: if some failure occurs while executing a RecipeStep
         RuntimeControl: if some step signals to hold
@@ -191,7 +188,7 @@ def run(  # pylint:disable=R1260
                 utila.error(f'could not run: {item}')
                 utila.error(error)
                 utila.print_stacktrace()
-                if queuemo.isrequired(action) or failfast:
+                if queuemo.isrequired(action) or flow.config.failfast:
                     # do not stop scheduler if step is not marked as
                     # required.
                     raise RuntimeError(f'{current.name}:{item}') from error

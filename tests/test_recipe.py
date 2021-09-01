@@ -10,6 +10,7 @@
 import utilatest
 
 import queuemo.runtime
+import queuemo.runtime.api
 import queuemo.runtime.execute
 import queuemo.worker.startup
 import tests
