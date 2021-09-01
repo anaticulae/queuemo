@@ -138,7 +138,7 @@ def evaluate_cli() -> Config:
             int(args[WAITING]),
             int(args[JOBS]),
             int(args[VERBOSE]) if args[VERBOSE] else 0,
-            args['http'],
+            args.get('http', False),
             args.get('skip_unsupported', False),
         )
     except ValueError:
