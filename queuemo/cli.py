@@ -58,6 +58,7 @@ def main():
         jobs=config.jobs,
         verbose=config.verbose,
         failfast=config.failfast,
+        skip_unsupported=config.skip_unsupported,
     )
     return closed
 

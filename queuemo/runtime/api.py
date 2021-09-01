@@ -45,12 +45,19 @@ import utila
 
 
 @dataclasses.dataclass
+class RecipeConfig:
+    # do not analyze not supported documents
+    skip_unsupported: str = False
+
+
+@dataclasses.dataclass
 class RecipeIO:
     workspace: str = None
     # documentid
     document: str = None
     tmppath: str = None
     outpath: str = None
+    config: RecipeConfig = None
 
     @property
     def sourcepath(self) -> str:

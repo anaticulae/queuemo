@@ -18,14 +18,15 @@ def run_document(
     documentid: str,
     outpath: str,
     failfast: bool = False,
+    config=None,
 ):
     # queuemo.runnable.check(RUNNER)
-
     runtime = queuemo.runtime.runtime.RecipeRuntime(
         workspace=workspace,
         document=documentid,
         outpath=outpath,
         failfast=failfast,
+        config=config,
     )
 
     for item in queuemo.recipes.ORDER:

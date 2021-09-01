@@ -18,6 +18,7 @@ API
 - Name of used folder and job is defined by location and file name
 """
 
+import copy
 import os
 
 import utila
@@ -38,6 +39,7 @@ class RecipeRuntime:
         document: str,
         outpath: str,
         failfast: bool = False,
+        config: queuemo.runtime.api.RecipeConfig = None,
     ):
         """Initialize RectipeRuntime.
 
@@ -47,12 +49,14 @@ class RecipeRuntime:
             document(str): identifier of processed document
             outpath(str): write results to
             failfast(bool): shut down scheduler on first error
+            config(RecipeConfig): pass config to recipes
         """
         self.todo = []
         self.workspace = workspace
         self.document = document
         self.outpath = outpath
         self.failfast = failfast
+        self.config = config if config else queuemo.runtime.api.RecipeConfig()
 
     def append(self, item: queuemo.runtime.scheduler.ComposedRecipe):
         """Add composed recipe to todo list"""
@@ -81,6 +85,7 @@ class RecipeRuntime:
                 document=self.document,
                 tmppath=tmppath,
                 outpath=outpath,
+                config=self.config,
             )
             run(current, flow, tick=tick, failfast=self.failfast)
             if tick:
@@ -170,6 +175,7 @@ def run(  # pylint:disable=R1260
             document=flow.document,
             tmppath=tmppath,
             outpath=outpath,
+            config=copy.deepcopy(flow.config),
         )
         os.makedirs(tmppath, exist_ok=True)
         for item in ['before', 'run', 'after']:
