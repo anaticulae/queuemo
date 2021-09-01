@@ -13,6 +13,8 @@ link>=2.10.0<3.0.0
 utila>=2.47.0<3.0.0
 
 # abel==0.6.1
+# is resource extractable
+layout>=0.2.1<1.0.0
 
 # Features packages
 # analysis==0.1.33
