@@ -104,11 +104,15 @@ CMDS = [
         longcut='clean',
         message='clean outdated jobs',
     ),
+    utila.Flag(
+        longcut='skip_unsupported',
+        message='do not analyze not supported documents',
+    ),
 ]
 
 Config = collections.namedtuple(
     'Config',
-    'interactive failfast showdebug clean runtime waiting jobs verbose http',
+    'interactive failfast showdebug clean runtime waiting jobs verbose http skip_unsupported',
 )
 
 
@@ -135,6 +139,7 @@ def evaluate_cli() -> Config:
             int(args[JOBS]),
             int(args[VERBOSE]) if args[VERBOSE] else 0,
             args['http'],
+            args.get('skip_unsupported', False),
         )
     except ValueError:
         msg = (f'invalid start parameter: `{args[RUNTIME]}`, `{args[WAITING]}`,'
