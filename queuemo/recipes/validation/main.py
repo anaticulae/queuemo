@@ -38,11 +38,13 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     # TODO: add pdfinfo --status to check if validation was successful????
     pdfinfo = link.pdfinfo(flow.document)
     utila.debug(pdfinfo)
-    if pdfinfo:
-        if pdfinfo != iamraw.InvalidPDF:
-            return
-    utila.error(f'invalid resource {flow.sourcepath}, stop analysis.')
-    raise queuemo.runtime.runtime.Stop('invald pdf resource')
+    if not pdfinfo:
+        msg = f'could not locate {flow.document}:{pdfinfo}'
+        utila.error(msg)
+        raise queuemo.runtime.runtime.Stop(msg)
+    if pdfinfo == iamraw.InvalidPDF:
+        utila.error(f'invalid resource {flow.sourcepath}, stop analysis.')
+        raise queuemo.runtime.runtime.Stop('invald pdf resource')
 
 
 @queuemo.required
