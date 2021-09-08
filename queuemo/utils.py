@@ -41,10 +41,17 @@ def select_section(sectionx, select) -> tuple:
     # select region
     collected = []
     for item in flat:
-        if item.__class__ == select or\
-               (isinstance(select, (tuple, list)) and item.__class__ in select):
+        if inside(item.__class__, select):
             collected.append((item.start, item.end))
     return collected
+
+
+def inside(item, container) -> bool:
+    if item == container:
+        return True
+    if isinstance(container, (tuple, list)) and item in container:
+        return True
+    return False
 
 
 def pages2str(pages: tuple) -> str:
