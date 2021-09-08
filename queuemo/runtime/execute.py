@@ -10,6 +10,7 @@
 import link
 
 import queuemo.recipes
+import queuemo.recipes.logger
 import queuemo.runtime.api
 import queuemo.runtime.runtime
 
@@ -54,5 +55,6 @@ def run_document(
             if not link.failed(documentid):
                 # already failed cause of unsupported document. check
                 # before to avoid overwriting error message
-                link.fail(documentid)
+                error = queuemo.recipes.logger.content()
+                link.fail(documentid, error=error)
             break
