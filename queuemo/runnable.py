@@ -316,6 +316,7 @@ decider_textstyle
 decider_toc
 detector
 docref
+doctextstyle
 feedback
 figureo
 groupme
