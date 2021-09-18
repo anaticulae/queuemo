@@ -24,6 +24,7 @@ rawmaker==2.26.1
 tablero==0.6.1
 figureo==0.8.1
 formulero==0.2.0
+codero==0.2.0
 
 decider==2.11.0
 decider_ref==1.12.1
