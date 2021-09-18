@@ -31,7 +31,4 @@ decider_ref==1.12.1
 decider_con==0.3.0
 decider_lay==0.8.0
 
-# REMOVE LATER
-iamraw>=4.31.1<5.0.0
-
 Flask==1.1.2
