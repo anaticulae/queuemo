@@ -47,6 +47,11 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     valid_pages = valid_figures_tables(flow)
     # ensure rawmaker is completed before running tablero
+    queuemo.runnable.codero(
+        inpath=flow.tmppath,
+        outpath=flow.tmppath,
+        pages=valid_pages,
+    )
     queuemo.runnable.tablero(
         inpath=flow.tmppath,
         outpath=flow.tmppath,

@@ -145,6 +145,10 @@ def groupme(inpath: str, outpath: str = None, **kwargs):
     run('groupme -j8', inpath, outpath, **kwargs)
 
 
+def codero(inpath: str, outpath: str = None, **kwargs):
+    run('codero', inpath, outpath, **kwargs)
+
+
 def rawmaker_cleanup(inpath: str, outpath: str = None, **kwargs):
     return run('rawmaker_cleanup', inpath, outpath, **kwargs)
 
