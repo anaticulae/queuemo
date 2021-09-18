@@ -303,9 +303,11 @@ def feedback_plot(inpath: str, outpath: str = None):
     run('feedback --plot', inpath, outpath)
 
 
+# TODO: USE RUNTIME.py AS SOURCE/METHODS FOR AVAILABLE RUNNER
 RUNNER = utila.splitlines("""
 caption
 chapter
+codero
 decider
 decider_abbreviation
 decider_bibliography
