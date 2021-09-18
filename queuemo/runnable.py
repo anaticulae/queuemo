@@ -79,7 +79,7 @@ def kwargs_to_parameter(args: dict) -> str:
     for param, value in args.items():
         if value is True:
             cmds.append(f'--{param}')
-        elif value is False:
+        elif value is False:  # pylint:disable=C2001
             # TODO: VERIFY LATER
             cmds.append(f'--{param}!')
         else:

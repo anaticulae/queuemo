@@ -77,7 +77,7 @@ def run(
             utila.error('\nClose scheduler: %d' % tick)
             return utila.FAILURE
         tick += 1
-        if not verbose and tick % 80 == 0:
+        if not verbose and tick % 80 == 0:  # pylint:disable=C2001
             utila.log()  # write newline
     utila.log('\nTerminated: %d' % tick)
     return utila.SUCCESS

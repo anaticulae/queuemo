@@ -46,7 +46,7 @@ def test_recipe_validation_failure(testdir, monkeypatch, capsys):
     ) as rt:  # pylint:disable=C0103
         with utilatest.increased_filecount(testdir.tmpdir, 'yaml'):
             completed = rt.next_step()
-    assert completed is False
+    assert not completed
     error = utilatest.stderr(capsys)
     assert 'invalid resource' in error, error
 

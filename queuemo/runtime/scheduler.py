@@ -117,9 +117,8 @@ class ComposedRecipe:
                 order = getattr(self.main, ORDER.lower(), None)
                 scheduled = schedule(self.steps, order)
                 result.extend(scheduled)
-        else:
-            if self.steps:
-                result.extend(self.steps)
+        elif self.steps:  # pylint:disable=R5601
+            result.extend(self.steps)
         if self.after:
             result.append(self.after)
         return result
