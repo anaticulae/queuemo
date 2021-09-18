@@ -51,6 +51,7 @@ def test_recipe_validation_failure(testdir, monkeypatch, capsys):
     assert 'invalid resource' in error, error
 
 
+@utilatest.longrun
 def test_validation_double_column_flag(testdir, monkeypatch):
     """Inform user about not supported double layout extraction.
 
