@@ -16,6 +16,8 @@ utila>=2.49.2<3.0.0
 # is resource extractable
 layout>=0.2.3<1.0.0
 
+sections==1.8.0
+
 # Features packages
 # analysis==0.1.33
 feedback==1.9.0
