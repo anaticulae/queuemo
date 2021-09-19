@@ -2,6 +2,30 @@
 
 Every noteable change is logged here.
 
+## v1.16.0
+
+### Feature
+
+* add codero runner (a71a985961df)
+* write log with error to error file (57afa0ac5675)
+* use link to signal not supported document type (9bf82250a510)
+* add runtime recipe config (868efddc6199)
+* skip unsupported documents (257488c4b883)
+* add skip not supported flag (32c1b853c5f9)
+* add flag to handle cleaning behavior (853e40ce4037)
+* add formulero (2b225440f3c3)
+* add option to select decider pages (1347dbdc7bc4)
+* add multiple sections selection (02be59799f08)
+
+### Fix
+
+* add codero to show debug (c682b296f4a8)
+* add missing doctextstyle (f92c82af6654)
+* do not overwrite error message (07c01597d509)
+* disable non required flags (937b6b37d5a0)
+* exclude Introduction from bib ref checking (3feea9eedbe3)
+* done flag already exists, append log data (03c1634a26fc)
+
 ## v1.15.0
 
 ### Feature
