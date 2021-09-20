@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import signal
+
 import utila
 
 STOPED = False
@@ -24,3 +26,12 @@ def stop():
     utila.log('stop service')
     global STOPED  # pylint:disable=global-statement
     STOPED = True
+
+
+def shutdown(event, action):  # pylint:disable=W0613
+    """Use CTRL+BREAK to close scheduler softly."""
+    stop()
+
+
+# configure close handler
+signal.signal(signal.SIGBREAK, shutdown)
