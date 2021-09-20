@@ -44,7 +44,7 @@ def run(
         )
     utila.log(f'>>{cmd}<<')
     utila.debug(f'timeout: {timeout.seconds}')
-    with utila.profile(runnable):
+    with utila.profile(runnable, always=True):
         completed = utila.run(cmd, timeout=timeout)
 
     utila.log(completed.stdout)
