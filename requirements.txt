@@ -9,28 +9,28 @@
 
 # Internal packages
 configo>=0.11.0<1.0.0
-link>=2.11.1<3.0.0
-utila>=2.49.2<3.0.0
+link>=2.12.0<3.0.0
+utila>=2.56.1<3.0.0
 
 # abel==0.6.1
 # is resource extractable
 layout>=0.2.3<1.0.0
 
-sections==1.8.0
+sections==1.11.1
 
 # Features packages
 # analysis==0.1.33
-feedback==1.9.0
-hey==5.12.0
-rawmaker==2.26.1
-tablero==0.6.1
-figureo==0.8.1
-formulero==0.2.0
-codero==0.2.0
+feedback==1.10.1
+hey==5.14.1
+rawmaker==2.26.5
+tablero==0.7.1
+figureo==0.10.2
+formulero==0.2.1
+codero==0.2.2
 
-decider==2.11.0
-decider_ref==1.12.1
-decider_con==0.3.0
+decider==2.13.0
+decider_ref==1.12.2
+decider_con==0.3.1
 decider_lay==0.8.0
 
 Flask==1.1.2
