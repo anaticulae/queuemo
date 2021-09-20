@@ -84,7 +84,7 @@ def run(
 
 
 def step(
-    job,
+    job: int,
     config: queuemo.runtime.api.RecipeConfig,
     waiting=WAITING,
 ):
@@ -98,8 +98,10 @@ def step(
         if not config.verbose:
             utila.log()  # write newline
         utila.log('Run job')
+        queuemo.runtime.status.set_current(job)
         if config.verbose:
             utila.log('  Copy job')
+
         workspace = copy(job)
 
         if config.verbose:
@@ -109,6 +111,7 @@ def step(
 
         if config.verbose:
             utila.log('Finished')
+        queuemo.runtime.status.set_current(None)
 
 
 def nextjob() -> int:
