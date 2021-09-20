@@ -79,7 +79,7 @@ def run(
         tick += 1
         if not verbose and tick % 80 == 0:  # pylint:disable=C2001
             utila.log()  # write newline
-    utila.log('\nTerminated: %d' % tick)
+    utila.log(f'\nTerminated: {tick}')
     return utila.SUCCESS
 
 
