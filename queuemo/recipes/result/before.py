@@ -78,6 +78,11 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         inpath=flow.tmppath,
         outpath=flow.tmppath,
     )
+    queuemo.runnable.rawmaker_cleanup(
+        inpath=flow.tmppath,
+        outpath=flow.tmppath,
+        prefix='oneline',
+    )
     queuemo.runnable.groupme(
         inpath=[flow.tmppath],
         outpath=flow.tmppath,
