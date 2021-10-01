@@ -27,6 +27,9 @@ tablero==0.7.1
 figureo==0.10.2
 formulero==0.2.1
 codero==0.2.2
+groupme==0.15.2
+detector==0.28.1
+texas==0.4.0
 
 decider==2.13.0
 decider_ref==1.12.2
