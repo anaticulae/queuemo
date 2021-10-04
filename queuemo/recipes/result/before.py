@@ -73,6 +73,15 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         ],
         outpath=flow.tmppath,
         pages=valid_pages,
+        standard=True,
+    )
+    queuemo.runnable.figureo(
+        inpath=[
+            flow.tmppath,
+        ],
+        outpath=flow.tmppath,
+        pages=valid_pages,
+        cleanup=True,
     )
     queuemo.runnable.rawmaker_cleanup(
         inpath=flow.tmppath,
