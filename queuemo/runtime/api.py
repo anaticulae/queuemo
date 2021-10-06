@@ -48,7 +48,7 @@ import utila
 class RecipeConfig:
     failfast: bool = False
     # do not analyze not supported documents
-    skip_unsupported: str = False
+    skip_unsupported: bool = False
     verbose: bool = True
 
 
