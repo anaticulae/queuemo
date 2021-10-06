@@ -13,6 +13,7 @@ import shutil
 import time
 
 import configo
+import iamraw
 import link
 import utila
 
@@ -32,6 +33,7 @@ def run(
     jobs: int = JOBSLEFT,
     failfast: bool = False,
     skip_unsupported: bool = False,
+    webconfig: iamraw.WebConfig = None,
     verbose: bool = True,
 ) -> int:
     """Run the scheduler
@@ -43,6 +45,7 @@ def run(
                    step and stop if no jobs are left.
         failfast(bool): shut down on first failure
         skip_unsupported(bool): do not analyze unsupported documents
+        webconfig(WebConfig): select published findingids
         verbose(bool): increase logging if True
     Returns:
         SUCCESS when scheduler ends, or Exception, when runtime error occurs
@@ -51,6 +54,7 @@ def run(
     config = queuemo.runtime.api.RecipeConfig(
         failfast=failfast,
         skip_unsupported=skip_unsupported,
+        webconfig=webconfig,
         verbose=verbose,
     )
     utila.log('start working on: %s' % todopath)

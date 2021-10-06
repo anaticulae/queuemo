@@ -15,6 +15,13 @@ import queuemo.runtime.api
 def run(flow: queuemo.runtime.api.RecipeIO):
     """Create a file named `done` to signal update handler that process
     is completed."""
-    link.write_optimized_findings(flow.document)
+    active = None
+    if flow.config and flow.config.webconfig:
+        # do not publish all findings, publish just select onces
+        active = flow.config.webconfig.active
+    link.write_optimized_findings(
+        document=flow.document,
+        active=active,
+    )
     # TODO: ADD STATUS INFORMATION LATER
     link.finish_resultview(flow.document)

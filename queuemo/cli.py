@@ -12,6 +12,7 @@ import os
 
 import configo
 import link
+import serializeraw
 import utila
 import utila.cli
 import utila.logger
@@ -50,15 +51,23 @@ def main():
         # lower queuemo start time, flask requires a second of init time
         import queuemo.runtime.control  # pylint:disable=W0621,C0415
         queuemo.runtime.control.start()
+    webconfig = None
+    if config.webconfig:
+        if not utila.exists(config.webconfig):
+            utila.error(f'webconfig does not exists: {config.webconfig}')
+            return utila.INVALID_COMMAND
+        utila.debug(f'use webconfig: {config.webconfig}')
+        webconfig = serializeraw.load_webconfig(config.webconfig)
     # start scheduler
     import queuemo.worker.startup  # pylint:disable=C0415
     closed = queuemo.worker.startup.run(
-        runtime=config.runtime,
-        waiting=config.waiting,
-        jobs=config.jobs,
-        verbose=config.verbose,
         failfast=config.failfast,
+        jobs=config.jobs,
+        runtime=config.runtime,
         skip_unsupported=config.skip_unsupported,
+        verbose=config.verbose,
+        waiting=config.waiting,
+        webconfig=webconfig,
     )
     return closed
 
@@ -109,11 +118,16 @@ CMDS = [
         longcut='skip_unsupported',
         message='do not analyze not supported documents',
     ),
+    utila.Parameter(
+        longcut='webconfig',
+        message='select msgids of published findings',
+    ),
 ]
 
 Config = collections.namedtuple(
     'Config',
-    'interactive failfast showdebug clean runtime waiting jobs verbose http skip_unsupported',
+    ('interactive failfast showdebug clean runtime waiting '
+     'jobs verbose http skip_unsupported webconfig'),
 )
 
 
@@ -141,6 +155,7 @@ def evaluate_cli() -> Config:
             int(args[VERBOSE]) if args[VERBOSE] else 0,
             args.get('http', False),
             args.get('skip_unsupported', False),
+            args.get('webconfig', None),
         )
     except ValueError:
         msg = (f'invalid start parameter: `{args[RUNTIME]}`, `{args[WAITING]}`,'

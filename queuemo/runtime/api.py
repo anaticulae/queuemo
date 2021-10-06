@@ -40,6 +40,7 @@ import dataclasses
 import os
 import textwrap
 
+import iamraw
 import link
 import utila
 
@@ -49,6 +50,7 @@ class RecipeConfig:
     failfast: bool = False
     # do not analyze not supported documents
     skip_unsupported: bool = False
+    webconfig: iamraw.WebConfig = None
     verbose: bool = True
 
 
