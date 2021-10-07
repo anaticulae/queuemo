@@ -65,12 +65,12 @@ ORDER = [
 
 import contextlib
 import dataclasses
-import importlib
-import importlib.util
 import os
 import typing
 
 import utila
+
+import queuemo.utils
 
 
 @dataclasses.dataclass
@@ -137,8 +137,9 @@ class ComposedRecipe:
 
 
 def collect(path: str) -> dict:
-    """Collect recipe steps from `path`. Ignore file which does not
-    contain a run method.
+    """Collect recipe steps from `path`.
+
+    Ignore file which does not contain a run method.
 
     Args:
         path(str): collect python files from folder
@@ -150,26 +151,20 @@ def collect(path: str) -> dict:
         if item.endswith('.py') and item != '__init__.py'
     ]
     result = {}
-    parent = os.path.basename(path)
     for item in items:
-        item = item[0:-3]
-        spec = importlib.util.spec_from_file_location(
-            f'{parent}.{item}',
-            os.path.join(path, f'{item}.py'),
-        )
-        module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(module)
+        stepname = utila.file_name(item)
+        source = os.path.join(path, item)
+        module = queuemo.utils.load_module(source)
         if not hasattr(module, 'run'):
-            utila.error(f'could not load recipe step: `{item}` in `{path}`')
+            utila.error(f'could not load recipe step: `{item}` in `{module}`')
             continue
-
-        step = RecipeStep(name=item)
+        step = RecipeStep(name=stepname)
         for value_name in ['before', 'run', 'after', ORDER, 'PREFIX']:
             with contextlib.suppress(AttributeError):
                 value = getattr(module, value_name)
                 value_name = value_name.lower()
                 setattr(step, value_name, value)
-        result[item] = step
+        result[stepname] = step
     return result
 
 
