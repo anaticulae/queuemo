@@ -180,24 +180,29 @@ def run(  # pylint:disable=R1260
             config=copy.deepcopy(flow.config),
         )
         os.makedirs(tmppath, exist_ok=True)
-        for item in ['before', 'run', 'after']:
-            action = getattr(current, item)
-            if action is None:
+        for item in ['before', 'run', 'runx', 'after']:
+            actions = getattr(current, item)
+            if not actions:
                 continue
             utila.call(item)
-            try:
-                utila.debug(current_flow)
-                action(current_flow)
-            except RuntimeControl as control:
-                raise control
-            except Exception as error:  # pylint:disable=broad-except
-                utila.error(f'could not run: {item}')
-                utila.error(error)
-                utila.print_stacktrace()
-                if queuemo.isrequired(action) or flow.config.failfast:
-                    # do not stop scheduler if step is not marked as
-                    # required.
-                    raise RuntimeError(f'{current.name}:{item}') from error
+            actions = utila.ensure_tuple(actions)
+            for action in actions:
+                if len(actions) > 1:
+                    # print status for runx
+                    print_banner(action.__name__, symbol='o')
+                try:
+                    utila.debug(current_flow)
+                    action(current_flow)
+                except RuntimeControl as control:
+                    raise control
+                except Exception as error:  # pylint:disable=broad-except
+                    utila.error(f'could not run: {item}')
+                    utila.error(error)
+                    utila.print_stacktrace()
+                    if queuemo.isrequired(action) or flow.config.failfast:
+                        # do not stop scheduler if step is not marked as
+                        # required.
+                        raise RuntimeError(f'{current.name}:{item}') from error
         if queuemo.INTERACTIVE:
             queuemo.utils.wait()
         if tick:

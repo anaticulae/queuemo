@@ -66,6 +66,7 @@ ORDER = [
 import contextlib
 import dataclasses
 import os
+import re
 import typing
 
 import utila
@@ -79,6 +80,7 @@ class RecipeStep:
     prefix: str = None
     before: callable = None
     run: callable = None
+    runx: list = dataclasses.field(default_factory=list)
     after: callable = None
 
 
@@ -164,7 +166,24 @@ def collect(path: str) -> dict:
                 value = getattr(module, value_name)
                 value_name = value_name.lower()
                 setattr(step, value_name, value)
+        step.runx.extend(runx(module))
         result[stepname] = step
+    return result
+
+
+RUN = re.compile(r'^run\w+$')
+
+
+def runx(module):
+    """\
+    >>> runx(queuemo.utils.load_module(__file__))
+    [<function runx at...>]
+    """
+    result = []
+    for name, method in vars(module).items():
+        if not RUN.match(name):
+            continue
+        result.append(method)
     return result
 
 
@@ -174,12 +193,10 @@ def compose(collected: dict, parent: str) -> ComposedRecipe:
     Possible steps are: before, (main), (steps...), after and failure.
     """
     result = ComposedRecipe(name=parent)
-
     standard = set(['before', 'main', 'after', 'failure'])
     for item in standard:
         with contextlib.suppress(KeyError):
             setattr(result, item, collected[item])
-
     for key, value in collected.items():
         if key in standard:
             continue
