@@ -17,6 +17,8 @@ PREFIX = '05'
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    if flow.skip(queuemo.runnable.decider_toc):
+        return
     tocpage = queuemo.utils.select_pages(
         flow.general,
         select=iamraw.sections.TableOfContent,

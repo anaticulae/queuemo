@@ -40,6 +40,8 @@ PREFIX = '01'
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    if flow.skip(queuemo.runnable.decider_titlepage):
+        return
     titlepage = queuemo.utils.select_pages(
         flow.general,
         select=iamraw.sections.TitlePage,
