@@ -32,20 +32,20 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     queuemo.recipes.utils.determine_sections(flow)
 
     # TODO: DO WE REQUIRE TABLES FOR FIRST 10 PAGES?
-    queuemo.runnable.groupme(
-        inpath=flow.tmppath,
-        outpath=flow.tmppath,
-        pagenumbers=True,
-        footer=True,
-        content=True,
-    )
-    queuemo.runnable.tablero(
-        inpath=flow.tmppath,
-        outpath=flow.tmppath,
-        table=flow.sourcepath,
-        timeout=TIMEOUT_FASTVIEW_TABLERO.value,
-        pages=FIRST_PAGES.value,
-    )
+    # queuemo.runnable.groupme(
+    #     inpath=flow.tmppath,
+    #     outpath=flow.tmppath,
+    #     pagenumbers=True,
+    #     footer=True,
+    #     content=True,
+    # )
+    # queuemo.runnable.tablero(
+    #     inpath=flow.tmppath,
+    #     outpath=flow.tmppath,
+    #     table=flow.sourcepath,
+    #     timeout=TIMEOUT_FASTVIEW_TABLERO.value,
+    #     pages=FIRST_PAGES.value,
+    # )
 
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
