@@ -31,19 +31,20 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 @queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO):
     unpack_pdf(flow)
-
     queuemo.recipes.utils.determine_sections(flow)
-
-    timeout = utila.Timeout(
-        seconds=TIMEOUT_RESULT_TABLERO.value,
-        gracefully=True,
-    )
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
         # pagenumbers=True, already done by determine_sections
         # footer=True,
         content=True,
+    )
+
+
+def run_code_tab_form_figure(flow: queuemo.runtime.api.RecipeIO):
+    timeout = utila.Timeout(
+        seconds=TIMEOUT_RESULT_TABLERO.value,
+        gracefully=True,
     )
     valid_pages = valid_figures_tables(flow)
     # ensure rawmaker is completed before running tablero
@@ -76,13 +77,14 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         standard=True,
     )
     queuemo.runnable.figureo(
-        inpath=[
-            flow.tmppath,
-        ],
+        inpath=flow.tmppath,
         outpath=flow.tmppath,
         pages=valid_pages,
         cleanup=True,
     )
+
+
+def run_cleanup(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.rawmaker_cleanup(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
@@ -92,8 +94,11 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         outpath=flow.tmppath,
         prefix='oneline',
     )
+
+
+def run_final(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.groupme(
-        inpath=[flow.tmppath],
+        inpath=flow.tmppath,
         outpath=flow.tmppath,
         toc=False,
         footer=False,
