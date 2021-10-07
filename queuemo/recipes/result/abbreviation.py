@@ -18,6 +18,8 @@ import queuemo.runtime.api
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    if flow.skip(queuemo.runnable.decider_abbreviation):
+        return
     pages = queuemo.utils.select_pages(
         flow.general,
         select=iamraw.sections.AbbreviationTable,

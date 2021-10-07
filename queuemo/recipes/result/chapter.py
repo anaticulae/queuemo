@@ -15,6 +15,8 @@ import queuemo.utils
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    if flow.skip(queuemo.runnable.decider_chapter):
+        return
     pages = queuemo.utils.select_pages(
         flow.general,
         select=iamraw.sections.MainPart,

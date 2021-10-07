@@ -30,6 +30,8 @@ import queuemo.utils
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    if flow.skip(queuemo.runnable.decider_bibliography):
+        return
     bibliography = queuemo.utils.select_pages(
         flow.general,
         select=iamraw.sections.Bibliography,

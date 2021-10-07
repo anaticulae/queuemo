@@ -35,6 +35,8 @@ def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    if flow.skip('decider_textstyle'):
+        return
     content = queuemo.utils.select_pages(
         flow.general,
         select=iamraw.sections.MainPart,

@@ -15,6 +15,8 @@ import queuemo.runtime.api
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    if flow.skip(queuemo.runnable.decider_links):
+        return
     queuemo.runnable.words_links(
         inpath=[flow.general],
         outpath=flow.tmppath,

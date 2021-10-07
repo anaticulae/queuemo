@@ -17,6 +17,8 @@ import queuemo.utils
 
 
 def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
+    if flow.skip('decider_textflow'):
+        return
     # RUN MAGIC BEFORE
     # TODO: ADD TEST THAT MAGIC EXISTS?
     queuemo.runnable.docref(
@@ -26,6 +28,8 @@ def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    if flow.skip('decider_textflow'):
+        return
     pages = queuemo.utils.select_pages(
         flow.general,
         select=iamraw.sections.MainPart,
