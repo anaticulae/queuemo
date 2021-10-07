@@ -217,13 +217,13 @@ def schedule(steps: RecipeSteps, orderby: list = None) -> RecipeSteps:
     Returns:
         sorted `steps`
     """
-    steps = steps[:]  # copy to avoid changing source list
+    # sort steps alphabetically
     steps = sorted(steps, key=lambda x: x.name)
     if orderby is None:
+        # no special order is given
         return steps
-
+    # schedule steps by `orderby`
     find = {step.name: step for step in steps}
-
     result = []
     for index, item in enumerate(orderby):
         try:
