@@ -119,6 +119,20 @@ class RecipeIO:
             todo = link.todo(self.document)
             utila.copy_content(source, todo, pattern=pattern)
 
+    def skip(self, decider: str) -> bool:
+        if not self.config:
+            return False
+        webconfig: iamraw.WebConfig = self.config.webconfig
+        if not webconfig:
+            return False
+        if not webconfig.decider:
+            return False
+        if not isinstance(decider, str):
+            decider = decider.__name__
+        if decider in webconfig.decider:
+            return False
+        return True
+
     def __str__(self):
         return textwrap.dedent(f"""\
             document:   {self.document}
