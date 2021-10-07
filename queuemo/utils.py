@@ -22,7 +22,7 @@ def select_pages(path: str, select) -> str:
     Support merging multiple selected pages.
     """
     assert_classes(select)
-    path = sections.path.sections_(path)
+    path = sections.path.result(path)
     sectionx = serializeraw.load_sections(path)
     pages = select_section(sectionx, select=select)
     if pages:
