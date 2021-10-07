@@ -38,12 +38,11 @@ import queuemo.runtime.api
 import queuemo.utils
 
 
-def run(flow: queuemo.runtime.api.RecipeIO):
-    decide_title(flow)
-    decide_toc(flow)
+def run(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
+    pass
 
 
-def decide_title(flow: queuemo.runtime.api.RecipeIO):
+def run_decide_title(flow: queuemo.runtime.api.RecipeIO):
     titlepage = queuemo.utils.select_pages(
         flow.general,
         select=iamraw.sections.TitlePage,
@@ -56,7 +55,7 @@ def decide_title(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.decider_titlepage(flow.tmppath, flow.tmppath)
 
 
-def decide_toc(flow: queuemo.runtime.api.RecipeIO):
+def run_decide_toc(flow: queuemo.runtime.api.RecipeIO):
     sources = [flow.general, flow.tmppath]
     # TODO: REPLACE WITH PATH AFTER UPGRADING IAMRAW
     if not queuemo.utils.exists('groupme__toc_toc.yaml', sources):
