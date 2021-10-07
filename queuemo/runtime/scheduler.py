@@ -218,7 +218,7 @@ def schedule(steps: RecipeSteps, orderby: list = None) -> RecipeSteps:
         sorted `steps`
     """
     # sort steps alphabetically
-    steps = sorted(steps, key=lambda x: x.name)
+    steps = sorted(steps, key=lambda x: x.name.lower())
     if orderby is None:
         # no special order is given
         return steps
