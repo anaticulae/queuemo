@@ -48,6 +48,9 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         ] + findings(flow),
         outpath=flow.tmppath,
     )
+
+
+def run_plot(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.feedback_plot(
         inpath=[
             flow.general,

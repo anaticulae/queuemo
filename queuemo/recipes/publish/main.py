@@ -28,7 +28,13 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.document,
             skip_resultview=skip_resultview,
         )
+
+
+def run_debug(flow: queuemo.runtime.api.RecipeIO):
     link.write_debug(flow.document, todo=queuemo.runnable.RUNNER)
+
+
+def run_statistics(flow: queuemo.runtime.api.RecipeIO):
     link.publish_statistics(flow.document)
 
 
