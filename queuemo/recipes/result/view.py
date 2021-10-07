@@ -31,6 +31,15 @@ def before(flow: queuemo.runtime.api.RecipeIO):
         outpath=flow.tmppath,
     )
     flow.publish_linting()
+    # optimize findings
+    active = None
+    if flow.config and flow.config.webconfig:
+        # do not publish all findings, publish just select onces
+        active = flow.config.webconfig.active
+    link.write_optimized_findings(
+        document=flow.document,
+        active=active,
+    )
 
 
 @queuemo.required
