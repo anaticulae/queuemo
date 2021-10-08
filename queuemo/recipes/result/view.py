@@ -45,16 +45,15 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 @queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.feedback_images(
-        inpath=[
-            flow.general,
-        ],
+        inpath=flow.general,
         outpath=flow.tmppath,
     )
     queuemo.runnable.feedback_view(
         inpath=[
+            link.resultview(flow.document),
             flow.general,
             flow.tmppath,
-        ] + findings(flow),
+        ],
         outpath=flow.tmppath,
     )
 
@@ -62,27 +61,12 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 def run_plot(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.feedback_plot(
         inpath=[
+            link.resultview(flow.document),
             flow.general,
             flow.tmppath,  # TODO: WHICH IS CORRECT PATH
-        ] + findings(flow),
+        ],
         outpath=flow.tmppath,
     )
-
-
-def findings(flow) -> list:
-    result = [
-        flow.package('bibliography'),
-        flow.package('chapter'),
-        flow.package('doctextstyle'),
-        flow.package('footnote'),
-        flow.package('imgfig'),
-        flow.package('intro'),
-        flow.package('links'),
-        flow.package('magic'),
-        flow.package('smarty'),
-        flow.package('textflow'),
-    ]
-    return result
 
 
 def after(flow: queuemo.runtime.api.RecipeIO):
