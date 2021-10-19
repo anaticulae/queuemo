@@ -17,6 +17,7 @@ import queuemo.runnable
 import queuemo.runtime.api
 
 TIMEOUT_FASTVIEW_TABLERO = configo.HV_INT_PLUS(default=60)
+
 FIRST_PAGES = configo.HV_STR(default='0:10')
 
 
@@ -58,7 +59,7 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             all=True,
             images=False,
             figures=False,
-            pages=FIRST_PAGES.value,
+            pages=FIRST_PAGES,
         )
         runtime.fork(
             queuemo.runnable.rawmaker,

@@ -43,7 +43,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 def run_code_tab_form_figure(flow: queuemo.runtime.api.RecipeIO):
     timeout = utila.Timeout(
-        seconds=TIMEOUT_RESULT_TABLERO.value,
+        seconds=TIMEOUT_RESULT_TABLERO,
         gracefully=True,
     )
     valid_pages = valid_figures_tables(flow)
