@@ -2,6 +2,34 @@
 
 Every noteable change is logged here.
 
+## v1.17.0
+
+### Feature
+
+* make title and toc skip able (dfdec4df4635)
+* make processing more robust (ba8c96b5cc8f)
+* skip decider_imgfig if configured (3734039f6d1a)
+* add method to skip decider by web config (802af60f7d9a)
+* split extractor into different stages (4eaa7148293d)
+* collect all run methods which start by run (4c65a00000e5)
+* add webconfig loader to select published msgids (bda31aa86be7)
+* run rawmaker cleanup for oneline resource (5594bdfd5dcb)
+* always profile runtime (e8e52808978c)
+* fail current job on immediate shutdown (0a58d5206f94)
+* add ctrl-break signal handler to close scheduler graceful (142397ee3ec2)
+
+### Fix
+
+* adjust viewo input paths (adf4a70cf3ae)
+* optimize findings before running plot (0a4bc0c3dbab)
+* disable table extraction for fastview (629123388e56)
+* make order case-insensitive (3c257b1f3404)
+* split standard and cleanup step (a53a47da8378)
+
+### Documentation
+
+* fix data type (66d21f5d4407)
+
 ## v1.16.0
 
 ### Feature
