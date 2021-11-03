@@ -16,17 +16,12 @@ import queuemo.runtime.api
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
+    # TODO: VERIFY MAGIC STEP
     content = queuemo.utils.select_pages(
         flow.general,
         select=iamraw.sections.MainPart,
     )
     with utila.GeorgFork(process=False) as runtime:
-        runtime.fork(
-            queuemo.runnable.words,
-            inpath=[flow.general],
-            outpath=flow.general,
-            pages=content,
-        )
         runtime.fork(
             queuemo.runnable.caption,
             inpath=[flow.general],
@@ -39,12 +34,23 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             outpath=flow.general,
             pages=content,
         )
+    # required for detecting tables
+    queuemo.runnable.magic(
+        inpath=flow.general,
+        outpath=flow.general,
+        pages=content,
+    )
+    queuemo.runnable.words(
+        inpath=[flow.general],
+        outpath=flow.general,
+        pages=content,
+    )
     queuemo.runnable.textflow_quotes(
         inpath=[flow.general],
         outpath=flow.general,
         pages=content,
     )
-    # required for detecting tables
+    # run magic with words data again
     queuemo.runnable.magic(
         inpath=flow.general,
         outpath=flow.general,
