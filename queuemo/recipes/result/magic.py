@@ -36,7 +36,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         )
     # required for detecting tables
     queuemo.runnable.magic(
-        inpath=flow.general,
+        inpath=[flow.tmppath, flow.general],
         outpath=flow.general,
         pages=content,
     )
@@ -52,7 +52,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     # run magic with words data again
     queuemo.runnable.magic(
-        inpath=flow.general,
+        inpath=[flow.tmppath, flow.general],
         outpath=flow.general,
         pages=content,
     )
