@@ -32,6 +32,8 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 def run(flow: queuemo.runtime.api.RecipeIO):
     unpack_pdf(flow)
     queuemo.recipes.utils.determine_sections(flow)
+    publish_pagenumbers(flow)
+
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
@@ -172,3 +174,15 @@ def valid_figures_tables(flow: queuemo.runtime.api.RecipeIO) -> str:
                 valid.append(page)
     result = utila.simplify_pages(valid)
     return result
+
+
+def publish_pagenumbers(flow):
+    """Required to render pdf navigation with real page numbers."""
+    resultview = link.resultview(flow.document)
+    # TODO: REMOVE LATER?
+    utila.copy_content(
+        flow.general,
+        resultview,
+        pattern='groupme__pagenumbers_pagenumbers.yaml',
+        verbose=True,
+    )
