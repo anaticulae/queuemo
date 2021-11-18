@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.17.1
+
+### Feature
+
+* add more possible resource lookups (d8958c6c647e)
+* run caption before magic (d34e5308d8f0)
+
 ## v1.17.0
 
 ### Feature
