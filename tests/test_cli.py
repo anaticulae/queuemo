@@ -25,6 +25,7 @@ def test_run_main(monkeypatch, testdir, capsys):
     tests.run_queuemo('--version', monkeypatch, testdir, capsys)
 
 
+@utilatest.nightly
 def test_run_one_job(monkeypatch, testdir, capsys):
     command = [
         '--%s' % queuemo.cli.RUNTIME,
