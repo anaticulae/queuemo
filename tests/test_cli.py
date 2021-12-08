@@ -25,7 +25,7 @@ def test_run_main(monkeypatch, testdir, capsys):
     tests.run_queuemo('--version', monkeypatch, testdir, capsys)
 
 
-@pytest.mark.timeout(10, "common todo contains some data", method="thread")
+@pytest.mark.timeout(10, method="thread")  # common todo contains some data
 def test_run_one_job(monkeypatch, testdir, capsys):
     # TODO: PATCH ENV VARS
     command = [
