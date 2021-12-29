@@ -7,6 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import math
+
 import configo
 import iamraw.sections
 import link
@@ -163,17 +165,24 @@ def valid_figures_tables(flow: queuemo.runtime.api.RecipeIO) -> str:
             continue
         if isinstance(part, iamraw.sections.MainPart):
             for item in part:
-                for page in range(item.start, item.end + 1):
+                for page in pages(item):
                     valid.append(page)
             continue
         # Appendix or Unknown
         for item in part:
             if isinstance(item, NO_FIGURE_TABLES):
                 continue
-            for page in range(item.start, item.end + 1):
+            for page in pages(item):
                 valid.append(page)
     result = utila.simplify_pages(valid)
     return result
+
+
+def pages(item: iamraw.sections.PartOfDocMixin) -> tuple:
+    start = int(item.start)
+    # round to higher to convert 1.5 to 2.0 to handle multiple pages.
+    end = int(math.ceil(item.end)) + 1
+    return utila.ranged_tuple(start, end)
 
 
 def publish_pagenumbers(flow):
