@@ -11,7 +11,10 @@ import queuemo.runnable
 import queuemo.runtime.api
 
 
-def determine_sections(flow: queuemo.runtime.api.RecipeIO):
+def determine_sections(flow: queuemo.runtime.api.RecipeIO, pages=':'):
+    # PAGES is required to avoid running sections --paper on the whole
+    # document. This is not required for running fastview on first 20
+    # pages.
     queuemo.runnable.groupme(
         inpath=[flow.tmppath],
         outpath=flow.tmppath,
@@ -23,4 +26,5 @@ def determine_sections(flow: queuemo.runtime.api.RecipeIO):
         inpath=flow.tmppath,
         outpath=flow.tmppath,
         pdf=flow.sourcepath,
+        pages=pages,
     )

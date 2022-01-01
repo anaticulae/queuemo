@@ -30,7 +30,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     unpack_pdf(flow)
 
-    queuemo.recipes.utils.determine_sections(flow)
+    queuemo.recipes.utils.determine_sections(flow, pages='0:20')
 
     # TODO: DO WE REQUIRE TABLES FOR FIRST 10 PAGES?
     # queuemo.runnable.groupme(
