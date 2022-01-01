@@ -31,7 +31,11 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run_debug(flow: queuemo.runtime.api.RecipeIO):
-    link.write_debug(flow.document, todo=queuemo.runnable.RUNNER)
+    link.write_debug(
+        flow.document,
+        todo=queuemo.runnable.RUNNER,
+        requirements=True,
+    )
 
 
 def run_statistics(flow: queuemo.runtime.api.RecipeIO):
