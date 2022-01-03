@@ -10,14 +10,14 @@
 # Internal packages
 configo>=0.17.0<1.0.0
 link>=2.13.0<3.0.0
-utila>=2.62.4<3.0.0
+utila>=2.63.0<3.0.0
 
 # abel==0.6.1
 # is resource extractable
 layout>=0.2.4<1.0.0
 
 sections==1.13.0
-words==1.9.1
+words==1.10.0
 
 # Features packages
 # analysis==0.1.33
@@ -34,7 +34,7 @@ texas==0.6.0
 
 decider==2.20.0
 decider_ref==1.15.0
-decider_con==0.3.3
+decider_con==0.4.1
 decider_lay==0.10.1
 
 Flask==1.1.2
