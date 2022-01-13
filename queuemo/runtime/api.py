@@ -42,6 +42,7 @@ import textwrap
 
 import iamraw
 import link
+import serializeraw
 import utila
 
 
@@ -62,6 +63,28 @@ class RecipeIO:
     tmppath: str = None
     outpath: str = None
     config: RecipeConfig = None
+
+    @property
+    def docinfo(self) -> str:
+        # docinfo
+        loaded = serializeraw.load_docinfo(self.general)
+        if not loaded:
+            return None
+        result = ''
+        # bachelor64ger
+        # bachelor64german
+        # TODO: USE DOCINFO->STR CONVERTER
+        if loaded.pages:
+            result = f'{loaded.pages}'
+        if loaded.lang:
+            result = f'{result}{loaded.lang}'
+        return result
+
+    @property
+    def docinfo_ifgiven(self) -> dict:
+        if self.docinfo:
+            return dict(docinfo=self.docinfo)
+        return {}
 
     @property
     def sourcepath(self) -> str:
