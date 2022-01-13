@@ -30,12 +30,15 @@ def test_run_steps(capsys, testdir, monkeypatch):
         assert 'Finish' in progress
 
 
-def test_copy_job_to_workspace(monkeypatch):
+def test_copy_job_to_workspace(testdir, monkeypatch):
     with monkeypatch.context() as context:
         context.setattr(
             os,
             'environ',
-            {configo.directory.TODO: tests.resources.TODO},
+            {
+                configo.directory.TODO: tests.resources.TODO,
+                configo.directory.TMP: testdir.tmpdir,
+            },
         )
         workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB)
         assert os.path.exists(workspace), workspace

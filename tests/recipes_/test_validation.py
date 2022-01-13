@@ -58,7 +58,8 @@ def test_validation_double_column_flag(testdir, monkeypatch):
     This test will may change later, after double column layout is
     supported.
     """
-    documentid = 'paper06column'
+    # TODO: ATUOMATE DOCUMENTID
+    documentid = 'paper006column'  # look in power if not found
     with tests.fixtures.todo.runtime(
             testdir.tmpdir,
             document=documentid,
