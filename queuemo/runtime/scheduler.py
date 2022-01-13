@@ -64,6 +64,7 @@ ORDER = [
 """
 
 import contextlib
+import copy
 import dataclasses
 import os
 import re
@@ -133,6 +134,17 @@ class ComposedRecipe:
 
     def __len__(self):
         return len(list(self.schedule))
+
+    def copy(self):
+        result = copy.deepcopy(self)
+        return result
+
+    def shrink(self, names):
+        if 'before' not in names:
+            self.before = None
+        if 'after' not in names:
+            self.after = None
+        self.steps = [item for item in self.steps if item.name in names]
 
     def append(self, item):
         self.steps.append(item)  # pylint:disable=E1101
