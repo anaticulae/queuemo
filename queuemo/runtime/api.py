@@ -77,7 +77,7 @@ class RecipeIO:
         if loaded.pages:
             result = f'{loaded.pages}'
         if loaded.lang:
-            result = f'{result}{loaded.lang}'
+            result = f'{result}{loaded.lang.name.lower()}'
         return result
 
     @property

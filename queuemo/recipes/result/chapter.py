@@ -33,6 +33,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         ],
         outpath=flow.tmppath,
         pages=pages,
+        **flow.docinfo_ifgiven,
     )
 
 
