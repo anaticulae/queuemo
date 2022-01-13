@@ -19,8 +19,8 @@ import tests.resources
 @contextlib.contextmanager
 def runtime(
     workspace,
-    document,
-    recipes,
+    document: str,
+    recipes: list,
     monkeypatch,
     config=None,
 ) -> queuemo.runtime.runtime.RecipeRuntime:
