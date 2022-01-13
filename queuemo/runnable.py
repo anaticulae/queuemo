@@ -313,7 +313,6 @@ decider_abbreviation
 decider_bibliography
 decider_border
 decider_chapter
-decider_chapter
 decider_footnote
 decider_imgfig
 decider_smarty
