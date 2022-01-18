@@ -8,7 +8,7 @@
 # =============================================================================
 
 # Internal packages
-configo>=0.17.0<1.0.0
+configo>=0.18.0<1.0.0
 link>=2.13.0<3.0.0
 utila>=2.63.0<3.0.0
 
@@ -16,7 +16,7 @@ utila>=2.63.0<3.0.0
 # is resource extractable
 layout>=0.2.4<1.0.0
 
-sections==1.13.0
+sections==1.14.0
 words==1.10.0
 
 # Features packages
@@ -28,7 +28,7 @@ tablero==0.8.3
 figureo==0.16.0
 formulero==0.4.0
 codero==0.3.2
-groupme==0.18.1
+groupme==0.19.0
 detector==0.29.3
 texas==0.6.0
 
