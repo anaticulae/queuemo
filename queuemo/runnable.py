@@ -137,8 +137,9 @@ def formulero(inpath: str, outpath: str = None, timeout: int = None, **kwargs):
     return run('formulero', inpath, outpath, timeout=timeout, **kwargs)
 
 
-def spacestation(inpath: str, outpath: str = None, **kwargs):
-    run('spacestation', inpath, outpath, **kwargs)
+def spacestation(inpath: str, outpath: str = None, **kwargs):  # pylint:disable=W0613
+    utila.error('TODO: ENABLE SPACESTATION BEFORE RELEASE')
+    # run('spacestation', inpath, outpath, **kwargs)
 
 
 def groupme(inpath: str, outpath: str = None, **kwargs):
