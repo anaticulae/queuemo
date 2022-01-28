@@ -2,6 +2,28 @@
 
 Every noteable change is logged here.
 
+## v1.18.0
+
+### Feature
+
+* copy required pdfinfo for sections --docinfo step (1dda511682d3)
+* add option to copy and shrink schedule (bc6a0e87c5ef)
+* pass docinfo to skip German tests on English document (de3b43453f9c)
+* add docinfo property if given by file (8750fea3a127)
+* log debug in pip requirements style (1db1ffdae1e1)
+
+### Fix
+
+* skip execution spacestation to save time for now (eae8a7cc79c3)
+* remove duplication (1c78d940b32a)
+* add pages flag to reduce sections --paper runtime (96217271f28f)
+* do not fail on multiple pages (2a7910539501)
+
+### Documentation
+
+* adjust modules path (10d8342faefa)
+* Happy New Year! (7425a3cc92e1)
+
 ## v1.17.2
 
 ### Feature
