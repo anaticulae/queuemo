@@ -119,11 +119,12 @@ def step(
 
 
 def nextjob() -> int:
-    """Find next job and mark it as `in progress`
+    """Find next job and mark it as `in progress`.
 
-    Select the todo folder and search for a folder that does not include
-    an `inprogress` file. After finding an waiting job, starting them
-    and return the `jobid` as nextjob.
+    1. Select the todo folder and search for a folder that does not include
+       an `inprogress` file.
+    2. After finding an waiting job, start them and return the `jobid`
+       as nextjob. (TODO: START IS NOT DONE HERE)
 
     Returns:
         If there is a matching file, return the folder name as jobid
