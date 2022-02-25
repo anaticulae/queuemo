@@ -125,6 +125,12 @@ def nextjob() -> int:
     2. After finding an waiting job, start them and return the `jobid`
        as nextjob. (TODO: START IS NOT DONE HERE)
 
+    Scheduler(current): use first waiting job. The order is randomly
+        selected by file-name of tmp-job cause os.listdir selects folder in
+        arbitrary order and the document length and document folder name
+        does not correspondent with each other.
+    Scheduler(planned): TODO: make scheduler page length dependent?
+
     Returns:
         If there is a matching file, return the folder name as jobid
         If there is no matching file, return `None`
