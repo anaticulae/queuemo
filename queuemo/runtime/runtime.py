@@ -70,7 +70,6 @@ class RecipeRuntime:
         """
         if not self.todo:
             return None
-        # TODO: INTRODUCE MORE USERFRIENDLY SCHEDULER, RUN SHORT DOCS FIRST?
         current = self.todo.pop(0)
         try:
             tmppath = os.path.join(self.workspace, current.name)

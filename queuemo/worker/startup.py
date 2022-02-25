@@ -129,6 +129,7 @@ def nextjob() -> int:
         If there is a matching file, return the folder name as jobid
         If there is no matching file, return `None`
     """
+    # TODO: INTRODUCE MORE USERFRIENDLY SCHEDULER, RUN SHORT DOCS FIRST?
     todopath = configo.todo(True)
     for jobnumber in os.listdir(todopath):
         itempath = os.path.join(todopath, jobnumber)
