@@ -98,24 +98,23 @@ def step(
         else:
             utila.log('.', end='')
         time.sleep(waiting / 1000)  # miliseconds to seconds
-    else:
-        if not config.verbose:
-            utila.log()  # write newline
-        utila.log('Run job')
-        queuemo.runtime.status.set_current(job)
-        if config.verbose:
-            utila.log('  Copy job')
-
-        workspace = copy(job)
-
-        if config.verbose:
-            utila.log('  Start job')
-        with utila.profile(workspace):
-            work(workspace, config=config)
-
-        if config.verbose:
-            utila.log('Finished')
-        queuemo.runtime.status.set_current(None)
+        return
+    # execute jobs steps
+    if not config.verbose:
+        utila.log()  # write newline
+    utila.log('Run job')
+    queuemo.runtime.status.set_current(job)
+    if config.verbose:
+        utila.log('  Copy job')
+    # copy
+    workspace = copy(job)
+    if config.verbose:
+        utila.log('  Start job')
+    with utila.profile(workspace):
+        work(workspace, config=config)
+    if config.verbose:
+        utila.log('Finished')
+    queuemo.runtime.status.set_current(None)
 
 
 def nextjob() -> int:
@@ -153,12 +152,10 @@ def copy(job):
     """Copy job to temporary workspace folder."""
     path = os.path.join(configo.todo(), job)
     assert os.path.exists(path), str(path)
-
+    # determine tmporary folder and copy todo
     workspace = utila.tmpfile(queuemo.ROOT)
-
     # copy todo to temporary folder
     shutil.copytree(path, workspace)
-
     return workspace
 
 
