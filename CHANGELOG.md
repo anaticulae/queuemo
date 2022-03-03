@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.18.1
+
+### Documentation
+
+* document scheduler behavior (401b0888f6d0)
+* adjust startup docs (ca66f4b2d072)
+
 ## v1.18.0
 
 ### Feature
