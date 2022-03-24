@@ -30,6 +30,7 @@ codero>=0.3.2<1.0.0
 groupme>=0.26.0<1.0.0
 detector>=0.32.0<1.0.0
 texas>=0.7.1<1.0.0
+caption>=0.1.0<1.0.0
 
 decider>=2.22.3<3.0.0
 decider_ref>=1.18.1<2.0.0
