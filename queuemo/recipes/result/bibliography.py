@@ -42,6 +42,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             iamraw.sections.MainPart,
             iamraw.sections.Appendix,
         ),
+        noselect=(iamraw.sections.Bibliography,),
     )
     with utila.GeorgFork(process=False) as runtime:
         runtime.fork(
