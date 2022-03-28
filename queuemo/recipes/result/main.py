@@ -13,6 +13,7 @@ ORDER = [
     'toc',
     'abbreviation',
     'intro',
+    'index',
     'imgfig',
     'magic',
     'doctextstyle',

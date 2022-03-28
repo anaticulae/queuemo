@@ -178,6 +178,10 @@ def detector_titlepage(inpath: str, outpath: str = None, **kwargs):
     run('detector --titlepage', inpath, outpath, **kwargs)
 
 
+def detector_index(inpath: str, outpath: str = None, **kwargs):
+    run('detector --index', inpath, outpath, **kwargs)
+
+
 def decider_titlepage(inpath: str, outpath: str = None):
     run('decider --titlepage', inpath, outpath)
 
