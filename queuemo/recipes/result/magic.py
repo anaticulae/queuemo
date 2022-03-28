@@ -60,9 +60,11 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 def after(flow: queuemo.runtime.api.RecipeIO):
     resultview = link.resultview(flow.document)
-    utila.copy_content(
-        flow.general,
+    caption_path = iamraw.path.caption_result(flow.general)
+    if not utila.exists(caption_path):
+        return
+    utila.log(f'cp: {caption_path} -> {resultview}')
+    utila.file_copy(
+        caption_path,
         resultview,
-        pattern='caption__general_general.yaml',
-        verbose=True,
     )
