@@ -15,6 +15,7 @@ ORDER = [
     'intro',
     'index',
     'imgfig',
+    'colors',
     'magic',
     'doctextstyle',
     'textflow',

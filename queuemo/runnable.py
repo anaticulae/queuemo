@@ -182,6 +182,10 @@ def detector_index(inpath: str, outpath: str = None, **kwargs):
     run('detector --index', inpath, outpath, **kwargs)
 
 
+def colors_statistics(inpath: str, outpath: str = None, **kwargs):
+    run('colors --statistics', inpath, outpath, **kwargs)
+
+
 def decider_titlepage(inpath: str, outpath: str = None):
     run('decider --titlepage', inpath, outpath)
 
@@ -204,6 +208,10 @@ def decider_border_detecion(inpath: str, outpath: str = None):
 
 def decider_border_distance(inpath: str, outpath: str = None):
     run('decider_border --distance', inpath, outpath)
+
+
+def decider_color(inpath: str, outpath: str = None):
+    run('decider --color', inpath, outpath)
 
 
 def textflow_alignment(inpath: str, outpath: str = None, **kwargs):
