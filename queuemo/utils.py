@@ -17,21 +17,27 @@ import serializeraw
 import utila
 
 
-def select_pages(path: str, select) -> str:
+def select_pages(path: str, select, noselect=None) -> str:
     """\
     Support merging multiple selected pages.
     """
     assert_classes(select)
     path = sections.path.result(path)
     sectionx = serializeraw.load_sections(path)
-    pages = select_section(sectionx, select=select)
+    if not noselect:
+        noselect = {}
+    pages = select_section(
+        sectionx,
+        select=select,
+        noselect=noselect,
+    )
     if pages:
         pages = pages2str(pages)
         return pages
     return ':'
 
 
-def select_section(sectionx, select) -> tuple:
+def select_section(sectionx, select, noselect) -> tuple:
     assert_classes(select)
     # flatten sections
     flat = []
@@ -42,6 +48,8 @@ def select_section(sectionx, select) -> tuple:
     # select region
     collected = []
     for item in flat:
+        if inside(item.__class__, noselect):
+            continue
         if inside(item.__class__, select):
             collected.append((item.start, item.end))
     return collected
