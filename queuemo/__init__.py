@@ -10,6 +10,7 @@
 import os
 
 import queuemo.__patch__
+from queuemo.runtime.api import RecipeIO
 from queuemo.runtime.scheduler import isrequired
 from queuemo.runtime.scheduler import required
 
