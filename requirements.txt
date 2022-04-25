@@ -31,6 +31,7 @@ groupme>=0.26.0<1.0.0
 detector>=0.34.1<1.0.0
 texas>=0.9.1<1.0.0
 caption>=0.2.1<1.0.0
+cleanup>=0.1.1<1.0.0
 
 decider>=2.24.2<3.0.0
 decider_ref>=1.18.2<2.0.0
