@@ -89,11 +89,11 @@ def run_code_tab_form_figure(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run_cleanup(flow: queuemo.runtime.api.RecipeIO):
-    queuemo.runnable.rawmaker_cleanup(
+    queuemo.runnable.cleanup(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
     )
-    queuemo.runnable.rawmaker_cleanup(
+    queuemo.runnable.cleanup(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
         prefix='oneline',

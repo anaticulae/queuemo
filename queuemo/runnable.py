@@ -150,8 +150,8 @@ def codero(inpath: str, outpath: str = None, **kwargs):
     run('codero', inpath, outpath, **kwargs)
 
 
-def rawmaker_cleanup(inpath: str, outpath: str = None, **kwargs):
-    return run('rawmaker_cleanup', inpath, outpath, **kwargs)
+def cleanup(inpath: str, outpath: str = None, **kwargs):
+    return run('cleanup', inpath, outpath, **kwargs)
 
 
 def figureo(inpath: str, outpath: str = None, **kwargs):
@@ -341,7 +341,7 @@ groupme
 magic
 queuemo
 rawmaker
-rawmaker_cleanup
+cleanup
 sections
 smarty
 spacestation
