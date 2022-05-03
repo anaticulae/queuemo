@@ -29,7 +29,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         utila.log('could not detect TableOfContent page-numbers')
         create_backup_toc(flow.general)
         return
-    queuemo.runnable.groupme(
+    queuemo.runnable.reftable(
         inpath=[flow.general],
         outpath=flow.general,
         toc=True,
@@ -38,7 +38,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 
 def create_backup_toc(outpath: str):
-    outpath = os.path.join(outpath, 'groupme__toc_toc.yaml')
+    outpath = os.path.join(outpath, 'reftable__toc_toc.yaml')
     utila.log(f'write empty toc: {outpath}')
     dumped = serializeraw.dump_toc(iamraw.Toc())
     utila.file_create(outpath, dumped)

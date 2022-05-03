@@ -27,7 +27,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     if pages == ':':
         utila.info('could not detect AbbreviationTable page-numbers')
         return
-    queuemo.runnable.groupme(
+    queuemo.runnable.reftable(
         inpath=[
             flow.tmppath,
             flow.general,

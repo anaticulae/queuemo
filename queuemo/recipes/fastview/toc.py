@@ -23,7 +23,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         select=iamraw.sections.TableOfContent,
     )
-    queuemo.runnable.groupme(
+    queuemo.runnable.reftable(
         flow.general,
         flow.tmppath,
         toc=True,

@@ -146,6 +146,10 @@ def groupme(inpath: str, outpath: str = None, **kwargs):
     run('groupme -j8', inpath, outpath, **kwargs)
 
 
+def reftable(inpath: str, outpath: str = None, **kwargs):
+    run('reftable -j4', inpath, outpath, **kwargs)
+
+
 def codero(inpath: str, outpath: str = None, **kwargs):
     run('codero', inpath, outpath, **kwargs)
 
@@ -320,6 +324,7 @@ def feedback_plot(inpath: str, outpath: str = None):
 RUNNER = utila.splitlines("""
 caption
 chapter
+cleanup
 codero
 decider
 decider_abbreviation
@@ -341,7 +346,7 @@ groupme
 magic
 queuemo
 rawmaker
-cleanup
+reftable
 sections
 smarty
 spacestation
