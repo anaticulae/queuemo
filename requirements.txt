@@ -10,31 +10,31 @@
 # Internal packages
 configo>=0.18.0<1.0.0
 link>=2.13.0<3.0.0
-utila>=2.69.0<3.0.0
+utila>=2.73.2<3.0.0
 
 # abel>=0.6.1<1.0.0
 # is resource extractable
 layout>=0.3.0<1.0.0
 
-sections>=1.18.0<2.0.0
-words>=1.15.1<2.0.0
+sections>=1.19.2<2.0.0
+words>=1.17.0<2.0.0
 
 # Features packages
 feedback>=1.11.5<2.0.0
 hey>=5.19.2<6.0.0
-rawmaker>=2.33.0<3.0.0
-tablero>=0.9.0<1.0.0
+rawmaker>=2.37.0<3.0.0
+tablero>=0.9.3<1.0.0
 figureo>=0.17.2<1.0.0
 formulero>=0.5.0<1.0.0
-codero>=0.3.2<1.0.0
-groupme>=0.26.0<1.0.0
-detector>=0.34.1<1.0.0
+codero>=0.5.0<1.0.0
+groupme>=0.30.0<1.0.0
+detector>=0.35.1<1.0.0
 texas>=0.9.1<1.0.0
-caption>=0.2.1<1.0.0
+caption>=0.4.0<1.0.0
 cleanup>=0.1.1<1.0.0
 
-decider>=2.24.2<3.0.0
-decider_ref>=1.18.2<2.0.0
+decider>=2.24.3<3.0.0
+decider_ref>=1.20.1<2.0.0
 decider_con>=0.4.2<1.0.0
 decider_lay>=0.10.2<1.0.0
 
