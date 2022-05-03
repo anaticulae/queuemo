@@ -166,6 +166,10 @@ def sections(inpath: str, outpath: str = None, **kwargs):
     run('sections -j8', inpath, outpath, **kwargs)
 
 
+def headlines(inpath: str, outpath: str = None, **kwargs):
+    run('headlines -j4', inpath, outpath, **kwargs)
+
+
 def words(inpath: str, outpath: str = None, **kwargs):
     run('words -j8', inpath, outpath, **kwargs)
 
@@ -343,6 +347,7 @@ doctextstyle
 feedback
 figureo
 groupme
+headlines
 magic
 queuemo
 rawmaker

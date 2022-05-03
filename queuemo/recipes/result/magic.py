@@ -40,6 +40,11 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         outpath=flow.general,
         pages=content,
     )
+    queuemo.runnable.headlines(
+        inpath=[flow.general],
+        outpath=flow.general,
+        pages=content,
+    )
     queuemo.runnable.words(
         inpath=[flow.general],
         outpath=flow.general,
