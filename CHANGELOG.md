@@ -2,6 +2,27 @@
 
 Every noteable change is logged here.
 
+## v1.19.0
+
+### Feature
+
+* add new headline step (c0b8152ea331)
+* use reftable to replace groupme (7965ed410ba3)
+* use separated version (593a08f616c5)
+* extend public API (e70d23a32f14)
+* add option to skip section (0f7deacddce9)
+* add color extraction and decider step (7d1c30582ff9)
+* add detector index extractor step (cec67cb3c2d4)
+
+### Fix
+
+* do not run docref on bib (a8fb708307c0)
+* adjust caption path (02dab01f65b3)
+
+### Documentation
+
+* adjust title (7eee76e0d25d)
+
 ## v1.18.1
 
 ### Documentation
