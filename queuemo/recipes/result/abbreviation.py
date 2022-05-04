@@ -33,7 +33,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             flow.general,
         ],
         outpath=flow.tmppath,
-        abbreviation=True,
+        abbrev=True,
         pages=pages,
     )
     queuemo.runnable.decider_abbreviation(
