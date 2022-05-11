@@ -22,7 +22,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         select=iamraw.sections.MainPart,
     )
     queuemo.runnable.chapter(
-        inpath=[flow.general],
+        inpath=flow.general,
         outpath=flow.tmppath,
         pages=pages,
     )

@@ -24,40 +24,46 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     with utila.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.caption,
-            inpath=[flow.general],
+            inpath=flow.general,
             outpath=flow.general,
             pages=content,
         )
         runtime.fork(
             queuemo.runnable.detector_formula,
-            inpath=[flow.general],
+            inpath=flow.general,
             outpath=flow.general,
             pages=content,
         )
     # required for detecting tables
     queuemo.runnable.magic(
-        inpath=[flow.tmppath, flow.general],
+        inpath=[
+            flow.tmppath,
+            flow.general,
+        ],
         outpath=flow.general,
         pages=content,
     )
     queuemo.runnable.headlines(
-        inpath=[flow.general],
+        inpath=flow.general,
         outpath=flow.general,
         pages=content,
     )
     queuemo.runnable.words(
-        inpath=[flow.general],
+        inpath=flow.general,
         outpath=flow.general,
         pages=content,
     )
     queuemo.runnable.textflow_quotes(
-        inpath=[flow.general],
+        inpath=flow.general,
         outpath=flow.general,
         pages=content,
     )
     # run magic with words data again
     queuemo.runnable.magic(
-        inpath=[flow.tmppath, flow.general],
+        inpath=[
+            flow.tmppath,
+            flow.general,
+        ],
         outpath=flow.general,
         pages=content,
     )

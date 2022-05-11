@@ -22,7 +22,7 @@ def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
     # RUN MAGIC BEFORE
     # TODO: ADD TEST THAT MAGIC EXISTS?
     queuemo.runnable.docref(
-        inpath=[flow.general],
+        inpath=flow.general,
         outpath=flow.tmppath,
     )
 
@@ -37,14 +37,14 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     with utila.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.textflow_lineending,
-            inpath=[flow.general],
+            inpath=flow.general,
             outpath=flow.tmppath,
             pages=pages,
         )
         # TODO: REQUIRED FOR VIEW MOVE TO OTHER STEP?
         runtime.fork(
             queuemo.runnable.textflow_alignment,
-            inpath=[flow.general],
+            inpath=flow.general,
             outpath=flow.tmppath,
             pages=pages,
         )
@@ -59,7 +59,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
     # # TODO: REQUIRED FOR VIEW MOVE TO OTHER STEP?
     # queuemo.runnable.textflow_alignment(
-    #     inpath=[flow.general],
+    #     inpath=flow.general,
     #     outpath=flow.tmppath,
     #     pages=pages,
     # )

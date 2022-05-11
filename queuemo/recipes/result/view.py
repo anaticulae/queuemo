@@ -19,15 +19,11 @@ import queuemo.runtime.api
 @queuemo.required
 def before(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.decider_border_detecion(
-        inpath=[
-            flow.general,
-        ],
+        inpath=flow.general,
         outpath=flow.tmppath,
     )
     queuemo.runnable.decider_border_distance(
-        inpath=[
-            flow.general,
-        ],
+        inpath=flow.general,
         outpath=flow.tmppath,
     )
     flow.publish_linting()

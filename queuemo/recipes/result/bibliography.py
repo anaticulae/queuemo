@@ -47,15 +47,13 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     with utila.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.detector_bibliography,
-            inpath=[flow.general],
+            inpath=flow.general,
             outpath=flow.tmppath,
             pages=bibliography,
         )
         runtime.fork(
             queuemo.runnable.docref_bibliography,
-            inpath=[
-                flow.general,
-            ],
+            inpath=flow.general,
             outpath=flow.tmppath,
             pages=bibliography_references,
         )

@@ -30,7 +30,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         create_backup_toc(flow.general)
         return
     queuemo.runnable.reftable(
-        inpath=[flow.general],
+        inpath=flow.general,
         outpath=flow.general,
         toc=True,
         pages=pages,

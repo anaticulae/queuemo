@@ -23,7 +23,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     if flow.skip(queuemo.runnable.decider_footnote):
         return
     queuemo.runnable.decider_footnote(
-        inpath=[flow.general],
+        inpath=flow.general,
         outpath=flow.tmppath,
     )
 

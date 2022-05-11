@@ -19,7 +19,7 @@ def determine_sections(flow: queuemo.runtime.api.RecipeIO, pages=':'):
     # document. This is not required for running fastview on first 20
     # pages.
     queuemo.runnable.groupme(
-        inpath=[flow.tmppath],
+        inpath=flow.tmppath,
         outpath=flow.tmppath,
         pagenumbers=True,
         footer=True,

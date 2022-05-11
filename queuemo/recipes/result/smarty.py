@@ -15,11 +15,14 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     if flow.skip(queuemo.runnable.decider_smarty):
         return
     queuemo.runnable.smarty(
-        inpath=[flow.general],
+        inpath=flow.general,
         outpath=flow.tmppath,
     )
     queuemo.runnable.decider_smarty(
-        inpath=[flow.tmppath, flow.general],
+        inpath=[
+            flow.tmppath,
+            flow.general,
+        ],
         outpath=flow.tmppath,
     )
 
