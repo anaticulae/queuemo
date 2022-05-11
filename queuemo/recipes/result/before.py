@@ -101,13 +101,10 @@ def run_cleanup(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run_final(flow: queuemo.runtime.api.RecipeIO):
+    """Run pagenumber and footer again to use cleaned figures etc."""
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
-        toc=False,
-        footer=False,
-        pagenumbers=False,
-        abbreviation=False,
         content=False,
     )
 
