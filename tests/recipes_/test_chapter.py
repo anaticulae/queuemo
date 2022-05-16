@@ -22,13 +22,10 @@ def test_chapter(testdir, monkeypatch, capsys):
     # magic is required to generate words which is required by chapter
     plan.shrink('before magic chapter'.split())
     with tests.fixtures.todo.runtime(
-            testdir.tmpdir,
-            tests.resources.EXAMPLE_JOB,
-        [
-            validation,
-            plan,
-        ],
-            monkeypatch,
+            workspace=testdir.tmpdir,
+            document=tests.resources.EXAMPLE_JOB,
+            recipes=(validation, plan),
+            monkeypatch=monkeypatch,
     ) as rt:  # pylint:disable=C0103
         assert rt.next_step()
         assert rt.next_step()

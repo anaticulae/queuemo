@@ -10,6 +10,8 @@
 import contextlib
 import os
 
+import utila
+
 import queuemo
 import queuemo.runtime.runtime
 import tests
@@ -25,10 +27,8 @@ def runtime(
     config=None,
 ) -> queuemo.runtime.runtime.RecipeRuntime:
     workspace = str(workspace)
-
-    if not isinstance(recipes, list):
+    if not utila.iterable(recipes):
         recipes = [recipes]
-
     with tests.patch_todo(workspace, monkeypatch, copy=True):
         # Hint: do not use link, cause multiprocessed tests modify global
         # variables.
