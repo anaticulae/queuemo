@@ -54,6 +54,17 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     )
 
 
+@queuemo.required
+def run_png(flow: queuemo.runtime.api.RecipeIO):
+    pdfview = utila.join(flow.tmppath, 'pdfview')
+    os.makedirs(pdfview)
+    # generate png for every pdf page
+    queuemo.runnable.ghost(
+        inpath=flow.sourcepath,
+        outpath=pdfview,
+    )
+
+
 def run_plot(flow: queuemo.runtime.api.RecipeIO):
     queuemo.runnable.feedback_plot(
         inpath=[
@@ -78,5 +89,13 @@ def after(flow: queuemo.runtime.api.RecipeIO):
         flow.tmppath,
         os.path.join(resultview, 'view'),
         pattern='feedback__plot_*.png',
+        verbose=True,
+    )
+    # publish pngs
+    pdfview = utila.join(flow.tmppath, 'pdfview')
+    utila.copy_content(
+        pdfview,
+        os.path.join(resultview, 'view'),
+        pattern='*.png',
         verbose=True,
     )
