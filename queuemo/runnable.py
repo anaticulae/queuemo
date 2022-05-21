@@ -324,6 +324,10 @@ def feedback_plot(inpath: str, outpath: str = None):
     run('feedback --plot', inpath, outpath)
 
 
+def ghost(inpath: str, outpath: str = None):
+    run('ghost', inpath, outpath)
+
+
 # TODO: USE RUNTIME.py AS SOURCE/METHODS FOR AVAILABLE RUNNER
 RUNNER = utila.splitlines("""
 caption
@@ -346,6 +350,7 @@ docref
 doctextstyle
 feedback
 figureo
+ghost
 groupme
 headlines
 magic
