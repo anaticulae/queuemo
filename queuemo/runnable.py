@@ -324,6 +324,10 @@ def feedback_plot(inpath: str, outpath: str = None):
     run('feedback --plot', inpath, outpath)
 
 
+def feedback_findings(inpath: str, pdf: str, outpath: str = None):
+    run(f'feedback --findings --pdf {pdf}', inpath, outpath)
+
+
 def ghost(inpath: str, outpath: str = None):
     run('ghost', inpath, outpath)
 
