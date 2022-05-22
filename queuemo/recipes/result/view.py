@@ -76,6 +76,16 @@ def run_plot(flow: queuemo.runtime.api.RecipeIO):
     )
 
 
+def run_findings_render(flow: queuemo.runtime.api.RecipeIO):
+    optimized = link.optimized(flow.document)
+    outpath = utila.join(flow.tmppath, 'pdfview')
+    queuemo.runnable.feedback_findings(
+        inpath=optimized,
+        pdf=flow.sourcepath,
+        outpath=outpath,
+    )
+
+
 def after(flow: queuemo.runtime.api.RecipeIO):
     # TODO: Support utila to create result without package feedback
     # For example generate: 0.html, 1.html etc. nor package_0.html,
