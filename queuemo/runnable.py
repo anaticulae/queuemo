@@ -292,8 +292,8 @@ def decider_textstyle_text(inpath: str, outpath: str = None, **kwargs):
     run('decider_textstyle --text', inpath, outpath, **kwargs)
 
 
-def detector_bibliography(inpath: str, outpath: str = None, **kwargs):
-    run('detector --bibliography', inpath, outpath, **kwargs)
+def bibliography(inpath: str, outpath: str = None, **kwargs):
+    run('bibliography', inpath, outpath, **kwargs)
 
 
 def decider_links(inpath: str, outpath: str = None):
