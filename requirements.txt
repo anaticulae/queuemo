@@ -34,6 +34,7 @@ caption>=0.4.1<1.0.0
 cleanup>=0.1.2<1.0.0
 reftable>=0.2.1<1.0.0
 headlines>=0.9.1<1.0.0
+bibliography>=0.2.1<1.0.0
 
 ghost>=0.6.1<1.0.0
 
