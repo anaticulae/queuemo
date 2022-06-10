@@ -2,6 +2,21 @@
 
 Every noteable change is logged here.
 
+## v1.20.0
+
+### Feature
+
+* use new bibliography module (8876ce4f838e)
+* add step top render findings (9a41b60c9224)
+* add feedback findings renderer (085a9eaa3a90)
+* generate png for every pdf page (33e1a0eee45c)
+* add ghost runner (3e2316d34211)
+* run footer and pagenumbers again (920517d0c930)
+
+### Fix
+
+* fix cmd line invocation (526fe95f7ba4)
+
 ## v1.19.0
 
 ### Feature
