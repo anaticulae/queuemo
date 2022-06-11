@@ -178,6 +178,10 @@ def words_links(inpath: str, outpath: str = None, **kwargs):
     run('words --links', inpath, outpath, **kwargs)
 
 
+def lists(inpath: str, outpath: str = None, **kwargs):
+    run('lists', inpath, outpath, **kwargs)
+
+
 def detector_formula(inpath: str, outpath: str, **kwargs):
     run('detector --formula', inpath, outpath, **kwargs)
 
