@@ -58,8 +58,7 @@ def test_compose():
 
 
 def test_schedule_alpha():
-    """Test to schedule without scheduling order, use default alphabetic
-    order"""
+    """Test to schedule without order, use default alphabetic order."""
     items = [
         queuemo.runtime.scheduler.RecipeStep(name=name) for name in [
             'hello',
