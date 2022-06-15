@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.20.1
+
+### Feature
+
+* use new lists runner instead of words (30f9e14c3fde)
+
 ## v1.20.0
 
 ### Feature
