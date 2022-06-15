@@ -20,7 +20,7 @@ for item in [EXAMPLE, IMOM, ERRORNEOUS]:
     assert os.path.exists(item), item
 
 
-def test_recipe_scheduler_collect():
+def test_collect():
     collected = queuemo.runtime.scheduler.collect(IMOM)
     expected = {
         'after', 'bc_step', 'before', 'da_step', 'failure', 'main', 'runme'
@@ -29,7 +29,7 @@ def test_recipe_scheduler_collect():
     assert current == expected
 
 
-def test_recipe_scheduler_collect_norunmethod(capsys):
+def test_collect_norunmethod(capsys):
     collected = queuemo.runtime.scheduler.collect(ERRORNEOUS)
     assert collected == {}
     error = capsys.readouterr().err
@@ -44,7 +44,7 @@ def test_load_and_order():
     assert names == expected
 
 
-def test_recipe_scheduler_compose():
+def test_compose():
     collected = queuemo.runtime.scheduler.collect(IMOM)
     parent = 'example'
 
@@ -57,7 +57,7 @@ def test_recipe_scheduler_compose():
     assert composed.steps
 
 
-def test_recipe_scheduler_schedule_alpha():
+def test_schedule_alpha():
     """Test to schedule without scheduling order, use default alphabetic
     order"""
     items = [
@@ -80,7 +80,7 @@ def test_recipe_scheduler_schedule_alpha():
     assert result == expected
 
 
-def test_recipe_scheduler_schedule_mixed():
+def test_schedule_mixed():
     order = ['mister', 'hello']
     steps = [
         queuemo.runtime.scheduler.RecipeStep(name=name) for name in [
