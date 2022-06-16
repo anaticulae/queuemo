@@ -44,6 +44,7 @@ if __name__ == "__main__":
             'console_scripts': [
                 'queuemo = queuemo.cli.main:main',
                 'queuemo_single = queuemo.cli.single:main',
+                'queuemo_state = queuemo.cli.state:main',
             ],
         },
         packages=[
