@@ -159,9 +159,9 @@ def run(  # pylint:disable=R1260
         RuntimeControl: if some step signals to hold
     """
     tmp = os.path.join(flow.tmppath, '.tmp')
-    print_banner(composition.name, symbol='@')
+    utila.print_banner(composition.name, symbol='@')
     for current in composition.schedule:
-        print_banner(current.name, symbol='*')
+        utila.print_banner(current.name, symbol='*')
         name = current.name
         if current.prefix:
             # add prefix to result of scheduling step
@@ -188,7 +188,7 @@ def run(  # pylint:disable=R1260
             for action in actions:
                 if len(actions) > 1:
                     # print status for runx
-                    print_banner(action.__name__, symbol='o')
+                    utila.print_banner(action.__name__, symbol='o')
                 try:
                     utila.debug(current_flow)
                     action(current_flow)
@@ -206,9 +206,3 @@ def run(  # pylint:disable=R1260
             queuemo.utils.wait()
         if tick:
             tick()
-
-
-def print_banner(text, symbol='*'):
-    utila.log('\n' + symbol * 80)
-    utila.log(f'{text}'.center(80))
-    utila.log(symbol * 80 + '\n')
