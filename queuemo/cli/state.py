@@ -7,6 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import argparse
+import sys
+
 import configo
 import link
 import utila
@@ -14,6 +17,10 @@ import utila
 
 @utila.saveme
 def main() -> int:
+    action = eval_cli()
+    if action.kill:
+        kill(action.kill)
+        return utila.SUCCESS
     utila.log('verify state ...')
     utila.log(f'    todo: {configo.todo()}')
     print_running()
@@ -49,3 +56,26 @@ def print_document(document):
     date = document.get('date')
     name = document.get('name')
     utila.log(f'   - {name} {date} {pages} {title}')
+
+
+def kill(documentid: str):
+    if not link.document(documentid=documentid):
+        utila.error(f'invalid documentid: {documentid}')
+        sys.exit(utila.INVALID_COMMAND)
+        return
+    if link.deleted(documentid):
+        utila.error(f'already deleted: {documentid}')
+        sys.exit(utila.INVALID_COMMAND)
+        return
+    if link.delete(documentid):
+        utila.log(f'killed: {documentid}')
+        return
+    utila.error(f'could not kill: {documentid}')
+    sys.exit(utila.INVALID_COMMAND)
+
+
+def eval_cli():
+    parser = argparse.ArgumentParser(prog='queuemo_state',)
+    parser.add_argument('--kill', nargs='?', help='stop single job')
+    result = parser.parse_args()
+    return result
