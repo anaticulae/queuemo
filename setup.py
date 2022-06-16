@@ -43,7 +43,7 @@ if __name__ == "__main__":
         entry_points={
             'console_scripts': [
                 'queuemo = queuemo.cli.main:main',
-                'queuemo_single = queuemo.single:main',
+                'queuemo_single = queuemo.cli.single:main',
             ],
         },
         packages=[

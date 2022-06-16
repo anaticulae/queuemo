@@ -19,7 +19,7 @@ import utila
 
 import queuemo
 import queuemo.cli.main
-import queuemo.single
+import queuemo.cli.single
 import tests.__patch__
 import tests.resources
 
@@ -90,6 +90,6 @@ def run_single(
         testdir,
         capsys,
         process='queuemo_single',
-        runnable=queuemo.single.main,
+        runnable=queuemo.cli.single.main,
         expected=expected,
     )

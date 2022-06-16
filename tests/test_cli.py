@@ -16,7 +16,6 @@ import utilatest
 
 import queuemo
 import queuemo.cli.main
-import queuemo.single
 import tests
 import tests.resources
 
