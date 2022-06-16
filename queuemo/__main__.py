@@ -8,7 +8,7 @@
 # =============================================================================
 """Evaluate cmd-args and execute commands"""
 
-import queuemo.cli
+import queuemo.cli.main
 
 if __name__ == "__main__":
-    queuemo.cli.main()
+    queuemo.cli.main.main()

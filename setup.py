@@ -42,12 +42,13 @@ if __name__ == "__main__":
         ],
         entry_points={
             'console_scripts': [
-                'queuemo = queuemo.cli:main',
+                'queuemo = queuemo.cli.main:main',
                 'queuemo_single = queuemo.single:main',
             ],
         },
         packages=[
             'queuemo',
+            'queuemo.cli',
             'queuemo.recipes',
             'queuemo.recipes.fastview',
             'queuemo.recipes.publish',

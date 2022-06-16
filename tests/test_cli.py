@@ -15,7 +15,7 @@ import utila
 import utilatest
 
 import queuemo
-import queuemo.cli
+import queuemo.cli.main
 import queuemo.single
 import tests
 import tests.resources
@@ -29,9 +29,9 @@ def test_run_main(monkeypatch, testdir, capsys):
 def test_run_one_job(monkeypatch, testdir, capsys):
     # TODO: PATCH ENV VARS
     command = [
-        '--%s' % queuemo.cli.RUNTIME,
+        '--%s' % queuemo.cli.main.RUNTIME,
         '1',  # seconds
-        '--%s' % queuemo.cli.WAITING,
+        '--%s' % queuemo.cli.main.WAITING,
         '10',  # mili
         '-VV',
     ]
@@ -67,9 +67,9 @@ def test_run_queuemo(testdir):
 
 def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
     command = [
-        '--%s' % queuemo.cli.RUNTIME,
+        '--%s' % queuemo.cli.main.RUNTIME,
         'str',  # invalid input
-        '--%s' % queuemo.cli.WAITING,
+        '--%s' % queuemo.cli.main.WAITING,
         'woho',  # invalid input
     ]
     tests.run_queuemo(

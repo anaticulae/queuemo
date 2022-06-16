@@ -18,7 +18,7 @@ import pytest
 import utila
 
 import queuemo
-import queuemo.cli
+import queuemo.cli.main
 import queuemo.single
 import tests.__patch__
 import tests.resources
@@ -64,7 +64,7 @@ def run_queuemo(
     testdir,
     capsys,
     process=queuemo.PROCESS,
-    runnable=queuemo.cli.main,
+    runnable=queuemo.cli.main.main,
     expected=utila.SUCCESS,
 ):
     cmd = cmd.split() if isinstance(cmd, str) else cmd
