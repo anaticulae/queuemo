@@ -59,6 +59,14 @@ def print_document(document):
 
 
 def kill(documentid: str):
+    if documentid == 'all':
+        todos = collect_all()
+        if not todos:
+            utila.error('nothing to kill')
+            sys.exit(utila.INVALID_COMMAND)
+        for jobinfo in todos:
+            kill(jobinfo.name)
+        return
     if not link.document(documentid=documentid):
         utila.error(f'invalid documentid: {documentid}')
         sys.exit(utila.INVALID_COMMAND)
@@ -74,8 +82,24 @@ def kill(documentid: str):
     sys.exit(utila.INVALID_COMMAND)
 
 
+def collect_all() -> list:
+    todos = link.collect_jobs(path=configo.share())[0]
+    result = []
+    for todo in todos:
+        process = link.current(todo.documentid)
+        current: link.State = link.State.fromstate(process)
+        if current not in (link.State.WAITING, link.State.RUNNING):
+            continue
+        result.append(todo)
+    return result
+
+
 def eval_cli():
     parser = argparse.ArgumentParser(prog='queuemo_state',)
-    parser.add_argument('--kill', nargs='?', help='stop single job')
+    parser.add_argument(
+        '--kill',
+        nargs='?',
+        help='stop single job, use all to stop all pending jobs',
+    )
     result = parser.parse_args()
     return result
