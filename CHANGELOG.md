@@ -2,6 +2,15 @@
 
 Every noteable change is logged here.
 
+## v1.21.0
+
+### Feature
+
+* add option to kill all jobs (8e55427d36da)
+* add option to kill document (9acbe8a2db38)
+* add cli to view todo state (771b7984a4ab)
+* move cli into separate package (1eb8041a1c2f)
+
 ## v1.20.1
 
 ### Feature
