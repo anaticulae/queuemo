@@ -8,16 +8,15 @@
 # =============================================================================
 
 import collections
-import os
 
 import configo
 import link
 import serializeraw
 import utila
 import utila.cli
-import utila.logger
 
 import queuemo
+import queuemo.cli.utils
 import queuemo.runnable
 
 RUNTIME = 'runtime'
@@ -38,7 +37,7 @@ def main():
     # TODO: DONT KNOW WHY GLOBAL IS REQUIRED
     global queuemo  # pylint:disable=C0103,global-statement
     queuemo.INTERACTIVE = config.interactive
-    logger_start()
+    queuemo.cli.utils.logger_start()
     if config.interactive:
         utila.log('use interactive mode')
     # check startup
@@ -164,18 +163,6 @@ def evaluate_cli() -> Config:
         return utila.INVALID_COMMAND
     utila.level_setup(config.verbose)
     return config
-
-
-def logger_start():
-    tmp = configo.tmp(True)
-    # create log folder
-    queuemo_tmp = os.path.join(tmp, 'queuemo/log/')
-    os.makedirs(queuemo_tmp, exist_ok=True)
-    # determine current file name
-    logfile = f'{utila.filetime()}_{utila.tmpname(10)}.log'
-    outpath = os.path.join(queuemo_tmp, logfile)
-    utila.debug(f'write global log to {outpath}')
-    utila.logger.OUTFILE = outpath
 
 
 def showdebug():
