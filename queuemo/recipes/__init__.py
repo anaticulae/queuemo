@@ -31,17 +31,25 @@ Presentation:
 
     HTML VIEW
 """
-import os
+
+import utila
 
 import queuemo
 import queuemo.runtime.scheduler
 
-RECIPES = os.path.join(queuemo.ROOT, 'queuemo', 'recipes')
+RECIPES = utila.join(queuemo.ROOT, 'queuemo', 'recipes', exist=True)
 
-VALIDATION = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'validation'))
-FASTVIEW = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'fastview'))
-RESULT = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'result'))
-PUBLISH = queuemo.runtime.scheduler.load(os.path.join(RECIPES, 'publish'))
+
+def create(name: str):
+    path = utila.join(RECIPES, name, exist=True)
+    loaded = queuemo.runtime.scheduler.load(path)
+    return loaded
+
+
+VALIDATION = create('validation')
+FASTVIEW = create('fastview')
+RESULT = create('result')
+PUBLISH = create('publish')
 
 ORDER = [
     VALIDATION,
