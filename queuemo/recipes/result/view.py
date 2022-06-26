@@ -76,6 +76,7 @@ def run_plot(flow: queuemo.runtime.api.RecipeIO):
     )
 
 
+@queuemo.required
 def run_findings_render(flow: queuemo.runtime.api.RecipeIO):
     outpath = utila.join(flow.tmppath, 'pdfview')
     queuemo.runnable.feedback_findings(
