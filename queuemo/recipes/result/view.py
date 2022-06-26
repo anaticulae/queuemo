@@ -77,10 +77,12 @@ def run_plot(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run_findings_render(flow: queuemo.runtime.api.RecipeIO):
-    optimized = link.optimized(flow.document)
     outpath = utila.join(flow.tmppath, 'pdfview')
     queuemo.runnable.feedback_findings(
-        inpath=optimized,
+        inpath=[
+            link.resultview(flow.document),
+            flow.general,
+        ],
         pdf=flow.sourcepath,
         outpath=outpath,
     )

@@ -67,9 +67,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 def after(flow: queuemo.runtime.api.RecipeIO):
     flow.publish_linting()
-
     resultview = link.resultview(flow.document)
-
     # TODO: REMOVE LATER?
     utila.copy_content(
         flow.general,
