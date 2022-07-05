@@ -13,7 +13,7 @@ import sys
 import link
 import utila
 
-STOPED = False
+STOPPED = False
 CURRENT = None
 
 
@@ -22,13 +22,13 @@ def isrunning():
 
 
 def isstoped() -> bool:
-    return STOPED
+    return STOPPED
 
 
 def stop():
     utila.log('\n\nstop service')
-    global STOPED  # pylint:disable=global-statement
-    STOPED = True
+    global STOPPED  # pylint:disable=global-statement
+    STOPPED = True
 
 
 def shutdown(event, action):  # pylint:disable=W0613
