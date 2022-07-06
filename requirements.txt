@@ -36,6 +36,8 @@ reftable>=0.3.0<1.0.0
 headlines>=0.10.0<1.0.0
 bibliography>=0.2.3<1.0.0
 lists>=0.2.0<1.0.0
+smarty>=1.5.0<2.0.0
+knlp>=0.6.3<1.0.0
 
 ghost>=0.7.0<1.0.0
 
