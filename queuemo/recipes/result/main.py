@@ -11,12 +11,12 @@ import queuemo.runtime.api
 
 ORDER = [
     'toc',
-    'abbreviation',
     'intro',
     'index',
     'imgfig',
     'colors',
     'magic',
+    'abbreviation',
     'doctextstyle',
     'textflow',
     'footnote',
