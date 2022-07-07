@@ -95,6 +95,7 @@ class RecipeIO:
 
     @property
     def general(self) -> str:
+        # TODO: RENAME TO TMP_COMMON
         if self.tmppath.endswith('.tmp'):
             return self.tmppath
         result = os.path.join(self.tmppath, '../.tmp')
