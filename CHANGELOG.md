@@ -2,6 +2,17 @@
 
 Every noteable change is logged here.
 
+## v1.22.0
+
+### Feature
+
+* without findings, the result is useless (58bd2a3bdccc)
+
+### Fix
+
+* after upgrading abbrev detector it requires words (e1a2cdd7fe1a)
+* adjust finding generator todo path (b2d6995aef02)
+
 ## v1.21.0
 
 ### Feature
