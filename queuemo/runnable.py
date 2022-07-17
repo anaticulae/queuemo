@@ -142,6 +142,10 @@ def spacestation(inpath: str, outpath: str = None, **kwargs):  # pylint:disable=
     # run('spacestation', inpath, outpath, **kwargs)
 
 
+def pagenumber(inpath: str, outpath: str = None, **kwargs):
+    run('pagenumber', inpath, outpath, **kwargs)
+
+
 def groupme(inpath: str, outpath: str = None, **kwargs):
     run('groupme -j8', inpath, outpath, **kwargs)
 

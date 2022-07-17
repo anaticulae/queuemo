@@ -35,7 +35,6 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     unpack_pdf(flow)
     queuemo.recipes.utils.determine_sections(flow)
     publish_pagenumbers(flow)
-
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
@@ -102,10 +101,15 @@ def run_cleanup(flow: queuemo.runtime.api.RecipeIO):
 
 def run_final(flow: queuemo.runtime.api.RecipeIO):
     """Run pagenumber and footer again to use cleaned figures etc."""
+    queuemo.runnable.pagenumber(
+        inpath=flow.tmppath,
+        outpath=flow.tmppath,
+    )
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
         content=False,
+        pagenumbers=False,
     )
 
 
@@ -185,10 +189,17 @@ def pages(item: iamraw.sections.PartOfDocMixin) -> tuple:
 def publish_pagenumbers(flow):
     """Required to render pdf navigation with real page numbers."""
     resultview = link.resultview(flow.document)
-    # TODO: REMOVE LATER?
+    # TODO: REMOVE LATER!
     utila.copy_content(
         flow.general,
         resultview,
         pattern='groupme__pagenumbers_pagenumbers.yaml',
+        verbose=True,
+    )
+    # TODO: REMOVE LATER?
+    utila.copy_content(
+        flow.general,
+        resultview,
+        pattern='pagenumber__result_result.yaml',
         verbose=True,
     )

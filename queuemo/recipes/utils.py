@@ -18,10 +18,13 @@ def determine_sections(flow: queuemo.runtime.api.RecipeIO, pages=':'):
     # PAGES is required to avoid running sections --paper on the whole
     # document. This is not required for running fastview on first 20
     # pages.
+    queuemo.runnable.pagenumber(
+        inpath=flow.tmppath,
+        outpath=flow.tmppath,
+    )
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
-        pagenumbers=True,
         footer=True,
     )
     # required for sections --docinfo
