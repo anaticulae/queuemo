@@ -146,6 +146,14 @@ def pagenumber(inpath: str, outpath: str = None, **kwargs):
     run('pagenumber', inpath, outpath, **kwargs)
 
 
+def headnote(inpath: str, outpath: str = None, **kwargs):
+    run('headnote', inpath, outpath, **kwargs)
+
+
+def footnote(inpath: str, outpath: str = None, **kwargs):
+    run('footnote', inpath, outpath, **kwargs)
+
+
 def groupme(inpath: str, outpath: str = None, **kwargs):
     run('groupme -j8', inpath, outpath, **kwargs)
 
