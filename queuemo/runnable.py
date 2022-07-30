@@ -166,6 +166,10 @@ def codero(inpath: str, outpath: str = None, **kwargs):
     run('codero', inpath, outpath, **kwargs)
 
 
+def cleanup_cleanup(inpath: str, outpath: str = None, **kwargs):
+    return run('cleanup --cleanup', inpath, outpath, **kwargs)
+
+
 def cleanup(inpath: str, outpath: str = None, **kwargs):
     return run('cleanup', inpath, outpath, **kwargs)
 

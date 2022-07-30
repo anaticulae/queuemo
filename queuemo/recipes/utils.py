@@ -18,14 +18,12 @@ def determine_sections(flow: queuemo.runtime.api.RecipeIO, pages=':'):
     # PAGES is required to avoid running sections --paper on the whole
     # document. This is not required for running fastview on first 20
     # pages.
-    queuemo.runnable.pagenumber(
-        inpath=flow.tmppath,
-        outpath=flow.tmppath,
-    )
+    pagenumber_footnotes_headnotes(flow, pages)
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
         footer=True,
+        pages=pages,
     )
     # required for sections --docinfo
     utila.file_copy(link.pdfinfo_path(flow.document), flow.tmppath)
@@ -35,4 +33,37 @@ def determine_sections(flow: queuemo.runtime.api.RecipeIO, pages=':'):
         outpath=flow.tmppath,
         pdf=flow.sourcepath,
         pages=pages,
+    )
+
+
+def pagenumber_footnotes_headnotes(
+    flow: queuemo.runtime.api.RecipeIO,
+    pages: str,
+):
+    queuemo.runnable.pagenumber(
+        inpath=flow.tmppath,
+        outpath=flow.tmppath,
+        pages=pages,
+    )
+    queuemo.runnable.cleanup_cleanup(
+        inpath=flow.tmppath,
+        outpath=flow.tmppath,
+    )
+    queuemo.runnable.footnote(
+        inpath=flow.tmppath,
+        outpath=flow.tmppath,
+        pages=pages,
+    )
+    queuemo.runnable.cleanup_cleanup(
+        inpath=flow.tmppath,
+        outpath=flow.tmppath,
+    )
+    queuemo.runnable.headnote(
+        inpath=flow.tmppath,
+        outpath=flow.tmppath,
+        pages=pages,
+    )
+    queuemo.runnable.cleanup_cleanup(
+        inpath=flow.tmppath,
+        outpath=flow.tmppath,
     )
