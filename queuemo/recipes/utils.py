@@ -48,6 +48,7 @@ def pagenumber_footnotes_headnotes(
     queuemo.runnable.cleanup_cleanup(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
+        select='pagenumber',
     )
     queuemo.runnable.footnote(
         inpath=flow.tmppath,
@@ -57,6 +58,7 @@ def pagenumber_footnotes_headnotes(
     queuemo.runnable.cleanup_cleanup(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
+        select='footnote',
     )
     queuemo.runnable.headnote(
         inpath=flow.tmppath,
@@ -66,4 +68,5 @@ def pagenumber_footnotes_headnotes(
     queuemo.runnable.cleanup_cleanup(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
+        select='headnote',
     )
