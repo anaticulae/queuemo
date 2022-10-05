@@ -20,12 +20,12 @@ import tests
 import tests.resources
 
 
-def test_run_main(monkeypatch, testdir, capsys):
-    tests.run_queuemo('--version', monkeypatch, testdir, capsys)
+def test_run_main(mp, td, capsys):
+    tests.run_queuemo('--version', mp, td, capsys)
 
 
 @pytest.mark.timeout(10, method="thread")  # common todo contains some data
-def test_run_one_job(monkeypatch, testdir, capsys):
+def test_run_one_job(mp, td, capsys):
     # TODO: PATCH ENV VARS
     command = [
         '--%s' % queuemo.cli.main.RUNTIME,
@@ -36,16 +36,16 @@ def test_run_one_job(monkeypatch, testdir, capsys):
     ]
     tests.run_queuemo(
         command,
-        monkeypatch,
-        testdir,
+        mp,
+        td,
         capsys,
     )
 
 
 @utilatest.nightly
-def test_run_queuemo(testdir):
+def test_run_queuemo(td):
     command = 'queuemo --runtime=2'
-    root = str(testdir)
+    root = str(td)
     todo = os.path.join(root, 'todo')
     ready = os.path.join(root, 'ready')
     tmp = os.path.join(root, 'tmp')
@@ -64,7 +64,7 @@ def test_run_queuemo(testdir):
     assert completed.returncode == utila.SUCCESS, str(completed)
 
 
-def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
+def test_queuemo_invalid_parameter(mp, td, capsys):
     command = [
         '--%s' % queuemo.cli.main.RUNTIME,
         'str',  # invalid input
@@ -73,8 +73,8 @@ def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
     ]
     tests.run_queuemo(
         command,
-        monkeypatch,
-        testdir,
+        mp,
+        td,
         capsys,
         expected=utila.INVALID_COMMAND,
     )
@@ -85,6 +85,6 @@ def test_queuemo_invalid_parameter(monkeypatch, testdir, capsys):
     ('-VV'),
     ('--verbose'),
 ])
-def test_incremental_verbose_flag(verbose, monkeypatch, testdir, capsys):
+def test_incremental_verbose_flag(verbose, mp, td, capsys):
     cmd = f'{verbose} --runtime 0'
-    tests.run_queuemo(cmd, monkeypatch, testdir, capsys)
+    tests.run_queuemo(cmd, mp, td, capsys)

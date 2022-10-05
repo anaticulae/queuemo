@@ -15,17 +15,17 @@ import tests.resources
 
 
 @utilatest.nightly
-def test_chapter(testdir, monkeypatch, capsys):
+def test_chapter(td, mp, capsys):
     """Ensure that --docinfo {pagecount} is passed to chapter decider."""
     validation = queuemo.recipes.VALIDATION.copy()
     plan = queuemo.recipes.RESULT.copy()
     # magic is required to generate words which is required by chapter
     plan.shrink('before magic chapter'.split())
     with tests.fixtures.todo.runtime(
-            workspace=testdir.tmpdir,
+            workspace=td.tmpdir,
             document=tests.resources.EXAMPLE_JOB,
             recipes=(validation, plan),
-            monkeypatch=monkeypatch,
+            mp=mp,
     ) as rt:  # pylint:disable=C0103
         assert rt.next_step()
         assert rt.next_step()

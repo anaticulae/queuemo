@@ -18,15 +18,15 @@ import tests.resources
 
 
 @utilatest.longrun
-def test_recipe_validation_success(testdir, monkeypatch):
+def test_recipe_validation_success(td, mp):
     """Ensure to create validation result via `pdfinfo` tool"""
     with tests.fixtures.todo.runtime(
-            testdir.tmpdir,
+            td.tmpdir,
             tests.resources.EXAMPLE_JOB,
             queuemo.recipes.VALIDATION,
-            monkeypatch,
+            mp,
     ) as rt:  # pylint:disable=C0103
-        with utilatest.increased_filecount(testdir.tmpdir, 'yaml'):
+        with utilatest.increased_filecount(td.tmpdir, 'yaml'):
             completed = rt.next_step()
         pdfinfo = link.pdfinfo(tests.resources.EXAMPLE_JOB)
     assert completed
@@ -35,16 +35,16 @@ def test_recipe_validation_success(testdir, monkeypatch):
 
 
 @utilatest.longrun
-def test_recipe_validation_failure(testdir, monkeypatch, capsys):
+def test_recipe_validation_failure(td, mp, capsys):
     """Ensure that validation tool stops with validation error on
     invalid, broken resource"""
     with tests.fixtures.todo.runtime(
-            testdir.tmpdir,
+            td.tmpdir,
             'broken_resource',
             queuemo.recipes.VALIDATION,
-            monkeypatch,
+            mp,
     ) as rt:  # pylint:disable=C0103
-        with utilatest.increased_filecount(testdir.tmpdir, 'yaml'):
+        with utilatest.increased_filecount(td.tmpdir, 'yaml'):
             completed = rt.next_step()
     assert not completed
     error = utilatest.stderr(capsys)
@@ -52,7 +52,7 @@ def test_recipe_validation_failure(testdir, monkeypatch, capsys):
 
 
 @utilatest.longrun
-def test_validation_double_column_flag(testdir, monkeypatch):
+def test_validation_double_column_flag(td, mp):
     """Inform user about not supported double layout extraction.
 
     This test will may change later, after double column layout is
@@ -61,11 +61,11 @@ def test_validation_double_column_flag(testdir, monkeypatch):
     # TODO: AUTOMATE DOCUMENTID
     documentid = 'paper006column'  # look in power if not found
     with tests.fixtures.todo.runtime(
-            testdir.tmpdir,
+            td.tmpdir,
             document=documentid,
             recipes=queuemo.recipes.VALIDATION,
             config=queuemo.runtime.api.RecipeConfig(skip_unsupported=True),
-            monkeypatch=monkeypatch,
+            mp=mp,
     ) as rt:
         completed = rt.next_step()
         assert not completed, 'exception not raised'

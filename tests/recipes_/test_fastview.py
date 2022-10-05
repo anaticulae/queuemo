@@ -17,11 +17,11 @@ import tests.resources
 
 
 @utilatest.nightly
-def test_recipe_fastview_run_single(testdir, monkeypatch):
+def test_recipe_fastview_run_single(td, mp):
     completed = run_fastview(
-        testdir.tmpdir,
+        td.tmpdir,
         tests.resources.EXAMPLE_JOB,
-        monkeypatch,
+        mp,
     )
     assert completed
 
@@ -37,21 +37,21 @@ def test_recipe_fastview_run_single(testdir, monkeypatch):
         'master089',
     ])
 @utilatest.nightly
-def test_recipe_fastview_run_example(jobid, testdir, monkeypatch):
+def test_recipe_fastview_run_example(jobid, td, mp):
     completed = run_fastview(
-        testdir.tmpdir,
+        td.tmpdir,
         jobid,
-        monkeypatch,
+        mp,
     )
     assert completed
 
 
-def run_fastview(workspace, jobid, monkeypatch):
+def run_fastview(workspace, jobid, mp):
     with tests.fixtures.todo.runtime(
             workspace,
             jobid,
             recipes=[queuemo.recipes.VALIDATION, queuemo.recipes.FASTVIEW],
-            monkeypatch=monkeypatch,
+            mp=mp,
     ) as rt:  # pylint:disable=C0103
         completed = rt.finish()
     return completed

@@ -18,12 +18,12 @@ import tests.fixtures.todo
 import tests.resources
 
 
-def run_resultview(workspace, jobid, monkeypatch):
+def run_resultview(workspace, jobid, mp):
     with tests.fixtures.todo.runtime(
             workspace,
             jobid,
             recipes=queuemo.recipes.ORDER,
-            monkeypatch=monkeypatch,
+            mp=mp,
     ) as runner:
         completed = runner.finish()
         # Hint: do not use link, cause multiprocessed tests modify global
@@ -35,11 +35,11 @@ def run_resultview(workspace, jobid, monkeypatch):
 
 
 @utilatest.nightly
-def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
+def test_recipe_result_run_single(td, mp):  # pylint:disable=W0621
     completed = run_resultview(
-        testdir.tmpdir,
+        td.tmpdir,
         tests.resources.EXAMPLE_JOB,
-        monkeypatch,
+        mp,
     )
     assert completed
 
@@ -58,10 +58,10 @@ def test_recipe_result_run_single(testdir, monkeypatch):  # pylint:disable=W0621
     pytest.param('master089', marks=utilatest.nightly),
 ])
 @utilatest.nightly
-def test_recipe_result_run_example(jobid, testdir, monkeypatch):
+def test_recipe_result_run_example(jobid, td, mp):
     completed = run_resultview(
-        testdir.tmpdir,
+        td.tmpdir,
         jobid,
-        monkeypatch,
+        mp,
     )
     assert completed

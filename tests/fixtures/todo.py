@@ -23,13 +23,13 @@ def runtime(
     workspace,
     document: str,
     recipes: list,
-    monkeypatch,
+    mp,
     config=None,
 ) -> queuemo.runtime.runtime.RecipeRuntime:
     workspace = str(workspace)
     if not utila.iterable(recipes):
         recipes = [recipes]
-    with tests.patch_todo(workspace, monkeypatch, copy=True):
+    with tests.patch_todo(workspace, mp, copy=True):
         # Hint: do not use link, cause multiprocessed tests modify global
         # variables.
         # outpath = link.todo(document)

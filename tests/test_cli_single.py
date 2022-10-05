@@ -17,22 +17,22 @@ import utilatest
 import tests
 
 
-def test_run_single_help(monkeypatch, testdir, capsys):
+def test_run_single_help(mp, td, capsys):
     cmd = '--help'
     tests.run_single(
         cmd,
-        monkeypatch,
-        testdir,
+        mp,
+        td,
         capsys,
     )
 
 
-def test_run_single_invalid_input(monkeypatch, testdir, capsys):
+def test_run_single_invalid_input(mp, td, capsys):
     cmd = f'-i {__file__}'
     tests.run_single(
         cmd,
-        monkeypatch,
-        testdir,
+        mp,
+        td,
         capsys,
         expected=utila.INVALID_COMMAND,
     )
@@ -40,16 +40,16 @@ def test_run_single_invalid_input(monkeypatch, testdir, capsys):
 
 
 @utilatest.nightly
-def test_run_single(monkeypatch, testdir, capsys):
+def test_run_single(mp, td, capsys):
     # create queuemo todo
-    workspace = link.create_todo(power.DOCU007_PDF, todopath=testdir.tmpdir)
+    workspace = link.create_todo(power.DOCU007_PDF, todopath=td.tmpdir)
 
     # run single queuemo instance in workspace, write output to same workspace
     cmd = f'-i {workspace} -V'
     tests.run_single(
         cmd,
-        monkeypatch,
-        testdir,
+        mp,
+        td,
         capsys,
     )
 
@@ -58,17 +58,17 @@ def test_run_single(monkeypatch, testdir, capsys):
 
 
 @utilatest.nightly
-def test_no_text_content(testdir):
+def test_no_text_content(td):
     """Stop analysis of `figure only` documents. Some pdf printer, print
     all content to figures, therefore no text is detected and avg text
     size produces errors. We stop analysis before running into this
     error."""
     # create queuemo todo
-    workspace = link.create_todo(power.BACHELOR085_PDF, todopath=testdir.tmpdir)
+    workspace = link.create_todo(power.BACHELOR085_PDF, todopath=td.tmpdir)
 
     # run single queuemo instance in workspace, write output to same workspace
     cmd = f'queuemo_single -i {workspace} -V'
-    completed = utila.run(cmd, cwd=testdir.tmpdir)
+    completed = utila.run(cmd, cwd=td.tmpdir)
     stderr = completed.stderr
 
     assert '[ERROR] no text in resource' in stderr
@@ -76,16 +76,16 @@ def test_no_text_content(testdir):
 
 
 # # @utilatest.nightly
-# def test_run_single_different_sink(monkeypatch, testdir):
+# def test_run_single_different_sink(mp, td):
 #     # create queuemo todo
-#     workspace = link.create_todo(power.DOCU007_PDF, todopath=testdir.tmpdir)
+#     workspace = link.create_todo(power.DOCU007_PDF, todopath=td.tmpdir)
 
-#     sink = os.path.join(testdir.tmpdir, 'different_sink')
+#     sink = os.path.join(td.tmpdir, 'different_sink')
 #     cmd = f'-i {workspace} -o {sink} -VVV'
 #     tests.run_single(
 #         cmd,
-#         monkeypatch,
-#         testdir,
+#         mp,
+#         td,
 #         capsys=None,
 #     )
 

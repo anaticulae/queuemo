@@ -18,9 +18,9 @@ import tests.resources
 
 
 @utilatest.nightly
-def test_recipe_run(testdir, monkeypatch):
-    root = str(testdir)
-    with tests.patch_todo(testdir, monkeypatch):
+def test_recipe_run(td, mp):
+    root = str(td)
+    with tests.patch_todo(td, mp):
         workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB)
         queuemo.runtime.execute.run_document(
             workspace,

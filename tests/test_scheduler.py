@@ -18,9 +18,9 @@ import tests
 
 
 @utilatest.nightly
-def test_run_steps(capsys, testdir, monkeypatch):
+def test_run_steps(capsys, td, mp):
     config = queuemo.runtime.api.RecipeConfig()
-    with tests.patch_todo(testdir, monkeypatch):
+    with tests.patch_todo(td, mp):
         queuemo.worker.startup.step(job=None, config=config)
         assert 'Wait' in utilatest.stdout(capsys)
         queuemo.worker.startup.step(job='8166109011', config=config)
@@ -30,14 +30,14 @@ def test_run_steps(capsys, testdir, monkeypatch):
         assert 'Finish' in progress
 
 
-def test_copy_job_to_workspace(testdir, monkeypatch):
-    with monkeypatch.context() as context:
+def test_copy_job_to_workspace(td, mp):
+    with mp.context() as context:
         context.setattr(
             os,
             'environ',
             {
                 configo.directory.TODO: tests.resources.TODO,
-                configo.directory.TMP: testdir.tmpdir,
+                configo.directory.TMP: td.tmpdir,
             },
         )
         workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB)
