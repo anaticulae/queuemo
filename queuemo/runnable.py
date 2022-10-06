@@ -155,7 +155,7 @@ def footnote(inpath: str, outpath: str = None, **kwargs):
 
 
 def groupme(inpath: str, outpath: str = None, **kwargs):
-    run('groupme -j8', inpath, outpath, **kwargs)
+    run('groupme -j4', inpath, outpath, **kwargs)
 
 
 def reftable(inpath: str, outpath: str = None, **kwargs):

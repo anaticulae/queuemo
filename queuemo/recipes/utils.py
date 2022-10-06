@@ -22,7 +22,6 @@ def determine_sections(flow: queuemo.runtime.api.RecipeIO, pages=':'):
     queuemo.runnable.groupme(
         inpath=flow.tmppath,
         outpath=flow.tmppath,
-        footer=True,
         pages=pages,
     )
     # required for sections --docinfo

@@ -109,7 +109,6 @@ def run_final(flow: queuemo.runtime.api.RecipeIO):
         inpath=flow.tmppath,
         outpath=flow.tmppath,
         content=False,
-        pagenumbers=False,
     )
 
 
