@@ -8,6 +8,7 @@
 # =============================================================================
 
 import link
+import pytest
 import utilatest
 
 import queuemo
@@ -55,6 +56,7 @@ def test_recipe_validation_failure(td, mp, capsys):
     assert 'invalid resource' in error, error
 
 
+@pytest.mark.xfail(reason='software integration')
 @tests.conftest.generated
 @utilatest.longrun
 def test_validation_double_column_flag(td, mp):
