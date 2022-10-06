@@ -61,5 +61,7 @@ def failcurrent(event, action):  # pylint:disable=W0613
 
 
 # configure close handler
-signal.signal(signal.SIGBREAK, shutdown)
+if utila.iswin():
+    # TODO: INVESTIGATE LINUX
+    signal.signal(signal.SIGBREAK, shutdown)  # pylint:disable=E1101
 signal.signal(signal.SIGINT, failcurrent)
