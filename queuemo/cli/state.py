@@ -37,8 +37,10 @@ def print_waiting():
 
 
 def print_documents(state):
+    # TODO: PASS READY AND TODO TO AVOID REQUIRED COMMON PARENT
+    common = utila.path_parent(configo.ready())
     documents = link.load_documents(
-        common=configo.share(),
+        common=common,
         owner=None,
         state=state,
     )
@@ -83,7 +85,7 @@ def kill(documentid: str):
 
 
 def collect_all() -> list:
-    todos = link.collect_jobs(path=configo.share())[0]
+    todos = link.collect_jobs()[0]
     result = []
     for todo in todos:
         process = link.current(todo.documentid)
