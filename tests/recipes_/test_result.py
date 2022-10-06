@@ -13,7 +13,7 @@ import pytest
 import utilatest
 
 import queuemo.recipes
-import tests
+import tests.conftest
 import tests.fixtures.todo
 import tests.resources
 
@@ -58,6 +58,7 @@ def test_recipe_result_run_single(td, mp):  # pylint:disable=W0621
     pytest.param('master089', marks=utilatest.nightly),
 ])
 @utilatest.nightly
+@tests.conftest.generated
 def test_recipe_result_run_example(jobid, td, mp):
     completed = run_resultview(
         td.tmpdir,

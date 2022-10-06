@@ -12,6 +12,7 @@ import os
 import configo
 import power
 import pytest
+import utila
 from utilatest import mp  # pylint:disable=W0611
 from utilatest import td  # pylint:disable=W0611
 
@@ -49,3 +50,7 @@ def pytest_sessionstart():
 
 def extract_todo(files):
     tests.update.extract_examples(files)
+
+
+GENERATED = utila.exists(os.path.join(power.generated(), 'todo'))
+generated = pytest.mark.skipif(not GENERATED, reason='generate test test')

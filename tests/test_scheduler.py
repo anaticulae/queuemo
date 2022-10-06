@@ -15,6 +15,7 @@ import utilatest
 import queuemo.runtime.api
 import queuemo.worker.startup
 import tests
+import tests.conftest
 
 
 @utilatest.nightly
@@ -30,6 +31,7 @@ def test_run_steps(capsys, td, mp):
         assert 'Finish' in progress
 
 
+@tests.conftest.generated
 def test_copy_job_to_workspace(td, mp):
     with mp.context() as context:
         context.setattr(

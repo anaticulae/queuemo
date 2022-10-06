@@ -13,10 +13,13 @@ import utilatest
 import queuemo
 import queuemo.recipes
 import queuemo.runtime.api
+import tests
+import tests.conftest
 import tests.fixtures.todo
 import tests.resources
 
 
+@tests.conftest.generated
 @utilatest.longrun
 def test_recipe_validation_success(td, mp):
     """Ensure to create validation result via `pdfinfo` tool"""
@@ -34,6 +37,7 @@ def test_recipe_validation_success(td, mp):
     assert pdfinfo.version.minor == 5
 
 
+@tests.conftest.generated
 @utilatest.longrun
 def test_recipe_validation_failure(td, mp, capsys):
     """Ensure that validation tool stops with validation error on
@@ -51,6 +55,7 @@ def test_recipe_validation_failure(td, mp, capsys):
     assert 'invalid resource' in error, error
 
 
+@tests.conftest.generated
 @utilatest.longrun
 def test_validation_double_column_flag(td, mp):
     """Inform user about not supported double layout extraction.
