@@ -14,7 +14,8 @@ import utila.logger
 
 
 def logger_start():
-    tmp = configo.tmp(True)
+    tmp = configo.tmp()
+    os.makedirs(tmp, exist_ok=True)
     # create log folder
     queuemo_tmp = os.path.join(tmp, 'queuemo/log/')
     os.makedirs(queuemo_tmp, exist_ok=True)
