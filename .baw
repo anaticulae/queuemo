@@ -14,5 +14,5 @@ name = queuemo
 [release]
 fail_on_finding = True
 
-[test]
-plugins = pytest_timeout
+#[test]
+#plugins = pytest_timeout
