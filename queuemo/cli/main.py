@@ -40,6 +40,9 @@ def main():
     queuemo.cli.utils.logger_start()
     if config.interactive:
         utila.log('use interactive mode')
+    if not utila.testing():
+        # ensure that all test directories are created
+        configo.makedirs()
     # check startup
     configo.check_startup()
     if config.clean:
