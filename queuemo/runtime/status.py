@@ -64,4 +64,6 @@ def failcurrent(event, action):  # pylint:disable=W0613
 if utila.iswin():
     # TODO: INVESTIGATE LINUX
     signal.signal(signal.SIGBREAK, shutdown)  # pylint:disable=E1101
-signal.signal(signal.SIGINT, failcurrent)
+if not utila.testing():
+    # TODO: ENSURE TO RUN IN MAIN THREAD, AFTER THIS WE CAN REMOVE TESTING CHECK
+    signal.signal(signal.SIGINT, failcurrent)
