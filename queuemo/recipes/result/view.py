@@ -9,6 +9,7 @@
 
 import os
 
+import ghost
 import link
 import utila
 
@@ -58,11 +59,14 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 def run_png(flow: queuemo.runtime.api.RecipeIO):
     pdfview = utila.join(flow.tmppath, 'pdfview')
     os.makedirs(pdfview)
-    # generate png for every pdf page
-    queuemo.runnable.ghost(
-        inpath=flow.sourcepath,
-        outpath=pdfview,
-    )
+    if ghost.HAS_GHOST:
+        # generate png for every pdf page
+        queuemo.runnable.ghost(
+            inpath=flow.sourcepath,
+            outpath=pdfview,
+        )
+    else:
+        utila.error('skip `run_png` install ghost')
 
 
 def run_plot(flow: queuemo.runtime.api.RecipeIO):
