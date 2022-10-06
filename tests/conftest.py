@@ -7,6 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import os
+
+import configo
 import power
 import pytest
 from utilatest import mp  # pylint:disable=W0611
@@ -37,6 +40,8 @@ RESOURCES_TODO = [
 
 @pytest.mark.usefixtures('session')
 def pytest_sessionstart():
+    os.makedirs(configo.todo(), exist_ok=True)
+    os.makedirs(configo.ready(), exist_ok=True)
     power.run()
     # TODO: HACK BUT WORKS FOR THE MOMENT
     queuemo.cli.utils.logger_start()
