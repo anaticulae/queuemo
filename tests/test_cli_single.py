@@ -11,6 +11,7 @@ import os
 
 import link
 import power
+import pytest
 import utila
 import utilatest
 
@@ -57,20 +58,22 @@ def test_run_single(mp, td, capsys):
     assert os.path.exists(os.path.join(workspace, 'result/__optimized__'))
 
 
+@pytest.mark.skip(reason='supported now, look for other document, enable later')
 @utilatest.nightly
 def test_no_text_content(td):
-    """Stop analysis of `figure only` documents. Some pdf printer, print
-    all content to figures, therefore no text is detected and avg text
-    size produces errors. We stop analysis before running into this
-    error."""
+    """Stop analysis of `figure only` documents.
+
+    Some pdf printer, print all content to figures, therefore no text is
+    detected and avg text size produces errors. We stop analysis before
+    running into this error.
+    """
+    # TODO: LOOK FOR A NEW EXAMPLE
     # create queuemo todo
     workspace = link.create_todo(power.BACHELOR085_PDF, todopath=td.tmpdir)
-
     # run single queuemo instance in workspace, write output to same workspace
     cmd = f'queuemo_single -i {workspace} -V'
     completed = utila.run(cmd, cwd=td.tmpdir)
     stderr = completed.stderr
-
     assert '[ERROR] no text in resource' in stderr
     assert 'stop analysis' in stderr
 
