@@ -2,6 +2,39 @@
 
 Every noteable change is logged here.
 
+## v1.23.0 (2022-10-06)
+
+### Feature
+
+* use partial cleanup to improve runtime (be505c2f78a2)
+* run pagenumber, footnote and headnote (ed048b7e67d6)
+* add footnote and headnote extractor (23498e4936cf)
+* use separate pagenumber runner (16d88c665af2)
+
+### Fix
+
+* do not generate pngs if ghost is not installed (06bca6a99e7d)
+* adjust groupme invocation (511b40f66e9d)
+* remove common state env var (d47b7293ca63)
+* ensure that tmp path is created (56806cfc14b4)
+* adjust to run on linux (42780ffc961a)
+
+### Documentation
+
+* add missing parameter (779f8b1e2d50)
+
+### Chore
+
+* run all instead of nightly (ed7a2ef146b8)
+* add missing env variable (cb22429a1bcc)
+* disable to fix pytest failure (e23c7a2a7566)
+* add Jenkinsfile (37ba11b0cd13)
+* upgrade requirements.txt (8440ec6b8036)
+* add footnote and headnote (1177f95972b0)
+* upgrade requirements.txt (2c80658c2ba4)
+* add pagenumber runner (a5fbb1511495)
+* upgrade requirements.txt (2a721d319c72)
+
 ## v1.22.0
 
 ### Feature
