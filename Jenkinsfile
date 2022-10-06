@@ -28,11 +28,6 @@ pipeline{
                 sh 'baw test fast -n5'
             }
         }
-        stage('long'){
-            steps{
-                sh 'baw test long -n8'
-            }
-        }
         stage('lint'){
             steps{
                 sh 'baw lint'
@@ -41,6 +36,11 @@ pipeline{
         stage('generate'){
             steps{
                 sh 'baw test skip --generate'
+            }
+        }
+        stage('long'){
+            steps{
+                sh 'baw test long -n8'
             }
         }
         stage('all'){
