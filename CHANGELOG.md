@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.24.0 (2022-10-07)
+
+### Feature
+
+* add production env (f4325433069c)
+
 ## v1.23.1 (2022-10-07)
 
 ### Fix
