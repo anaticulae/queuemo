@@ -2,6 +2,18 @@
 
 Every noteable change is logged here.
 
+## v1.23.1 (2022-10-07)
+
+### Fix
+
+* do not have not enough dirs at startup (1e3fc5d410fb)
+* ensure to run in main thread (19535bd8d7c8)
+
+### Chore
+
+* upgrade requirements.txt (c78c7f9262e1)
+* improve execution order (dcc93703d783)
+
 ## v1.23.0 (2022-10-06)
 
 ### Feature
