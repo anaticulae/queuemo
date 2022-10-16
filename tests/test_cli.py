@@ -27,15 +27,15 @@ def test_run_main(mp, td, capsys):
 @pytest.mark.timeout(10, method="thread")  # common todo contains some data
 def test_run_one_job(mp, td, capsys):
     # TODO: PATCH ENV VARS
-    command = [
-        '--%s' % queuemo.cli.main.RUNTIME,
+    cmd = [
+        f'--{queuemo.cli.main.RUNTIME}',
         '1',  # seconds
-        '--%s' % queuemo.cli.main.WAITING,
+        f'--{queuemo.cli.main.WAITING}',
         '10',  # mili
         '-VV',
     ]
     tests.run_queuemo(
-        command,
+        cmd,
         mp,
         td,
         capsys,
@@ -44,7 +44,7 @@ def test_run_one_job(mp, td, capsys):
 
 @utilatest.nightly
 def test_run_queuemo(td):
-    command = 'queuemo --runtime=2'
+    cmd = 'queuemo --runtime=2'
     root = str(td)
     todo = os.path.join(root, 'todo')
     ready = os.path.join(root, 'ready')
@@ -60,19 +60,19 @@ def test_run_queuemo(td):
     env[configo.directory.READY] = ready
     env[configo.directory.COMMON] = tmp
 
-    completed = utila.run(command, env=env)
+    completed = utila.run(cmd, env=env)
     assert completed.returncode == utila.SUCCESS, str(completed)
 
 
 def test_queuemo_invalid_parameter(mp, td, capsys):
-    command = [
-        '--%s' % queuemo.cli.main.RUNTIME,
+    cmd = [
+        f'--{queuemo.cli.main.RUNTIME}',
         'str',  # invalid input
-        '--%s' % queuemo.cli.main.WAITING,
+        f'--{queuemo.cli.main.WAITING}',
         'woho',  # invalid input
     ]
     tests.run_queuemo(
-        command,
+        cmd,
         mp,
         td,
         capsys,

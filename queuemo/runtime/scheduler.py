@@ -68,7 +68,6 @@ import copy
 import dataclasses
 import os
 import re
-import typing
 
 import utila
 
@@ -85,7 +84,7 @@ class RecipeStep:
     after: callable = None
 
 
-RecipeSteps = typing.List[RecipeStep]
+RecipeSteps = 'typing.List[RecipeStep]'  # pylint:disable=C0103
 
 ORDER = 'ORDER'
 
@@ -105,7 +104,7 @@ class ComposedRecipe:
     name: str = None
     before: RecipeStep = None
     main: RecipeStep = None
-    steps: typing.List[RecipeStep] = dataclasses.field(default_factory=list)
+    steps: RecipeSteps = dataclasses.field(default_factory=list)
     after: RecipeStep = None
     failure: RecipeStep = None
 

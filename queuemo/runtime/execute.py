@@ -45,7 +45,7 @@ def run_document(
         tick.number += 1
 
     tick.number = 0
-    while True:
+    while True:  # pylint:disable=W0149
         current = runtime.next_step(tick)
         if current is None:
             # Done, everything completed successfully.

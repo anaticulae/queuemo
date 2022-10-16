@@ -42,7 +42,6 @@ def set_current(job: int = None):
 
 
 def current_job():
-    global CURRENT  # pylint:disable=global-statement
     return CURRENT
 
 

@@ -73,10 +73,8 @@ class RecipeRuntime:
         current = self.todo.pop(0)
         try:
             tmppath = os.path.join(self.workspace, current.name)
-            if self.outpath:
-                outpath = os.path.join(self.outpath, current.name)
-            else:
-                outpath = None
+            outpath = os.path.join(self.outpath,
+                                   current.name) if self.outpath else None
             flow = queuemo.runtime.api.RecipeIO(
                 workspace=self.workspace,
                 document=self.document,
@@ -103,7 +101,7 @@ class RecipeRuntime:
     def finish(self, tick=None):
         assert self.todo, 'nothing todo'
         current = None
-        while self.todo:
+        while self.todo:  # pylint:disable=W0149
             current = self.next_step(tick)
         return current
 
@@ -168,7 +166,7 @@ def run(  # pylint:disable=R1260
             name = f'{current.prefix}_{current.name}'
         tmppath = os.path.join(flow.tmppath, name)
         outpath = os.path.join(flow.outpath, name) if flow.outpath else None
-        if current.name in ['before', 'after', 'main']:  # TODO: INCLUDE PREFIX?
+        if current.name in {'before', 'after', 'main'}:  # TODO: INCLUDE PREFIX?
             tmppath = tmp
             outpath = flow.outpath
         current_flow = queuemo.runtime.api.RecipeIO(
@@ -179,7 +177,7 @@ def run(  # pylint:disable=R1260
             config=copy.deepcopy(flow.config),
         )
         os.makedirs(tmppath, exist_ok=True)
-        for item in ['before', 'run', 'runx', 'after']:
+        for item in ('before', 'run', 'runx', 'after'):
             actions = getattr(current, item)
             if not actions:
                 continue

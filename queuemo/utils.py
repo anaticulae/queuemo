@@ -85,15 +85,12 @@ def wait():
     """Ask user to continue program."""
     answer = input('continue?\n')
     answer = answer.strip().lower()
-    if answer in ('no', 'n'):
+    if answer in {'no', 'n'}:
         sys.exit(utila.SUCCESS)
 
 
 def exists(filename: str, sources: list) -> bool:
-    for source in sources:
-        if os.path.exists(os.path.join(source, filename)):
-            return True
-    return False
+    return any(os.path.exists(os.path.join(source, filename)) for source in sources)  # yapf:disable
 
 
 def assert_classes(items):

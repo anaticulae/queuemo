@@ -57,12 +57,12 @@ def run(
         webconfig=webconfig,
         verbose=verbose,
     )
-    utila.log('start working on: %s' % todopath)
+    utila.log(f'start working on: {todopath}')
     utila.print_env()
     if not waiting:
         waiting = 1
     tick = 0
-    while tick < runtime and jobs > 0:
+    while tick < runtime and jobs > 0:  # pylint:disable=W0149
         if queuemo.runtime.status.isstoped():
             utila.log('service is stopped, stop working')
             break
@@ -78,7 +78,7 @@ def run(
             )
         except Exception:  # pylint: disable=broad-except
             utila.log_stacktrace()
-            utila.error('\nClose scheduler: %d' % tick)
+            utila.error(f'\nClose scheduler: {tick}')
             return utila.FAILURE
         tick += 1
         if not verbose and tick % 80 == 0:  # pylint:disable=C2001

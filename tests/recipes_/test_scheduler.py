@@ -31,7 +31,7 @@ def test_collect():
 
 def test_collect_norunmethod(capsys):
     collected = queuemo.runtime.scheduler.collect(ERRORNEOUS)
-    assert collected == {}
+    assert collected == {}  # pylint:disable=C1803
     error = capsys.readouterr().err
     assert 'could not load recipe step' in error, error
 
