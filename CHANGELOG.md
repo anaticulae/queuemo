@@ -2,6 +2,14 @@
 
 Every noteable change is logged here.
 
+## v1.24.1 (2022-10-17)
+
+### Chore
+
+* add ghost environment (cc2ac24214e7)
+* increase baw version (998bce9b8f17)
+* upgrade requirements.txt (94b1ec935aae)
+
 ## v1.24.0 (2022-10-07)
 
 ### Feature
