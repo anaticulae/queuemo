@@ -51,7 +51,12 @@ def test_run_queuemo(td):
     for item in [todo, ready, tmp]:
         os.makedirs(item)
     # copy to item
-    utila.copy_content(tests.resources.TODO, todo, recursive=True)
+    utila.copy_content(
+        tests.resources.TODO,
+        todo,
+        recursive=True,
+        unlock=True,
+    )
     env = dict(os.environ)
     env[configo.directory.TODO] = str(todo)
     env[configo.directory.READY] = str(ready)

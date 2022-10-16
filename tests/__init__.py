@@ -9,7 +9,6 @@
 
 import contextlib
 import os
-import shutil
 import sys
 import threading
 
@@ -45,7 +44,12 @@ def patch_todo(td, mp, copy=True):  # pylint:disable=W0613
         if copy:
             # Copy content from todo
             # TODO: DO NOT COPY WHOLE DATA TREE
-            shutil.copytree(tests.resources.TODO, todopath)
+            utila.copy_content(
+                src=tests.resources.TODO,
+                dst=todopath,
+                recursive=True,
+                unlock=True,
+            )
         else:
             os.makedirs(todopath, exist_ok=True)
 
