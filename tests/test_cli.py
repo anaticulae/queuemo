@@ -45,21 +45,17 @@ def test_run_one_job(mp, td, capsys):
 @utilatest.nightly
 def test_run_queuemo(td):
     cmd = 'queuemo --runtime=2'
-    root = str(td)
-    todo = os.path.join(root, 'todo')
-    ready = os.path.join(root, 'ready')
-    tmp = os.path.join(root, 'tmp')
+    todo = td.tmpdir.join('todo')
+    ready = td.tmpdir.join('ready')
+    tmp = td.tmpdir.join('tmp')
     for item in [todo, ready, tmp]:
         os.makedirs(item)
-
     # copy to item
     utila.copy_content(tests.resources.TODO, todo, recursive=True)
-
     env = dict(os.environ)
-    env[configo.directory.TODO] = todo
-    env[configo.directory.READY] = ready
-    env[configo.directory.COMMON] = tmp
-
+    env[configo.directory.TODO] = str(todo)
+    env[configo.directory.READY] = str(ready)
+    env[configo.directory.COMMON] = str(tmp)
     completed = utila.run(cmd, env=env)
     assert completed.returncode == utila.SUCCESS, str(completed)
 
