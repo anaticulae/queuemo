@@ -9,7 +9,6 @@
 """Watchdog of todo folder to listen for incoming jobs."""
 
 import os
-import shutil
 import time
 
 import configo
@@ -161,7 +160,12 @@ def copy(job):
     # determine tmporary folder and copy todo
     workspace = utila.tmpfile(queuemo.ROOT)
     # copy todo to temporary folder
-    shutil.copytree(path, workspace)
+    utila.copy_content(
+        src=path,
+        dst=workspace,
+        recursive=True,
+        unlock=True,
+    )
     return workspace
 
 
