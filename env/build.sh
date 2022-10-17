@@ -10,4 +10,4 @@
 
 CURRENT=$(queuemo --version)
 RELEASE_TAG="${CAELUM_DOCKER_TEST}/caelum_release_work:${CURRENT}"
-docker build -t $RELEASE_TAG --file ProdWork .
+docker build -t $RELEASE_TAG --file Production .
