@@ -7,9 +7,9 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-FROM 169.254.149.20:6001/arch_python_opengl:0.11.0
+FROM 169.254.149.20:6001/arch_python_baw_ghost_opencv:0.14.0
 
-RUN pip install "queuemo==1.23.1"
+RUN pip install "queuemo==1.24.1"
 
 VOLUME /var/shared/
 
