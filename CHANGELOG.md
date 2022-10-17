@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.24.2 (2022-10-17)
+
+### Chore
+
+* clear cache after installing queuemo (6da79576e596)
+* upgrade environment and queuemo (51628c6daea9)
+
 ## v1.24.1 (2022-10-17)
 
 ### Chore
