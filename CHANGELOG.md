@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.24.3 (2022-10-17)
+
+### Chore
+
+* rename docker file (72b7e93644c8)
+* increase queuemo max runtime (84bdb84577bd)
+
 ## v1.24.2 (2022-10-17)
 
 ### Chore
