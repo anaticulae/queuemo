@@ -18,4 +18,4 @@ ENV SHARED_READY=/var/shared/ready
 ENV SHARED_SPACE=/var/shared/
 ENV SHARED_TMP=/tmp
 
-ENTRYPOINT queuemo -VV
+ENTRYPOINT queuemo --jobs=10240 --runtime=1000000 -VV
