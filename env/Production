@@ -12,10 +12,13 @@ FROM 169.254.149.20:6001/arch_python_baw_ghost_opencv:0.14.0
 RUN pip install "queuemo==1.24.1" && pip cache purge
 
 VOLUME /var/shared/
+VOLUME /var/cached/
 
 ENV SHARED_TODO=/var/shared/todo
 ENV SHARED_READY=/var/shared/ready
 ENV SHARED_SPACE=/var/shared/
 ENV SHARED_TMP=/tmp
+
+ENV DEV_CACHED_ROOT=/var/cached
 
 ENTRYPOINT queuemo --jobs=10240 --runtime=1000000 -VV
