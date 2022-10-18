@@ -2,6 +2,12 @@
 
 Every noteable change is logged here.
 
+## v1.24.4 (2022-10-18)
+
+### Chore
+
+* add Volume to store qcon data (62e90ecbb0eb)
+
 ## v1.24.3 (2022-10-17)
 
 ### Chore
