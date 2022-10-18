@@ -9,8 +9,8 @@
 
 # Internal packages
 configo>=0.22.0<1.0.0
-link>=2.15.3<3.0.0
-utila>=2.89.0<3.0.0
+link>=2.15.4<3.0.0
+utila>=2.90.0<3.0.0
 
 # abel>=0.6.1<1.0.0
 # is resource extractable
@@ -51,4 +51,4 @@ decider_lay>=0.11.2<1.0.0
 
 Flask>=2.2.2<3.0.0
 # publish results
-qcon>=0.6.3<1.0.0
+qcon>=0.8.1<1.0.0
