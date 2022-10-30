@@ -100,7 +100,6 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     flow.publish(folder='feedback__view_pages', pattern='*.html')
     flow.publish(folder='feedback__view_pages', pattern='*.jpg')
     flow.publish(folder='feedback__view_pages', pattern='*.png')
-
     resultview = link.resultview(flow.document)
     utila.copy_content(
         flow.tmppath,
