@@ -50,7 +50,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
         # TODO: REPLACE WITH ABEL LATER
         document_layout = layout.document_layout(
             flow.sourcepath,
-            pages=utila.ranged_tuple(0, 30),
+            pages=utila.rtuple(0, 30),
         )
         if iamraw.Layout.DOUBLECOLUMN in document_layout:
             msg = f'double column not supported: {flow.sourcepath}'
@@ -67,7 +67,7 @@ def after(flow: queuemo.runtime.api.RecipeIO):
         text=True,
         pages='0:10',
     )
-    ptns = serializeraw.create_pagetextnavigators_frompath(flow.tmppath)
+    ptns = serializeraw.ptn_frompath(flow.tmppath)
     content = any(len(page) for page in ptns)
     if content:
         return

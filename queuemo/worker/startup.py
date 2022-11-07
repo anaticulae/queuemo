@@ -76,7 +76,7 @@ def run(
                 config=config,
             )
         except Exception:  # pylint: disable=broad-except
-            utila.log_stacktrace()
+            utila.print_stacktrace()
             utila.error(f'\nClose scheduler: {tick}')
             return utila.FAILURE
         tick += 1

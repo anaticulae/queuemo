@@ -30,7 +30,7 @@ def patch_todo(td, mp, copy=True):  # pylint:disable=W0613
     """Change todo path to avoid overriding test data.
 
     Args:
-        td(fixture): testdir
+        td(fixture): td
         mp(fixture): to patch environment variables
         copy(bool): sync data of todo folder
     Yields:

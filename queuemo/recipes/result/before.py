@@ -182,7 +182,7 @@ def pages(item: iamraw.sections.PartOfDocMixin) -> tuple:
     start = int(item.start)
     # round to higher to convert 1.5 to 2.0 to handle multiple pages.
     end = int(math.ceil(item.end)) + 1
-    return utila.ranged_tuple(start, end)
+    return utila.rtuple(start, end)
 
 
 def publish_pagenumbers(flow):
