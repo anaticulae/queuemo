@@ -2,6 +2,22 @@
 
 Every noteable change is logged here.
 
+## v1.25.0 (2022-11-08)
+
+### Feature
+
+* use python optimize (90bb64bf244f)
+
+### Fix
+
+* solve resolving bug (db8d67022a9a)
+
+### Chore
+
+* upgrade requirements.txt (213ce9e06c6a)
+* upgrade environment (4f23c9d83c91)
+* upgrade requirements.txt (8a27010b33bc)
+
 ## v1.24.5 (2022-10-18)
 
 ### Chore
