@@ -84,7 +84,7 @@ class RecipeStep:
     after: callable = None
 
 
-RecipeSteps = 'list[RecipeStep]'  # pylint:disable=C0103
+RecipeSteps = list[RecipeStep]
 
 ORDER = 'ORDER'
 
