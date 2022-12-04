@@ -10,7 +10,7 @@
 # TODO: REMOVE GIT AND BAW LATER
 FROM 169.254.149.20:6001/arch_python_git_ghost_opencv_baw:v1.28.0
 
-RUN pip install "queuemo==1.25.0" && pip cache purge
+RUN pip install "queuemo==CURRENT" && pip cache purge
 
 VOLUME /var/shared/
 VOLUME /var/cached/

@@ -8,6 +8,19 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-CURRENT=$(queuemo --version)
-RELEASE_TAG="${CAELUM_DOCKER_TEST}/caelum_release_work:${CURRENT}"
-docker build -t $RELEASE_TAG --file Production .
+FILE="env/Production"
+TMP="tmp"
+QUEUEMO=$(baw info stable)
+DESCRIBE=$(baw info describe)
+TAG="${CAELUM_DOCKER_TEST}/caelum_release_work:${DESCRIBE}"
+echo "baw image create --name ${TAG} --dockerfile ${TMP}"
+# insert current queuemo version
+sed "s/CURRENT/${QUEUEMO}/" ${FILE} > ${TMP}
+baw image create --name $TAG --dockerfile ${TMP}
+if [ $? -ne 0 ]
+then
+    echo "could not run docker build: ${FILE}"
+    exit 1
+fi
+# reset dockerfile
+rm ${TMP}
