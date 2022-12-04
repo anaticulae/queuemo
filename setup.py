@@ -8,54 +8,26 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
-import os
-import re
+import utila
 
-import setuptools
-
-ROOT = os.path.dirname(__file__)
-with open(os.path.join(ROOT, 'README.md'), encoding='utf8') as fp:
-    README = fp.read()
-
-with open(os.path.join(ROOT, 'queuemo/__init__.py'), encoding='utf8') as fp:
-    VERSION = re.search(r'__version__ = \'(.*?)\'', fp.read()).group(1)
-
-with open(os.path.join(ROOT, 'requirements.txt'), encoding='utf8') as fp:
-    REQUIRES = [line for line in fp.readlines() if line and '#' not in line]
+PACKAGES = [
+    'queuemo',
+    'queuemo.cli',
+    'queuemo.recipes',
+    'queuemo.recipes.fastview',
+    'queuemo.recipes.publish',
+    'queuemo.recipes.result',
+    'queuemo.recipes.validation',
+    'queuemo.runtime',
+    'queuemo.worker',
+]
+ENTRY_POINTS = {
+    'console_scripts': [
+        'queuemo = queuemo.cli.main:main',
+        'queuemo_single = queuemo.cli.single:main',
+        'queuemo_state = queuemo.cli.state:main',
+    ],
+}
 
 if __name__ == "__main__":
-    setuptools.setup(
-        author='Helmut Konrad Fahrendholz',
-        author_email='info@checkitweg.de',
-        description='queuemo',
-        include_package_data=True,
-        install_requires=REQUIRES,
-        long_description=README,
-        name='queuemo',
-        platforms='any',
-        url='https://dev.package.checkitweg.de/queuemo',
-        version=VERSION,
-        zip_safe=False,  # create 'zip'-file if True. Don't do it!
-        classifiers=[
-            'Programming Language :: Python :: 3.7',
-            'Programming Language :: Python :: 3.8',
-        ],
-        entry_points={
-            'console_scripts': [
-                'queuemo = queuemo.cli.main:main',
-                'queuemo_single = queuemo.cli.single:main',
-                'queuemo_state = queuemo.cli.state:main',
-            ],
-        },
-        packages=[
-            'queuemo',
-            'queuemo.cli',
-            'queuemo.recipes',
-            'queuemo.recipes.fastview',
-            'queuemo.recipes.publish',
-            'queuemo.recipes.result',
-            'queuemo.recipes.validation',
-            'queuemo.runtime',
-            'queuemo.worker',
-        ],
-    )
+    utila.install(__file__)
