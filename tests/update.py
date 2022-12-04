@@ -61,6 +61,8 @@ def create_example(source: str, todoname: str = None, filename: str = None):
 
 
 def generate_broken_example():
-    broken = utila.tmpfile(configo.tmp())
+    tmpdir = configo.tmp()
+    os.makedirs(tmpdir, exist_ok=True)
+    broken = utila.tmpfile(tmpdir)
     utila.file_replace(broken, 'invalid pdf data')
     create_example(broken, todoname='broken_resource', filename='broken.pdf')
