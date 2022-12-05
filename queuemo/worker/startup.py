@@ -173,7 +173,6 @@ def work(workspace, config):
     assert os.path.exists(workspace), str(workspace)
     current = jobid(workspace)
     outpath = os.path.join(configo.todo(), current)
-
     queuemo.runtime.execute.run_document(
         workspace,
         documentid=jobid(workspace),
