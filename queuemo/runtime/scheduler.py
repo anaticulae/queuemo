@@ -71,8 +71,6 @@ import re
 
 import utila
 
-import queuemo.utils
-
 
 @dataclasses.dataclass
 class RecipeStep:
@@ -167,7 +165,7 @@ def collect(path: str) -> dict:
     for item in items:
         stepname = utila.file_name(item)
         source = os.path.join(path, item)
-        module = queuemo.utils.load_module(source)
+        module = utila.load_module(source)
         if not hasattr(module, 'run'):
             utila.error(f'could not load recipe step: `{item}` in `{module}`')
             continue
@@ -187,7 +185,7 @@ RUN = re.compile(r'^run\w+$')
 
 def runx(module):
     """\
-    >>> runx(queuemo.utils.load_module(__file__))
+    >>> runx(utila.load_module(__file__))
     [<function runx at...>]
     """
     result = []

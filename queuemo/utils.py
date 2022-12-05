@@ -8,7 +8,6 @@
 # =============================================================================
 """Store experimental code here."""
 
-import importlib.util
 import os
 import sys
 
@@ -104,19 +103,3 @@ def assert_classes(items):
             assert_classes(item)
         return
     assert isinstance(items, object.__class__), f'class not: {type(items)}'
-
-
-def load_module(path: str):
-    """\
-    >>> load_module(__file__).__name__
-    'queuemo.utils'
-    """
-    item = utila.file_name(path)
-    parent = utila.file_name(utila.path_parent(path))
-    spec = importlib.util.spec_from_file_location(
-        f'{parent}.{item}',
-        path,
-    )
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
