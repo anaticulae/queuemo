@@ -2,6 +2,22 @@
 
 Every noteable change is logged here.
 
+## v1.26.0 (2022-12-05)
+
+### Feature
+
+* upgrade queuemo (22786e7ef823)
+
+### Chore
+
+* automate docker container creation (cc597f4a14ee)
+* automate queuemo replacement (592fa256b726)
+* upgrade environment (431a2e3e8bd2)
+* upgrade requirements.txt (2622286e6cb7)
+* use quick installer (2e480b67c126)
+* upgrade pipeline (c18a716ca114)
+* rename docker builder (7c47f9f5bda2)
+
 ## v1.25.0 (2022-11-08)
 
 ### Feature
