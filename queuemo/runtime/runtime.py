@@ -40,7 +40,7 @@ class RecipeRuntime:
         outpath: str,
         config: queuemo.runtime.api.RecipeConfig = None,
     ):
-        """Initialize RectipeRuntime.
+        """Initialize RecipeRuntime.
 
         Args:
             workspace(str): path which contains the `document` and where
