@@ -25,6 +25,12 @@ JOBS = 'jobs'
 VERBOSE = 'verbose'
 INTERACTIVE = 'interactive'
 
+Config = collections.namedtuple(
+    'Config',
+    ('interactive failfast showdebug clean runtime waiting '
+     'jobs verbose http skip_unsupported webconfig'),
+)
+
 
 @utila.saveme
 def main():
@@ -125,12 +131,6 @@ CMDS = [
         message='select msgids of published findings',
     ),
 ]
-
-Config = collections.namedtuple(
-    'Config',
-    ('interactive failfast showdebug clean runtime waiting '
-     'jobs verbose http skip_unsupported webconfig'),
-)
 
 
 def evaluate_cli() -> Config:
