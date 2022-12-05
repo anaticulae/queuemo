@@ -173,6 +173,7 @@ def evaluate_cli() -> Config:
     except ValueError:
         msg = (f'invalid start parameter: `{args[RUNTIME]}`, `{args[WAITING]}`,'
                f' `{args[VERBOSE]}`, `{args[JOBS]}`')
+        utila.error(args)
         utila.error(msg)
         return utila.INVALID_COMMAND
     utila.level_setup(config.verbose)
