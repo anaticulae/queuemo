@@ -8,4 +8,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-queuemo --jobs=10240 --runtime=1000000 -VV
+: "${WORKER:=1}"
+echo "WORKER: ${WORKER}"
+WORKER=${WORKER}-1
+
+for ((NUMBER=0; NUMBER < ${WORKER}; NUMBER++)); do
+    echo "start: ${NUMBER}"
+    queuemo --jobs=10240 --runtime=1000000 -VV >> ${NUMBER}.log &
+    sleep 1
+done
+echo "start: ${NUMBER}"
+echo "see progress in NUMBER.log"
+echo "running..."
+# wait for completion
+queuemo --jobs=10240 --runtime=1000000 -VV >> ${WORKER}.log

@@ -24,6 +24,8 @@ ENV DEV_CACHED_ROOT=/var/cached
 
 ENV PYTHONOPTIMIZE=2
 
+ENV WORKER=16
+
 COPY env/worker /var/parallel/worker
 
 ENTRYPOINT /var/parallel/worker
