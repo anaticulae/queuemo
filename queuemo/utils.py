@@ -9,11 +9,9 @@
 """Store experimental code here."""
 
 import os
-import sys
 
 import sections.path
 import serializeraw
-import utila
 
 
 def select_pages(path: str, select, noselect=None) -> str:
@@ -78,14 +76,6 @@ def pages2str(pages: tuple) -> str:
     if (pages[0]) == pages[1]:
         return str(pages[0])
     return ':'.join([str(item) for item in pages])
-
-
-def wait():
-    """Ask user to continue program."""
-    answer = input('continue?\n')
-    answer = answer.strip().lower()
-    if answer in {'no', 'n'}:
-        sys.exit(utila.SUCCESS)
 
 
 def exists(filename: str, sources: list) -> bool:

@@ -201,6 +201,6 @@ def run(  # pylint:disable=R1260
                         # required.
                         raise RuntimeError(f'{current.name}:{item}') from error
         if queuemo.INTERACTIVE:
-            queuemo.utils.wait()
+            utila.wait()
         if tick:
             tick()
