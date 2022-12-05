@@ -21,13 +21,11 @@ PACKAGES = [
     'queuemo.runtime',
     'queuemo.worker',
 ]
-ENTRY_POINTS = {
-    'console_scripts': [
-        'queuemo = queuemo.cli.main:main',
-        'queuemo_single = queuemo.cli.single:main',
-        'queuemo_state = queuemo.cli.state:main',
-    ],
-}
+ENTRY_POINTS = dict(console_scripts=[
+    'queuemo = queuemo.cli.main:main',
+    'queuemo_single = queuemo.cli.single:main',
+    'queuemo_state = queuemo.cli.state:main',
+])
 
 if __name__ == "__main__":
     utila.install(__file__)
