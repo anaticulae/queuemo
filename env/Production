@@ -24,4 +24,6 @@ ENV DEV_CACHED_ROOT=/var/cached
 
 ENV PYTHONOPTIMIZE=2
 
-ENTRYPOINT queuemo --jobs=10240 --runtime=1000000 -VV
+COPY env/worker /var/parallel/worker
+
+ENTRYPOINT /var/parallel/worker
