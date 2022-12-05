@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v1.27.0 (2022-12-05)
+
+### Feature
+
+* add runtime and jobs as env to configure worker (b221b99547c2)
+* add env to run parallel worker (e76fac8e9f9f)
+* make worker more flexible (d10dcdd5f8ea)
+* increase debugging information (6d504412792a)
+
+### Chore
+
+* remove default option (27b0f95d5daf)
+
 ## v1.26.0 (2022-12-05)
 
 ### Feature
