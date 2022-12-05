@@ -9,16 +9,20 @@
 # =============================================================================
 
 : "${WORKER:=1}"
-echo "WORKER: ${WORKER}"
-WORKER=${WORKER}-1
+: "${JOBS:=10240}"
+: "${RUNTIME:=1000000}"
 
-for ((NUMBER=0; NUMBER < ${WORKER}; NUMBER++)); do
+echo "WORKER:  ${WORKER}"
+echo "RUNTIME: ${RUNTIME}"
+echo "JOBS:    ${JOBS}"
+
+for ((NUMBER=0; NUMBER < (${WORKER}-1); NUMBER++)); do
     echo "start: ${NUMBER}"
-    queuemo --jobs=10240 --runtime=1000000 -VV >> ${NUMBER}.log &
+    queuemo --jobs=${JOBS} --runtime=${RUNTIME} -VV >> ${NUMBER}.log &
     sleep 1
 done
 echo "start: ${NUMBER}"
 echo "see progress in NUMBER.log"
 echo "running..."
 # wait for completion
-queuemo --jobs=10240 --runtime=1000000 -VV >> ${WORKER}.log
+queuemo --jobs=${JOBS} --runtime=${RUNTIME} -VV >> ${NUMBER}.log
