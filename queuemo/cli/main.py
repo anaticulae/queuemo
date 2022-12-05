@@ -40,8 +40,12 @@ def main():
     # run showdebug
     if config.showdebug:
         return showdebug()
-    # TODO: DONT KNOW WHY GLOBAL IS REQUIRED
-    global queuemo  # pylint:disable=C0103,global-statement
+    configure(config)
+    closed = worker_startup(config)
+    return closed
+
+
+def configure(config: Config):
     queuemo.INTERACTIVE = config.interactive
     queuemo.cli.utils.logger_start()
     if config.interactive:
@@ -56,9 +60,10 @@ def main():
         link.remove_outdated()
     # run http interface if required
     if config.http:
-        # lower queuemo start time, flask requires a second of init time
-        import queuemo.runtime.control  # pylint:disable=W0621,C0415
-        queuemo.runtime.control.start()
+        http_startup()
+
+
+def worker_startup(config: Config):
     webconfig = None
     if config.webconfig:
         if not utila.exists(config.webconfig):
@@ -67,7 +72,7 @@ def main():
         utila.debug(f'use webconfig: {config.webconfig}')
         webconfig = serializeraw.load_webconfig(config.webconfig)
     # start scheduler
-    import queuemo.worker.startup  # pylint:disable=C0415
+    import queuemo.worker.startup  # pylint:disable=W0621,C0415
     closed = queuemo.worker.startup.run(
         failfast=config.failfast,
         jobs=config.jobs,
@@ -78,6 +83,12 @@ def main():
         webconfig=webconfig,
     )
     return closed
+
+
+def http_startup():
+    # lower queuemo start time, flask requires a second of init time
+    import queuemo.runtime.control  # pylint:disable=W0621,C0415
+    queuemo.runtime.control.start()
 
 
 CMDS = [
