@@ -64,13 +64,6 @@ def configure(config: Config):
 
 
 def worker_startup(config: Config):
-    webconfig = None
-    if config.webconfig:
-        if not utila.exists(config.webconfig):
-            utila.error(f'webconfig does not exists: {config.webconfig}')
-            return utila.INVALID_COMMAND
-        utila.debug(f'use webconfig: {config.webconfig}')
-        webconfig = serializeraw.load_webconfig(config.webconfig)
     # start scheduler
     import queuemo.worker.startup  # pylint:disable=W0621,C0415
     closed = queuemo.worker.startup.run(
@@ -80,7 +73,7 @@ def worker_startup(config: Config):
         skip_unsupported=config.skip_unsupported,
         verbose=config.verbose,
         waiting=config.waiting,
-        webconfig=webconfig,
+        webconfig=config.webconfig,
     )
     return closed
 
@@ -157,6 +150,13 @@ def evaluate_cli() -> Config:
     )
     args = utila.parse(parser)
     try:
+        webconfig = args.get('webconfig', None)
+        if webconfig:
+            if not utila.exists(webconfig):
+                utila.error(f'webconfig does not exists: {webconfig}')
+                return utila.INVALID_COMMAND
+            utila.debug(f'use webconfig: {webconfig}')
+            webconfig = serializeraw.load_webconfig(webconfig)
         config = Config(
             args[INTERACTIVE],
             args.get('failfast', False),
@@ -168,7 +168,7 @@ def evaluate_cli() -> Config:
             int(args[VERBOSE]) if args[VERBOSE] else 0,
             args.get('http', False),
             args.get('skip_unsupported', False),
-            args.get('webconfig', None),
+            webconfig=webconfig,
         )
     except ValueError:
         msg = (f'invalid start parameter: `{args[RUNTIME]}`, `{args[WAITING]}`,'
