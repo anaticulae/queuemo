@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v1.27.1 (2022-12-15)
+
+### Fix
+
+* makes logging less verbose (ace75eea32db)
+
+### Chore
+
+* upgrade requirements.txt (819854894e6d)
+* add integrate and pre-release step (99a7165235eb)
+* upgrade Jenkinsfile (c2d748973075)
+* upgrade pipe library (85537f1b016d)
+
 ## v1.27.0 (2022-12-05)
 
 ### Feature
