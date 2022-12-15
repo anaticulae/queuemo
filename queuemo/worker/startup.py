@@ -92,10 +92,7 @@ def step(
     waiting=WAITING,
 ):
     if not job:
-        if config.verbose:
-            utila.log('Wait...')
-        else:
-            utila.log('.', end='')
+        utila.log('.', end='')
         time.sleep(waiting / 1000)  # miliseconds to seconds
         return
     # execute jobs steps

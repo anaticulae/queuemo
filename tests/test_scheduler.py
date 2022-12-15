@@ -23,7 +23,7 @@ def test_run_steps(capsys, td, mp):
     config = queuemo.runtime.api.RecipeConfig()
     with tests.patch_todo(td, mp):
         queuemo.worker.startup.step(job=None, config=config)
-        assert 'Wait' in utilatest.stdout(capsys)
+        assert '.' in utilatest.stdout(capsys)
         queuemo.worker.startup.step(job='8166109011', config=config)
         progress = utilatest.stdout(capsys)
         assert 'Copy' in progress
