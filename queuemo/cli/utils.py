@@ -23,4 +23,4 @@ def logger_start():
     logfile = f'{utila.filetime()}_{utila.tmpname(10)}.log'
     outpath = os.path.join(queuemo_tmp, logfile)
     utila.debug(f'write global log to {outpath}')
-    utila.logger.OUTFILE = outpath
+    utila.outfile_setup(outpath)

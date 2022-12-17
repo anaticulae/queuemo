@@ -46,14 +46,14 @@ def run_statistics(flow: queuemo.runtime.api.RecipeIO):
 def after(flow: queuemo.runtime.api.RecipeIO):
     utila.log('publish log')
     ready = link.ready(flow.document)
-    if utila.logger.OUTFILE:
+    if utila.outfile():
         content = queuemo.recipes.logger.content()
         logpath = os.path.join(ready, 'done')
         # write current document log to result
         utila.log(f'write log to: {logpath}')
         utila.file_replace(logpath, content)
     else:
-        utila.error('no utila.logger.OUTFILE defined could not publish logfile')
+        utila.error('no utila.outfile_setup defined could not publish logfile')
     # document completed
     utila.log()
     utila.log((('#' * 80) + utila.NEWLINE) * 4)
