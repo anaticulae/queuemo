@@ -12,7 +12,7 @@ FILE="env/Production"
 TMP="tmp"
 QUEUEMO=$(baw info stable)
 DESCRIBE=$(baw info describe)
-TAG="${CAELUM_DOCKER_TEST}/caelum_release_work:${DESCRIBE}"
+TAG="${CAELUM_DOCKER_TEST}/release_work:${DESCRIBE}"
 echo "baw image create --name ${TAG} --dockerfile ${TMP}"
 # insert current queuemo version
 sed "s/CURRENT/${QUEUEMO}/" ${FILE} > ${TMP}
