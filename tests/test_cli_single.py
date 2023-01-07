@@ -83,7 +83,7 @@ def test_no_text_content(td):
 #     # create queuemo todo
 #     workspace = link.create_todo(power.DOCU007_PDF, todopath=td.tmpdir)
 
-#     sink = os.path.join(td.tmpdir, 'different_sink')
+#     sink = td.tmpdir.join( 'different_sink')
 #     cmd = f'-i {workspace} -o {sink} -VVV'
 #     tests.run_single(
 #         cmd,
