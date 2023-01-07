@@ -2,6 +2,19 @@
 
 Every noteable change is logged here.
 
+## v1.27.4 (2023-01-07)
+
+### Documentation
+
+* happy New Year! (e2ec33a1c3dd)
+
+### Chore
+
+* upgrade Production image (ee800720723e)
+* upgrade requirements.txt (9491bf6490f9)
+* upgrade Jenkinsfile (272ba233c92f)
+* upgrade pipe library (e46f26516e23)
+
 ## v1.27.3 (2022-12-18)
 
 ### Chore
