@@ -2,6 +2,13 @@
 
 Every noteable change is logged here.
 
+## v1.27.5 (2023-01-09)
+
+### Chore
+
+* upgrade requirements.txt (62c97abbfced)
+* use new pre-release step (47f03d690cd4)
+
 ## v1.27.4 (2023-01-07)
 
 ### Documentation
