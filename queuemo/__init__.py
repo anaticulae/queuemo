@@ -7,6 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 #==============================================================================
 
+import importlib.metadata
 import os
 
 import queuemo.__patch__
@@ -14,7 +15,7 @@ from queuemo.runtime.api import RecipeIO
 from queuemo.runtime.scheduler import isrequired
 from queuemo.runtime.scheduler import required
 
-__version__ = '1.27.5'
+__version__ = importlib.metadata.version('queuemo')
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
