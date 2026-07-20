@@ -9,7 +9,7 @@
 
 import link
 import pytest
-import utilatest
+import utilotest
 
 import queuemo
 import queuemo.recipes
@@ -21,7 +21,7 @@ import tests.resources
 
 
 @tests.conftest.generated
-@utilatest.longrun
+@utilotest.longrun
 def test_recipe_validation_success(td, mp):
     """Ensure to create validation result via `pdfinfo` tool"""
     with tests.fixtures.todo.runtime(
@@ -30,7 +30,7 @@ def test_recipe_validation_success(td, mp):
             queuemo.recipes.VALIDATION,
             mp,
     ) as rt:  # pylint:disable=C0103
-        with utilatest.increased_filecount(td.tmpdir, 'yaml'):
+        with utilotest.increased_filecount(td.tmpdir, 'yaml'):
             completed = rt.next_step()
         pdfinfo = link.pdfinfo(tests.resources.EXAMPLE_JOB)
     assert completed
@@ -39,7 +39,7 @@ def test_recipe_validation_success(td, mp):
 
 
 @tests.conftest.generated
-@utilatest.longrun
+@utilotest.longrun
 def test_recipe_validation_failure(td, mp, capsys):
     """Ensure that validation tool stops with validation error on
     invalid, broken resource"""
@@ -49,16 +49,16 @@ def test_recipe_validation_failure(td, mp, capsys):
             queuemo.recipes.VALIDATION,
             mp,
     ) as rt:  # pylint:disable=C0103
-        with utilatest.increased_filecount(td.tmpdir, 'yaml'):
+        with utilotest.increased_filecount(td.tmpdir, 'yaml'):
             completed = rt.next_step()
     assert not completed
-    error = utilatest.stderr(capsys)
+    error = utilotest.stderr(capsys)
     assert 'invalid resource' in error, error
 
 
 @pytest.mark.xfail(reason='software integration')
 @tests.conftest.generated
-@utilatest.longrun
+@utilotest.longrun
 def test_validation_double_column_flag(td, mp):
     """Inform user about not supported double layout extraction.
 
@@ -66,7 +66,7 @@ def test_validation_double_column_flag(td, mp):
     supported.
     """
     # TODO: AUTOMATE DOCUMENTID
-    documentid = 'paper006column'  # look in power if not found
+    documentid = 'paper006column'  # look in hoverpower if not found
     with tests.fixtures.todo.runtime(
             td.tmpdir,
             document=documentid,

@@ -9,11 +9,11 @@
 
 import collections
 
-import configo
+import configos
 import link
 import serializeraw
-import utila
-import utila.cli
+import utilo
+import utilo.cli
 
 import queuemo
 import queuemo.cli.utils
@@ -32,11 +32,11 @@ Config = collections.namedtuple(
 )
 
 
-@utila.saveme
+@utilo.saveme
 def main():
     config = evaluate_cli()
-    if config == utila.INVALID_COMMAND:
-        return utila.INVALID_COMMAND
+    if config == utilo.INVALID_COMMAND:
+        return utilo.INVALID_COMMAND
     # run showdebug
     if config.showdebug:
         return showdebug()
@@ -49,12 +49,12 @@ def configure(config: Config):
     queuemo.INTERACTIVE = config.interactive
     queuemo.cli.utils.logger_start()
     if config.interactive:
-        utila.log('use interactive mode')
-    if not utila.testing():
+        utilo.log('use interactive mode')
+    if not utilo.testing():
         # ensure that all test directories are created
-        configo.makedirs()
+        configos.makedirs()
     # check startup
-    configo.check_startup()
+    configos.check_startup()
     if config.clean:
         # remove outdated maybe failed jobs
         link.remove_outdated()
@@ -85,52 +85,52 @@ def http_startup():
 
 
 CMDS = [
-    utila.Parameter(
+    utilo.Parameter(
         longcut=RUNTIME,
         message='runtime in ticks',
         args={
             'default': 100,
         },
     ),
-    utila.Parameter(
+    utilo.Parameter(
         longcut=WAITING,
         message='time to wait for the next job in miliseconds',
         args={
             'default': 1000,
         },
     ),
-    utila.Parameter(
+    utilo.Parameter(
         longcut=JOBS,
         message='maximal number of executed jobs',
         args={
             'default': 1000,
         },
     ),
-    utila.Flag(
+    utilo.Flag(
         longcut=INTERACTIVE,
         message='pause on every recipe step and ask to continue',
     ),
-    utila.Flag(
+    utilo.Flag(
         longcut='failfast',
         message='fail on first error',
     ),
-    utila.Flag(
+    utilo.Flag(
         longcut='http',
         message='start http interface',
     ),
-    utila.Flag(
+    utilo.Flag(
         longcut='showdebug',
         message='show list of installed runnable and return',
     ),
-    utila.Flag(
+    utilo.Flag(
         longcut='clean',
         message='clean outdated jobs',
     ),
-    utila.Flag(
+    utilo.Flag(
         longcut='skip_unsupported',
         message='do not analyze not supported documents',
     ),
-    utila.Parameter(
+    utilo.Parameter(
         longcut='webconfig',
         message='select msgids of published findings',
     ),
@@ -138,9 +138,9 @@ CMDS = [
 
 
 def evaluate_cli() -> Config:
-    parser = utila.cli.create_parser(
+    parser = utilo.cli.create_parser(
         todo=CMDS,
-        config=utila.ParserConfiguration(
+        config=utilo.ParserConfiguration(
             waitingflag=False,
             cacheflag=False,
             pages=False,
@@ -148,14 +148,14 @@ def evaluate_cli() -> Config:
         prog=queuemo.PROCESS,
         version=queuemo.__version__,
     )
-    args = utila.parse(parser)
+    args = utilo.parse(parser)
     try:
         webconfig = args.get('webconfig', None)
         if webconfig:
-            if not utila.exists(webconfig):
-                utila.error(f'webconfig does not exists: {webconfig}')
-                return utila.INVALID_COMMAND
-            utila.debug(f'use webconfig: {webconfig}')
+            if not utilo.exists(webconfig):
+                utilo.error(f'webconfig does not exists: {webconfig}')
+                return utilo.INVALID_COMMAND
+            utilo.debug(f'use webconfig: {webconfig}')
             webconfig = serializeraw.load_webconfig(webconfig)
         config = Config(
             args[INTERACTIVE],
@@ -173,13 +173,13 @@ def evaluate_cli() -> Config:
     except ValueError:
         msg = (f'invalid start parameter: `{args[RUNTIME]}`, `{args[WAITING]}`,'
                f' `{args[VERBOSE]}`, `{args[JOBS]}`')
-        utila.error(args)
-        utila.error(msg)
-        return utila.INVALID_COMMAND
-    utila.level_setup(config.verbose)
+        utilo.error(args)
+        utilo.error(msg)
+        return utilo.INVALID_COMMAND
+    utilo.level_setup(config.verbose)
     return config
 
 
 def showdebug():
     queuemo.runnable.check()
-    return utila.SUCCESS
+    return utilo.SUCCESS

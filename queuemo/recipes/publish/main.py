@@ -10,7 +10,7 @@
 import os
 
 import link
-import utila
+import utilo
 
 import queuemo
 import queuemo.recipes.logger
@@ -44,20 +44,20 @@ def run_statistics(flow: queuemo.runtime.api.RecipeIO):
 
 @queuemo.required
 def after(flow: queuemo.runtime.api.RecipeIO):
-    utila.log('publish log')
+    utilo.log('publish log')
     ready = link.ready(flow.document)
-    if utila.outfile():
+    if utilo.outfile():
         content = queuemo.recipes.logger.content()
         logpath = os.path.join(ready, 'done')
         # write current document log to result
-        utila.log(f'write log to: {logpath}')
-        utila.file_replace(logpath, content)
+        utilo.log(f'write log to: {logpath}')
+        utilo.file_replace(logpath, content)
     else:
-        utila.error('no utila.outfile_setup defined could not publish logfile')
+        utilo.error('no utilo.outfile_setup defined could not publish logfile')
     # document completed
-    utila.log()
-    utila.log((('#' * 80) + utila.NEWLINE) * 4)
-    utila.log()
+    utilo.log()
+    utilo.log((('#' * 80) + utilo.NEWLINE) * 4)
+    utilo.log()
 
 
 def skip_resultview(path) -> bool:

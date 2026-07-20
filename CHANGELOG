@@ -973,7 +973,7 @@ Every noteable change is logged here.
 * copy todo to testdir to avoid deleting todo source folder (8856bc3f85a5)
 * publish to `result` folder which `viewo` expects (017fb277a87b)
 * fix output of words index, which was doubled (291fbca59589)
-* remove verbose flag to use it from utila (ceeb7dd02c58)
+* remove verbose flag to use it from utilo (ceeb7dd02c58)
 * use only folder which are not in progress (f0f1f6af0e49)
 * fix logging of recipe (0fa0740e7eaa)
 * fix spelling recipe (6f5f7c574d0f)
@@ -993,8 +993,7 @@ Every noteable change is logged here.
 * limit loop by max ticks to avoid endless loop (29e223ac0877)
 * using job definition from `link` (9cd6bc5dc5ec)
 * add scheduler to watch todo folder and start working (1487e3580310)
-* move access to global environment to configo package (7e0b50e46671)
+* move access to global environment to configos package (7e0b50e46671)
 * add access to config with todo and ready folder (2bc49534f5a4)
 
 ## v0.0.0 Initial release
-

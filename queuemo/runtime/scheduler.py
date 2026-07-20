@@ -69,7 +69,7 @@ import dataclasses
 import os
 import re
 
-import utila
+import utilo
 
 
 @dataclasses.dataclass
@@ -163,11 +163,11 @@ def collect(path: str) -> dict:
     ]
     result = {}
     for item in items:
-        stepname = utila.file_name(item)
+        stepname = utilo.file_name(item)
         source = os.path.join(path, item)
-        module = utila.load_module(source)
+        module = utilo.load_module(source)
         if not hasattr(module, 'run'):
-            utila.error(f'could not load recipe step: `{item}` in `{module}`')
+            utilo.error(f'could not load recipe step: `{item}` in `{module}`')
             continue
         step = RecipeStep(name=stepname)
         for value_name in ['before', 'run', 'after', ORDER, 'PREFIX']:
@@ -185,7 +185,7 @@ RUN = re.compile(r'^run\w+$')
 
 def runx(module):
     """\
-    >>> runx(utila.load_module(__file__))
+    >>> runx(utilo.load_module(__file__))
     [<function runx at...>]
     """
     result = []
@@ -250,7 +250,7 @@ def schedule(steps: RecipeSteps, orderby: list = None) -> RecipeSteps:
         try:
             found = find[item]
         except KeyError:
-            utila.error(f'could not schedule {index} {item}')
+            utilo.error(f'could not schedule {index} {item}')
         else:
             result.append(found)
             steps.remove(found)

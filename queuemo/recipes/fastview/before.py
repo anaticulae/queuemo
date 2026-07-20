@@ -7,18 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import configo
+import configos
 import link
-import utila
+import utilo
 
 import queuemo
 import queuemo.recipes.utils
 import queuemo.runnable
 import queuemo.runtime.api
 
-TIMEOUT_FASTVIEW_TABLERO = configo.HV_INT_PLUS(default=60)
+TIMEOUT_FASTVIEW_TABLERO = configos.HV_INT_PLUS(default=60)
 
-FIRST_PAGES = configo.HV_STR(default='0:10')
+FIRST_PAGES = configos.HV_STR(default='0:10')
 
 
 @queuemo.required
@@ -51,7 +51,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
     pdf = flow.sourcepath
-    with utila.GeorgFork(process=False) as runtime:
+    with utilo.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.rawmaker,
             inpath=pdf,
@@ -73,4 +73,4 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             fonts=True,
             pages='0:5',
         )
-    assert runtime.result == utila.SUCCESS, 'could not extract pdf'
+    assert runtime.result == utilo.SUCCESS, 'could not extract pdf'

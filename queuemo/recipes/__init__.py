@@ -32,16 +32,16 @@ Presentation:
     HTML VIEW
 """
 
-import utila
+import utilo
 
 import queuemo
 import queuemo.runtime.scheduler
 
-RECIPES = utila.join(queuemo.ROOT, 'queuemo', 'recipes', exist=True)
+RECIPES = utilo.join(queuemo.ROOT, 'queuemo', 'recipes', exist=True)
 
 
 def create(name: str):
-    path = utila.join(RECIPES, name, exist=True)
+    path = utilo.join(RECIPES, name, exist=True)
     loaded = queuemo.runtime.scheduler.load(path)
     return loaded
 

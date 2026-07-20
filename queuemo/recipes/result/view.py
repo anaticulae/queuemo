@@ -9,9 +9,9 @@
 
 import os
 
-import ghost
 import link
-import utila
+import ughost
+import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -57,16 +57,16 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 @queuemo.required
 def run_png(flow: queuemo.runtime.api.RecipeIO):
-    pdfview = utila.join(flow.tmppath, 'pdfview')
+    pdfview = utilo.join(flow.tmppath, 'pdfview')
     os.makedirs(pdfview)
-    if ghost.HAS_GHOST:
+    if ughost.HAS_GHOST:
         # generate png for every pdf page
-        queuemo.runnable.ghost(
+        queuemo.runnable.ughost(
             inpath=flow.sourcepath,
             outpath=pdfview,
         )
     else:
-        utila.error('skip `run_png` install ghost')
+        utilo.error('skip `run_png` install ughost')
 
 
 def run_plot(flow: queuemo.runtime.api.RecipeIO):
@@ -82,7 +82,7 @@ def run_plot(flow: queuemo.runtime.api.RecipeIO):
 
 @queuemo.required
 def run_findings_render(flow: queuemo.runtime.api.RecipeIO):
-    outpath = utila.join(flow.tmppath, 'pdfview')
+    outpath = utilo.join(flow.tmppath, 'pdfview')
     queuemo.runnable.feedback_findings(
         inpath=[
             link.resultview(flow.document),
@@ -94,22 +94,22 @@ def run_findings_render(flow: queuemo.runtime.api.RecipeIO):
 
 
 def after(flow: queuemo.runtime.api.RecipeIO):
-    # TODO: Support utila to create result without package feedback
+    # TODO: Support utilo to create result without package feedback
     # For example generate: 0.html, 1.html etc. nor package_0.html,
     # package_1.html
     flow.publish(folder='feedback__view_pages', pattern='*.html')
     flow.publish(folder='feedback__view_pages', pattern='*.jpg')
     flow.publish(folder='feedback__view_pages', pattern='*.png')
     resultview = link.resultview(flow.document)
-    utila.copy_content(
+    utilo.copy_content(
         flow.tmppath,
         os.path.join(resultview, 'view'),
         pattern='feedback__plot_*.png',
         verbose=True,
     )
     # publish pngs
-    pdfview = utila.join(flow.tmppath, 'pdfview')
-    utila.copy_content(
+    pdfview = utilo.join(flow.tmppath, 'pdfview')
+    utilo.copy_content(
         pdfview,
         os.path.join(resultview, 'view'),
         pattern='*.png',

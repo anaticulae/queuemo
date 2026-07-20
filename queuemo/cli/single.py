@@ -10,11 +10,11 @@
 
 import os
 
-import configo
+import configos
 import link
-import utila
-import utila.cli
-import utila.logger
+import utilo
+import utilo.cli
+import utilo.logger
 
 import queuemo
 import queuemo.cli.utils
@@ -23,34 +23,34 @@ import queuemo.runtime.execute
 import queuemo.worker.startup
 
 COMMANDS = [
-    utila.Flag(longcut='create'),
+    utilo.Flag(longcut='create'),
 ]
 DESCRIPTION = """\
 Run queuemo recipe for given -i input and write to -o folder.
 """
 
 
-@utila.saveme
+@utilo.saveme
 def main() -> int:
     inpath, outpath, verbose, create = eval_cli()
-    utila.logger.level_setup(utila.Level(verbose))
+    utilo.logger.level_setup(utilo.Level(verbose))
     queuemo.cli.utils.logger_start()
     if os.path.isfile(inpath):
         if create:
             inpath = create_todo(inpath, outpath)
-            if inpath == utila.FAILURE:
-                return utila.FAILURE
+            if inpath == utilo.FAILURE:
+                return utilo.FAILURE
         else:
-            utila.error(f'require directory: {inpath} or use --create flag')
-            return utila.INVALID_COMMAND
+            utilo.error(f'require directory: {inpath} or use --create flag')
+            return utilo.INVALID_COMMAND
     outpath = inpath
-    utila.log(f'write result to: {outpath}')
+    utilo.log(f'write result to: {outpath}')
     # patch todo outpath path. TODO: INVESTIGATE HERE?
     todopath = os.path.normpath(os.path.join(inpath, os.path.pardir))
-    configo.todo = lambda _=False: todopath
-    configo.ready = lambda _=False: todopath
+    configos.todo = lambda _=False: todopath
+    configos.ready = lambda _=False: todopath
     # analyze single document
-    tmpdir = utila.tmpdir(configo.tmp())
+    tmpdir = utilo.tmpdir(configos.tmp())
     jobid = queuemo.worker.startup.jobid(inpath)
     queuemo.runtime.execute.run_document(
         workspace=tmpdir,
@@ -58,22 +58,22 @@ def main() -> int:
         outpath=outpath,
         config=queuemo.runtime.api.RecipeConfig(verbose=verbose),
     )
-    return utila.SUCCESS
+    return utilo.SUCCESS
 
 
 def eval_cli() -> tuple:
-    parser = utila.cli.create_parser(
+    parser = utilo.cli.create_parser(
         description=DESCRIPTION,
         todo=COMMANDS,
-        config=utila.ParserConfiguration(
+        config=utilo.ParserConfiguration(
             inputparameter=True,
             outputparameter=True,
         ),
         prog='queuemo_single',
         version=queuemo.__version__,
     )
-    args = utila.parse(parser)
-    inpath, outpath, verbose = utila.sources(  # pylint:disable=W0632
+    args = utilo.parse(parser)
+    inpath, outpath, verbose = utilo.sources(  # pylint:disable=W0632
         args,
         singleinput=True,
         use_cwd=False,
@@ -101,7 +101,7 @@ def create_todo(inpath, outpath):
             exist_ok=True,
         )
     except OSError:
-        utila.error(f'{os.path.join(outpath, outname)} already exists')
-        return utila.FAILURE
-    utila.log(f'create job description in {outpath}')
+        utilo.error(f'{os.path.join(outpath, outname)} already exists')
+        return utilo.FAILURE
+    utilo.log(f'create job description in {outpath}')
     return outpath

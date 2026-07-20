@@ -43,7 +43,7 @@ import textwrap
 import iamraw
 import link
 import serializeraw
-import utila
+import utilo
 
 
 @dataclasses.dataclass
@@ -124,9 +124,9 @@ class RecipeIO:
     def publish_linting(self, verbose: bool = False):
         """Publish to fastview and if exists to result also"""
         if not self.outpath:
-            utila.log('skip publishing')
+            utilo.log('skip publishing')
             return
-        utila.copy_content(
+        utilo.copy_content(
             self.tmppath,
             self.outpath,
             pattern='*_user.yaml',
@@ -138,10 +138,10 @@ class RecipeIO:
         if folder is not None:
             source = os.path.join(self.tmppath, folder)
         if self.outpath:
-            utila.copy_content(source, self.outpath, pattern=pattern)
+            utilo.copy_content(source, self.outpath, pattern=pattern)
         else:
             todo = link.todo(self.document)
-            utila.copy_content(source, todo, pattern=pattern)
+            utilo.copy_content(source, todo, pattern=pattern)
 
     def skip(self, decider: str) -> bool:
         if not self.config:

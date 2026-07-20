@@ -11,7 +11,7 @@ import os
 
 import iamraw.sections
 import link
-import utila
+import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -41,7 +41,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         flow.general,
         select=iamraw.sections.MainPart,
     )
-    with utila.GeorgFork(process=False) as runtime:
+    with utilo.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.textflow_wordspace,
             inpath=flow.general,
@@ -54,7 +54,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
             outpath=flow.tmppath,
             pages=content,
         )
-    with utila.GeorgFork(process=False) as runtime:
+    with utilo.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.decider_textstyle_headlines,
             inpath=[
@@ -85,13 +85,13 @@ def after(flow: queuemo.runtime.api.RecipeIO):
         return
     # copy detected required style information to display in user
     # interface.
-    utila.copy_content(
+    utilo.copy_content(
         flow.tmppath,
         resultview,
         pattern='doctextstyle__textstyle.yaml',
         verbose=True,
     )
-    utila.copy_content(
+    utilo.copy_content(
         flow.general,
         resultview,
         pattern='rawmaker_*fonts_*.yaml',

@@ -7,14 +7,14 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utilatest
+import utilotest
 
 import queuemo.recipes
 import tests.fixtures.todo
 import tests.resources
 
 
-@utilatest.nightly
+@utilotest.nightly
 def test_chapter(td, mp, capsys):
     """Ensure that --docinfo {pagecount} is passed to chapter decider."""
     validation = queuemo.recipes.VALIDATION.copy()
@@ -30,5 +30,5 @@ def test_chapter(td, mp, capsys):
         assert rt.next_step()
         assert rt.next_step()
     expected = '--docinfo 9english'
-    stdout = utilatest.stdout(capsys)
+    stdout = utilotest.stdout(capsys)
     assert expected in stdout

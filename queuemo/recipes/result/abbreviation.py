@@ -11,7 +11,7 @@
 """
 
 import iamraw.sections
-import utila
+import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -25,7 +25,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         select=iamraw.sections.AbbreviationTable,
     )
     if pages == ':':
-        utila.info('could not detect AbbreviationTable page-numbers')
+        utilo.info('could not detect AbbreviationTable page-numbers')
         return
     queuemo.runnable.reftable(
         inpath=[

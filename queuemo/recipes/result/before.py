@@ -9,18 +9,18 @@
 
 import math
 
-import configo
+import configos
 import iamraw.sections
 import link
 import serializeraw
-import utila
+import utilo
 
 import queuemo
 import queuemo.recipes.utils
 import queuemo.runnable
 import queuemo.runtime.api
 
-TIMEOUT_RESULT_TABLERO = configo.HV_INT_PLUS(default=120)
+TIMEOUT_RESULT_TABLERO = configos.HV_INT_PLUS(default=120)
 
 
 @queuemo.required
@@ -45,7 +45,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run_code_tab_form_figure(flow: queuemo.runtime.api.RecipeIO):
-    timeout = utila.Timeout(
+    timeout = utilo.Timeout(
         seconds=TIMEOUT_RESULT_TABLERO,
         gracefully=True,
     )
@@ -114,7 +114,7 @@ def run_final(flow: queuemo.runtime.api.RecipeIO):
 
 def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
     pdf = flow.sourcepath
-    with utila.GeorgFork(worker=2, process=False) as runtime:
+    with utilo.GeorgFork(worker=2, process=False) as runtime:
         # use 2 worker to start spacestation after finishing first rawmaker
         runtime.fork(
             queuemo.runnable.rawmaker,
@@ -139,7 +139,7 @@ def unpack_pdf(flow: queuemo.runtime.api.RecipeIO):
             inpath=pdf,
             outpath=flow.tmppath,
         )
-    assert runtime.result == utila.SUCCESS, 'could not extract pdf'
+    assert runtime.result == utilo.SUCCESS, 'could not extract pdf'
 
 
 NO_FIGURE_TABLES = (
@@ -174,7 +174,7 @@ def valid_figures_tables(flow: queuemo.runtime.api.RecipeIO) -> str:
                 continue
             for page in pages(item):
                 valid.append(page)
-    result = utila.simplify_pages(valid)
+    result = utilo.simplify_pages(valid)
     return result
 
 
@@ -182,21 +182,21 @@ def pages(item: iamraw.sections.PartOfDocMixin) -> tuple:
     start = int(item.start)
     # round to higher to convert 1.5 to 2.0 to handle multiple pages.
     end = int(math.ceil(item.end)) + 1
-    return utila.rtuple(start, end)
+    return utilo.rtuple(start, end)
 
 
 def publish_pagenumbers(flow):
     """Required to render pdf navigation with real page numbers."""
     resultview = link.resultview(flow.document)
     # TODO: REMOVE LATER!
-    utila.copy_content(
+    utilo.copy_content(
         flow.general,
         resultview,
         pattern='groupme__pagenumbers_pagenumbers.yaml',
         verbose=True,
     )
     # TODO: REMOVE LATER?
-    utila.copy_content(
+    utilo.copy_content(
         flow.general,
         resultview,
         pattern='pagenumber__result_result.yaml',

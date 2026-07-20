@@ -11,10 +11,10 @@
 import os
 import time
 
-import configo
+import configos
 import iamraw
 import link
-import utila
+import utilo
 
 import queuemo
 import queuemo.runtime.api
@@ -49,41 +49,41 @@ def run(
     Returns:
         SUCCESS when scheduler ends, or Exception, when runtime error occurs
     """
-    todopath = configo.todo(True)
+    todopath = configos.todo(True)
     config = queuemo.runtime.api.RecipeConfig(
         failfast=failfast,
         skip_unsupported=skip_unsupported,
         webconfig=webconfig,
         verbose=verbose,
     )
-    utila.log(f'start working on: {todopath}')
-    utila.print_env()
+    utilo.log(f'start working on: {todopath}')
+    utilo.print_env()
     if not waiting:
         waiting = 1
     tick = 0
     while tick < runtime and jobs > 0:  # pylint:disable=W0149
         if queuemo.runtime.status.isstoped():
-            utila.log('service is stopped, stop working')
+            utilo.log('service is stopped, stop working')
             break
         job = nextjob()
         try:
             if job is not None:
                 jobs -= 1
-                utila.log(f'\njobs remaining: {jobs}')
+                utilo.log(f'\njobs remaining: {jobs}')
             step(
                 job,
                 waiting=waiting,
                 config=config,
             )
         except Exception:  # pylint: disable=broad-except
-            utila.print_stacktrace()
-            utila.error(f'\nClose scheduler: {tick}')
-            return utila.FAILURE
+            utilo.print_stacktrace()
+            utilo.error(f'\nClose scheduler: {tick}')
+            return utilo.FAILURE
         tick += 1
         if not verbose and tick % 80 == 0:  # pylint:disable=C2001
-            utila.log()  # write newline
-    utila.log(f'\nTerminated: {tick}')
-    return utila.SUCCESS
+            utilo.log()  # write newline
+    utilo.log(f'\nTerminated: {tick}')
+    return utilo.SUCCESS
 
 
 def step(
@@ -92,24 +92,24 @@ def step(
     waiting=WAITING,
 ):
     if not job:
-        utila.log('.', end='')
+        utilo.log('.', end='')
         time.sleep(waiting / 1000)  # miliseconds to seconds
         return
     # execute jobs steps
     if not config.verbose:
-        utila.log()  # write newline
-    utila.log('Run job')
+        utilo.log()  # write newline
+    utilo.log('Run job')
     queuemo.runtime.status.set_current(job)
     if config.verbose:
-        utila.log('  Copy job')
+        utilo.log('  Copy job')
     # copy
     workspace = copy(job)
     if config.verbose:
-        utila.log('  Start job')
-    with utila.profile(workspace):
+        utilo.log('  Start job')
+    with utilo.profile(workspace):
         work(workspace, config=config)
     if config.verbose:
-        utila.log('Finished')
+        utilo.log('Finished')
     queuemo.runtime.status.set_current(None)
 
 
@@ -132,12 +132,12 @@ def nextjob() -> int:
         If there is no matching file, return `None`
     """
     # TODO: INTRODUCE MORE USERFRIENDLY SCHEDULER, RUN SHORT DOCS FIRST?
-    todopath = configo.todo(True)
+    todopath = configos.todo(True)
     for jobnumber in os.listdir(todopath):
         itempath = os.path.join(todopath, jobnumber)
         if os.path.isfile(itempath):
             # require input folder, not a single file
-            utila.error(f'file: not a input resource: {itempath}')
+            utilo.error(f'file: not a input resource: {itempath}')
             continue
         if link.inprogressed(jobnumber):
             continue
@@ -152,12 +152,12 @@ def nextjob() -> int:
 
 def copy(job):
     """Copy job to temporary workspace folder."""
-    path = os.path.join(configo.todo(), job)
+    path = os.path.join(configos.todo(), job)
     assert os.path.exists(path), str(path)
     # determine tmporary folder and copy todo
-    workspace = utila.tmpfile(queuemo.ROOT)
+    workspace = utilo.tmpfile(queuemo.ROOT)
     # copy todo to temporary folder
-    utila.copy_content(
+    utilo.copy_content(
         src=path,
         dst=workspace,
         recursive=True,
@@ -169,7 +169,7 @@ def copy(job):
 def work(workspace, config):
     assert os.path.exists(workspace), str(workspace)
     current = jobid(workspace)
-    outpath = os.path.join(configo.todo(), current)
+    outpath = os.path.join(configos.todo(), current)
     queuemo.runtime.execute.run_document(
         workspace,
         documentid=jobid(workspace),

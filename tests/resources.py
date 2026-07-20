@@ -9,13 +9,13 @@
 
 import os
 
-import power
+import hoverpower
 
 import queuemo
 
-power.setup(queuemo.ROOT)
+hoverpower.setup(queuemo.ROOT)
 
-RESOURCES = power.generated()
+RESOURCES = hoverpower.generated()
 
 TODO = os.path.join(RESOURCES, 'todo')
 

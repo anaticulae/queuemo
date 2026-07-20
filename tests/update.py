@@ -9,10 +9,10 @@
 
 import os
 
-import configo
+import configos
+import hoverpower
 import link
-import power
-import utila
+import utilo
 
 import tests.resources
 
@@ -20,7 +20,7 @@ import tests.resources
 
 
 def extract_examples(files):
-    todo = os.path.join(power.generated(), 'todo')
+    todo = os.path.join(hoverpower.generated(), 'todo')
     if os.path.exists(todo):
         return
     os.makedirs(todo)
@@ -29,12 +29,12 @@ def extract_examples(files):
         create_example(item)
 
     create_example(
-        power.DOCU009_PDF,
+        hoverpower.DOCU009_PDF,
         todoname=tests.resources.EXAMPLE_JOB,
         filename='howto-cporting.pdf',  # TODO: decide what is correct, see below
     )
     create_example(
-        power.DOCU027_PDF,
+        hoverpower.DOCU027_PDF,
         todoname='2324123123',
         filename='The RestructuredText Book',
     )
@@ -61,8 +61,8 @@ def create_example(source: str, todoname: str = None, filename: str = None):
 
 
 def generate_broken_example():
-    tmpdir = configo.tmp()
+    tmpdir = configos.tmp()
     os.makedirs(tmpdir, exist_ok=True)
-    broken = utila.tmpfile(tmpdir)
-    utila.file_replace(broken, 'invalid pdf data')
+    broken = utilo.tmpfile(tmpdir)
+    utilo.file_replace(broken, 'invalid pdf data')
     create_example(broken, todoname='broken_resource', filename='broken.pdf')

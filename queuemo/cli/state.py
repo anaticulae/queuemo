@@ -10,22 +10,22 @@
 import argparse
 import sys
 
-import configo
+import configos
 import link
-import utila
+import utilo
 
 
-@utila.saveme
+@utilo.saveme
 def main() -> int:
     action = eval_cli()
     if action.kill:
         kill(action.kill)
-        return utila.SUCCESS
-    utila.log('verify state ...')
-    utila.log(f'    todo: {configo.todo()}')
+        return utilo.SUCCESS
+    utilo.log('verify state ...')
+    utilo.log(f'    todo: {configos.todo()}')
     print_running()
     print_waiting()
-    return utila.SUCCESS
+    return utilo.SUCCESS
 
 
 def print_running():
@@ -38,16 +38,16 @@ def print_waiting():
 
 def print_documents(state):
     # TODO: PASS READY AND TODO TO AVOID REQUIRED COMMON PARENT
-    common = utila.path_parent(configo.ready())
+    common = utilo.path_parent(configos.ready())
     documents = link.load_documents(
         common=common,
         owner=None,
         state=state,
     )
     if not documents:
-        utila.log(f'no {state.name} documents')
+        utilo.log(f'no {state.name} documents')
         return
-    utila.log(f'\n{state.name} documents({len(documents)}):')
+    utilo.log(f'\n{state.name} documents({len(documents)}):')
     for document in documents:
         print_document(document)
 
@@ -57,31 +57,31 @@ def print_document(document):
     title = document.get('title')
     date = document.get('date')
     name = document.get('name')
-    utila.log(f'   - {name} {date} {pages} {title}')
+    utilo.log(f'   - {name} {date} {pages} {title}')
 
 
 def kill(documentid: str):
     if documentid == 'all':
         todos = collect_all()
         if not todos:
-            utila.error('nothing to kill')
-            sys.exit(utila.INVALID_COMMAND)
+            utilo.error('nothing to kill')
+            sys.exit(utilo.INVALID_COMMAND)
         for jobinfo in todos:
             kill(jobinfo.name)
         return
     if not link.document(documentid=documentid):
-        utila.error(f'invalid documentid: {documentid}')
-        sys.exit(utila.INVALID_COMMAND)
+        utilo.error(f'invalid documentid: {documentid}')
+        sys.exit(utilo.INVALID_COMMAND)
         return
     if link.deleted(documentid):
-        utila.error(f'already deleted: {documentid}')
-        sys.exit(utila.INVALID_COMMAND)
+        utilo.error(f'already deleted: {documentid}')
+        sys.exit(utilo.INVALID_COMMAND)
         return
     if link.delete(documentid):
-        utila.log(f'killed: {documentid}')
+        utilo.log(f'killed: {documentid}')
         return
-    utila.error(f'could not kill: {documentid}')
-    sys.exit(utila.INVALID_COMMAND)
+    utilo.error(f'could not kill: {documentid}')
+    sys.exit(utilo.INVALID_COMMAND)
 
 
 def collect_all() -> list:

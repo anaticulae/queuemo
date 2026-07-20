@@ -15,7 +15,7 @@ import os
 import sys
 
 import rawmaker.cli as rawmaker_cli
-import utila
+import utilo
 
 # TODO: DECREASE BEFORE GOING LIVE!
 TIMEOUT_DEFAULT = 60 * 10 * 2  # twenty minutes per step
@@ -23,7 +23,7 @@ TIMEOUT_DEFAULT = 60 * 10 * 2  # twenty minutes per step
 
 def run(
     runnable: str,
-    inpath: utila.Strings,
+    inpath: utilo.Strings,
     outpath: str,
     parameter: str = None,
     prefix: str = '',
@@ -35,19 +35,19 @@ def run(
 
     parameter = ' ' if parameter is None else parameter
     cmd = f'{runnable} {parameter} -i {inpath} -o {outpath} {prefix} {cmds}'
-    cmd = utila.normalize_whitespaces(cmd)
+    cmd = utilo.normalize_whitespaces(cmd)
 
     if timeout is None or isinstance(timeout, (float, int)):
-        timeout = utila.Timeout(
+        timeout = utilo.Timeout(
             seconds=timeout if timeout is not None else TIMEOUT_DEFAULT,
             gracefully=False,
         )
-    utila.log(f'>>{cmd}<<')
-    utila.debug(f'timeout: {timeout.seconds}')
-    with utila.profile(runnable, always=True):
-        completed = utila.run(cmd, timeout=timeout)
+    utilo.log(f'>>{cmd}<<')
+    utilo.debug(f'timeout: {timeout.seconds}')
+    with utilo.profile(runnable, always=True):
+        completed = utilo.run(cmd, timeout=timeout)
 
-    utila.log(completed.stdout)
+    utilo.log(completed.stdout)
     assert os.path.exists(outpath), str(outpath)
     return completed
 
@@ -138,7 +138,7 @@ def formulero(inpath: str, outpath: str = None, timeout: int = None, **kwargs):
 
 
 def spacestation(inpath: str, outpath: str = None, **kwargs):  # pylint:disable=W0613
-    utila.error('TODO: ENABLE SPACESTATION BEFORE RELEASE')
+    utilo.error('TODO: ENABLE SPACESTATION BEFORE RELEASE')
     # run('spacestation', inpath, outpath, **kwargs)
 
 
@@ -303,7 +303,7 @@ def decider_chapter(inpath: str, outpath: str = None, **kwargs):
 
 
 def decider_textstyle_headlines(inpath: str, outpath: str = None, **kwargs):
-    # TODO: Enable later; activate after utila supports selective inputs
+    # TODO: Enable later; activate after utilo supports selective inputs
     # run('decider_textflow --lineending', inpath, outpath)
     run('decider_textstyle --headlines', inpath, outpath, **kwargs)
 
@@ -321,7 +321,7 @@ def decider_links(inpath: str, outpath: str = None):
 
 
 def decider_textflow_lineending(inpath: str, outpath: str = None, **kwargs):
-    # TODO: Enable later; activate after utila supports selective inputs
+    # TODO: Enable later; activate after utilo supports selective inputs
     # run('decider_textflow --lineending', inpath, outpath)
     run('decider_textflow -j8', inpath, outpath, **kwargs)
 
@@ -348,12 +348,12 @@ def feedback_findings(inpath: str, pdf: str, outpath: str = None):
     run(f'feedback --findings --pdf {pdf}', inpath, outpath)
 
 
-def ghost(inpath: str, outpath: str = None):
-    run('ghost', inpath, outpath)
+def ughost(inpath: str, outpath: str = None):
+    run('ughost', inpath, outpath)
 
 
 # TODO: USE RUNTIME.py AS SOURCE/METHODS FOR AVAILABLE RUNNER
-RUNNER = utila.splitlines("""
+RUNNER = utilo.splitlines("""
 caption
 chapter
 cleanup
@@ -374,7 +374,7 @@ docref
 doctextstyle
 feedback
 figureo
-ghost
+ughost
 groupme
 headlines
 magic
@@ -394,22 +394,22 @@ def check(runner=None):
     if runner is None:
         runner = RUNNER
     todo = [
-        functools.partial(utila.run, f'{process} -v -VVV')
+        functools.partial(utilo.run, f'{process} -v -VVV')
         for process in sorted(runner)
     ]
     for item in runner:
-        utila.debug(f'check: {item}')
+        utilo.debug(f'check: {item}')
     # run in parallel to reduce startup time
-    ret = utila.fork(*todo, worker=len(RUNNER), process=False)
+    ret = utilo.fork(*todo, worker=len(RUNNER), process=False)
     if not isinstance(ret, list):
-        utila.error('runs with error')
+        utilo.error('runs with error')
         sys.exit(ret)
     for item in ret:
         if item.returncode:
-            utila.error(item)
+            utilo.error(item)
             continue
-        utila.log(item.stdout.strip())
-    utila.log()  # add newline
+        utilo.log(item.stdout.strip())
+    utilo.log()  # add newline
 
 
 def assert_validdocument(document: str):

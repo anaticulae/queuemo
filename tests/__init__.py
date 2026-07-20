@@ -12,9 +12,9 @@ import os
 import sys
 import threading
 
-import configo.directory
+import configos.directory
 import pytest
-import utila
+import utilo
 
 import queuemo
 import queuemo.cli.main
@@ -44,7 +44,7 @@ def patch_todo(td, mp, copy=True):  # pylint:disable=W0613
         if copy:
             # Copy content from todo
             # TODO: DO NOT COPY WHOLE DATA TREE
-            utila.copy_content(
+            utilo.copy_content(
                 src=tests.resources.TODO,
                 dst=todopath,
                 recursive=True,
@@ -57,9 +57,9 @@ def patch_todo(td, mp, copy=True):  # pylint:disable=W0613
             # Overwrite env vars instead of replacing. If we replace the
             # vars we have to set every single variable again, like
             # accesing rawmaker, sections etc.
-            context.setenv(configo.directory.COMMON, td)
-            context.setenv(configo.directory.TODO, todopath)
-            context.setenv(configo.directory.READY, readypath)
+            context.setenv(configos.directory.COMMON, td)
+            context.setenv(configos.directory.TODO, todopath)
+            context.setenv(configos.directory.READY, readypath)
             yield
 
 
@@ -70,7 +70,7 @@ def run_queuemo(  # pylint:disable=W0613
     capsys,
     process=queuemo.PROCESS,
     runnable=queuemo.cli.main.main,
-    expected=utila.SUCCESS,
+    expected=utilo.SUCCESS,
 ):
     cmd = cmd.split() if isinstance(cmd, str) else cmd
     with mp.context() as context:
@@ -78,7 +78,7 @@ def run_queuemo(  # pylint:disable=W0613
         context.setattr(sys, 'argv', [process] + cmd)
         with pytest.raises(SystemExit) as result:
             runnable()
-        assert utila.returncode(result) == expected, str(result)
+        assert utilo.returncode(result) == expected, str(result)
     return capsys
 
 
@@ -87,7 +87,7 @@ def run_single(
     mp,
     td,
     capsys,
-    expected=utila.SUCCESS,
+    expected=utilo.SUCCESS,
 ):
     return run_queuemo(
         cmd,

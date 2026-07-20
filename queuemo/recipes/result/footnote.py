@@ -8,7 +8,7 @@
 # =============================================================================
 
 import link
-import utila
+import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -34,7 +34,7 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     resultview = link.resultview(flow.document)
 
     # TODO: REMOVE LATER?
-    utila.copy_content(
+    utilo.copy_content(
         flow.general,
         resultview,
         pattern='groupme__footer_footerheader.yaml',

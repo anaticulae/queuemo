@@ -12,7 +12,7 @@ import threading
 import urllib.request
 
 import flask
-import utila
+import utilo
 
 import queuemo.recipes.logger
 import queuemo.runtime.status
@@ -58,7 +58,7 @@ def stop():
 
 def start():
     port = freeport()
-    utila.log(f'start http interface on port: {port}')
+    utilo.log(f'start http interface on port: {port}')
     runtime = threading.Thread(
         target=app.run,
         kwargs=dict(port=port),

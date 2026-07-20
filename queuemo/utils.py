@@ -10,7 +10,7 @@
 
 import os
 
-import sections.path
+import capita.path
 import serializeraw
 
 
@@ -19,7 +19,7 @@ def select_pages(path: str, select, noselect=None) -> str:
     Support merging multiple selected pages.
     """
     assert_classes(select)
-    path = sections.path.result(path)
+    path = capita.path.result(path)
     sectionx = serializeraw.load_sections(path)
     if not noselect:
         noselect = {}

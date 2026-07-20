@@ -31,7 +31,7 @@ publish linter result
 """
 
 import iamraw.sections
-import utila
+import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -63,7 +63,7 @@ def run_decider_toc(flow: queuemo.runtime.api.RecipeIO):
     sources = [flow.general, flow.tmppath]
     # TODO: REPLACE WITH PATH AFTER UPGRADING IAMRAW
     if not queuemo.utils.exists('reftable__toc_toc.yaml', sources):
-        utila.error('could not locate reftable__toc_toc.yaml, skip decider_toc')
+        utilo.error('could not locate reftable__toc_toc.yaml, skip decider_toc')
         return
     queuemo.runnable.decider_toc(
         inpath=sources,

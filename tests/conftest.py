@@ -9,12 +9,12 @@
 
 import os
 
-import configo
-import power
+import configos
+import hoverpower
 import pytest
-import utila
-from utilatest import mp  # pylint:disable=W0611
-from utilatest import td  # pylint:disable=W0611
+import utilo
+from utilotest import mp  # pylint:disable=W0611
+from utilotest import td  # pylint:disable=W0611
 
 import queuemo
 import queuemo.cli.utils
@@ -22,28 +22,28 @@ import tests.update
 
 pytest_plugins = ['pytester', 'xdist']  # pylint: disable=invalid-name
 
-power.setup(queuemo.ROOT)
+hoverpower.setup(queuemo.ROOT)
 PACKAGE = queuemo.PROCESS
 
 RESOURCES_TODO = [
-    power.BACHELOR085_PDF,
-    power.HOME025_PDF,
-    power.MASTER072_PDF,
-    power.MASTER078_PDF,
-    power.MASTER083_PDF,
-    power.MASTER089_PDF,
-    power.MASTER116_PDF,
-    power.ORDER009_PDF,
-    power.ORDER038_PDF,
-    power.PAPER06_PDF,
+    hoverpower.BACHELOR085_PDF,
+    hoverpower.HOME025_PDF,
+    hoverpower.MASTER072_PDF,
+    hoverpower.MASTER078_PDF,
+    hoverpower.MASTER083_PDF,
+    hoverpower.MASTER089_PDF,
+    hoverpower.MASTER116_PDF,
+    hoverpower.ORDER009_PDF,
+    hoverpower.ORDER038_PDF,
+    hoverpower.PAPER06_PDF,
 ]
 
 
 @pytest.mark.usefixtures('session')
 def pytest_sessionstart():
-    os.makedirs(configo.todo(), exist_ok=True)
-    os.makedirs(configo.ready(), exist_ok=True)
-    power.run()
+    os.makedirs(configos.todo(), exist_ok=True)
+    os.makedirs(configos.ready(), exist_ok=True)
+    hoverpower.run()
     # TODO: HACK BUT WORKS FOR THE MOMENT
     queuemo.cli.utils.logger_start()
 
@@ -52,5 +52,5 @@ def extract_todo(files):
     tests.update.extract_examples(files)
 
 
-GENERATED = utila.exists(os.path.join(power.generated(), 'todo'))
+GENERATED = utilo.exists(os.path.join(hoverpower.generated(), 'todo'))
 generated = pytest.mark.skipif(not GENERATED, reason='generate test test')

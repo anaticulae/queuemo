@@ -9,8 +9,8 @@
 
 import os
 
-import configo.directory
-import utilatest
+import configos.directory
+import utilotest
 
 import queuemo.runtime.api
 import queuemo.worker.startup
@@ -18,14 +18,14 @@ import tests
 import tests.conftest
 
 
-@utilatest.nightly
+@utilotest.nightly
 def test_run_steps(capsys, td, mp):
     config = queuemo.runtime.api.RecipeConfig()
     with tests.patch_todo(td, mp):
         queuemo.worker.startup.step(job=None, config=config)
-        assert '.' in utilatest.stdout(capsys)
+        assert '.' in utilotest.stdout(capsys)
         queuemo.worker.startup.step(job='8166109011', config=config)
-        progress = utilatest.stdout(capsys)
+        progress = utilotest.stdout(capsys)
         assert 'Copy' in progress
         assert 'Start' in progress
         assert 'Finish' in progress
@@ -38,8 +38,8 @@ def test_copy_job_to_workspace(td, mp):
             os,
             'environ',
             {
-                configo.directory.TODO: tests.resources.TODO,
-                configo.directory.TMP: td.tmpdir,
+                configos.directory.TODO: tests.resources.TODO,
+                configos.directory.TMP: td.tmpdir,
             },
         )
         workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB)

@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import utilatest
+import utilotest
 
 import queuemo.runtime
 import queuemo.runtime.api
@@ -17,7 +17,7 @@ import tests
 import tests.resources
 
 
-@utilatest.nightly
+@utilotest.nightly
 def test_recipe_run(td, mp):
     root = str(td)
     with tests.patch_todo(td, mp):

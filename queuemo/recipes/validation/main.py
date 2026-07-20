@@ -10,10 +10,10 @@
 import os
 
 import iamraw
-import layout
+import layouta
 import link
 import serializeraw
-import utila
+import utilo
 
 import queuemo
 import queuemo.recipes.logger
@@ -38,19 +38,19 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     link.verify(flow.document)
     # TODO: add pdfinfo --status to check if validation was successful????
     pdfinfo = link.pdfinfo(flow.document)
-    utila.debug(pdfinfo)
+    utilo.debug(pdfinfo)
     if not pdfinfo:
         msg = f'could not locate {flow.document}:{pdfinfo}'
-        utila.error(msg)
+        utilo.error(msg)
         raise queuemo.runtime.runtime.Stop(msg)
     if pdfinfo == iamraw.InvalidPDF:
-        utila.error(f'invalid resource {flow.sourcepath}, stop analysis.')
+        utilo.error(f'invalid resource {flow.sourcepath}, stop analysis.')
         raise queuemo.runtime.runtime.Stop('invald pdf resource')
     if flow.config.skip_unsupported:
         # TODO: REPLACE WITH ABEL LATER
-        document_layout = layout.document_layout(
+        document_layout = layouta.document_layout(
             flow.sourcepath,
-            pages=utila.rtuple(0, 30),
+            pages=utilo.rtuple(0, 30),
         )
         if iamraw.Layout.DOUBLECOLUMN in document_layout:
             msg = f'double column not supported: {flow.sourcepath}'
@@ -71,5 +71,5 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     content = any(len(page) for page in ptns)
     if content:
         return
-    utila.error(f'no text in resource {flow.sourcepath}, stop analysis.')
+    utilo.error(f'no text in resource {flow.sourcepath}, stop analysis.')
     raise queuemo.runtime.runtime.Stop('no text content')

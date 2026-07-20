@@ -14,7 +14,7 @@ import os
 
 import iamraw.sections
 import serializeraw
-import utila
+import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -26,7 +26,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         select=iamraw.sections.TableOfContent,
     )
     if pages == ':':
-        utila.log('could not detect TableOfContent page-numbers')
+        utilo.log('could not detect TableOfContent page-numbers')
         create_backup_toc(flow.general)
         return
     queuemo.runnable.reftable(
@@ -39,6 +39,6 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 def create_backup_toc(outpath: str):
     outpath = os.path.join(outpath, 'reftable__toc_toc.yaml')
-    utila.log(f'write empty toc: {outpath}')
+    utilo.log(f'write empty toc: {outpath}')
     dumped = serializeraw.dump_toc(iamraw.Toc())
-    utila.file_create(outpath, dumped)
+    utilo.file_create(outpath, dumped)

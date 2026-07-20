@@ -8,7 +8,7 @@
 # =============================================================================
 
 import pytest
-import utilatest
+import utilotest
 
 import queuemo.recipes.fastview
 import tests
@@ -16,7 +16,7 @@ import tests.fixtures.todo
 import tests.resources
 
 
-@utilatest.nightly
+@utilotest.nightly
 def test_recipe_fastview_run_single(td, mp):
     completed = run_fastview(
         td.tmpdir,
@@ -36,7 +36,7 @@ def test_recipe_fastview_run_single(td, mp):
         # 'page_83_noimages_toc',
         'master089',
     ])
-@utilatest.nightly
+@utilotest.nightly
 def test_recipe_fastview_run_example(jobid, td, mp):
     completed = run_fastview(
         td.tmpdir,

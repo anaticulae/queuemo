@@ -11,7 +11,7 @@ import signal
 import sys
 
 import link
-import utila
+import utilo
 
 STOPPED = False
 CURRENT = None
@@ -26,7 +26,7 @@ def isstoped() -> bool:
 
 
 def stop():
-    utila.log('\n\nstop service')
+    utilo.log('\n\nstop service')
     global STOPPED  # pylint:disable=global-statement
     STOPPED = True
 
@@ -51,18 +51,18 @@ def failcurrent(event, action):  # pylint:disable=W0613
     stop()
     if not current:
         # nothing todo
-        sys.exit(utila.SUCCESS)
+        sys.exit(utilo.SUCCESS)
         return
     # TODO: MARK JOB AS TODO? AND RESTART LATER?
-    utila.error(f'fail: {current}')
+    utilo.error(f'fail: {current}')
     link.fail(current, 'SCHEDULER SHUTDOWN')
-    sys.exit(utila.SUCCESS)
+    sys.exit(utilo.SUCCESS)
 
 
 # configure close handler
-if utila.iswin():
+if utilo.iswin():
     # TODO: INVESTIGATE LINUX
     signal.signal(signal.SIGBREAK, shutdown)  # pylint:disable=E1101
-if not utila.testing():
+if not utilo.testing():
     # TODO: ENSURE TO RUN IN MAIN THREAD, AFTER THIS WE CAN REMOVE TESTING CHECK
     signal.signal(signal.SIGINT, failcurrent)

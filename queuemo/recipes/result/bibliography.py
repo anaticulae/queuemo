@@ -22,7 +22,7 @@ import os
 
 import iamraw.sections
 import link
-import utila
+import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -44,7 +44,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
         ),
         noselect=(iamraw.sections.Bibliography,),
     )
-    with utila.GeorgFork(process=False) as runtime:
+    with utilo.GeorgFork(process=False) as runtime:
         runtime.fork(
             queuemo.runnable.bibliography,
             inpath=flow.general,
@@ -74,13 +74,13 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     # TODO: REMOVE LATER
     if not os.path.exists(resultview):
         return
-    utila.copy_content(
+    utilo.copy_content(
         flow.tmppath,
         resultview,
         pattern='detector__bibliography_detected.yaml',
         verbose=True,
     )
-    utila.copy_content(
+    utilo.copy_content(
         flow.tmppath,
         os.path.join(resultview, 'view'),
         pattern='decider_bibliography__plot_year_histogram.png',

@@ -9,18 +9,18 @@
 
 import os
 
-import configo
-import utila.logger
+import configos
+import utilo.logger
 
 
 def logger_start():
-    tmp = configo.tmp()
+    tmp = configos.tmp()
     os.makedirs(tmp, exist_ok=True)
     # create log folder
     queuemo_tmp = os.path.join(tmp, 'queuemo/log/')
     os.makedirs(queuemo_tmp, exist_ok=True)
     # determine current file name
-    logfile = f'{utila.filetime()}_{utila.tmpname(10)}.log'
+    logfile = f'{utilo.filetime()}_{utilo.tmpname(10)}.log'
     outpath = os.path.join(queuemo_tmp, logfile)
-    utila.debug(f'write global log to {outpath}')
-    utila.outfile_setup(outpath)
+    utilo.debug(f'write global log to {outpath}')
+    utilo.outfile_setup(outpath)

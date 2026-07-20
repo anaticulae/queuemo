@@ -8,7 +8,7 @@
 # =============================================================================
 
 import link
-import utila
+import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -31,7 +31,7 @@ def after(flow: queuemo.runtime.api.RecipeIO):
     flow.publish_linting()
 
     resultview = link.resultview(flow.document)
-    utila.copy_content(
+    utilo.copy_content(
         flow.general,
         resultview,
         pattern='words__links_links.yaml',

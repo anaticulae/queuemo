@@ -10,7 +10,7 @@
 import os
 
 import pytest
-import utilatest
+import utilotest
 
 import queuemo.recipes
 import tests.conftest
@@ -34,7 +34,7 @@ def run_resultview(workspace, jobid, mp):
     return completed
 
 
-@utilatest.nightly
+@utilotest.nightly
 def test_recipe_result_run_single(td, mp):  # pylint:disable=W0621
     completed = run_resultview(
         td.tmpdir,
@@ -44,21 +44,21 @@ def test_recipe_result_run_single(td, mp):  # pylint:disable=W0621
     assert completed
 
 
-# pytest.param('8166109011', marks=utilatest.longrun),
+# pytest.param('8166109011', marks=utilotest.longrun),
 # 'page_116_images_toc_formular',
 # 'page_38',
 # 'page_72_noimages_toc',
 # 'page_78_images_toc',
 @pytest.mark.parametrize('jobid', [
-    pytest.param('2324123123', marks=utilatest.longrun),
-    pytest.param('8166109011', marks=utilatest.longrun),
-    pytest.param('home025', marks=utilatest.longrun),
-    pytest.param('order009', marks=utilatest.longrun),
-    pytest.param('master083', marks=utilatest.nightly),
-    pytest.param('master089', marks=utilatest.nightly),
+    pytest.param('2324123123', marks=utilotest.longrun),
+    pytest.param('8166109011', marks=utilotest.longrun),
+    pytest.param('home025', marks=utilotest.longrun),
+    pytest.param('order009', marks=utilotest.longrun),
+    pytest.param('master083', marks=utilotest.nightly),
+    pytest.param('master089', marks=utilotest.nightly),
 ])
 @tests.conftest.generated
-@utilatest.nightly
+@utilotest.nightly
 def test_recipe_result_run_example(jobid, td, mp):
     completed = run_resultview(
         td.tmpdir,

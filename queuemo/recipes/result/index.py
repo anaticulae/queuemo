@@ -11,7 +11,7 @@
 """
 
 import iamraw
-import utila
+import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -28,7 +28,7 @@ def run_detector_index(flow: queuemo.runtime.api.RecipeIO):
         select=iamraw.Index,
     )
     if indexpages == ':':
-        utila.debug('could not locate index page, skip detector --index')
+        utilo.debug('could not locate index page, skip detector --index')
         return
     queuemo.runnable.detector_index(
         flow.general,

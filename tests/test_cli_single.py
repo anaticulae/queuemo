@@ -9,11 +9,11 @@
 
 import os
 
+import hoverpower
 import link
-import power
 import pytest
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import tests
 
@@ -35,15 +35,15 @@ def test_run_single_invalid_input(mp, td, capsys):
         mp,
         td,
         capsys,
-        expected=utila.INVALID_COMMAND,
+        expected=utilo.INVALID_COMMAND,
     )
-    assert 'require directory' in utilatest.stderr(capsys)  # pylint:disable=E1101
+    assert 'require directory' in utilotest.stderr(capsys)  # pylint:disable=E1101
 
 
-@utilatest.nightly
+@utilotest.nightly
 def test_run_single(mp, td, capsys):
     # create queuemo todo
-    workspace = link.create_todo(power.DOCU007_PDF, todopath=td.tmpdir)
+    workspace = link.create_todo(hoverpower.DOCU007_PDF, todopath=td.tmpdir)
 
     # run single queuemo instance in workspace, write output to same workspace
     cmd = f'-i {workspace} -V'
@@ -59,7 +59,7 @@ def test_run_single(mp, td, capsys):
 
 
 @pytest.mark.skip(reason='supported now, look for other document, enable later')
-@utilatest.nightly
+@utilotest.nightly
 def test_no_text_content(td):
     """Stop analysis of `figure only` documents.
 
@@ -69,19 +69,19 @@ def test_no_text_content(td):
     """
     # TODO: LOOK FOR A NEW EXAMPLE
     # create queuemo todo
-    workspace = link.create_todo(power.BACHELOR085_PDF, todopath=td.tmpdir)
+    workspace = link.create_todo(hoverpower.BACHELOR085_PDF, todopath=td.tmpdir)
     # run single queuemo instance in workspace, write output to same workspace
     cmd = f'queuemo_single -i {workspace} -V'
-    completed = utila.run(cmd, cwd=td.tmpdir)
+    completed = utilo.run(cmd, cwd=td.tmpdir)
     stderr = completed.stderr
     assert '[ERROR] no text in resource' in stderr
     assert 'stop analysis' in stderr
 
 
-# # @utilatest.nightly
+# # @utilotest.nightly
 # def test_run_single_different_sink(mp, td):
 #     # create queuemo todo
-#     workspace = link.create_todo(power.DOCU007_PDF, todopath=td.tmpdir)
+#     workspace = link.create_todo(hoverpower.DOCU007_PDF, todopath=td.tmpdir)
 
 #     sink = td.tmpdir.join( 'different_sink')
 #     cmd = f'-i {workspace} -o {sink} -VVV'

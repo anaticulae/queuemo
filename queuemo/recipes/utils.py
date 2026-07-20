@@ -8,7 +8,7 @@
 # =============================================================================
 
 import link
-import utila
+import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
@@ -25,7 +25,7 @@ def determine_sections(flow: queuemo.runtime.api.RecipeIO, pages=':'):
         pages=pages,
     )
     # required for sections --docinfo
-    utila.file_copy(link.pdfinfo_path(flow.document), flow.tmppath)
+    utilo.file_copy(link.pdfinfo_path(flow.document), flow.tmppath)
     # determine to run area of feature detection
     queuemo.runnable.sections(
         inpath=flow.tmppath,

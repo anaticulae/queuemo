@@ -9,10 +9,10 @@
 
 import os
 
-import configo.directory
+import configos.directory
 import pytest
-import utila
-import utilatest
+import utilo
+import utilotest
 
 import queuemo
 import queuemo.cli.main
@@ -42,7 +42,7 @@ def test_run_one_job(mp, td, capsys):
     )
 
 
-@utilatest.nightly
+@utilotest.nightly
 def test_run_queuemo(td):
     cmd = 'queuemo --runtime=2'
     todo = td.tmpdir.join('todo')
@@ -51,18 +51,18 @@ def test_run_queuemo(td):
     for item in [todo, ready, tmp]:
         os.makedirs(item)
     # copy to item
-    utila.copy_content(
+    utilo.copy_content(
         tests.resources.TODO,
         todo,
         recursive=True,
         unlock=True,
     )
     env = dict(os.environ)
-    env[configo.directory.TODO] = str(todo)
-    env[configo.directory.READY] = str(ready)
-    env[configo.directory.COMMON] = str(tmp)
-    completed = utila.run(cmd, env=env)
-    assert completed.returncode == utila.SUCCESS, str(completed)
+    env[configos.directory.TODO] = str(todo)
+    env[configos.directory.READY] = str(ready)
+    env[configos.directory.COMMON] = str(tmp)
+    completed = utilo.run(cmd, env=env)
+    assert completed.returncode == utilo.SUCCESS, str(completed)
 
 
 def test_queuemo_invalid_parameter(mp, td, capsys):
@@ -77,7 +77,7 @@ def test_queuemo_invalid_parameter(mp, td, capsys):
         mp,
         td,
         capsys,
-        expected=utila.INVALID_COMMAND,
+        expected=utilo.INVALID_COMMAND,
     )
 
 

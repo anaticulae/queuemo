@@ -22,7 +22,7 @@ import copy
 import os
 
 import link
-import utila
+import utilo
 
 import queuemo
 import queuemo.runtime.api
@@ -86,15 +86,15 @@ class RecipeRuntime:
             if tick:
                 tick()
         except NotSupported as error:
-            utila.error(error)
+            utilo.error(error)
             link.nosupport(self.document)
             return False
         except RuntimeControl as error:
-            utila.info(error)
+            utilo.info(error)
             # TODO Should we return NONE, to signal that process is over?
             return False
         except RuntimeError as error:
-            utila.error(error)
+            utilo.error(error)
             return False
         return True
 
@@ -157,9 +157,9 @@ def run(  # pylint:disable=R1260
         RuntimeControl: if some step signals to hold
     """
     tmp = os.path.join(flow.tmppath, '.tmp')
-    utila.print_banner(composition.name, symbol='@')
+    utilo.print_banner(composition.name, symbol='@')
     for current in composition.schedule:
-        utila.print_banner(current.name, symbol='*')
+        utilo.print_banner(current.name, symbol='*')
         name = current.name
         if current.prefix:
             # add prefix to result of scheduling step
@@ -181,26 +181,26 @@ def run(  # pylint:disable=R1260
             actions = getattr(current, item)
             if not actions:
                 continue
-            utila.call(item)
-            actions = utila.ensure_tuple(actions)
+            utilo.call(item)
+            actions = utilo.ensure_tuple(actions)
             for action in actions:
                 if len(actions) > 1:
                     # print status for runx
-                    utila.print_banner(action.__name__, symbol='o')
+                    utilo.print_banner(action.__name__, symbol='o')
                 try:
-                    utila.debug(current_flow)
+                    utilo.debug(current_flow)
                     action(current_flow)
                 except RuntimeControl as control:
                     raise control
                 except Exception as error:  # pylint:disable=broad-except
-                    utila.error(f'could not run: {item}')
-                    utila.error(error)
-                    utila.print_stacktrace()
+                    utilo.error(f'could not run: {item}')
+                    utilo.error(error)
+                    utilo.print_stacktrace()
                     if queuemo.isrequired(action) or flow.config.failfast:
                         # do not stop scheduler if step is not marked as
                         # required.
                         raise RuntimeError(f'{current.name}:{item}') from error
         if queuemo.INTERACTIVE:
-            utila.wait()
+            utilo.wait()
         if tick:
             tick()
