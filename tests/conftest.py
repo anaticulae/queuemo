@@ -38,6 +38,17 @@ RESOURCES_TODO = [
     hoverpower.PAPER06_PDF,
 ]
 
+if 'SHARED_READY' not in os.environ:
+    utilo.debug('SET SHARED_READY')
+    DIR = utilo.tmpdir(queuemo.ROOT)
+    configos.export(
+        utilo.join(DIR, 'common'),
+        utilo.join(DIR, 'todo'),
+        utilo.join(DIR, 'ready'),
+    )
+    os.environ['SHARED_TMP'] = utilo.join(DIR, 'tmp')
+    configos.makedirs()
+
 
 @pytest.mark.usefixtures('session')
 def pytest_sessionstart():
