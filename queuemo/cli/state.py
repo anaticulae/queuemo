@@ -70,12 +70,9 @@ def kill(documentid: str):
             kill(jobinfo.name)
         return
     if not qvlink.document(documentid=documentid):
-        utilo.error(f'invalid documentid: {documentid}')
-        sys.exit(utilo.INVALID_COMMAND)
-        return
+        utilo.exitx(f'invalid documentid: {documentid}', utilo.INVALID_COMMAND)
     if qvlink.deleted(documentid):
-        utilo.error(f'already deleted: {documentid}')
-        sys.exit(utilo.INVALID_COMMAND)
+        utilo.exitx(f'already deleted: {documentid}', utilo.INVALID_COMMAND)
         return
     if qvlink.delete(documentid):
         utilo.log(f'killed: {documentid}')

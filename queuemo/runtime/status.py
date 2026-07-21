@@ -51,8 +51,7 @@ def failcurrent(event, action):  # pylint:disable=W0613
     stop()
     if not current:
         # nothing todo
-        sys.exit(utilo.SUCCESS)
-        return
+        utilo.exitx(returncode=utilo.SUCCESS)
     # TODO: MARK JOB AS TODO? AND RESTART LATER?
     utilo.error(f'fail: {current}')
     qvlink.fail(current, 'SCHEDULER SHUTDOWN')

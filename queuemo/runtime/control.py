@@ -9,6 +9,7 @@
 
 import http
 import threading
+import urllib.error
 import urllib.request
 
 import flask
@@ -18,6 +19,7 @@ import queuemo.recipes.logger
 import queuemo.runtime.status
 
 app = flask.Flask(__name__)
+
 STATUS = """
 <pre>
 THIS IS A QUEUEMO WORKER
@@ -61,7 +63,7 @@ def start():
     utilo.log(f'start http interface on port: {port}')
     runtime = threading.Thread(
         target=app.run,
-        kwargs=dict(port=port),
+        kwargs={'port': port},
         daemon=True,
     )
     runtime.start()

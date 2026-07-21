@@ -16,7 +16,7 @@ EXAMPLE = os.path.join(queuemo.ROOT, 'tests/example/scheduler')
 IMOM = os.path.join(EXAMPLE, 'imom')
 ERRORNEOUS = os.path.join(EXAMPLE, 'erroneous')
 
-for item in [EXAMPLE, IMOM, ERRORNEOUS]:
+for item in (EXAMPLE, IMOM, ERRORNEOUS):
     assert os.path.exists(item), item
 
 
@@ -60,20 +60,20 @@ def test_compose():
 def test_schedule_alpha():
     """Test to schedule without order, use default alphabetic order."""
     items = [
-        queuemo.runtime.scheduler.RecipeStep(name=name) for name in [
+        queuemo.runtime.scheduler.RecipeStep(name=name) for name in (
             'hello',
             'mister',
             'tom',
             'albert',
-        ]
+        )
     ]
     expected = [
-        queuemo.runtime.scheduler.RecipeStep(name=name) for name in [
+        queuemo.runtime.scheduler.RecipeStep(name=name) for name in (
             'albert',
             'hello',
             'mister',
             'tom',
-        ]
+        )
     ]
     result = queuemo.runtime.scheduler.schedule(items)
     assert result == expected
@@ -82,20 +82,20 @@ def test_schedule_alpha():
 def test_schedule_mixed():
     order = ['mister', 'hello']
     steps = [
-        queuemo.runtime.scheduler.RecipeStep(name=name) for name in [
+        queuemo.runtime.scheduler.RecipeStep(name=name) for name in (
             'tom',
             'hello',
             'mister',
             'albert',
-        ]
+        )
     ]
     expected = [
-        queuemo.runtime.scheduler.RecipeStep(name=name) for name in [
+        queuemo.runtime.scheduler.RecipeStep(name=name) for name in (
             'mister',
             'hello',
             'albert',
             'tom',
-        ]
+        )
     ]
     result = queuemo.runtime.scheduler.schedule(steps, order)
     assert result == expected

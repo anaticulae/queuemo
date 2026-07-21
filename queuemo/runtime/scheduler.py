@@ -117,7 +117,7 @@ class ComposedRecipe:
                 order = getattr(self.main, ORDER.lower(), None)
                 scheduled = schedule(self.steps, order)
                 result.extend(scheduled)
-        elif self.steps:  # pylint:disable=R5601
+        elif self.steps:
             result.extend(self.steps)
         if self.after:
             result.append(self.after)
@@ -170,7 +170,7 @@ def collect(path: str) -> dict:
             utilo.error(f'could not load recipe step: `{item}` in `{module}`')
             continue
         step = RecipeStep(name=stepname)
-        for value_name in ['before', 'run', 'after', ORDER, 'PREFIX']:
+        for value_name in ('before', 'run', 'after', ORDER, 'PREFIX'):
             with contextlib.suppress(AttributeError):
                 value = getattr(module, value_name)
                 value_name = value_name.lower()

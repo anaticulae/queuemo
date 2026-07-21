@@ -48,7 +48,7 @@ def test_run_queuemo(td):
     todo = td.tmpdir.join('todo')
     ready = td.tmpdir.join('ready')
     tmp = td.tmpdir.join('tmp')
-    for item in [todo, ready, tmp]:
+    for item in (todo, ready, tmp):
         os.makedirs(item)
     # copy to item
     utilo.copy_content(

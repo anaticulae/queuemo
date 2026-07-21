@@ -83,7 +83,7 @@ class RecipeIO:
     @property
     def docinfo_ifgiven(self) -> dict:
         if self.docinfo:
-            return dict(docinfo=self.docinfo)
+            return {'docinfo': self.docinfo}
         return {}
 
     @property
