@@ -25,7 +25,10 @@ def test_run_steps(capsys, td, mp):
     with tests.patch_todo(td, mp):
         queuemo.worker.startup.step(job=None, config=config)
         assert '.' in utilotest.stdout(capsys)
-        queuemo.worker.startup.step(job='8166109011', config=config)
+        queuemo.worker.startup.step(
+            job=tests.resources.EXAMPLE_JOB,
+            config=config,
+        )
         progress = utilotest.stdout(capsys)
         assert 'Copy' in progress
         assert 'Start' in progress
