@@ -7,8 +7,8 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import link
 import pytest
+import qvlink
 import utilotest
 
 import queuemo
@@ -32,7 +32,7 @@ def test_recipe_validation_success(td, mp):
     ) as rt:  # pylint:disable=C0103
         with utilotest.increased_filecount(td.tmpdir, 'yaml'):
             completed = rt.next_step()
-        pdfinfo = link.pdfinfo(tests.resources.EXAMPLE_JOB)
+        pdfinfo = qvlink.pdfinfo(tests.resources.EXAMPLE_JOB)
     assert completed
     assert pdfinfo.version.major == 1
     assert pdfinfo.version.minor == 5
@@ -76,4 +76,4 @@ def test_validation_double_column_flag(td, mp):
     ) as rt:
         completed = rt.next_step()
         assert not completed, 'exception not raised'
-        assert link.notsupported(documentid)
+        assert qvlink.notsupported(documentid)

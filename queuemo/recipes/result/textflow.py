@@ -8,7 +8,7 @@
 # =============================================================================
 
 import iamraw.sections
-import link
+import qvlink
 import utilo
 
 import queuemo.runnable
@@ -67,7 +67,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 def after(flow: queuemo.runtime.api.RecipeIO):
     flow.publish_linting()
-    resultview = link.resultview(flow.document)
+    resultview = qvlink.resultview(flow.document)
     # TODO: REMOVE LATER?
     utilo.copy_content(
         flow.general,

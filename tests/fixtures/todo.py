@@ -32,7 +32,7 @@ def runtime(
     with tests.patch_todo(workspace, mp, copy=True):
         # Hint: do not use link, cause multiprocessed tests modify global
         # variables.
-        # outpath = link.todo(document)
+        # outpath = qvlink.todo(document)
         outpath = os.path.join(workspace, 'todo_', document)
         current = queuemo.runtime.runtime.RecipeRuntime(
             workspace=workspace,

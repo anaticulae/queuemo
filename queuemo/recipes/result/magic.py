@@ -8,7 +8,7 @@
 # =============================================================================
 
 import iamraw.sections
-import link
+import qvlink
 import utilo
 
 import queuemo.runnable
@@ -75,7 +75,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 
 def after(flow: queuemo.runtime.api.RecipeIO):
-    resultview = link.resultview(flow.document)
+    resultview = qvlink.resultview(flow.document)
     caption_path = iamraw.path.caption_result(flow.general)
     if not utilo.exists(caption_path):
         return

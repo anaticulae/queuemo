@@ -9,7 +9,7 @@
 
 import os
 
-import link
+import qvlink
 import utilo
 
 import queuemo
@@ -21,17 +21,17 @@ import queuemo.runtime.api
 @queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO):
     # copy todo folder to result and create done folder
-    if link.todo(flow.document) != link.ready(flow.document):
+    if qvlink.todo(flow.document) != qvlink.ready(flow.document):
         # if todo and ready is the same folder, publish is not necessary
         # anymore.
-        link.publish(
+        qvlink.publish(
             flow.document,
             skip_resultview=skip_resultview,
         )
 
 
 def run_debug(flow: queuemo.runtime.api.RecipeIO):
-    link.write_debug(
+    qvlink.write_debug(
         flow.document,
         todo=queuemo.runnable.RUNNER,
         requirements=True,
@@ -39,13 +39,13 @@ def run_debug(flow: queuemo.runtime.api.RecipeIO):
 
 
 def run_statistics(flow: queuemo.runtime.api.RecipeIO):
-    link.publish_statistics(flow.document)
+    qvlink.publish_statistics(flow.document)
 
 
 @queuemo.required
 def after(flow: queuemo.runtime.api.RecipeIO):
     utilo.log('publish log')
-    ready = link.ready(flow.document)
+    ready = qvlink.ready(flow.document)
     if utilo.outfile():
         content = queuemo.recipes.logger.content()
         logpath = os.path.join(ready, 'done')

@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import link
+import qvlink
 
 import queuemo.runtime.api
 
@@ -16,4 +16,4 @@ def run(flow: queuemo.runtime.api.RecipeIO):
     """Create a file named `done` to signal update handler that process
     is completed."""
     # TODO: ADD STATUS INFORMATION LATER
-    link.finish_resultview(flow.document)
+    qvlink.finish_resultview(flow.document)

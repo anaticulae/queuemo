@@ -21,7 +21,7 @@ API
 import copy
 import os
 
-import link
+import qvlink
 import utilo
 
 import queuemo
@@ -87,7 +87,7 @@ class RecipeRuntime:
                 tick()
         except NotSupported as error:
             utilo.error(error)
-            link.nosupport(self.document)
+            qvlink.nosupport(self.document)
             return False
         except RuntimeControl as error:
             utilo.info(error)

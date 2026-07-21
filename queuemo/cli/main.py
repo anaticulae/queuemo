@@ -10,7 +10,7 @@
 import collections
 
 import configos
-import link
+import qvlink
 import serializeraw
 import utilo
 import utilo.cli
@@ -57,7 +57,7 @@ def configure(config: Config):
     configos.check_startup()
     if config.clean:
         # remove outdated maybe failed jobs
-        link.remove_outdated()
+        qvlink.remove_outdated()
     # run http interface if required
     if config.http:
         http_startup()

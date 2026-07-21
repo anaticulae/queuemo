@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import link
+import qvlink
 
 import queuemo
 import queuemo.runtime.api
@@ -18,4 +18,4 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     """Create a file named close to signal update hander that process is
     completed."""
     # TODO: ADD STATUS INFORMATION LATER
-    link.finish_fastview(flow.document)
+    qvlink.finish_fastview(flow.document)

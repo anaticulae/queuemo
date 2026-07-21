@@ -11,7 +11,7 @@ import os
 
 import iamraw
 import layouta
-import link
+import qvlink
 import serializeraw
 import utilo
 
@@ -27,17 +27,17 @@ def before(flow: queuemo.runtime.api.RecipeIO):
     # set logging start mark
     queuemo.recipes.logger.start()
     # ensure that todo path exists
-    todo = link.todo(flow.document)
+    todo = qvlink.todo(flow.document)
     assert os.path.exists(todo), f'todo does not exists: {todo}'
-    link.start_progress(flow.document)
+    qvlink.start_progress(flow.document)
 
 
 @queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
     """Run validation to check that document is analyzable."""
-    link.verify(flow.document)
+    qvlink.verify(flow.document)
     # TODO: add pdfinfo --status to check if validation was successful????
-    pdfinfo = link.pdfinfo(flow.document)
+    pdfinfo = qvlink.pdfinfo(flow.document)
     utilo.debug(pdfinfo)
     if not pdfinfo:
         msg = f'could not locate {flow.document}:{pdfinfo}'
@@ -60,7 +60,7 @@ def run(flow: queuemo.runtime.api.RecipeIO) -> list:
 @queuemo.required
 def after(flow: queuemo.runtime.api.RecipeIO):
     # check that document contains some text content
-    todo = os.path.join(link.todo(flow.document), flow.document)
+    todo = os.path.join(qvlink.todo(flow.document), flow.document)
     queuemo.runnable.rawmaker(
         inpath=todo,
         outpath=flow.tmppath,

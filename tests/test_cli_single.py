@@ -10,8 +10,8 @@
 import os
 
 import hoverpower
-import link
 import pytest
+import qvlink
 import utilo
 import utilotest
 
@@ -43,7 +43,7 @@ def test_run_single_invalid_input(mp, td, capsys):
 @utilotest.nightly
 def test_run_single(mp, td, capsys):
     # create queuemo todo
-    workspace = link.create_todo(hoverpower.DOCU007_PDF, todopath=td.tmpdir)
+    workspace = qvlink.create_todo(hoverpower.DOCU007_PDF, todopath=td.tmpdir)
 
     # run single queuemo instance in workspace, write output to same workspace
     cmd = f'-i {workspace} -V'
@@ -69,7 +69,8 @@ def test_no_text_content(td):
     """
     # TODO: LOOK FOR A NEW EXAMPLE
     # create queuemo todo
-    workspace = link.create_todo(hoverpower.BACHELOR085_PDF, todopath=td.tmpdir)
+    workspace = qvlink.create_todo(hoverpower.BACHELOR085_PDF,
+                                   todopath=td.tmpdir)
     # run single queuemo instance in workspace, write output to same workspace
     cmd = f'queuemo_single -i {workspace} -V'
     completed = utilo.run(cmd, cwd=td.tmpdir)
@@ -81,7 +82,7 @@ def test_no_text_content(td):
 # # @utilotest.nightly
 # def test_run_single_different_sink(mp, td):
 #     # create queuemo todo
-#     workspace = link.create_todo(hoverpower.DOCU007_PDF, todopath=td.tmpdir)
+#     workspace = qvlink.create_todo(hoverpower.DOCU007_PDF, todopath=td.tmpdir)
 
 #     sink = td.tmpdir.join( 'different_sink')
 #     cmd = f'-i {workspace} -o {sink} -VVV'

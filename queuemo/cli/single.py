@@ -11,7 +11,7 @@
 import os
 
 import configos
-import link
+import qvlink
 import utilo
 import utilo.cli
 import utilo.logger
@@ -93,7 +93,7 @@ def create_todo(inpath, outpath):
         # remove file name
         outname = filename.replace('.pdf', '')
     try:
-        outpath = link.create_todo(
+        outpath = qvlink.create_todo(
             file=inpath,
             filename=filename,
             todoname=outname,

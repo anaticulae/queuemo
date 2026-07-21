@@ -11,7 +11,7 @@ import math
 
 import configos
 import iamraw.sections
-import link
+import qvlink
 import serializeraw
 import utilo
 
@@ -25,9 +25,9 @@ TIMEOUT_RESULT_TABLERO = configos.HV_INT_PLUS(default=120)
 
 @queuemo.required
 def before(flow: queuemo.runtime.api.RecipeIO):
-    if link.current(flow.document) == link.ProcessState.VERIFIED:
+    if qvlink.current(flow.document) == qvlink.ProcessState.VERIFIED:
         # if fastview is not started before, start analysis with resultview
-        link.start_analysis(flow.document)
+        qvlink.start_analysis(flow.document)
 
 
 @queuemo.required
@@ -187,7 +187,7 @@ def pages(item: iamraw.sections.PartOfDocMixin) -> tuple:
 
 def publish_pagenumbers(flow):
     """Required to render pdf navigation with real page numbers."""
-    resultview = link.resultview(flow.document)
+    resultview = qvlink.resultview(flow.document)
     # TODO: REMOVE LATER!
     utilo.copy_content(
         flow.general,

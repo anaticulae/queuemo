@@ -13,7 +13,7 @@ import time
 
 import configos
 import iamraw
-import link
+import qvlink
 import utilo
 
 import queuemo
@@ -139,11 +139,11 @@ def nextjob() -> int:
             # require input folder, not a single file
             utilo.error(f'file: not a input resource: {itempath}')
             continue
-        if link.inprogressed(jobnumber):
+        if qvlink.inprogressed(jobnumber):
             continue
-        if link.deleted(jobnumber):
+        if qvlink.deleted(jobnumber):
             continue
-        if link.failed(jobnumber):
+        if qvlink.failed(jobnumber):
             continue
         # return next job, start it by recipe runner
         return jobnumber
@@ -179,7 +179,7 @@ def work(workspace, config):
 
 
 def jobid(path: str) -> int:
-    info_path = os.path.join(path, link.JOB_FILE_NAME)
+    info_path = os.path.join(path, qvlink.JOB_FILE_NAME)
     assert os.path.exists(info_path), str(info_path)
-    info = link.load_job(info_path)
+    info = qvlink.load_job(info_path)
     return info.name

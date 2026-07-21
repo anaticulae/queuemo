@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-import link
+import qvlink
 
 import queuemo.recipes
 import queuemo.recipes.logger
@@ -37,7 +37,7 @@ def run_document(
     maxsteps = sum(len(step) for step in runtime) + 3
 
     def tick():
-        link.update_progress_step(
+        qvlink.update_progress_step(
             documentid,
             value=tick.number,
             maxvalue=maxsteps,
@@ -52,9 +52,9 @@ def run_document(
             break
         if not current:
             # Failure
-            if not link.failed(documentid):
+            if not qvlink.failed(documentid):
                 # already failed cause of unsupported document. check
                 # before to avoid overwriting error message
                 error = queuemo.recipes.logger.content()
-                link.fail(documentid, error=error)
+                qvlink.fail(documentid, error=error)
             break

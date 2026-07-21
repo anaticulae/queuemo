@@ -41,7 +41,7 @@ import os
 import textwrap
 
 import iamraw
-import link
+import qvlink
 import serializeraw
 import utilo
 
@@ -112,7 +112,7 @@ class RecipeIO:
 
     @property
     def todopath(self) -> str:
-        return link.todo(self.document)
+        return qvlink.todo(self.document)
 
     def package(self, item) -> str:
         """Path to package step."""
@@ -140,7 +140,7 @@ class RecipeIO:
         if self.outpath:
             utilo.copy_content(source, self.outpath, pattern=pattern)
         else:
-            todo = link.todo(self.document)
+            todo = qvlink.todo(self.document)
             utilo.copy_content(source, todo, pattern=pattern)
 
     def skip(self, decider: str) -> bool:

@@ -10,7 +10,7 @@
 import signal
 import sys
 
-import link
+import qvlink
 import utilo
 
 STOPPED = False
@@ -55,7 +55,7 @@ def failcurrent(event, action):  # pylint:disable=W0613
         return
     # TODO: MARK JOB AS TODO? AND RESTART LATER?
     utilo.error(f'fail: {current}')
-    link.fail(current, 'SCHEDULER SHUTDOWN')
+    qvlink.fail(current, 'SCHEDULER SHUTDOWN')
     sys.exit(utilo.SUCCESS)
 
 

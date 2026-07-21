@@ -11,7 +11,7 @@ import argparse
 import sys
 
 import configos
-import link
+import qvlink
 import utilo
 
 
@@ -29,17 +29,17 @@ def main() -> int:
 
 
 def print_running():
-    print_documents(link.State.RUNNING)
+    print_documents(qvlink.State.RUNNING)
 
 
 def print_waiting():
-    print_documents(link.State.WAITING)
+    print_documents(qvlink.State.WAITING)
 
 
 def print_documents(state):
     # TODO: PASS READY AND TODO TO AVOID REQUIRED COMMON PARENT
     common = utilo.path_parent(configos.ready())
-    documents = link.load_documents(
+    documents = qvlink.load_documents(
         common=common,
         owner=None,
         state=state,
@@ -69,15 +69,15 @@ def kill(documentid: str):
         for jobinfo in todos:
             kill(jobinfo.name)
         return
-    if not link.document(documentid=documentid):
+    if not qvlink.document(documentid=documentid):
         utilo.error(f'invalid documentid: {documentid}')
         sys.exit(utilo.INVALID_COMMAND)
         return
-    if link.deleted(documentid):
+    if qvlink.deleted(documentid):
         utilo.error(f'already deleted: {documentid}')
         sys.exit(utilo.INVALID_COMMAND)
         return
-    if link.delete(documentid):
+    if qvlink.delete(documentid):
         utilo.log(f'killed: {documentid}')
         return
     utilo.error(f'could not kill: {documentid}')
@@ -85,12 +85,12 @@ def kill(documentid: str):
 
 
 def collect_all() -> list:
-    todos = link.collect_jobs()[0]
+    todos = qvlink.collect_jobs()[0]
     result = []
     for todo in todos:
-        process = link.current(todo.documentid)
-        current: link.State = link.State.fromstate(process)
-        if current not in (link.State.WAITING, link.State.RUNNING):
+        process = qvlink.current(todo.documentid)
+        current: qvlink.State = qvlink.State.fromstate(process)
+        if current not in (qvlink.State.WAITING, qvlink.State.RUNNING):
             continue
         result.append(todo)
     return result

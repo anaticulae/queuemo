@@ -11,7 +11,7 @@ import os
 
 import configos
 import hoverpower
-import link
+import qvlink
 import utilo
 
 import tests.resources
@@ -52,7 +52,7 @@ def create_example(source: str, todoname: str = None, filename: str = None):
     if filename is None:
         filename = 'sample.pdf'
 
-    link.create_todo(
+    qvlink.create_todo(
         source,
         filename=filename,
         todopath=todopath,

@@ -8,7 +8,7 @@
 # =============================================================================
 
 import configos
-import link
+import qvlink
 import utilo
 
 import queuemo
@@ -23,7 +23,7 @@ FIRST_PAGES = configos.HV_STR(default='0:10')
 
 @queuemo.required
 def before(flow: queuemo.runtime.api.RecipeIO):
-    link.start_analysis(flow.document)
+    qvlink.start_analysis(flow.document)
 
 
 @queuemo.required
