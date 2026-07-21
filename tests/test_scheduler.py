@@ -16,6 +16,7 @@ import queuemo.runtime.api
 import queuemo.worker.startup
 import tests
 import tests.conftest
+import tests.resources
 
 
 @utilotest.nightly
