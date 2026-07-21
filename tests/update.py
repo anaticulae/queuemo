@@ -22,6 +22,7 @@ import tests.resources
 def extract_examples(files):
     todo = os.path.join(hoverpower.generated(), 'todo')
     if os.path.exists(todo):
+        utilo.log(f'todo already exists: {todo}')
         return
     os.makedirs(todo)
 
