@@ -132,9 +132,6 @@ exclude = [
 [tool.hoverpower]
 packages = [
     "BACHELOR",
-    "BOOK",
-    "DISS",
-    "DOCU",
     "HOME",
     "MASTER",
     "ORDER",
