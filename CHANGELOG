@@ -1,999 +1,3235 @@
-# Changelog
+# CHANGELOG
 
-Every noteable change is logged here.
+
+## v1.27.6 (2026-10-19)
+
+### Chores
+
+- **conftest**: Enable reftable, qvlink
+  ([`676c6ca`](https://github.com/anaticulae/queuemo/commit/676c6cabce09f7bbcfb9c8c6d9b4d844387e9cc0))
+
+- **docker**: Upgrade env
+  ([`5641688`](https://github.com/anaticulae/queuemo/commit/5641688ac268822111766756351b954a11bd554b))
+
+- **github**: Add .github
+  ([`de73180`](https://github.com/anaticulae/queuemo/commit/de73180c8c1cf955ca74e0338dfdbae2f3189708))
+
+- **jenkins**: Remove outdated file
+  ([`e16f169`](https://github.com/anaticulae/queuemo/commit/e16f16912bd0441e3b170b7428a76bfc1ccd309f))
+
+- **pyproject**: Add modern project setup
+  ([`a6474da`](https://github.com/anaticulae/queuemo/commit/a6474daa5dd8c817081b8edb790bd0fa6c5f6865))
+
+- **pyproject**: Enable generators
+  ([`3b7dd7f`](https://github.com/anaticulae/queuemo/commit/3b7dd7fd18f3728b6abf701e536eb98c98b36f53))
+
+- **pyproject**: Shrink downloader
+  ([`6bdc0f2`](https://github.com/anaticulae/queuemo/commit/6bdc0f23f1af935a3fa2ca456170b26abd3822d1))
+
+- **run**: Avoid naming conflicts with make
+  ([`3da9be0`](https://github.com/anaticulae/queuemo/commit/3da9be041d7da406d69e80262009310330a335b6))
+
+- **workflow**: Add missing secret
+  ([`3dc0cce`](https://github.com/anaticulae/queuemo/commit/3dc0ccea1c8c2abf7b8b2dafa23e0cf49d6617fd))
+
+### Code Style
+
+- **scheduler**: Organize imports
+  ([`eb9e2fc`](https://github.com/anaticulae/queuemo/commit/eb9e2fcbd38c0d83c51b97514f3966cfbd06b630))
+
+### Refactoring
+
+- **package**: Rename package
+  ([`78c82ec`](https://github.com/anaticulae/queuemo/commit/78c82ec4a0cc85ca8918515160da624d40560774))
+
+- **rename**: Adjust package names
+  ([`7249747`](https://github.com/anaticulae/queuemo/commit/7249747d0ff5f4bb77e16be2373d179aa5ccc784))
+
+### Testing
+
+- **conftest**: Add debug message
+  ([`e74954b`](https://github.com/anaticulae/queuemo/commit/e74954b10dbee2c54640833e18d11bb2fd180e97))
+
+- **fix**: Add missing test vars
+  ([`bf8be04`](https://github.com/anaticulae/queuemo/commit/bf8be046e5cded5a5d5b9aaa901fd31e04db3772))
+
+- **refactor**: Use const
+  ([`20e5951`](https://github.com/anaticulae/queuemo/commit/20e5951b901a6f07bd5eeeb79be3d4bc368acec4))
+
 
 ## v1.27.5 (2023-01-09)
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (62c97abbfced)
-* use new pre-release step (47f03d690cd4)
+- **Jenkins**: Use new pre-release step
+  ([`47f03d6`](https://github.com/anaticulae/queuemo/commit/47f03d690cd48dd9e0b6268ceb574abba8eb97ed))
+
+- **requirements**: Upgrade requirements.txt
+  ([`62c97ab`](https://github.com/anaticulae/queuemo/commit/62c97abbfcedd05b13251357ddbb92c24a9961f5))
+
 
 ## v1.27.4 (2023-01-07)
 
+### Chores
+
+- **env**: Upgrade Production image
+  ([`ee80072`](https://github.com/anaticulae/queuemo/commit/ee800720723e01b51d542c5d7ca8d5ad4fb01d3b))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`272ba23`](https://github.com/anaticulae/queuemo/commit/272ba233c92f1e4cde2b4f7570444c9eefce399b))
+
+- **Jenkins**: Upgrade pipe library
+  ([`e46f265`](https://github.com/anaticulae/queuemo/commit/e46f26516e234b0ded29695b7bee03a126591b58))
+
+- **requirements**: Upgrade requirements.txt
+  ([`9491bf6`](https://github.com/anaticulae/queuemo/commit/9491bf6490f96ac83864070f965a74c2325af1dd))
+
 ### Documentation
 
-* happy New Year! (e2ec33a1c3dd)
+- **copyright**: Happy New Year!
+  ([`e2ec33a`](https://github.com/anaticulae/queuemo/commit/e2ec33a1c3dd3683f9a0798904e0a93037c0ac79))
 
-### Chore
+### Refactoring
 
-* upgrade Production image (ee800720723e)
-* upgrade requirements.txt (9491bf6490f9)
-* upgrade Jenkinsfile (272ba233c92f)
-* upgrade pipe library (e46f26516e23)
+- **replace**: Automated replacement
+  ([`687bc67`](https://github.com/anaticulae/queuemo/commit/687bc6796091ba1d4475f1f2456b9b71ddbb8b39))
+
 
 ## v1.27.3 (2022-12-18)
 
-### Chore
+### Chores
 
-* add rebase step (54a1332fb7f0)
-* improve naming (a9e35d3a4f57)
-* upgrade requirements.txt (24cd9a9bbfc6)
-* upgrade Jenkinsfile (01e2375486b8)
-* upgrade pipe library (8d04e3364da6)
+- **Docker**: Improve naming
+  ([`a9e35d3`](https://github.com/anaticulae/queuemo/commit/a9e35d3a4f57c698ca7488953b77fb05828b83c0))
+
+- **Jenkins**: Add rebase step
+  ([`54a1332`](https://github.com/anaticulae/queuemo/commit/54a1332fb7f0b7bd1fe3d8e8365e3ce8aac8e3f1))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`01e2375`](https://github.com/anaticulae/queuemo/commit/01e2375486b87f07372917f408dad72729fd9a06))
+
+- **Jenkins**: Upgrade pipe library
+  ([`8d04e33`](https://github.com/anaticulae/queuemo/commit/8d04e3364da6ba58d783c6eee0cd91689d907c01))
+
+- **requirements**: Upgrade requirements.txt
+  ([`24cd9a9`](https://github.com/anaticulae/queuemo/commit/24cd9a9bbfc6c203738e65f38bb2e4d72d97ab4e))
+
+### Code Style
+
+- **Jenkins**: Format code
+  ([`0dd80cf`](https://github.com/anaticulae/queuemo/commit/0dd80cf4eda8237669eceff041b7bb6ec3e66fcc))
+
 
 ## v1.27.2 (2022-12-17)
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (900ec686bb1c)
-* upgrade Jenkinsfile (a6ce80730e05)
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`a6ce807`](https://github.com/anaticulae/queuemo/commit/a6ce80730e05775a5dfbe1f28b7af4345adc1f61))
+
+- **requirements**: Upgrade requirements.txt
+  ([`900ec68`](https://github.com/anaticulae/queuemo/commit/900ec686bb1c23f16732154d08c94591995ad4d4))
+
+### Code Style
+
+- **docs**: Rename documents
+  ([`0746200`](https://github.com/anaticulae/queuemo/commit/074620034d9fe2e1bd2ab1fd390354d728a5b02b))
+
+### Refactoring
+
+- **logger**: Use new logger API
+  ([`faa74c4`](https://github.com/anaticulae/queuemo/commit/faa74c40b156ed6b87c6767f6f22e36c66588f94))
+
 
 ## v1.27.1 (2022-12-15)
 
-### Fix
+### Bug Fixes
 
-* makes logging less verbose (ace75eea32db)
+- **logging**: Makes logging less verbose
+  ([`ace75ee`](https://github.com/anaticulae/queuemo/commit/ace75eea32db5361e30d1ce7e4ce5d6b1f35e823))
 
-### Chore
+### Chores
 
-* upgrade requirements.txt (819854894e6d)
-* add integrate and pre-release step (99a7165235eb)
-* upgrade Jenkinsfile (c2d748973075)
-* upgrade pipe library (85537f1b016d)
+- **Jenkins**: Add integrate and pre-release step
+  ([`99a7165`](https://github.com/anaticulae/queuemo/commit/99a7165235ebb57d12624e30049cd6de7aebd442))
+
+- **Jenkins**: Upgrade Jenkinsfile
+  ([`c2d7489`](https://github.com/anaticulae/queuemo/commit/c2d748973075beb7e589b86f4e8ebe6629f85914))
+
+- **Jenkins**: Upgrade pipe library
+  ([`85537f1`](https://github.com/anaticulae/queuemo/commit/85537f1b016d554cd36b0a0cd5119ff3da3a8851))
+
+- **requirements**: Upgrade requirements.txt
+  ([`8198548`](https://github.com/anaticulae/queuemo/commit/819854894e6d4edcdd23c4ab56b7b17984d28a7f))
+
 
 ## v1.27.0 (2022-12-05)
 
-### Feature
+### Chores
 
-* add runtime and jobs as env to configure worker (b221b99547c2)
-* add env to run parallel worker (e76fac8e9f9f)
-* make worker more flexible (d10dcdd5f8ea)
-* increase debugging information (6d504412792a)
+- **baw**: Remove default option
+  ([`27b0f95`](https://github.com/anaticulae/queuemo/commit/27b0f95d5daf053c3be3d4537be670f122a476f7))
 
-### Chore
+### Code Style
 
-* remove default option (27b0f95d5daf)
+- **format**: Format code
+  ([`d668a45`](https://github.com/anaticulae/queuemo/commit/d668a45ea2c219143c915e35bb4eb9d3ad2cdc17))
+
+- **setup**: Clarify code
+  ([`47788d6`](https://github.com/anaticulae/queuemo/commit/47788d676e401fdbea9ee5c35f6e8fedbb5edf82))
+
+- **spelling**: Fix spelling error
+  ([`7840fc8`](https://github.com/anaticulae/queuemo/commit/7840fc812abbc4f759eccd472c39991091a8c511))
+
+### Features
+
+- **main**: Increase debugging information
+  ([`6d50441`](https://github.com/anaticulae/queuemo/commit/6d504412792a5bb1b4887511ac938aa01b19908d))
+
+- **production**: Add env to run parallel worker
+  ([`e76fac8`](https://github.com/anaticulae/queuemo/commit/e76fac8e9f9fd5ce8797bac7595484929b191225))
+
+- **Production**: Add runtime and jobs as env to configure worker
+  ([`b221b99`](https://github.com/anaticulae/queuemo/commit/b221b99547c22b44bd1089a96a05bdc83479c774))
+
+- **production**: Make worker more flexible
+  ([`d10dcdd`](https://github.com/anaticulae/queuemo/commit/d10dcdd5f8eaf7e14496d5e5b0234430af795dfa))
+
+### Refactoring
+
+- **main**: Improve method order
+  ([`3f9fc37`](https://github.com/anaticulae/queuemo/commit/3f9fc372c6fbe431d2b3c7db37c17b31c9097df6))
+
+- **main**: Move webconfig evaluation to the front
+  ([`4e4f0b6`](https://github.com/anaticulae/queuemo/commit/4e4f0b65818c26c85a190c9044d3e73bd519b036))
+
+- **main**: Reduce complexity
+  ([`bfc625a`](https://github.com/anaticulae/queuemo/commit/bfc625a9feb3c2f4b626d48795334540995a65cd))
+
+- **runtime**: Replace with utila code
+  ([`0329420`](https://github.com/anaticulae/queuemo/commit/032942099e16e4b0ef77a66707307311cbc259e9))
+
+- **scheduler**: Replace with utila code
+  ([`3398329`](https://github.com/anaticulae/queuemo/commit/33983293a3f26b7b8684dfef78a3ea0be4dff859))
+
 
 ## v1.26.0 (2022-12-05)
 
-### Feature
+### Chores
 
-* upgrade queuemo (22786e7ef823)
+- **Jenkins**: Automate docker container creation
+  ([`cc597f4`](https://github.com/anaticulae/queuemo/commit/cc597f4a14ee03c999c8f8d4a0223eab82e35b74))
 
-### Chore
+- **Jenkins**: Upgrade pipeline
+  ([`c18a716`](https://github.com/anaticulae/queuemo/commit/c18a716ca1140bd9a578bfb2c2ad95a32ca81ad9))
 
-* automate docker container creation (cc597f4a14ee)
-* automate queuemo replacement (592fa256b726)
-* upgrade environment (431a2e3e8bd2)
-* upgrade requirements.txt (2622286e6cb7)
-* use quick installer (2e480b67c126)
-* upgrade pipeline (c18a716ca114)
-* rename docker builder (7c47f9f5bda2)
+- **production**: Automate queuemo replacement
+  ([`592fa25`](https://github.com/anaticulae/queuemo/commit/592fa256b7265a152c958fce8baf0f98f71f49c1))
+
+- **production**: Rename docker builder
+  ([`7c47f9f`](https://github.com/anaticulae/queuemo/commit/7c47f9f5bda2861f2dd42a141784372f3d42027d))
+
+- **production**: Upgrade environment
+  ([`431a2e3`](https://github.com/anaticulae/queuemo/commit/431a2e3e8bd2e335b9fc7bedef48e2cb3bc9d5db))
+
+- **requirements**: Upgrade requirements.txt
+  ([`2622286`](https://github.com/anaticulae/queuemo/commit/2622286e6cb7fb9ce41017e52c668f7b05c9675c))
+
+- **setup**: Use quick installer
+  ([`2e480b6`](https://github.com/anaticulae/queuemo/commit/2e480b67c126b801b8c262ff08a7482a72ea769d))
+
+### Features
+
+- **production**: Upgrade queuemo
+  ([`22786e7`](https://github.com/anaticulae/queuemo/commit/22786e7ef8230a1d69c982505093d85e01cfb31a))
+
+### Testing
+
+- **fix**: Ensure that tmp dir exists
+  ([`a07b65d`](https://github.com/anaticulae/queuemo/commit/a07b65d1937ee36c2cbc4610c06a0fbcdefc7e5b))
+
 
 ## v1.25.0 (2022-11-08)
 
-### Feature
+### Bug Fixes
 
-* use python optimize (90bb64bf244f)
+- **utils**: Solve resolving bug
+  ([`db8d670`](https://github.com/anaticulae/queuemo/commit/db8d67022a9abb4e6b21bc769a2c36a487e6c693))
 
-### Fix
+### Chores
 
-* solve resolving bug (db8d67022a9a)
+- **Jenkins**: Upgrade environment
+  ([`4f23c9d`](https://github.com/anaticulae/queuemo/commit/4f23c9d83c91a0174f489efc5094734f54936aee))
 
-### Chore
+- **requirements**: Upgrade requirements.txt
+  ([`213ce9e`](https://github.com/anaticulae/queuemo/commit/213ce9e06c6aea1c3a1600a73a2dd9f132bab7d3))
 
-* upgrade requirements.txt (213ce9e06c6a)
-* upgrade environment (4f23c9d83c91)
-* upgrade requirements.txt (8a27010b33bc)
+- **requirements**: Upgrade requirements.txt
+  ([`8a27010`](https://github.com/anaticulae/queuemo/commit/8a27010b33bcaab41b69a7425b25e8e611c5afe1))
+
+### Code Style
+
+- **view**: Format code
+  ([`dd44cd6`](https://github.com/anaticulae/queuemo/commit/dd44cd62fa25905371c2f72cb700820e6004f4d7))
+
+### Features
+
+- **env**: Use python optimize
+  ([`90bb64b`](https://github.com/anaticulae/queuemo/commit/90bb64bf244ff0ce3529f623c9f4a5957cf0de30))
+
+### Refactoring
+
+- **replace**: Automated replacement
+  ([`ac64898`](https://github.com/anaticulae/queuemo/commit/ac64898e477a4b2cbef7b67f092cff9d7980d80c))
+
 
 ## v1.24.5 (2022-10-18)
 
-### Chore
+### Chores
 
-* increase queuemo (21786373fac5)
-* upgrade requirements.txt (5960b80470ea)
+- **Production**: Increase queuemo
+  ([`2178637`](https://github.com/anaticulae/queuemo/commit/21786373fac51d5e3555f401b8dd6bfb253604be))
+
+- **requirements**: Upgrade requirements.txt
+  ([`5960b80`](https://github.com/anaticulae/queuemo/commit/5960b80470eaa6ffe69a8b59bd383c753d6b983d))
+
 
 ## v1.24.4 (2022-10-18)
 
-### Chore
+### Chores
 
-* add Volume to store qcon data (62e90ecbb0eb)
+- **Production**: Add Volume to store qcon data
+  ([`62e90ec`](https://github.com/anaticulae/queuemo/commit/62e90ecbb0eb9c9193d255eb03619ed64ea613f0))
+
 
 ## v1.24.3 (2022-10-17)
 
-### Chore
+### Chores
 
-* rename docker file (72b7e93644c8)
-* increase queuemo max runtime (84bdb84577bd)
+- **Prod**: Increase queuemo max runtime
+  ([`84bdb84`](https://github.com/anaticulae/queuemo/commit/84bdb84577bddf24a5719b02b450a25d9b796f02))
+
+- **Prod**: Rename docker file
+  ([`72b7e93`](https://github.com/anaticulae/queuemo/commit/72b7e93644c895873fff3d080ff4435b215c1b41))
+
 
 ## v1.24.2 (2022-10-17)
 
-### Chore
+### Chores
 
-* clear cache after installing queuemo (6da79576e596)
-* upgrade environment and queuemo (51628c6daea9)
+- **Prod**: Clear cache after installing queuemo
+  ([`6da7957`](https://github.com/anaticulae/queuemo/commit/6da79576e596c2080321cb4840cd4a97e20e7b11))
+
+- **Prod**: Upgrade environment and queuemo
+  ([`51628c6`](https://github.com/anaticulae/queuemo/commit/51628c6daea9bd2a75ea2c225b749fedb2b86a12))
+
 
 ## v1.24.1 (2022-10-17)
 
-### Chore
+### Chores
 
-* add ghost environment (cc2ac24214e7)
-* increase baw version (998bce9b8f17)
-* upgrade requirements.txt (94b1ec935aae)
+- **Jenkins**: Add ghost environment
+  ([`cc2ac24`](https://github.com/anaticulae/queuemo/commit/cc2ac24214e756b1c668f430f8f220962fc6ba5f))
+
+- **Jenkins**: Increase baw version
+  ([`998bce9`](https://github.com/anaticulae/queuemo/commit/998bce9b8f1752408b4293ca402270d9e4b02c75))
+
+- **requirements**: Upgrade requirements.txt
+  ([`94b1ec9`](https://github.com/anaticulae/queuemo/commit/94b1ec935aaed814d25322830290dc6e4d289b7a))
+
+### Refactoring
+
+- **linter**: Solve linter warnings
+  ([`0e482de`](https://github.com/anaticulae/queuemo/commit/0e482dee3de90a40513a8c44035e52782b15b586))
+
+- **startup**: Use utila copy method
+  ([`ebe356f`](https://github.com/anaticulae/queuemo/commit/ebe356f950b91b821c28a51bbff6490454b9d61a))
+
+### Testing
+
+- **cli**: Improve code style
+  ([`b94653e`](https://github.com/anaticulae/queuemo/commit/b94653ec43b2a048a70846230c78e21c6905fafc))
+
+- **fix**: Unlock files to avoid permission error
+  ([`d581501`](https://github.com/anaticulae/queuemo/commit/d58150119660fb79384ee3326917333a4c1acd91))
+
+- **result**: Adjust test skipper
+  ([`2444890`](https://github.com/anaticulae/queuemo/commit/24448909c242ecf26f42477f40c2d8e25b90ba3c))
+
 
 ## v1.24.0 (2022-10-07)
 
-### Feature
+### Features
 
-* add production env (f4325433069c)
+- **env**: Add production env
+  ([`f432543`](https://github.com/anaticulae/queuemo/commit/f4325433069c857100595c1ea6c266c26be0d33e))
+
 
 ## v1.23.1 (2022-10-07)
 
-### Fix
+### Bug Fixes
 
-* do not have not enough dirs at startup (1e3fc5d410fb)
-* ensure to run in main thread (19535bd8d7c8)
+- **main**: Do not have not enough dirs at startup
+  ([`1e3fc5d`](https://github.com/anaticulae/queuemo/commit/1e3fc5d410fb3091a1a84cec1acc1bc13d3bb143))
 
-### Chore
+- **status**: Ensure to run in main thread
+  ([`19535bd`](https://github.com/anaticulae/queuemo/commit/19535bd8d7c838e92118b93e19370943e045649b))
 
-* upgrade requirements.txt (c78c7f9262e1)
-* improve execution order (dcc93703d783)
+### Chores
+
+- **Jenkinsfile**: Improve execution order
+  ([`dcc9370`](https://github.com/anaticulae/queuemo/commit/dcc93703d783799220b3c1379fe70599a2a267c9))
+
+- **requirements**: Upgrade requirements.txt
+  ([`c78c7f9`](https://github.com/anaticulae/queuemo/commit/c78c7f9262e18aa259b137499ff8be59ca020ab4))
+
+### Testing
+
+- **skip**: Skip test after software integration
+  ([`f2eac36`](https://github.com/anaticulae/queuemo/commit/f2eac3680ae013b92f381ec65c64d37e293e5983))
+
 
 ## v1.23.0 (2022-10-06)
 
-### Feature
+### Bug Fixes
 
-* use partial cleanup to improve runtime (be505c2f78a2)
-* run pagenumber, footnote and headnote (ed048b7e67d6)
-* add footnote and headnote extractor (23498e4936cf)
-* use separate pagenumber runner (16d88c665af2)
+- **cli**: Ensure that tmp path is created
+  ([`56806cf`](https://github.com/anaticulae/queuemo/commit/56806cfc14b485bc840535be9ab928364b491f85))
 
-### Fix
+- **cli**: Remove common state env var
+  ([`d47b729`](https://github.com/anaticulae/queuemo/commit/d47b7293ca631fc7f98963db93f89cc5be06bb4e))
 
-* do not generate pngs if ghost is not installed (06bca6a99e7d)
-* adjust groupme invocation (511b40f66e9d)
-* remove common state env var (d47b7293ca63)
-* ensure that tmp path is created (56806cfc14b4)
-* adjust to run on linux (42780ffc961a)
+- **recipe**: Adjust groupme invocation
+  ([`511b40f`](https://github.com/anaticulae/queuemo/commit/511b40f66e9dafae2bf50f5bf535e90e53a877f1))
 
-### Documentation
+- **status**: Adjust to run on linux
+  ([`42780ff`](https://github.com/anaticulae/queuemo/commit/42780ffc961a95f32f93843d7efb31af164853ce))
 
-* add missing parameter (779f8b1e2d50)
+- **view**: Do not generate pngs if ghost is not installed
+  ([`06bca6a`](https://github.com/anaticulae/queuemo/commit/06bca6a99e7d38f3d791ed577076d4e5cdaefd90))
 
-### Chore
+### Chores
 
-* run all instead of nightly (ed7a2ef146b8)
-* add missing env variable (cb22429a1bcc)
-* disable to fix pytest failure (e23c7a2a7566)
-* add Jenkinsfile (37ba11b0cd13)
-* upgrade requirements.txt (8440ec6b8036)
-* add footnote and headnote (1177f95972b0)
-* upgrade requirements.txt (2c80658c2ba4)
-* add pagenumber runner (a5fbb1511495)
-* upgrade requirements.txt (2a721d319c72)
+- **baw**: Disable to fix pytest failure
+  ([`e23c7a2`](https://github.com/anaticulae/queuemo/commit/e23c7a2a7566970d3d70f3fe7e7b6965747e1646))
 
-## v1.22.0
+- **ci**: Add Jenkinsfile
+  ([`37ba11b`](https://github.com/anaticulae/queuemo/commit/37ba11b0cd134ca966acbef6b3d15c344aa2d3ed))
 
-### Feature
+- **Jenkinsfile**: Add missing env variable
+  ([`cb22429`](https://github.com/anaticulae/queuemo/commit/cb22429a1bcc24197e7669bb2ec42c1e4167c40f))
 
-* without findings, the result is useless (58bd2a3bdccc)
+- **Jenkinsfile**: Run all instead of nightly
+  ([`ed7a2ef`](https://github.com/anaticulae/queuemo/commit/ed7a2ef146b89095d38f9e52dce4c3a566ed2faf))
 
-### Fix
+- **requirements**: Add footnote and headnote
+  ([`1177f95`](https://github.com/anaticulae/queuemo/commit/1177f95972b0a354b9b9d54deea5124a4f74d051))
 
-* after upgrading abbrev detector it requires words (e1a2cdd7fe1a)
-* adjust finding generator todo path (b2d6995aef02)
+- **requirements**: Add pagenumber runner
+  ([`a5fbb15`](https://github.com/anaticulae/queuemo/commit/a5fbb15114954101dd0de5b64f8483de952b862f))
 
-## v1.21.0
+- **requirements**: Upgrade requirements.txt
+  ([`8440ec6`](https://github.com/anaticulae/queuemo/commit/8440ec6b8036828ab8cb84a688a2181e111ea778))
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`2c80658`](https://github.com/anaticulae/queuemo/commit/2c80658c2ba40e6682a0f44bac1506ebfbf32543))
 
-* add option to kill all jobs (8e55427d36da)
-* add option to kill document (9acbe8a2db38)
-* add cli to view todo state (771b7984a4ab)
-* move cli into separate package (1eb8041a1c2f)
-
-## v1.20.1
-
-### Feature
-
-* use new lists runner instead of words (30f9e14c3fde)
-
-## v1.20.0
-
-### Feature
-
-* use new bibliography module (8876ce4f838e)
-* add step top render findings (9a41b60c9224)
-* add feedback findings renderer (085a9eaa3a90)
-* generate png for every pdf page (33e1a0eee45c)
-* add ghost runner (3e2316d34211)
-* run footer and pagenumbers again (920517d0c930)
-
-### Fix
-
-* fix cmd line invocation (526fe95f7ba4)
-
-## v1.19.0
-
-### Feature
-
-* add new headline step (c0b8152ea331)
-* use reftable to replace groupme (7965ed410ba3)
-* use separated version (593a08f616c5)
-* extend public API (e70d23a32f14)
-* add option to skip section (0f7deacddce9)
-* add color extraction and decider step (7d1c30582ff9)
-* add detector index extractor step (cec67cb3c2d4)
-
-### Fix
-
-* do not run docref on bib (a8fb708307c0)
-* adjust caption path (02dab01f65b3)
+- **requirements**: Upgrade requirements.txt
+  ([`2a721d3`](https://github.com/anaticulae/queuemo/commit/2a721d319c72b22ec823ccb690809c1ce358b6b6))
 
 ### Documentation
 
-* adjust title (7eee76e0d25d)
+- **fix**: Add missing parameter
+  ([`779f8b1`](https://github.com/anaticulae/queuemo/commit/779f8b1e2d5057587a56b8a6edcd7bd07f484ed8))
 
-## v1.18.1
+### Features
+
+- **cleanup**: Use partial cleanup to improve runtime
+  ([`be505c2`](https://github.com/anaticulae/queuemo/commit/be505c2f78a26894c3aebffe2db54d65d354d471))
+
+- **runnable**: Add footnote and headnote extractor
+  ([`23498e4`](https://github.com/anaticulae/queuemo/commit/23498e4936cfb9857981124b8ac343fff822d864))
+
+- **runnable**: Use separate pagenumber runner
+  ([`16d88c6`](https://github.com/anaticulae/queuemo/commit/16d88c665af2f4f9396fd162a694a689f2a8f0e9))
+
+- **utils**: Run pagenumber, footnote and headnote
+  ([`ed048b7`](https://github.com/anaticulae/queuemo/commit/ed048b7e67d626755c0db2004304e685bc31b5f9))
+
+### Testing
+
+- **cli**: Disable test after upgrading pdfminer
+  ([`244c55f`](https://github.com/anaticulae/queuemo/commit/244c55f97c93c1b161d74633b7e60d5a46ab85da))
+
+- **decorator**: Verify that test data is generated
+  ([`2e2dc81`](https://github.com/anaticulae/queuemo/commit/2e2dc8131602036a2b647ab7e0f63c7a158db585))
+
+- **fix**: Ensure that all test paths are created
+  ([`d5a0e79`](https://github.com/anaticulae/queuemo/commit/d5a0e79ee66d2558742998f6c864af5f10ff75ee))
+
+- **refactor**: Use fixture shortcuts
+  ([`05e0464`](https://github.com/anaticulae/queuemo/commit/05e0464d46f1ebf9a3e51639edef75af2c3650df))
+
+
+## v1.22.0 (2022-07-08)
+
+### Bug Fixes
+
+- **main**: After upgrading abbrev detector it requires words
+  ([`e1a2cdd`](https://github.com/anaticulae/queuemo/commit/e1a2cdd7fe1ad40cf27367a592dfa7d07c9f82f8))
+
+- **view**: Adjust finding generator todo path
+  ([`b2d6995`](https://github.com/anaticulae/queuemo/commit/b2d6995aef0261cc2655d2584bee0ae20050fe93))
+
+### Chores
+
+- **requirements**: Adjust knlp and smarty
+  ([`ea83ad2`](https://github.com/anaticulae/queuemo/commit/ea83ad28190531013b05754a417ddf1c06c4d0d9))
+
+- **requirements**: Make qcon in requirements mandatory
+  ([`64abf1e`](https://github.com/anaticulae/queuemo/commit/64abf1e2469c922022ddd3e7d3b097a867b6c598))
+
+- **requirements**: Upgrade requirements.txt
+  ([`92f5e25`](https://github.com/anaticulae/queuemo/commit/92f5e25afb3c6ef8a48b6dc71c7c1a5e1237f2c9))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e33a12c`](https://github.com/anaticulae/queuemo/commit/e33a12c0f1e62f2e8d00b57734cb76a19110d047))
+
+### Code Style
+
+- **rename**: Fix spelling error
+  ([`54de1e4`](https://github.com/anaticulae/queuemo/commit/54de1e49f089e0c0e5355a3c30146e3c58340839))
+
+### Features
+
+- **view**: Without findings, the result is useless
+  ([`58bd2a3`](https://github.com/anaticulae/queuemo/commit/58bd2a3bdcccf8a79ec6b77c6b6066269795e55a))
+
+### Refactoring
+
+- **recipes**: Clarify code
+  ([`8806ecc`](https://github.com/anaticulae/queuemo/commit/8806ecc6447f5922d54c9b9e81cdb271a6ae8763))
+
+
+## v1.21.0 (2022-06-16)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`69a5b19`](https://github.com/anaticulae/queuemo/commit/69a5b1957daa1e457414ab9a8c487f61a3dcf9e3))
+
+### Code Style
+
+- **config**: Add missing copyright header
+  ([`80b69dc`](https://github.com/anaticulae/queuemo/commit/80b69dca3cc49e3616bca1279f2f2df601237b5d))
+
+- **docs**: Adjust headline
+  ([`a114084`](https://github.com/anaticulae/queuemo/commit/a114084b0871c126020ce82ed9044a7f4a1f2d5a))
+
+### Features
+
+- **main**: Move cli into separate package
+  ([`1eb8041`](https://github.com/anaticulae/queuemo/commit/1eb8041a1c2f8fc635539f384bd76ed0ac455e4e))
+
+- **state**: Add cli to view todo state
+  ([`771b798`](https://github.com/anaticulae/queuemo/commit/771b7984a4ab4693bb3b12350f64725b9a943fc8))
+
+- **state**: Add option to kill all jobs
+  ([`8e55427`](https://github.com/anaticulae/queuemo/commit/8e55427d36da571d0cafb3eed1972cfb4cac537d))
+
+- **state**: Add option to kill document
+  ([`9acbe8a`](https://github.com/anaticulae/queuemo/commit/9acbe8a2db38ab5469b56062fbb7ccbc8214357d))
+
+### Refactoring
+
+- **cli**: Move to utils
+  ([`c1489e2`](https://github.com/anaticulae/queuemo/commit/c1489e275725ae6ad9b836b7a11eccc832d666e3))
+
+- **runtime**: Replace with utila code
+  ([`23528fd`](https://github.com/anaticulae/queuemo/commit/23528fdb57e556b35efe47d393c6e7599bd527dd))
+
+- **single**: Move cli into cli package
+  ([`8ea4f1c`](https://github.com/anaticulae/queuemo/commit/8ea4f1c606e0055b1d80bab6727a78c039cbc6bb))
+
+- **single**: Reduce complexity
+  ([`9d31e83`](https://github.com/anaticulae/queuemo/commit/9d31e83ea52e689c1b60b3d4e91d2f5a571ad3ab))
+
+### Testing
+
+- **docs**: Shorten docs
+  ([`fc215f3`](https://github.com/anaticulae/queuemo/commit/fc215f3eecbeae6888582dfc6659cd34488c2a6f))
+
+
+## v1.20.1 (2022-06-15)
+
+### Chores
+
+- **requirements**: Add lists
+  ([`ca63e71`](https://github.com/anaticulae/queuemo/commit/ca63e71c30da8be7a70582dce57d20e5431f6558))
+
+- **requirements**: Upgrade requirements.txt
+  ([`f876d37`](https://github.com/anaticulae/queuemo/commit/f876d370f1569054df26be3de167fb14c88702cd))
+
+### Features
+
+- **result**: Use new lists runner instead of words
+  ([`30f9e14`](https://github.com/anaticulae/queuemo/commit/30f9e14c3fdeef9b60fe69f7f6a958ec03e3cf17))
+
+### Testing
+
+- **rename**: Shorten test method
+  ([`7837ae9`](https://github.com/anaticulae/queuemo/commit/7837ae91f3cfdba688a65e05bf77115563af529b))
+
+
+## v1.20.0 (2022-06-10)
+
+### Bug Fixes
+
+- **abbr**: Fix cmd line invocation
+  ([`526fe95`](https://github.com/anaticulae/queuemo/commit/526fe95f7ba489aac2aced505dbb08d79ad945f4))
+
+### Chores
+
+- **requirements**: Add bibliography
+  ([`3aae954`](https://github.com/anaticulae/queuemo/commit/3aae954da6e0204f08a6d53a97dacc6b2c4f3c7c))
+
+- **requirements**: Add ghost
+  ([`10f50fb`](https://github.com/anaticulae/queuemo/commit/10f50fb5282efc552954f284354886d0c3811a0f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e863168`](https://github.com/anaticulae/queuemo/commit/e8631684401610b953916a933f1a6a12c4e22bce))
+
+- **requirements**: Upgrade requirements.txt
+  ([`ef98e27`](https://github.com/anaticulae/queuemo/commit/ef98e277a6e5e61ba4dee52ac43fc89b6d22c76f))
+
+### Features
+
+- **before**: Run footer and pagenumbers again
+  ([`920517d`](https://github.com/anaticulae/queuemo/commit/920517d0c930dd2e6a5f447b8c868545d486ae16))
+
+- **bib**: Use new bibliography module
+  ([`8876ce4`](https://github.com/anaticulae/queuemo/commit/8876ce4f838e977613f16bc7a1da2780c8158513))
+
+- **result**: Add step top render findings
+  ([`9a41b60`](https://github.com/anaticulae/queuemo/commit/9a41b60c9224850a9bef30eeca6ca853f4e67872))
+
+- **runnable**: Add feedback findings renderer
+  ([`085a9ea`](https://github.com/anaticulae/queuemo/commit/085a9eaa3a9059fd3e9dda2d4ed76c89bdccd656))
+
+- **runnable**: Add ghost runner
+  ([`3e2316d`](https://github.com/anaticulae/queuemo/commit/3e2316d34211e834c38a8e30aa88dc30025d47cd))
+
+- **view**: Generate png for every pdf page
+  ([`33e1a0e`](https://github.com/anaticulae/queuemo/commit/33e1a0eee45c3c5f6af881d9cb8a74e2d12f4035))
+
+### Refactoring
+
+- **style**: Simplify code
+  ([`2b6705a`](https://github.com/anaticulae/queuemo/commit/2b6705ad2e23129b24ddf74be59fa73f9d5f9d43))
+
+### Testing
+
+- **refactor**: Clarify code
+  ([`0dc08cb`](https://github.com/anaticulae/queuemo/commit/0dc08cbe92c3221f541485c10351dd7dc67cc788))
+
+
+## v1.19.0 (2022-05-04)
+
+### Bug Fixes
+
+- **bib**: Do not run docref on bib
+  ([`a8fb708`](https://github.com/anaticulae/queuemo/commit/a8fb708307c0d0b057934f908c07155fac351490))
+
+- **magic**: Adjust caption path
+  ([`02dab01`](https://github.com/anaticulae/queuemo/commit/02dab01f65b3fa4c360a53dedfb38454ddc5e310))
+
+### Chores
+
+- **requirements**: Add caption package
+  ([`cf4a0d4`](https://github.com/anaticulae/queuemo/commit/cf4a0d4af8332296467d0d90a81987827a462742))
+
+- **requirements**: Add headlines
+  ([`058d3a7`](https://github.com/anaticulae/queuemo/commit/058d3a70eec1727bf2c049d17b608f76f7cde9ce))
+
+- **requirements**: Add new cleanup tool
+  ([`a4ea367`](https://github.com/anaticulae/queuemo/commit/a4ea367b158fd72cf8331d0aacdc50d93bfc0a95))
+
+- **requirements**: Add reftable
+  ([`cfd6668`](https://github.com/anaticulae/queuemo/commit/cfd6668faefa1c17b0a7034601b6cb4cd9077c13))
+
+- **requirements**: Upgrade requirements.txt
+  ([`bda8a0f`](https://github.com/anaticulae/queuemo/commit/bda8a0f674030580cefc5cf3bdbf4e2c1d41795f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`ebb450b`](https://github.com/anaticulae/queuemo/commit/ebb450b3073c958e8c1fc0b52d821fe185714577))
+
+### Code Style
+
+- **spelling**: Fix spelling error
+  ([`f4465d0`](https://github.com/anaticulae/queuemo/commit/f4465d076648c78d054de997342b29d982f07cdd))
 
 ### Documentation
 
-* document scheduler behavior (401b0888f6d0)
-* adjust startup docs (ca66f4b2d072)
+- **fix**: Adjust title
+  ([`7eee76e`](https://github.com/anaticulae/queuemo/commit/7eee76e0d25dae8a595af39f96f7f452f89369f5))
 
-## v1.18.0
+### Features
 
-### Feature
+- **API**: Extend public API
+  ([`e70d23a`](https://github.com/anaticulae/queuemo/commit/e70d23a32f14a6c62e47cac48c4e2574fd8b4363))
 
-* copy required pdfinfo for sections --docinfo step (1dda511682d3)
-* add option to copy and shrink schedule (bc6a0e87c5ef)
-* pass docinfo to skip German tests on English document (de3b43453f9c)
-* add docinfo property if given by file (8750fea3a127)
-* log debug in pip requirements style (1db1ffdae1e1)
+- **cleanup**: Use separated version
+  ([`593a08f`](https://github.com/anaticulae/queuemo/commit/593a08f616c5aa70e66576c0a55bf618c1d76e5c))
 
-### Fix
+- **color**: Add color extraction and decider step
+  ([`7d1c305`](https://github.com/anaticulae/queuemo/commit/7d1c30582ff9a89663c2c228642c4a352fb956e4))
 
-* skip execution spacestation to save time for now (eae8a7cc79c3)
-* remove duplication (1c78d940b32a)
-* add pages flag to reduce sections --paper runtime (96217271f28f)
-* do not fail on multiple pages (2a7910539501)
+- **index**: Add detector index extractor step
+  ([`cec67cb`](https://github.com/anaticulae/queuemo/commit/cec67cb3c2d410f6e73ce96f7e6b297e242bad3f))
 
-### Documentation
+- **reftable**: Use reftable to replace groupme
+  ([`7965ed4`](https://github.com/anaticulae/queuemo/commit/7965ed410ba3231ddb5d203d6982687cc588b235))
 
-* adjust modules path (10d8342faefa)
-* Happy New Year! (7425a3cc92e1)
+- **runnable**: Add new headline step
+  ([`c0b8152`](https://github.com/anaticulae/queuemo/commit/c0b8152ea331f03b05da55bfc7cd50f4b1587782))
 
-## v1.17.2
+- **utils**: Add option to skip section
+  ([`0f7deac`](https://github.com/anaticulae/queuemo/commit/0f7deacddce94dfe93087342c922be4d3fc97918))
 
-### Feature
 
-* publish page numbers (7fedfd459c3e)
+## v1.18.1 (2022-03-03)
 
-## v1.17.1
+### Chores
 
-### Feature
+- **requirements**: Make requirements less strict
+  ([`d6c3183`](https://github.com/anaticulae/queuemo/commit/d6c31832feb18cd6f36c091bc17c47fad70d464a))
 
-* add more possible resource lookups (d8958c6c647e)
-* run caption before magic (d34e5308d8f0)
+- **requirements**: Upgrade requirements.txt
+  ([`7ebc4bf`](https://github.com/anaticulae/queuemo/commit/7ebc4bf20be1b2b0f1e0b3810bf339a0235c7d29))
 
-## v1.17.0
+### Code Style
 
-### Feature
-
-* make title and toc skip able (dfdec4df4635)
-* make processing more robust (ba8c96b5cc8f)
-* skip decider_imgfig if configured (3734039f6d1a)
-* add method to skip decider by web config (802af60f7d9a)
-* split extractor into different stages (4eaa7148293d)
-* collect all run methods which start by run (4c65a00000e5)
-* add webconfig loader to select published msgids (bda31aa86be7)
-* run rawmaker cleanup for oneline resource (5594bdfd5dcb)
-* always profile runtime (e8e52808978c)
-* fail current job on immediate shutdown (0a58d5206f94)
-* add ctrl-break signal handler to close scheduler graceful (142397ee3ec2)
-
-### Fix
-
-* adjust viewo input paths (adf4a70cf3ae)
-* optimize findings before running plot (0a4bc0c3dbab)
-* disable table extraction for fastview (629123388e56)
-* make order case-insensitive (3c257b1f3404)
-* split standard and cleanup step (a53a47da8378)
+- **format**: Format code
+  ([`e0a131e`](https://github.com/anaticulae/queuemo/commit/e0a131e688355659f188856d68ab242cc1414912))
 
 ### Documentation
 
-* fix data type (66d21f5d4407)
+- **fix**: Adjust startup docs
+  ([`ca66f4b`](https://github.com/anaticulae/queuemo/commit/ca66f4b2d072c59948bf9abb205a4110731e33de))
 
-## v1.16.0
+- **startup**: Document scheduler behavior
+  ([`401b088`](https://github.com/anaticulae/queuemo/commit/401b0888f6d0f6281bf00268b1ce5167710c49bf))
 
-### Feature
 
-* add codero runner (a71a985961df)
-* write log with error to error file (57afa0ac5675)
-* use link to signal not supported document type (9bf82250a510)
-* add runtime recipe config (868efddc6199)
-* skip unsupported documents (257488c4b883)
-* add skip not supported flag (32c1b853c5f9)
-* add flag to handle cleaning behavior (853e40ce4037)
-* add formulero (2b225440f3c3)
-* add option to select decider pages (1347dbdc7bc4)
-* add multiple sections selection (02be59799f08)
+## v1.18.0 (2022-01-28)
 
-### Fix
+### Bug Fixes
 
-* add codero to show debug (c682b296f4a8)
-* add missing doctextstyle (f92c82af6654)
-* do not overwrite error message (07c01597d509)
-* disable non required flags (937b6b37d5a0)
-* exclude Introduction from bib ref checking (3feea9eedbe3)
-* done flag already exists, append log data (03c1634a26fc)
+- **result**: Do not fail on multiple pages
+  ([`2a79105`](https://github.com/anaticulae/queuemo/commit/2a79105395011b0aee454d9d8bcfdcfaaac86a58))
 
-## v1.15.0
+- **runnable**: Remove duplication
+  ([`1c78d94`](https://github.com/anaticulae/queuemo/commit/1c78d940b32adced504e838721d7e9276350fb63))
 
-### Feature
+- **runnable**: Skip execution spacestation to save time for now
+  ([`eae8a7c`](https://github.com/anaticulae/queuemo/commit/eae8a7cc79c35e07985513235898af1fa93c13d7))
 
-* reduce response time (5c51c08d3e41)
-* add show debug command (1efb9e411f34)
-* use improved runnable list (ccece46bc000)
-* file extension is not required anymore (c4e297f96d7d)
+- **sections**: Add pages flag to reduce sections --paper runtime
+  ([`9621727`](https://github.com/anaticulae/queuemo/commit/96217271f28f2111b8845d67cc1db2e2425e84ef))
 
-## v1.14.0
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`705dd3c`](https://github.com/anaticulae/queuemo/commit/705dd3c00751e1f56a26e35897864681093fa46e))
 
-* move logger outpath to separate directory (1e50e897f1e7)
-* add pdf input resource (ba99c24fa862)
-* run rawmaker_cleanup to ease further processing (0eacca3be5f5)
-* add method to determine area where figures and tables (0ba032b698b0)
-* run figureo to generate figure images (64eb9b85cefb)
+- **requirements**: Upgrade requirements.txt
+  ([`d3a372d`](https://github.com/anaticulae/queuemo/commit/d3a372d4924ec7973c684d959066d33e2f8b5178))
 
-### Fix
+- **requirements**: Upgrade requirements.txt
+  ([`19ff835`](https://github.com/anaticulae/queuemo/commit/19ff835a28d8f8ca7904d6177861aeae2f39f3c9))
 
-* shrink to first ten pages (94aaff2ba152)
-* ensure correct logging order (f5ee0c13cdf4)
-* remove white spaces (5794de7ea2ab)
-* disable step which is done before (d8f0512d6bb3)
-* skip already cleaned jobs (f2cd62fa60b6)
-
-## v1.13.0
-
-### Feature
-
-* replace linero with tablero (66153ec7f054)
-
-### Fix
-
-* adjust to new interface (1b38818088ea)
-
-## v1.12.1
-
-### Feature
-
-* add pdfinfo resource to bib decider (5652385caad0)
-* add todo path (739fc191e727)
-
-### Fix
-
-* comment is not supported by baw tool (7e8e8d0abc2a)
+- **requirements**: Upgrade requirements.txt
+  ([`b62934c`](https://github.com/anaticulae/queuemo/commit/b62934c114dbe448999fd9217ad41b66209220a7))
 
 ### Documentation
 
-* adjust method description (2ef88718c56b)
+- **copyright**: Happy New Year!
+  ([`7425a3c`](https://github.com/anaticulae/queuemo/commit/7425a3cc92e19aa3a2e8ff292bc2a624ae519037))
 
-## v1.12.0
+- **fix**: Adjust modules path
+  ([`10d8342`](https://github.com/anaticulae/queuemo/commit/10d8342faefa374bc88aae2a1a33d1ecde22894e))
 
-### Feature
+### Features
 
-* add cleaner to remove old jobs (a078c36a4d02)
-* add method to determine file time sine last change (0559d56e341f)
-* add http interface as cli flag (0db8b8c907f7)
-* add status and control font end (d53a6d304f99)
-* add method to access complete log (03bec5153c98)
-* add status flag to stop working (5c2cdc08c60c)
-* do not fail on qcon publish error (559651b97235)
+- **API**: Add docinfo property if given by file
+  ([`8750fea`](https://github.com/anaticulae/queuemo/commit/8750fea3a127837f2d46a150220790f15f2d9317))
 
-### Fix
+- **chapter**: Pass docinfo to skip German tests on English document
+  ([`de3b434`](https://github.com/anaticulae/queuemo/commit/de3b43453f9c44124772c0226d3e8f65f97c0a29))
 
-* skip invalid pdf after refactoring (1ada62ee13ba)
-* adjust validation step to new link API (5a0ad4625ae2)
-* do not access internal API (85ba28a5e7c9)
-* skip failed jobs (454a41a58cb6)
+- **main**: Log debug in pip requirements style
+  ([`1db1ffd`](https://github.com/anaticulae/queuemo/commit/1db1ffdae1e140f7a02c5cec74658a113f3ba099))
 
-### Documentation
+- **schedule**: Add option to copy and shrink schedule
+  ([`bc6a0e8`](https://github.com/anaticulae/queuemo/commit/bc6a0e87c5efbe9ec8486e8d0e26043a1f05ecc9))
 
-* adjust documentation (425681d780d6)
+- **utils**: Copy required pdfinfo for sections --docinfo step
+  ([`1dda511`](https://github.com/anaticulae/queuemo/commit/1dda511682d3966b1990f2abf693f2003ce58e16))
 
-## v1.11.3
+### Testing
 
-## v1.11.2
+- **chapter**: Run chapter separately
+  ([`098ba6a`](https://github.com/anaticulae/queuemo/commit/098ba6a4ca3747106a231a2fc16a3a0f75edbe18))
 
-## v1.11.1
+- **docs**: Extend interface documentation
+  ([`b61b002`](https://github.com/anaticulae/queuemo/commit/b61b002d605c246f036c62233f89b42cb5dcbb57))
 
-### Fix
+- **fix**: Fix test after upgrading baw etc.
+  ([`0dc4f1d`](https://github.com/anaticulae/queuemo/commit/0dc4f1d7d7f287b81f558fa7bb658aa593501b91))
 
-* do not skip too much data (2039033d6e11)
-* add missing import (cac257b396b8)
-* remove check to enable generating resources directory (467064f079d4)
 
-## v1.11.0
+## v1.17.2 (2021-12-08)
 
-### Feature
+### Chores
 
-* do not publish everything (615aff4e02cc)
-* create backup toc to allow decider_toc to create missing toc linting (9ab22f9cc5f3)
-* move toc extractor to separate step (8f2afb437d35)
-* increase default waiting time (7a46b7663ab0)
-* write document log only (790648af8bf0)
+- **project**: Add timeout plugin
+  ([`62ea35c`](https://github.com/anaticulae/queuemo/commit/62ea35c07d98cd388a0f3ebc65a768bb79591d2a))
 
-### Fix
+- **requirements**: Upgrade requirements.txt
+  ([`7359f2a`](https://github.com/anaticulae/queuemo/commit/7359f2a0e99b9102b2e5431039fda2d126a04ff1))
 
-* hack is not required (357264b506ee)
-* ensure that logger is started (000fe7d29471)
-* skip toc decision if toc does not exists (ede22d970941)
-* reduce required logging level (ad08b60f5aeb)
-* skip abbreviation parser (4fdce08f3cc7)
+### Features
 
-## v1.10.5
+- **result**: Publish page numbers
+  ([`7fedfd4`](https://github.com/anaticulae/queuemo/commit/7fedfd459c3e4ef4a630128e7543c77a3ca70582))
 
-## v1.10.4
+### Testing
 
-## v1.10.3
+- **cli**: Ensure that cli does not work on any data
+  ([`4c33744`](https://github.com/anaticulae/queuemo/commit/4c3374402bacec637ca0d222eb21e8bc3aefa992))
 
-### Feature
+- **cli**: Keep test build fast
+  ([`5239a05`](https://github.com/anaticulae/queuemo/commit/5239a0579700fce7acb571621ac07ad07c78a74c))
 
-* increase maximum step time (26646b7dec8f)
-* publish document analysis results to database (098072b6cfbb)
+- **cli**: Timeout function as a result of wrong data
+  ([`df679ff`](https://github.com/anaticulae/queuemo/commit/df679ff9c030aba06ca0ae65c6a533cfafd96fe8))
 
-## v1.10.2
 
-### Fix
+## v1.17.1 (2021-11-18)
 
-* replace default file name (5a3c73bc1abe)
+### Chores
 
-## v1.10.1
+- **requirements**: Upgrade requirements.txt
+  ([`803b5f8`](https://github.com/anaticulae/queuemo/commit/803b5f84ac2d804b5331e1bdb06e75aeb9fad266))
 
-## v1.10.0
+### Features
 
-### Feature
+- **magic**: Add more possible resource lookups
+  ([`d8958c6`](https://github.com/anaticulae/queuemo/commit/d8958c6c647e34abba6358ed8a7811a1cf9db449))
 
-* add --create flag to create and run job (d0cc5f39bdaf)
+- **magic**: Run caption before magic
+  ([`d34e530`](https://github.com/anaticulae/queuemo/commit/d34e5308d8f0f8c71e01a2e7bc19b6146997d713))
 
-### Fix
 
-* avoid resource conflicts in queuemo single publish mode (c29170c0c32d)
+## v1.17.0 (2021-10-19)
 
-### Documentation
+### Bug Fixes
 
-* add document structure information (22e0d840e404)
+- **before**: Disable table extraction for fastview
+  ([`6291233`](https://github.com/anaticulae/queuemo/commit/629123388e563a25bb6c5e2b9f2c64a57d489cff))
 
-## v1.9.0
+- **figureo**: Split standard and cleanup step
+  ([`a53a47d`](https://github.com/anaticulae/queuemo/commit/a53a47da83789d41d6a211c953210fcf63a51498))
 
-### Feature
+- **scheduler**: Make order case-insensitive
+  ([`3c257b1`](https://github.com/anaticulae/queuemo/commit/3c257b1f3404ae800dc5f276ef8bc715b0253ad3))
 
-* write queuemo version after publishing (3819935647e5)
-* publish more than one figure (9858faf1819b)
-* generate and publish finding histogram (1a812ce48aa3)
-* limit execution time (c38b59e6b02c)
-* add kwargs parameter to linero (2c824a57b6c3)
-* add global step runtime timeout (8f29dd95a173)
-* add abbreviation decider step (3e1e9895c439)
-* add command exclude pattern (7f25e301d51e)
+- **view**: Adjust viewo input paths
+  ([`adf4a70`](https://github.com/anaticulae/queuemo/commit/adf4a70cf3aefd36783e86c682ab917642e27ff0))
 
-### Fix
+- **view**: Optimize findings before running plot
+  ([`0a4bc0c`](https://github.com/anaticulae/queuemo/commit/0a4bc0c3dbab2ec1dd4e8514a2ad5b6e7767bbe4))
 
-* clarify logger message (c3bde4e1006a)
-* load recipes code later (23d7b5e62f2b)
-* decrease logging verbosity (f449eb5b182b)
-* shorten invocation log (136209eb9e88)
-* add missing finding result provider (99847c367398)
+### Chores
 
-## v1.8.0
+- **requirements**: Fix groupme, detector, texas version
+  ([`c2a4d76`](https://github.com/anaticulae/queuemo/commit/c2a4d764b8b68866656a810cff91c67cda265ccf))
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`1e786bd`](https://github.com/anaticulae/queuemo/commit/1e786bdf17bbbd39aa05d099ba11f7650500b565))
 
-* add intro decider step (9f7dd0ce5aa4)
-* copy bib overview image to result view (06cae1a47776)
-* add option to run rawmaker with fewer processes (322f925dd661)
-* fork, fork, fork (77bef9620c37)
-* parallelize runtime (b2dce14d442c)
+- **requirements**: Upgrade requirements.txt
+  ([`0184da6`](https://github.com/anaticulae/queuemo/commit/0184da6841997ae11c1e24698a79b8f562d14428))
 
-## v1.7.0
+- **requirements**: Upgrade requirements.txt
+  ([`18fa2ad`](https://github.com/anaticulae/queuemo/commit/18fa2ad2ac2055c14ceb8ce2d011b6aa5c8a7fc1))
 
-### Feature
+### Code Style
 
-* add textflow word spaces validator (a56a84814fa1)
-* run wordspace runnable (bdc3ad6d7da6)
-* add text space extractor (f2338be33926)
-
-### Fix
-
-* enable selective resource input (20a996598823)
-* add missing magic resource (aca312265842)
+- **startup**: Improve code style
+  ([`1daf853`](https://github.com/anaticulae/queuemo/commit/1daf8533835f52e56578eaf860d17d85d54e2f23))
 
 ### Documentation
 
-* Happy New Year! (d42913bf01c7)
+- **api**: Fix data type
+  ([`66d21f5`](https://github.com/anaticulae/queuemo/commit/66d21f5d440755a826b1e4e409295400b1eef99b))
 
-## v1.6.0
+### Features
 
-### Feature
+- **api**: Add method to skip decider by web config
+  ([`802af60`](https://github.com/anaticulae/queuemo/commit/802af60f7d9aeba99107190cc6d8bdc1bd188c5e))
 
-* add failfast flag to shut down on first error (b8e236b52c57)
-* mark essential scheduler steps (db272c86a1f9)
-* add required decorator to run scheduler with errors (da46f99cc6a7)
-* introduce tick to inform about progress (f1fade62cd71)
-* info user about failed analysis (096b9736ec40)
-* update progress for after every runtime step (62cacdd53040)
-* stop analysing empty text documents (e1aad8b26a66)
+- **before**: Split extractor into different stages
+  ([`4eaa714`](https://github.com/anaticulae/queuemo/commit/4eaa7148293dc8c5d4de3fa735a0e0ced2e0a986))
 
-### Fix
+- **cli**: Add webconfig loader to select published msgids
+  ([`bda31aa`](https://github.com/anaticulae/queuemo/commit/bda31aa86be73f748582152d543609b43e6f30d3))
 
-* do not depend on global environment state (ec3dfdaf2024)
-* add missing import (16eb8d403dfc)
-* adjust resource generator (0dd80eaa961e)
+- **fastview**: Make title and toc skip able
+  ([`dfdec4d`](https://github.com/anaticulae/queuemo/commit/dfdec4df4635d219f817f2223d7982a272a3dfbc))
 
-## v1.5.0
+- **imgfig**: Skip decider_imgfig if configured
+  ([`3734039`](https://github.com/anaticulae/queuemo/commit/3734039f6d1af14e601f5f36f62e169839ccc0c7))
 
-### Feature
+- **result**: Run rawmaker cleanup for oneline resource
+  ([`5594bdf`](https://github.com/anaticulae/queuemo/commit/5594bdfd5dcb383bf6a8bb2fe84d747a16f29502))
 
-* add chapter step (9b2ca07bce36)
-* add chapter and chapter decider runner (1e928c7c5a69)
+- **runnable**: Always profile runtime
+  ([`e8e5280`](https://github.com/anaticulae/queuemo/commit/e8e52808978c017bfcbfe9ba08be801f9058ce4e))
 
-### Fix
+- **runtime**: Fail current job on immediate shutdown
+  ([`0a58d52`](https://github.com/anaticulae/queuemo/commit/0a58d5206f9446b6531337fe08a434c85645265c))
 
-* add missing extraction step (c302e475cbcd)
+- **scheduler**: Collect all run methods which start by run
+  ([`4c65a00`](https://github.com/anaticulae/queuemo/commit/4c65a00000e5611ae86a308999f9419a9abe548d))
+
+- **status**: Add ctrl-break signal handler to close scheduler graceful
+  ([`142397e`](https://github.com/anaticulae/queuemo/commit/142397ee3ec22a95eae324dc286da7ae69d38506))
+
+- **view**: Make processing more robust
+  ([`ba8c96b`](https://github.com/anaticulae/queuemo/commit/ba8c96b5cc8f00c4df6c48ee7d787056af34f25a))
+
+### Refactoring
+
+- **hv**: Cleanup hv access
+  ([`a9f4a23`](https://github.com/anaticulae/queuemo/commit/a9f4a231d1fe54f9f994af5d0b57b2d014f62e17))
+
+- **intro**: Split intro decider
+  ([`132156c`](https://github.com/anaticulae/queuemo/commit/132156cbe3fc5ac8a881c81133471cfab2c51713))
+
+- **remove**: Remove non required copy
+  ([`fc38205`](https://github.com/anaticulae/queuemo/commit/fc382052241aa0d96e07c7bee3cab5a260b550df))
+
+- **replace**: Replace with link code
+  ([`400923d`](https://github.com/anaticulae/queuemo/commit/400923d4b07fe013f84bc02c54a5eff6090882f2))
+
+- **scheduler**: Move module loader
+  ([`d0ea2be`](https://github.com/anaticulae/queuemo/commit/d0ea2be767e72a038dbfebbaa5d2ead9a37d7952))
+
+- **utils**: Use up to date method name
+  ([`4d00758`](https://github.com/anaticulae/queuemo/commit/4d00758235942a563f588483078ae9a61844963b))
+
+
+## v1.16.0 (2021-09-19)
+
+### Bug Fixes
+
+- **bib**: Exclude Introduction from bib ref checking
+  ([`3feea9e`](https://github.com/anaticulae/queuemo/commit/3feea9eedbe30ccc4050a3913a549e5926c2690d))
+
+- **cli**: Disable non required flags
+  ([`937b6b3`](https://github.com/anaticulae/queuemo/commit/937b6b37d5a09af006a43b265c60628b3c21041f))
+
+- **debug**: Add missing doctextstyle
+  ([`f92c82a`](https://github.com/anaticulae/queuemo/commit/f92c82af665424cb48c972bed111fce985581efa))
+
+- **execute**: Do not overwrite error message
+  ([`07c0159`](https://github.com/anaticulae/queuemo/commit/07c01597d509b1a7d27e6aa6f682943f29ee7106))
+
+- **main**: Done flag already exists, append log data
+  ([`03c1634`](https://github.com/anaticulae/queuemo/commit/03c1634a26fc1197f2e0d703ebcc23a5b2187126))
+
+- **runnable**: Add codero to show debug
+  ([`c682b29`](https://github.com/anaticulae/queuemo/commit/c682b296f4a872a93623f879e71ba66d5ae43536))
+
+### Chores
+
+- **project**: Rename config
+  ([`378cdb9`](https://github.com/anaticulae/queuemo/commit/378cdb9be82fbd2c21ec7ef2ac3353626883f882))
+
+- **requirements**: Add codero
+  ([`278725e`](https://github.com/anaticulae/queuemo/commit/278725ecdb42a7e7297434a9a96326f6382c1d20))
+
+- **requirements**: Add formulero
+  ([`9c23e75`](https://github.com/anaticulae/queuemo/commit/9c23e7522425effad969d07330d6106797e54d8d))
+
+- **requirements**: Add layout package
+  ([`be815b8`](https://github.com/anaticulae/queuemo/commit/be815b8d154386707497f93133a4cd30f0bea9bb))
+
+- **requirements**: Add sections
+  ([`68cbb60`](https://github.com/anaticulae/queuemo/commit/68cbb607d91ac7c7eaf3da001d59f835bd578a6a))
+
+- **requirements**: Special iamraw is not required anymore
+  ([`751dd3d`](https://github.com/anaticulae/queuemo/commit/751dd3d3bb2d8e0fd4ff4d116dc89075f41b62ae))
+
+- **requirements**: Upgrade requirements.txt
+  ([`ae2e645`](https://github.com/anaticulae/queuemo/commit/ae2e64505df515f26b7d6ed93c7033d59b77cd47))
+
+- **requirements**: Upgrade requirements.txt
+  ([`a32d1df`](https://github.com/anaticulae/queuemo/commit/a32d1df97e96d53c8a20c28c506b6884455b24f5))
+
+- **requirements**: Upgrade requirements.txt
+  ([`8dca7ad`](https://github.com/anaticulae/queuemo/commit/8dca7ad68798d7569f05890ab0d3e59c73d96c5c))
+
+- **requirements**: Upgrade requirements.txt
+  ([`7ff6fc1`](https://github.com/anaticulae/queuemo/commit/7ff6fc1bd9155283c70b36ec5ec6e3de9b0501c4))
+
+- **resources**: Extend test data generator
+  ([`22589d7`](https://github.com/anaticulae/queuemo/commit/22589d73c605e7a8e30329d8b7b30dc1c7cde57b))
+
+- **test**: Keep dev run fast
+  ([`dd5b63b`](https://github.com/anaticulae/queuemo/commit/dd5b63b557d71aa42deee924a47df982dc841f28))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`008527e`](https://github.com/anaticulae/queuemo/commit/008527e16bfbf9ccf69475d9d450dfabbe515380))
+
+- **spelling**: Fix spelling error
+  ([`f350f31`](https://github.com/anaticulae/queuemo/commit/f350f31c03abbb461b6a189051fda4a6da875117))
+
+- **utils**: Improve code style
+  ([`653cf32`](https://github.com/anaticulae/queuemo/commit/653cf32c28b65f6d355d3532071d71d3f2308328))
+
+- **validation**: Clarify documentation
+  ([`f417a46`](https://github.com/anaticulae/queuemo/commit/f417a468d9ea601730f3cd84b092fe7700741451))
+
+### Features
+
+- **cli**: Add flag to handle cleaning behavior
+  ([`853e40c`](https://github.com/anaticulae/queuemo/commit/853e40ce4037f22fe7f82122dc81c39b495759e4))
+
+- **cli**: Add skip not supported flag
+  ([`32c1b85`](https://github.com/anaticulae/queuemo/commit/32c1b853c5f92eb532338c8cec23c1baea19b49e))
+
+- **config**: Add runtime recipe config
+  ([`868efdd`](https://github.com/anaticulae/queuemo/commit/868efddc61991f4c01adf1eaeee7d8372c16797a))
+
+- **imgfig**: Add option to select decider pages
+  ([`1347dbd`](https://github.com/anaticulae/queuemo/commit/1347dbdc7bc4fbb2f8eaf6f6fa606d83b96e5291))
+
+- **result**: Add codero runner
+  ([`a71a985`](https://github.com/anaticulae/queuemo/commit/a71a985961dfa2959041bc38cff75df0423458dd))
+
+- **runnable**: Add formulero
+  ([`2b22544`](https://github.com/anaticulae/queuemo/commit/2b225440f3c385bc162fa036b913f9cbcc8a7ca6))
+
+- **runtime**: Use link to signal not supported document type
+  ([`9bf8225`](https://github.com/anaticulae/queuemo/commit/9bf82250a5104bf6bbd808628a21fcbea204957f))
+
+- **runtime**: Write log with error to error file
+  ([`57afa0a`](https://github.com/anaticulae/queuemo/commit/57afa0ac567531d733b72ea19bb727e973baf4f1))
+
+- **utils**: Add multiple sections selection
+  ([`02be597`](https://github.com/anaticulae/queuemo/commit/02be59799f0864bf8799a47ae4cb331d48e73895))
+
+- **validation**: Skip unsupported documents
+  ([`257488c`](https://github.com/anaticulae/queuemo/commit/257488c4b8833154db3f1c77ac1b28c65677ca05))
+
+### Refactoring
+
+- **api**: Move parameter to RecipeConfig
+  ([`86e1a8d`](https://github.com/anaticulae/queuemo/commit/86e1a8dd2c74e411edddd9f42470794690a8002d))
+
+- **cli**: Improve code style
+  ([`aff2ac8`](https://github.com/anaticulae/queuemo/commit/aff2ac886af1f927f7febfd6b40c1f45d4af8081))
+
+- **utils**: Move loading to separate method
+  ([`f9003de`](https://github.com/anaticulae/queuemo/commit/f9003deb77a779eadd410b8041c4ba1825804c26))
+
+- **utils**: Simplify code
+  ([`e6a0394`](https://github.com/anaticulae/queuemo/commit/e6a03946afc8326c68cd69090737c65680bab02c))
+
+- **validation**: Clarify code
+  ([`878f13c`](https://github.com/anaticulae/queuemo/commit/878f13c7de96e1d2100aa4e5d5e9a16687903bb7))
+
+### Testing
+
+- **validation**: Verify not supported layout mechanism
+  ([`51dad5c`](https://github.com/anaticulae/queuemo/commit/51dad5c464f3e773db77bbaf2c594cebf92ad0b2))
+
+
+## v1.15.0 (2021-08-24)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`dd69ff1`](https://github.com/anaticulae/queuemo/commit/dd69ff19da32d054b3171578712cdbf1406d05bf))
+
+### Features
+
+- **cli**: Add show debug command
+  ([`1efb9e4`](https://github.com/anaticulae/queuemo/commit/1efb9e411f34fbfd67abbc11c523b042fceebe57))
+
+- **cli**: Reduce response time
+  ([`5c51c08`](https://github.com/anaticulae/queuemo/commit/5c51c08d3e41a00d90d074444ec37465ac45c8b1))
+
+- **main**: File extension is not required anymore
+  ([`c4e297f`](https://github.com/anaticulae/queuemo/commit/c4e297f96d7d7225a335aab4309a6af890420d65))
+
+- **main**: Use improved runnable list
+  ([`ccece46`](https://github.com/anaticulae/queuemo/commit/ccece46bc00088567a6053fff8050b70f4b5bcb3))
+
+### Refactoring
+
+- **cleaner**: Replace with link code
+  ([`c8ff400`](https://github.com/anaticulae/queuemo/commit/c8ff400f70b2f6a917ce12a60796a8445f5509c2))
+
+- **cli**: Cleanup code
+  ([`3d8d69f`](https://github.com/anaticulae/queuemo/commit/3d8d69f9a8b31536bf7d04ab2316d07f1bea4360))
+
+- **cli**: Cleanup start code
+  ([`e6928de`](https://github.com/anaticulae/queuemo/commit/e6928deadce2326f56dc3009395f1d2cb1acd9c4))
+
+- **cli**: Improve structure
+  ([`87bd7c1`](https://github.com/anaticulae/queuemo/commit/87bd7c19a2f17e50b0dcf4f524017abcfcceac7d))
+
+- **cli**: Remove new default value
+  ([`64c2c2f`](https://github.com/anaticulae/queuemo/commit/64c2c2fcbf837f26c4aebfcb9c898b3522800f8c))
+
+- **cli**: Start logger after creating cli
+  ([`47b59ec`](https://github.com/anaticulae/queuemo/commit/47b59ec6ead9e6146c80d2152e8031d2468c5aa0))
+
+- **main**: Replace with link code
+  ([`935fc58`](https://github.com/anaticulae/queuemo/commit/935fc587608a5de35f10dcac1883d9f79c0f27b5))
+
+- **setup**: Cleanup setup file
+  ([`2db2cd5`](https://github.com/anaticulae/queuemo/commit/2db2cd56ee7b3a6a3bc31f75ab4fde782edbd79e))
+
+
+## v1.14.0 (2021-08-20)
+
+### Bug Fixes
+
+- **cleaner**: Skip already cleaned jobs
+  ([`f2cd62f`](https://github.com/anaticulae/queuemo/commit/f2cd62fa60b61a52ce5c8e7fd9c7cdd2994f88fe))
+
+- **disable**: Disable step which is done before
+  ([`d8f0512`](https://github.com/anaticulae/queuemo/commit/d8f0512d6bb374ccd85282dd5abf573e290a1b61))
+
+- **fastview**: Shrink to first ten pages
+  ([`94aaff2`](https://github.com/anaticulae/queuemo/commit/94aaff2ba152a859d0e2e35f1b86b83b26949c4e))
+
+- **recipe**: Ensure correct logging order
+  ([`f5ee0c1`](https://github.com/anaticulae/queuemo/commit/f5ee0c13cdf4b236f8e0dd0f4e83d51930c52c49))
+
+- **runnable**: Remove white spaces
+  ([`5794de7`](https://github.com/anaticulae/queuemo/commit/5794de7ea2ab0dc875ff1fcbc7af5f6255d43ae8))
+
+### Chores
+
+- **requirements**: Make requirements more strict
+  ([`a637c91`](https://github.com/anaticulae/queuemo/commit/a637c91e51944e4a064c03561c240f7b837abe20))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e77a019`](https://github.com/anaticulae/queuemo/commit/e77a0192babebf18435da988f8ac6f15b6696a1e))
+
+- **requirements**: Upgrade requirements.txt
+  ([`d8d8beb`](https://github.com/anaticulae/queuemo/commit/d8d8beb8629d4706d1070fbf7c63140161a25ae6))
+
+- **requirements**: Upgrade requirements.txt
+  ([`c6b825e`](https://github.com/anaticulae/queuemo/commit/c6b825e25a61f6b7ae633ca747a1708609981a4f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`52ea789`](https://github.com/anaticulae/queuemo/commit/52ea789611be941d0199ec0f4377fefa5ab675d8))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`d8cea1a`](https://github.com/anaticulae/queuemo/commit/d8cea1a2a20dd3feb86c40775bcc923cd9e411d6))
+
+### Features
+
+- **before**: Add method to determine area where figures and tables
+  ([`0ba032b`](https://github.com/anaticulae/queuemo/commit/0ba032b698b01d6a26895f0b477d611a7c63ae41))
+
+- **cli**: Move logger outpath to separate directory
+  ([`1e50e89`](https://github.com/anaticulae/queuemo/commit/1e50e897f1e7606f0e43a6b7b05a2565cce81220))
+
+- **result**: Run figureo to generate figure images
+  ([`64eb9b8`](https://github.com/anaticulae/queuemo/commit/64eb9b85cefbea23b9009837320ac275a97e064f))
+
+- **result**: Run rawmaker_cleanup to ease further processing
+  ([`0eacca3`](https://github.com/anaticulae/queuemo/commit/0eacca3be5f56a3b09782535eb8d2f76d49baa1b))
+
+- **sections**: Add pdf input resource
+  ([`ba99c24`](https://github.com/anaticulae/queuemo/commit/ba99c24fa8624e8261f4abf610b9f10354da9d7d))
+
+### Refactoring
+
+- **fastview**: Move to common holy value
+  ([`116ef86`](https://github.com/anaticulae/queuemo/commit/116ef8654281e2a55a4b599b3ec1bb119563ce32))
+
+- **rename**: Clarify naming
+  ([`f79068f`](https://github.com/anaticulae/queuemo/commit/f79068fc4e22d6f5df99b74c27fe857eec6d735c))
+
+### Testing
+
+- **fix**: Adjust name after upgrading power
+  ([`560450a`](https://github.com/anaticulae/queuemo/commit/560450a0b6bea92df18510024d0703bf32edf7cd))
+
+- **fix**: Ensure that Lock is used to protect configuration
+  ([`068a4d4`](https://github.com/anaticulae/queuemo/commit/068a4d41905363b6cdefde3e30b8793056a87dd4))
+
+- **runnable**: Verify kwargs converter
+  ([`a5f00aa`](https://github.com/anaticulae/queuemo/commit/a5f00aa97634fad21f3bb3e0b2a59a734483d07f))
+
+
+## v1.13.0 (2021-07-19)
+
+### Bug Fixes
+
+- **tablero**: Adjust to new interface
+  ([`1b38818`](https://github.com/anaticulae/queuemo/commit/1b38818088eaaf9cf1d444b9a3ca24d930919cfa))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a7af3ae`](https://github.com/anaticulae/queuemo/commit/a7af3aec92a964a35393e144400b0503405a6cd6))
+
+### Features
+
+- **runnable**: Replace linero with tablero
+  ([`66153ec`](https://github.com/anaticulae/queuemo/commit/66153ec7f054c711362cb12d1a437fe236cb676e))
+
+
+## v1.12.1 (2021-07-19)
+
+### Bug Fixes
+
+- **requirements**: Comment is not supported by baw tool
+  ([`7e8e8d0`](https://github.com/anaticulae/queuemo/commit/7e8e8d0abc2a876a146954497239c364efc987b9))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`9b5de53`](https://github.com/anaticulae/queuemo/commit/9b5de53a397eaeab6fecde72a34ef98f628267ee))
 
 ### Documentation
 
-* extend documentation of bibliography (940bf31777a6)
+- **fix**: Adjust method description
+  ([`2ef8871`](https://github.com/anaticulae/queuemo/commit/2ef88718c56b82791c62d96eb9027f621f0a94b7))
 
-## v1.4.2
+### Features
 
-## v1.4.1
+- **API**: Add todo path
+  ([`739fc19`](https://github.com/anaticulae/queuemo/commit/739fc191e7278e0fd027b8cd67ae2c7d46b8e389))
 
-### Feature
+- **bib**: Add pdfinfo resource to bib decider
+  ([`5652385`](https://github.com/anaticulae/queuemo/commit/5652385caad021d8e0daa6f3d3992e42e94576fa))
 
-* use new bib decider (ddfb1f5192ab)
-* publish extracted bib to display to user (74986576e12d)
 
-### Fix
+## v1.12.0 (2021-07-06)
 
-* add missing input resource (00fb4b321358)
+### Bug Fixes
 
-## v1.4.0
+- **main**: Adjust validation step to new link API
+  ([`5a0ad46`](https://github.com/anaticulae/queuemo/commit/5a0ad4625ae23d069b86cd07cd9ec4523c71dc88))
 
-### Feature
+- **main**: Skip invalid pdf after refactoring
+  ([`1ada62e`](https://github.com/anaticulae/queuemo/commit/1ada62ee13ba82305360128cd544cbdb84af0c8a))
 
-* add smarty run and decide step (ed68ca908aee)
-* add required docref step (6a9baa3de67f)
+- **runtime**: Do not access internal API
+  ([`85ba28a`](https://github.com/anaticulae/queuemo/commit/85ba28a5e7c9a1c81559837483aa1aae393b75c4))
 
-## v1.3.3
+- **startup**: Skip failed jobs
+  ([`454a41a`](https://github.com/anaticulae/queuemo/commit/454a41a58cb697d2cb89b3638c58b286f205b674))
 
-### Feature
+### Chores
 
-* add decider links step (d326678c21f7)
+- **requirements**: Add flask
+  ([`2be5eaa`](https://github.com/anaticulae/queuemo/commit/2be5eaaba848457dcd240ad14fb9cc008b896576))
 
-## v1.3.2
+- **requirements**: Ensure current iamraw version
+  ([`4ded53b`](https://github.com/anaticulae/queuemo/commit/4ded53bbe9e575a33b94247bf1a301471a68c209))
 
-## v1.3.1
+- **requirements**: Upgrade requirements.txt
+  ([`bc87533`](https://github.com/anaticulae/queuemo/commit/bc875338e0920d12bd17fa9bdb9879070281b10b))
 
-## v1.3.0
-
-### Feature
-
-* add verbose flag (ce4c9d9ac5ec)
-* run queuemo in single folder (3b784acf62d6)
-* add basic single runtime infrastructure (167b8140f68c)
-
-## v1.2.3
-
-## v1.2.2
-
-### Fix
-
-* words is already done for magic (0fa5f434767a)
-* add missing page shrink (c473e937df8c)
-
-## v1.2.1
-
-## v1.2.0
-
-### Feature
-
-* publish log after completing document (a3cbbba7f8c4)
-* add --interactive flag to manually step thru execution (797205147a58)
-* add method to ask user for continuing (c2bd72c4ab9f)
-
-## v1.1.1
-
-## v1.1.0
-
-### Feature
-
-* log start of ComposedRecipe (0c041d2fe26d)
-* add magic step to run computation only once (d376ea24007a)
-
-### Fix
-
-* remove non existing validation step from scheduler (aa01ed9768e8)
-* ensure that `ORDER` is used when for process scheduling (3f8d455fc85f)
-* add missing input resources (a0e5688a7efe)
-
-## v1.0.4
-
-## v1.0.3
-
-### Feature
-
-* copy caption data to result view (cfe84f39c283)
-* add verbose error logging (b8da0444c5dd)
-
-## v1.0.2
-
-## v1.0.1
-
-## v1.0.0
-
-### Feature
-
-* remove outdated result value (ab52ea08305c)
-* add profiling step to determine pdf analyzing time (af3dfcc4519d)
-
-### Fix
-
-* avoid copy findings twice (77da1824599f)
-* simplify output path (a06272a1413b)
-
-## v0.8.0
-
-### Feature
-
-* add imgfig runnable to analyze quality of images/figures (1fab0f074429)
-* log version of used runnable (c050f8dbf365)
-* add caption and formula extraction as magic data source (02cbf6ddbb5b)
-
-### Fix
-
-* do not start deleted jobs (fedf36a3cfe2)
-* adjust step logging (b553cee266bd)
-* add missing quotes extraction (20729f0ec740)
-
-## v0.7.4
-
-### Feature
-
-* highlight start of recipe (ad9d654bbedb)
-
-### Fix
-
-* information (a670ce0cff21)
-
-## v0.7.3
-
-### Feature
-
-* run new figure step (3fcd18cde16f)
-
-### Fix
-
-* skip non necessary step (5daed63ef9fe)
-
-## v0.7.2
-
-## v0.7.1
-
-### Feature
-
-* support merging multiple areas (10987bcfae92)
-* add bibliography runnable to extract and judge bibliography (69597efd5e50)
+- **requirements**: Upgrade requirements.txt
+  ([`d834636`](https://github.com/anaticulae/queuemo/commit/d834636731b81fe36662951fb7bcd0b6414e4f5a))
 
 ### Documentation
 
-* fix spelling content error (f3cd1780f9ec)
+- **fix**: Adjust documentation
+  ([`425681d`](https://github.com/anaticulae/queuemo/commit/425681d780d6c2199278b21f026cb0124462f4b2))
 
-## v0.7.0
+### Features
 
-### Feature
+- **cli**: Add http interface as cli flag
+  ([`0db8b8c`](https://github.com/anaticulae/queuemo/commit/0db8b8c907f70a2217e67b850a75dfd86ecf6c1a))
 
-* simplify pages pattern (a1011c2aef05)
-* log path information in debug mode for every recipe step (52dc46a4e043)
-* shrink feature analysis to expected areas (55b7c0a9a9cf)
-* select toc and titlepage based on sections extractor (90b2d39db6dd)
-* add sections step to determine location of potential toc etc (b6affc68d8c6)
-* use rawmaker all flag to make interface robust against changes (6f46bd5fa7f6)
+- **control**: Add status and control font end
+  ([`d53a6d3`](https://github.com/anaticulae/queuemo/commit/d53a6d304f9914d6c97c1724d505122707fffc36))
 
-### Fix
+- **logger**: Add method to access complete log
+  ([`03bec51`](https://github.com/anaticulae/queuemo/commit/03bec5153c98c7f8e3b0085ecd293e0c75e40410))
 
-* run sections once (bbb2fb50f6cc)
-* ensure to have unique log file (ee3b664aea37)
-* add missing test data generation after changing generator (00c683f65d8c)
+- **main**: Do not fail on qcon publish error
+  ([`559651b`](https://github.com/anaticulae/queuemo/commit/559651b97235f45c08e2b4da153b587976148c3c))
 
-## v0.6.4
+- **patch**: Add method to determine file time sine last change
+  ([`0559d56`](https://github.com/anaticulae/queuemo/commit/0559d56e341f4a2e4d723de1b555a0fb081470e5))
 
-### Fix
+- **runtime**: Add cleaner to remove old jobs
+  ([`a078c36`](https://github.com/anaticulae/queuemo/commit/a078c36a4d0292a83ee19305e6d186c2f24647e9))
 
-* inform about missing resource (608e84ab7566)
+- **status**: Add status flag to stop working
+  ([`5c2cdc0`](https://github.com/anaticulae/queuemo/commit/5c2cdc08c60c479ccfe433235b6341c66fb3798b))
 
-## v0.6.3
+### Testing
 
-### Feature
+- **refactor**: Clarify test
+  ([`58395e5`](https://github.com/anaticulae/queuemo/commit/58395e532e24cb9503995ad87a692ba964227db4))
 
-* extend title page collector to more than page zero (871e1920bf3a)
-* add method to log cli output to file (e0a5818c78b0)
 
-## v0.6.2
+## v1.11.3 (2021-06-11)
 
-### Feature
+### Chores
 
-* beautify input paths (28dff947d9f4)
+- **requirements**: Make requirements less strict
+  ([`c0f7914`](https://github.com/anaticulae/queuemo/commit/c0f7914628505ccdf1e666efb5a820dbdc98f50b))
 
-### Fix
+- **requirements**: Upgrade requirements.txt
+  ([`950997e`](https://github.com/anaticulae/queuemo/commit/950997e9a91ee157160da0ce7c8e66b4e056775d))
 
-* copy missing data (e758650bfe4e)
 
-## v0.6.1
+## v1.11.2 (2021-06-09)
 
-## v0.6.0
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`a5c3aa1`](https://github.com/anaticulae/queuemo/commit/a5c3aa1f251c637b8d6f126c64039e656ec6c19d))
 
-* copy font information to resolve hashes in doctextstyle (8940a8a205f5)
-* add content text style linter (8eb466f846f0)
-* publish detected text style master (cf3ae8b94e79)
-* add decider_textstyle to judge document headline style (85fa7fb66676)
-* add footnote step to verify footnotes in footer (7800359e038f)
-* run groupme at start once (7d0c6a8402b9)
 
-### Fix
+## v1.11.1 (2021-06-05)
 
-* always start on a new line (a0d33dbabcd2)
+### Bug Fixes
 
-## v0.5.2
+- **cli**: Add missing import
+  ([`cac257b`](https://github.com/anaticulae/queuemo/commit/cac257b396b887c396d88c93561478e3d23c0b8d))
 
-### Fix
+- **resources**: Remove check to enable generating resources directory
+  ([`467064f`](https://github.com/anaticulae/queuemo/commit/467064f079d4e561a4eb05210e884bd5872f37c3))
 
-* decrease job count only when job was successfully selected (44331b9b9038)
+- **skipper**: Do not skip too much data
+  ([`2039033`](https://github.com/anaticulae/queuemo/commit/2039033d6e119c7c47156867e7aca3574984e2c5))
 
-## v0.5.1
+### Chores
 
-### Feature
+- **requirements**: Disable abel package
+  ([`e23fcb9`](https://github.com/anaticulae/queuemo/commit/e23fcb97c780d56055c1d7bf194b9f53fbab9f60))
 
-* add second counter to determine ending of scheduler (11308719f8e3)
+- **requirements**: Upgrade requirements.txt
+  ([`89f3135`](https://github.com/anaticulae/queuemo/commit/89f3135f254c9658298e8f9a060f5d8d7725a2ba))
 
-## v0.5.0
+- **requirements**: Upgrade requirements.txt
+  ([`4151461`](https://github.com/anaticulae/queuemo/commit/41514612016d603f04fdae6a11c1130059c3e484))
 
-### Feature
+- **test**: Keep dev build fast
+  ([`a094275`](https://github.com/anaticulae/queuemo/commit/a09427532fe1a5c26a27f9f67b86a2c595c8c199))
 
-* public words sentence result (1e2eef4e7ff9)
-* reduces executed steps (fee27e31f809)
-* enable converting boolean to flag (4a0a33274d4a)
-* add textflow decider to runnable (0072c82fcc98)
-* reduce startup time and remove duplicated code (4a3e1bb300f0)
-* run groupme with multiple processes (fd5c03fc3bd8)
-* run rawmaker extractor in parallel (13961e541ed7)
-* add textflow validation and publishing step (eebb29ca0816)
-* extract images and publish (ec2d840647b5)
+### Code Style
 
-### Fix
+- **format**: Use improved yapf formatter
+  ([`ffc9b5c`](https://github.com/anaticulae/queuemo/commit/ffc9b5c63f2b872492367280eaa550d637d5483d))
 
-* enable required analysis (12186ef4afb8)
-* do not copy cause rawmaker supports inpath without file ext (5e154c1b920b)
-* use new rawmaker feature and access file directly (58027cbe5b4a)
+### Testing
 
-## v0.4.3
+- **refactor**: Improve naming
+  ([`e97d73a`](https://github.com/anaticulae/queuemo/commit/e97d73ae49ad9f5a48229a7e2b2717eb7125aba6))
 
-### Feature
+- **refactor**: Replace with utilatest code
+  ([`8c3bde4`](https://github.com/anaticulae/queuemo/commit/8c3bde4aa4ea846bc6009a6c10b48eda1f7ba69d))
 
-* run rawmaker oneline configuration for decider module (fa06d3bb3809)
-* add border distance check to result view (13839a84bd67)
-* make publish step selectable (f49914f64de6)
-* add copy method which supports logging copy-operations (9e1b0837e7ae)
-* add __str__ to extend debugging facility (bd47f15e1606)
-* add toc validator to fast view analysis (de77d95597df)
+- **refactor**: Use modern utilatest API
+  ([`8ffce37`](https://github.com/anaticulae/queuemo/commit/8ffce374dbe0cc60e8d3e33228dfdb21e338482a))
 
-### Fix
+- **rename**: Improve naming
+  ([`8ff4bd5`](https://github.com/anaticulae/queuemo/commit/8ff4bd59d13c72132a8cf834143829f234209f3a))
 
-* put border validation results to correct folder (8e1b14a98034)
 
-## v0.4.2
+## v1.11.0 (2021-05-15)
 
-### Feature
+### Bug Fixes
 
-* extract and present whole document (bb2f256d72fa)
-* publish linter results to result view also (d75ed89baee2)
-* reduce runtime of rawmaker application (b55e35df6903)
+- **abbreviation**: Skip abbreviation parser
+  ([`4fdce08`](https://github.com/anaticulae/queuemo/commit/4fdce08f3cc775a3b4f2c6c9ef9fba30348ec744))
 
-## v0.4.1
+- **cli**: Hack is not required
+  ([`357264b`](https://github.com/anaticulae/queuemo/commit/357264b506ee339734a943fb6f550ec9d036711b))
 
-### Fix
+- **intro**: Skip toc decision if toc does not exists
+  ([`ede22d9`](https://github.com/anaticulae/queuemo/commit/ede22d9709412613f244819c72bc188b71a88888))
 
-* do not start a job twice (22126a72fc35)
+- **single**: Ensure that logger is started
+  ([`000fe7d`](https://github.com/anaticulae/queuemo/commit/000fe7d29471a55ca68e9d920f15e1683e1f1876))
 
-## v0.4.0
+- **toc**: Reduce required logging level
+  ([`ad08b60`](https://github.com/anaticulae/queuemo/commit/ad08b60f5aebfc673efa02c72514d9dd97a20b6f))
 
-### Feature
+### Chores
 
-* add separate publish step (76bb4df0bb3e)
-* extend runnable checker (5fc74460f082)
-* add method to publish todo to ready folder (64a75cc00dc9)
-* activate result scheduling step (41241ea9dba7)
-* use oneline parameter to improve extraction result (ac9e4d4cff9f)
-* extend recipes API (6bc61d4d2929)
-* add new result view (7f4027ace2e3)
-* add validation step to check that input resource is valid (80c11dfd1827)
-* use new scheduling to run fastview (89e0c845330d)
-* add runtime to run and manage schedules (51d2c3566c81)
-* add recipe scheduler and two recipe examples (db81a1278de7)
-* extend list with application test at startup (72e08439b9f3)
+- **requirements**: Add abel package
+  ([`864f7e1`](https://github.com/anaticulae/queuemo/commit/864f7e10d9c37637f6a57cb69f0a8ca83cb4aa32))
 
-### Fix
+- **requirements**: Upgrade requirements.txt
+  ([`b502347`](https://github.com/anaticulae/queuemo/commit/b5023476913d4e32b281df65ae733b2d32e46d02))
 
-* add required result folder (5bcfad455d1d)
-* run validation task first (c5c7e934e663)
-* set output path to todo path (5fa0130d894a)
-* fix scheduling order (8e463c6de8e3)
+- **requirements**: Upgrade requirements.txt
+  ([`ef18749`](https://github.com/anaticulae/queuemo/commit/ef18749d21148778ec825b2c0959d3f7abbc6633))
+
+- **requirements**: Upgrade requirements.txt
+  ([`67a4750`](https://github.com/anaticulae/queuemo/commit/67a4750b67b8c89e87c0ebf7f3deadf9f949dec4))
+
+- **test**: Keep dev build fast
+  ([`2d4906f`](https://github.com/anaticulae/queuemo/commit/2d4906fc14a164c5821e2976818a03de2e2eeb89))
+
+### Code Style
+
+- **refactor**: Improve code style
+  ([`63eb0f1`](https://github.com/anaticulae/queuemo/commit/63eb0f149443671820a84b754751d9d206722529))
+
+### Features
+
+- **cli**: Increase default waiting time
+  ([`7a46b76`](https://github.com/anaticulae/queuemo/commit/7a46b7663ab0153eebe6dbda5bdc8cf5e33b27fd))
+
+- **logger**: Write document log only
+  ([`790648a`](https://github.com/anaticulae/queuemo/commit/790648af8bf0397cfd5c38dcb4fa87f997fe0ab7))
+
+- **publish**: Do not publish everything
+  ([`615aff4`](https://github.com/anaticulae/queuemo/commit/615aff4e02cc8eca36e5ba5e6da3437e47cbe99a))
+
+- **toc**: Create backup toc to allow decider_toc to create missing toc linting
+  ([`9ab22f9`](https://github.com/anaticulae/queuemo/commit/9ab22f9cc5f35a2365a93f36ec748e2aab42cc06))
+
+- **toc**: Move toc extractor to separate step
+  ([`8f2afb4`](https://github.com/anaticulae/queuemo/commit/8f2afb437d3597372ecd02129e8f3dab170e4100))
+
+### Refactoring
+
+- **remove**: Remove outdated code
+  ([`2c2d300`](https://github.com/anaticulae/queuemo/commit/2c2d3006b885e0325e396418fdafebed141ca9db))
+
+
+## v1.10.5 (2021-03-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c931cd2`](https://github.com/anaticulae/queuemo/commit/c931cd2023a4b374546210d3d69dcfc9d737ab4f))
+
+### Testing
+
+- **fix**: Ensure that env var is changed correctly
+  ([`53d7c07`](https://github.com/anaticulae/queuemo/commit/53d7c075e40bdd80527ebca201bfba63eb7c52f8))
+
+
+## v1.10.4 (2021-03-11)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`706c29c`](https://github.com/anaticulae/queuemo/commit/706c29cc3bf48f1b1c099c8362ea4d042f5e93d3))
+
+
+## v1.10.3 (2021-02-15)
+
+### Chores
+
+- **requirements**: Add quality control
+  ([`2f357c3`](https://github.com/anaticulae/queuemo/commit/2f357c3fb508c4410bd9d8d8d364c36957685e6c))
+
+- **requirements**: Upgrade requirements.txt
+  ([`e59eac3`](https://github.com/anaticulae/queuemo/commit/e59eac3109297a4c03aee5d7cfd82c6047a7d06c))
+
+### Features
+
+- **publish**: Publish document analysis results to database
+  ([`098072b`](https://github.com/anaticulae/queuemo/commit/098072b6cfbbb8d6a6c8bc23aa8d96327e82718a))
+
+- **runnable**: Increase maximum step time
+  ([`26646b7`](https://github.com/anaticulae/queuemo/commit/26646b7dec8fe4130e3498942df54ad871b8e302))
+
+
+## v1.10.2 (2021-02-08)
+
+### Bug Fixes
+
+- **single**: Replace default file name
+  ([`5a3c73b`](https://github.com/anaticulae/queuemo/commit/5a3c73bc1abe825c548cb1e2babd2c5d6cc0b82f))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`b53ebe4`](https://github.com/anaticulae/queuemo/commit/b53ebe4d8aa21004f275a3a17e80aedc22f31399))
+
+
+## v1.10.1 (2021-02-08)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`adf9939`](https://github.com/anaticulae/queuemo/commit/adf99396a98625d0eb1960eef79056b7d20ddba5))
+
+
+## v1.10.0 (2021-02-08)
+
+### Bug Fixes
+
+- **publish**: Avoid resource conflicts in queuemo single publish mode
+  ([`c29170c`](https://github.com/anaticulae/queuemo/commit/c29170c0c32dbf8bf23dd516feb683683a13030a))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`8b80dc2`](https://github.com/anaticulae/queuemo/commit/8b80dc299cb46e72e00bedae6cb6163e7c01edd4))
 
 ### Documentation
 
-* improve general documentation (edd6598d808e)
-* extend interface documentation (df6a161103c4)
-* extend interface documentation (5e43ad4ab2e4)
-* extend module documentation (dfaf668ca897)
+- **runtime**: Add document structure information
+  ([`22e0d84`](https://github.com/anaticulae/queuemo/commit/22e0d840e40483104df3be2eea16b08f9e73b2be))
 
-## v0.3.2
+### Features
 
-### Fix
+- **single**: Add --create flag to create and run job
+  ([`d0cc5f3`](https://github.com/anaticulae/queuemo/commit/d0cc5f39bdaf758230c249987b66348bc04036f0))
 
-* correct path where result html view must be stored (057d3d1768a5)
 
-## v0.3.1
+## v1.9.0 (2021-02-07)
 
-### Feature
+### Bug Fixes
 
-* add mechanism to generate annotated pages (f94071ff2f4e)
+- **cli**: Load recipes code later
+  ([`23d7b5e`](https://github.com/anaticulae/queuemo/commit/23d7b5e62f2b77a0ec156b78195ff4d99c1ba0e4))
 
-### Fix
+- **logging**: Decrease logging verbosity
+  ([`f449eb5`](https://github.com/anaticulae/queuemo/commit/f449eb5b182bf692d19853856848399e6ea20573))
 
-* create folder which must be create by feedback tool (e7b58fbefdd4)
+- **publish**: Clarify logger message
+  ([`c3bde4e`](https://github.com/anaticulae/queuemo/commit/c3bde4e1006ab83995ad58b650f717534951bf2a))
+
+- **runnable**: Shorten invocation log
+  ([`136209e`](https://github.com/anaticulae/queuemo/commit/136209eb9e889d851ec496d8bcc5adbe71c66f7c))
+
+- **view**: Add missing finding result provider
+  ([`99847c3`](https://github.com/anaticulae/queuemo/commit/99847c367398deba4ae23a18911f40559287a329))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`761b2d3`](https://github.com/anaticulae/queuemo/commit/761b2d337e8cb8af72efc98ccf4a707922f9eee6))
+
+### Features
+
+- **linero**: Limit execution time
+  ([`c38b59e`](https://github.com/anaticulae/queuemo/commit/c38b59e6b02cf71b9828f44ef036ceba91c19e49))
+
+- **recipe**: Add abbreviation decider step
+  ([`3e1e989`](https://github.com/anaticulae/queuemo/commit/3e1e9895c439c468a3654f791598d71c86695072))
+
+- **result**: Write queuemo version after publishing
+  ([`3819935`](https://github.com/anaticulae/queuemo/commit/3819935647e5f57b1cca8d9ae44275a59d81baaf))
+
+- **runnable**: Add command exclude pattern
+  ([`7f25e30`](https://github.com/anaticulae/queuemo/commit/7f25e301d51e7a4331ef6d66d94d48477f8a4c0d))
+
+- **runnable**: Add global step runtime timeout
+  ([`8f29dd9`](https://github.com/anaticulae/queuemo/commit/8f29dd95a173c4d7ee5e2afa6bd5a71fc1c03a94))
+
+- **runnable**: Add kwargs parameter to linero
+  ([`2c824a5`](https://github.com/anaticulae/queuemo/commit/2c824a57b6c36bbd88b6c1793a3055d34c10adfc))
+
+- **view**: Generate and publish finding histogram
+  ([`1a812ce`](https://github.com/anaticulae/queuemo/commit/1a812ce48aa3a815c8b6cbaa06e08094e7851fc9))
+
+- **view**: Publish more than one figure
+  ([`9858faf`](https://github.com/anaticulae/queuemo/commit/9858faf1819bcda61cec930f58cd7515eae7dfad))
+
+### Refactoring
+
+- **before**: Do not regenerate resource
+  ([`fce37af`](https://github.com/anaticulae/queuemo/commit/fce37afc91ffb9a80630f7a681c9e7bbe547c876))
+
+- **runnable**: Simplify code style
+  ([`f7ff607`](https://github.com/anaticulae/queuemo/commit/f7ff607aae0ee9a0deb0273fc8b38997127369f5))
+
+- **runnable**: Simplify runner code
+  ([`52e0a2c`](https://github.com/anaticulae/queuemo/commit/52e0a2cba99d1b218d312eb412c1b405711d6f78))
+
+- **sections**: Move sections command to separate module
+  ([`24364e5`](https://github.com/anaticulae/queuemo/commit/24364e55ef729aa0969f402ba4898a8ff4f67c65))
+
+- **view**: Introduce after to copy content
+  ([`015c229`](https://github.com/anaticulae/queuemo/commit/015c229120276f712ca1b72eaba1b1de4e51c7ac))
+
+- **view**: Move finding path collector to separate method
+  ([`0c47e3b`](https://github.com/anaticulae/queuemo/commit/0c47e3bcbfd2472bfcf9d64a5ca5c3e09c342538))
+
+### Testing
+
+- **setup**: Ensure that newest queuemo is installed
+  ([`d8142a0`](https://github.com/anaticulae/queuemo/commit/d8142a03c55ccf9cda6e69a7d1bbad64aa02927e))
+
+
+## v1.8.0 (2021-01-30)
+
+### Chores
+
+- **requirements**: Remove yaml which is installed by other packages
+  ([`c1a6343`](https://github.com/anaticulae/queuemo/commit/c1a6343a996f2f58bfb73d6db1dc4ab5f112b3e3))
+
+- **requirements**: Upgrade requirements.txt
+  ([`14a0e57`](https://github.com/anaticulae/queuemo/commit/14a0e576e5dc640e82456509b838d388db852a8f))
+
+### Features
+
+- **bib**: Copy bib overview image to result view
+  ([`06cae1a`](https://github.com/anaticulae/queuemo/commit/06cae1a47776ae73a838edc4fb19ef1288f95c16))
+
+- **intro**: Add intro decider step
+  ([`9f7dd0c`](https://github.com/anaticulae/queuemo/commit/9f7dd0ce5aa47aae834459959061dfa8cd6a1482))
+
+- **runnable**: Add option to run rawmaker with fewer processes
+  ([`322f925`](https://github.com/anaticulae/queuemo/commit/322f925dd66109934416cea908688b7294677499))
+
+- **runnable**: Parallelize runtime
+  ([`b2dce14`](https://github.com/anaticulae/queuemo/commit/b2dce14d442cb09f0c684936f90fc13ec28a58e6))
+
+- **runtime**: Fork, fork, fork
+  ([`77bef96`](https://github.com/anaticulae/queuemo/commit/77bef9620c377cd21e58a67160b4b5276257b2d6))
+
+### Refactoring
+
+- **result**: Use new GeorgFork
+  ([`63a446b`](https://github.com/anaticulae/queuemo/commit/63a446bad45041377b5e53c09a900ae155c76f33))
+
+
+## v1.7.0 (2021-01-13)
+
+### Bug Fixes
+
+- **textflow**: Enable selective resource input
+  ([`20a9965`](https://github.com/anaticulae/queuemo/commit/20a9965988230526f3493e27a8149b0dcf3b26e0))
+
+- **textstyle**: Add missing magic resource
+  ([`aca3122`](https://github.com/anaticulae/queuemo/commit/aca3122658423a642e4a8df3ba2ae750d9878cbe))
+
+### Chores
+
+- **requirements**: Add layout decider package
+  ([`2d43106`](https://github.com/anaticulae/queuemo/commit/2d431062763b046f5ffa0730e6fd3342f566e25d))
+
+- **requirements**: Upgrade requirements.txt
+  ([`57b91da`](https://github.com/anaticulae/queuemo/commit/57b91da445749ee1b91ed106ed79b85268bc6173))
+
+- **requirements**: Upgrade requirements.txt
+  ([`98650bf`](https://github.com/anaticulae/queuemo/commit/98650bf267fb7001904e8b3dc61dea34e02acdec))
+
+- **requirements**: Upgrade requirements.txt
+  ([`d6aa1a5`](https://github.com/anaticulae/queuemo/commit/d6aa1a587a6eaa48110ee5f10f8e878a1ceca535))
 
 ### Documentation
 
-* format docs (a5ebb0a9ca1c)
-* Happy New Year! (a9a2e3810d25)
-* update strategy documentation (5b35e46ca4db)
+- **copyright**: Happy New Year!
+  ([`d42913b`](https://github.com/anaticulae/queuemo/commit/d42913bf01c7758e6725f900a52d480a7122b551))
 
-## v0.3.0
+### Features
 
-### Feature
+- **result**: Run wordspace runnable
+  ([`bdc3ad6`](https://github.com/anaticulae/queuemo/commit/bdc3ad6d7da664bfd6848fe8a578d0b409a4b2b0))
 
-* add resultview to scheduler (09019cdab667)
-* add result view to invoke generation of resultview (0a4053361932)
-* add verify and fastview step to scheduler (4281c8420848)
-* add validation step to verify given pdf file (3bd7469fa300)
-* add run step to run fastview recipe with sub-recipes (1f74c8db1fb7)
-* add method to publish fast view results (a7e8f52c8d1d)
-* add recipe to verify title page (576f89d9c224)
-* extend file creation counter with file ending (67c79a0206e4)
-* add method to extract required fastview resources (4a1eff62a4f7)
+- **runnable**: Add text space extractor
+  ([`f2338be`](https://github.com/anaticulae/queuemo/commit/f2338be33926d798f273000cc2db51c829b66870))
 
-### Fix
+- **spaces**: Add textflow word spaces validator
+  ([`a56a848`](https://github.com/anaticulae/queuemo/commit/a56a84814fa167aa64f6ba69e4cd95c9d010a75a))
 
-* pass workspace result to job info (67daefce0da3)
+### Refactoring
+
+- **fastview**: Replace with utila code
+  ([`5dcd18d`](https://github.com/anaticulae/queuemo/commit/5dcd18dafff1d92ffcfad92e95f5d551db7c45fa))
+
+
+## v1.6.0 (2020-12-30)
+
+### Bug Fixes
+
+- **flaky**: Do not depend on global environment state
+  ([`ec3dfda`](https://github.com/anaticulae/queuemo/commit/ec3dfdaf2024623acc8e8fd1bdde9ca8fd03346c))
+
+- **imports**: Add missing import
+  ([`16eb8d4`](https://github.com/anaticulae/queuemo/commit/16eb8d403dfc3e5649af82945a35192f5b11a622))
+
+- **resources**: Adjust resource generator
+  ([`0dd80ea`](https://github.com/anaticulae/queuemo/commit/0dd80eaa961e73cc0aa1d50b1cb9e6179eb6f5d2))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`e7b5ded`](https://github.com/anaticulae/queuemo/commit/e7b5ded3ef383d58c12e341353af660d708605c7))
+
+- **requirements**: Upgrade requirements.txt
+  ([`97114c2`](https://github.com/anaticulae/queuemo/commit/97114c2f1b6b0d6410fa57e066b4895d766302c2))
+
+- **requirements**: Upgrade requirements.txt
+  ([`d8d1dda`](https://github.com/anaticulae/queuemo/commit/d8d1dda7713eeb8f92754eb2fce01866ddc8a710))
+
+- **test**: Extend test data generator
+  ([`6742425`](https://github.com/anaticulae/queuemo/commit/6742425be6c450932d47914c9cd9c0e50dd16086))
+
+- **test**: Simplify test data generator
+  ([`4afeb4d`](https://github.com/anaticulae/queuemo/commit/4afeb4d89bf8a2e0aec6b68f4b5fee9c30b608d0))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`8f882ba`](https://github.com/anaticulae/queuemo/commit/8f882ba4979fd9737726a8e16d45d181466754fd))
+
+- **typo**: Fix typo
+  ([`dd1efbe`](https://github.com/anaticulae/queuemo/commit/dd1efbef6d42768eb2a65e09b4473680863ea1cb))
+
+### Features
+
+- **cli**: Add failfast flag to shut down on first error
+  ([`b8e236b`](https://github.com/anaticulae/queuemo/commit/b8e236b52c57a264b56ef03737f9febca0fb41a4))
+
+- **recipe**: Stop analysing empty text documents
+  ([`e1aad8b`](https://github.com/anaticulae/queuemo/commit/e1aad8b26a66ff853439bd006117c92021c2b0be))
+
+- **runtime**: Info user about failed analysis
+  ([`096b973`](https://github.com/anaticulae/queuemo/commit/096b9736ec4014491e87c8339a78d51f4c177b10))
+
+- **runtime**: Introduce tick to inform about progress
+  ([`f1fade6`](https://github.com/anaticulae/queuemo/commit/f1fade62cd71b79c7396df320bb67375fa010bad))
+
+- **runtime**: Update progress for after every runtime step
+  ([`62cacdd`](https://github.com/anaticulae/queuemo/commit/62cacdd53040601eaca9ca14e4d85861c8ec5a1a))
+
+- **scheduler**: Add required decorator to run scheduler with errors
+  ([`da46f99`](https://github.com/anaticulae/queuemo/commit/da46f99cc6a7435074d85db2d5f57989b6e727ea))
+
+- **scheduler**: Mark essential scheduler steps
+  ([`db272c8`](https://github.com/anaticulae/queuemo/commit/db272c86a1f98f0eab933357a1cf82e551f9c9a5))
+
+### Refactoring
+
+- **remove**: Remove outdated test file
+  ([`f8b7cd7`](https://github.com/anaticulae/queuemo/commit/f8b7cd7e35a92333f1cd9cb1eb667e7cd80d0e07))
+
+- **remove**: Remove outdated ugly font config
+  ([`bfb9596`](https://github.com/anaticulae/queuemo/commit/bfb9596831ad6cdc87273493d9d8bf5210bc0234))
+
+- **replace**: Replace with link code
+  ([`f221dfa`](https://github.com/anaticulae/queuemo/commit/f221dfaa7e315aed08fe274adda299103e4d2b91))
+
+- **replace**: Replace with utila code
+  ([`1019036`](https://github.com/anaticulae/queuemo/commit/1019036ae630b20fa68a8bcdc94902a37c133c19))
+
+- **runtime**: Clarify interface
+  ([`f6f5dcd`](https://github.com/anaticulae/queuemo/commit/f6f5dcd82331f3b4bd2756c9429e838cc1b72518))
+
+- **runtime**: Simplify code
+  ([`b1427c2`](https://github.com/anaticulae/queuemo/commit/b1427c2805a48d8597e08a587f2ab129b23d07b5))
+
+- **test**: Simplify code style
+  ([`89edb8d`](https://github.com/anaticulae/queuemo/commit/89edb8dcbf7d6d75e712122b3ebaa4a3a9f6e125))
+
+- **test**: Simplify code style
+  ([`d950787`](https://github.com/anaticulae/queuemo/commit/d950787ca740af1444719b1189978711103b5f90))
+
+
+## v1.5.0 (2020-12-20)
+
+### Bug Fixes
+
+- **bib**: Add missing extraction step
+  ([`c302e47`](https://github.com/anaticulae/queuemo/commit/c302e475cbcd5ad033c29706ab2574c9af7f412d))
+
+### Chores
+
+- **requirements**: Remove chapter requirement
+  ([`9c0b503`](https://github.com/anaticulae/queuemo/commit/9c0b503bb589694d0a0dd71687853e48e9c6d45b))
+
+- **requirements**: Upgrade requirements.txt
+  ([`a698206`](https://github.com/anaticulae/queuemo/commit/a69820611559e42122473ad38962b5b59ac77192))
 
 ### Documentation
 
-* extend interface documentation (1af255b03e7f)
-* introduce general doc structure (2e15f0ccafc6)
+- **bib**: Extend documentation of bibliography
+  ([`940bf31`](https://github.com/anaticulae/queuemo/commit/940bf31777a6239b20219deb072815b5efb43638))
 
-## v0.2.1
+### Features
 
-### Feature
+- **job**: Add chapter step
+  ([`9b2ca07`](https://github.com/anaticulae/queuemo/commit/9b2ca07bce361350fba05a695da23baa4b62ff94))
 
-* add method to display environment variables (65eabced70f5)
-* setup logging level on start up via --verbose level (8f7c07b49ae0)
-* show path which hits the assertion (728b68f3274d)
-* add method to run command with manipulated os env (f507243895e5)
-* add log entree of todo path after startup (6d7efd78a58d)
+- **runnable**: Add chapter and chapter decider runner
+  ([`1e928c7`](https://github.com/anaticulae/queuemo/commit/1e928c7c5a69e0c67d52ea58499596d102256af1))
 
-### Fix
 
-* fix env vars - overwrite instead of replacing (9ac786b55ac0)
-* ignore single file as working input (a85490be4137)
-* close scheduler with correct error code on failure (ebdd73d4f7b7)
-* fix typo in command line interface (e513b7e131f9)
-* add missing package url (be6f1a7cd250)
+## v1.4.2 (2020-12-19)
 
-## v0.2.0
+### Chores
 
-### Feature
+- **requirements**: Add new decider packages
+  ([`458b29d`](https://github.com/anaticulae/queuemo/commit/458b29d12b16ab69d31c407a06b9ca01089ef4fc))
 
-* use new featurepack multi input behavior (fa3f7696fa63)
-* add generation of common view to display document (5b3a86b6c44d)
-* add component to split document in different `Sections` (ef18e4268507)
-* parameterize rawmaker to extract different layouts (98b92c8487ad)
-* add optional args and prefix parameter to process runner (26cd8ba9562e)
-* add new `recipe` approach (b08e985fc591)
-* print invalid input error message and return failure (b5e857f38ef0)
-* add loading file and accept comments (86c303f5ed26)
-* add file to describe result view (243e052f2c3c)
-* add tabstructure to simplify managing output paths (e915b70f545d)
-* add method to copy files and folder (db08bc1d7257)
+- **requirements**: Upgrade requirements.txt
+  ([`1caaa39`](https://github.com/anaticulae/queuemo/commit/1caaa39683e4cbba11040493c7b2f790bd4084f7))
 
-### Fix
+- **requirements**: Upgrade requirements.txt
+  ([`7168e54`](https://github.com/anaticulae/queuemo/commit/7168e54e0df760e119d6e352cf1aa1767ce8f16b))
 
-* fix method header to pass kwargs to parametrize runnable s (d1ae5e70df9a)
-* create all required parent folder (8e2e5f011b8d)
 
-## v0.1.2
+## v1.4.1 (2020-12-14)
 
-### Fix
+### Bug Fixes
 
-* fix in/out path to new featurepack pattern (fc66a8e6a080)
+- **smarty**: Add missing input resource
+  ([`00fb4b3`](https://github.com/anaticulae/queuemo/commit/00fb4b32135842b48d660ee785b278dd7e0f440b))
 
-## v0.1.1
+### Chores
 
-### Feature
+- **requirements**: Upgrade requirements.txt
+  ([`87ee289`](https://github.com/anaticulae/queuemo/commit/87ee2898ad7c975e1e5bc41df6c691e1f03bd09b))
 
-* add folder to store different recipes (34ce9ef8a827)
-* add ugly font detection to default recipe (ccf09cf2c003)
-* improve writing recipes - reduce code, improve stability (b2a4ad61ff74)
+### Features
 
-### Fix
+- **bib**: Publish extracted bib to display to user
+  ([`7498657`](https://github.com/anaticulae/queuemo/commit/74986576e12d9ab05a95d80eb74c42806546e032))
 
-* remove unit from result file, it is displayed by `viewo` (7fb87340bdd6)
+- **bib**: Use new bib decider
+  ([`ddfb1f5`](https://github.com/anaticulae/queuemo/commit/ddfb1f5192ab89aa2498679ad02006ef59740e1f))
 
-## v0.1.0
 
-### Feature
+## v1.4.0 (2020-12-05)
 
-* remove temp path after finish and coping analysis (7d49e9463088)
-* mark job as in progress with 0 percent (ae1235079635)
-* extend logging of recipe process (797463a7d767)
-* log version of used tools while startup process (7d4459b56131)
-* add verbose flag to control verbosity of output (1ca679efb31d)
-* add flags to control runtime of scheduler (23447a2a7fc4)
-* add find job implementation (7cc7c3bcbb1f)
-* add scheduler start to cmdline entry point (d30ded29ba1f)
-* extend recipe to generate html view (e0f0c51065c1)
-* add prototype of recipe to chain data procession (8667c4c3263d)
+### Chores
 
-### Fix
+- **requirements**: Upgrade requirements.txt
+  ([`a7c6aab`](https://github.com/anaticulae/queuemo/commit/a7c6aab31d4bd8a8e6ee67a4f3cb211e0bdb1ab5))
 
-* copy todo to testdir to avoid deleting todo source folder (8856bc3f85a5)
-* publish to `result` folder which `viewo` expects (017fb277a87b)
-* fix output of words index, which was doubled (291fbca59589)
-* remove verbose flag to use it from utilo (ceeb7dd02c58)
-* use only folder which are not in progress (f0f1f6af0e49)
-* fix logging of recipe (0fa0740e7eaa)
-* fix spelling recipe (6f5f7c574d0f)
-* extend imports to include every package of project (5989a2968b59)
+### Features
+
+- **runnable**: Add required docref step
+  ([`6a9baa3`](https://github.com/anaticulae/queuemo/commit/6a9baa3de67f341e230048e55ead28526cef993f))
+
+- **runnable**: Add smarty run and decide step
+  ([`ed68ca9`](https://github.com/anaticulae/queuemo/commit/ed68ca908aee3b84cabcea4e551770c57d93a289))
+
+
+## v1.3.3 (2020-11-24)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`c3d0530`](https://github.com/anaticulae/queuemo/commit/c3d0530a40c66e0bbe196e20107016a6d37b4211))
+
+### Features
+
+- **runnable**: Add decider links step
+  ([`d326678`](https://github.com/anaticulae/queuemo/commit/d326678c21f7d505f07b2aaf82777a440942221d))
+
+
+## v1.3.2 (2020-11-20)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`0061007`](https://github.com/anaticulae/queuemo/commit/006100762aca3d0f05d8f25c8e5d1144d1cab1d8))
+
+
+## v1.3.1 (2020-11-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`89db6bc`](https://github.com/anaticulae/queuemo/commit/89db6bca7ec74a440b59b0dd381128f8b1472187))
+
+
+## v1.3.0 (2020-11-03)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`750a219`](https://github.com/anaticulae/queuemo/commit/750a219b6a790f8f51b468be5b0a17e089b43c72))
+
+### Code Style
+
+- **fix**: Fix spelling error
+  ([`404d9ee`](https://github.com/anaticulae/queuemo/commit/404d9ee4f4de97c664b0698eb825078d14294f28))
+
+- **refactor**: Improve code style
+  ([`4966810`](https://github.com/anaticulae/queuemo/commit/4966810d1b29b3ac3bae6a7001e1eca4132781bc))
+
+- **refactor**: Simplify code
+  ([`75607f4`](https://github.com/anaticulae/queuemo/commit/75607f457da640fe84a8bd1f29aecf084b82828b))
+
+### Features
+
+- **single**: Add basic single runtime infrastructure
+  ([`167b814`](https://github.com/anaticulae/queuemo/commit/167b8140f68c32fe0329193c65a4d34c606dd368))
+
+- **single**: Add verbose flag
+  ([`ce4c9d9`](https://github.com/anaticulae/queuemo/commit/ce4c9d9ac5ec9afccf2ad1f474f98901ab02ea0e))
+
+- **single**: Run queuemo in single folder
+  ([`3b784ac`](https://github.com/anaticulae/queuemo/commit/3b784acf62d6a480c219fbb8b9a796c3d8aa3a66))
+
+### Refactoring
+
+- **test**: Improve code style
+  ([`d6c0846`](https://github.com/anaticulae/queuemo/commit/d6c0846b56bcd951e5a7a035d523b0be832021cf))
+
+- **test**: Improve naming
+  ([`8c7a5d6`](https://github.com/anaticulae/queuemo/commit/8c7a5d65111cf1c0c1bc71dc0aef9242bf58b265))
+
+- **test**: Increase code re usability
+  ([`e9a035c`](https://github.com/anaticulae/queuemo/commit/e9a035c1e23431fbaee59292854f1a1fa44a3ee6))
+
+### Testing
+
+- **recipe**: Extend recipe test
+  ([`c3a797c`](https://github.com/anaticulae/queuemo/commit/c3a797c5e137eebac3928f1423356a17a9bdb5e2))
+
+- **recipe**: Fix flaky test
+  ([`c695257`](https://github.com/anaticulae/queuemo/commit/c695257406b4b9db291d264852d58dc2a58373d5))
+
+
+## v1.2.3 (2020-10-28)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`3d36cc1`](https://github.com/anaticulae/queuemo/commit/3d36cc17beb61a25918195fe131225dad71b0891))
+
+
+## v1.2.2 (2020-10-14)
+
+### Bug Fixes
+
+- **footnote**: Words is already done for magic
+  ([`0fa5f43`](https://github.com/anaticulae/queuemo/commit/0fa5f434767a3c8dd1cc1ec2ac7f17650da3ffa8))
+
+- **textflow**: Add missing page shrink
+  ([`c473e93`](https://github.com/anaticulae/queuemo/commit/c473e937df8c86cb4fd06a5c123504c2df054173))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`24a5b23`](https://github.com/anaticulae/queuemo/commit/24a5b238089ff39edc1eebb2c576136f8778f8bf))
+
+- **test**: Keep release build fast
+  ([`a509d13`](https://github.com/anaticulae/queuemo/commit/a509d134a5c5d7ef23945d7e5fdaf1fc3981ac63))
+
+
+## v1.2.1 (2020-10-09)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`36b07c8`](https://github.com/anaticulae/queuemo/commit/36b07c8c5c9f2afbc0061862273fd3381d70ff1f))
+
+
+## v1.2.0 (2020-09-26)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`97043cd`](https://github.com/anaticulae/queuemo/commit/97043cdc805b10a642f4b645e73c95e3aee29ad3))
+
+### Code Style
+
+- **docs**: Remove white spaces
+  ([`7c807c2`](https://github.com/anaticulae/queuemo/commit/7c807c2008fcfe8313d5d23b43fdd512e9ed7aab))
+
+### Features
+
+- **dev**: Add --interactive flag to manually step thru execution
+  ([`7972051`](https://github.com/anaticulae/queuemo/commit/797205147a580316449bc783c86a5c392df12b13))
+
+- **recipes**: Publish log after completing document
+  ([`a3cbbba`](https://github.com/anaticulae/queuemo/commit/a3cbbba7f8c402bb82cf49671c27117d07a192c5))
+
+- **utils**: Add method to ask user for continuing
+  ([`c2bd72c`](https://github.com/anaticulae/queuemo/commit/c2bd72c4ab9fcd8bf387f5de9f47b7fb828a43e0))
+
+
+## v1.1.1 (2020-09-14)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`73b45d8`](https://github.com/anaticulae/queuemo/commit/73b45d86ca37d13b905dee8ee723f1666bc19cb9))
+
+
+## v1.1.0 (2020-09-14)
+
+### Bug Fixes
+
+- **remove**: Remove non existing validation step from scheduler
+  ([`aa01ed9`](https://github.com/anaticulae/queuemo/commit/aa01ed9768e88da876b879276d00c3912808034e))
+
+- **scheduler**: Add missing input resources
+  ([`a0e5688`](https://github.com/anaticulae/queuemo/commit/a0e5688a7efe3c1f7401abd7c86297c4af3f55cc))
+
+- **scheduler**: Ensure that `ORDER` is used when for process scheduling
+  ([`3f8d455`](https://github.com/anaticulae/queuemo/commit/3f8d455fc85f36a3f4bf783b93c67add1fc4afb6))
+
+### Features
+
+- **recipe**: Add magic step to run computation only once
+  ([`d376ea2`](https://github.com/anaticulae/queuemo/commit/d376ea24007a58376e852eecb2396d47fa2d3059))
+
+- **runtime**: Log start of ComposedRecipe
+  ([`0c041d2`](https://github.com/anaticulae/queuemo/commit/0c041d2fe26d139d1949b0c176f1428b7f4910e1))
+
+### Refactoring
+
+- **style**: Improve code style
+  ([`6c88f9e`](https://github.com/anaticulae/queuemo/commit/6c88f9ea0ac49725ac89e6aa29987147d53f6932))
+
+
+## v1.0.4 (2020-09-10)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`86899cc`](https://github.com/anaticulae/queuemo/commit/86899cc1aca9f0e88101dadd4c8862e10c7ea594))
+
+
+## v1.0.3 (2020-09-10)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`4001089`](https://github.com/anaticulae/queuemo/commit/4001089d4702227946279e3d4285a10f917a5bcb))
+
+### Features
+
+- **runtime**: Add verbose error logging
+  ([`b8da044`](https://github.com/anaticulae/queuemo/commit/b8da0444c5dd296a7ee0691d0ded26600df6561e))
+
+- **textflow**: Copy caption data to result view
+  ([`cfe84f3`](https://github.com/anaticulae/queuemo/commit/cfe84f39c283c341acb0a7d243479631440bb9a3))
+
+
+## v1.0.2 (2020-09-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`75ef5a7`](https://github.com/anaticulae/queuemo/commit/75ef5a745dae57fa671a37bee7f90da292eda928))
+
+
+## v1.0.1 (2020-09-01)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`fd09d41`](https://github.com/anaticulae/queuemo/commit/fd09d418f5744163b090e1adee33d3bec18f0415))
+
+
+## v1.0.0 (2020-08-29)
+
+### Bug Fixes
+
+- **api**: Simplify output path
+  ([`a06272a`](https://github.com/anaticulae/queuemo/commit/a06272a1413b05606b740c0da35eb8adce62bcfa))
+
+- **copy**: Avoid copy findings twice
+  ([`77da182`](https://github.com/anaticulae/queuemo/commit/77da1824599f2d8b7fa571953d8cc6e1951d7e1f))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`abcaaa3`](https://github.com/anaticulae/queuemo/commit/abcaaa3484cae789d2a69bcf5ec5f4ff67d886a3))
+
+- **requirements**: Upgrade requirements.txt
+  ([`ed9944c`](https://github.com/anaticulae/queuemo/commit/ed9944c42f944201f0b86284e718abe66251d587))
+
+### Features
+
+- **remove**: Remove outdated result value
+  ([`ab52ea0`](https://github.com/anaticulae/queuemo/commit/ab52ea08305cb5bc95c65fb3c14984c56f70aa0b))
+
+- **worker**: Add profiling step to determine pdf analyzing time
+  ([`af3dfcc`](https://github.com/anaticulae/queuemo/commit/af3dfcc4519d1e7a81ea474f6294c13ee91d5331))
+
+### Refactoring
+
+- **remove**: Remove unused code
+  ([`f99036b`](https://github.com/anaticulae/queuemo/commit/f99036b3b6c8838e8a62deafdb6ab86aea849ccc))
+
+
+## v0.8.0 (2020-08-10)
+
+### Bug Fixes
+
+- **logging**: Adjust step logging
+  ([`b553cee`](https://github.com/anaticulae/queuemo/commit/b553cee266bd07519a8596ba014375c0f0ea5f67))
+
+- **scheduler**: Do not start deleted jobs
+  ([`fedf36a`](https://github.com/anaticulae/queuemo/commit/fedf36a3cfe2a77bfcdfc08371cd628d6f398b1d))
+
+- **textstyle**: Add missing quotes extraction
+  ([`20729f0`](https://github.com/anaticulae/queuemo/commit/20729f0ec7407c4866eb95af137a12b32df5b648))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`03faf6f`](https://github.com/anaticulae/queuemo/commit/03faf6fa6cd356b5d2c7e23ad0f161d8ba9ad427))
+
+### Features
+
+- **magic**: Add caption and formula extraction as magic data source
+  ([`02cbf6d`](https://github.com/anaticulae/queuemo/commit/02cbf6ddbb5bed37161e757549282552a449397d))
+
+- **runnable**: Add imgfig runnable to analyze quality of images/figures
+  ([`1fab0f0`](https://github.com/anaticulae/queuemo/commit/1fab0f0744290f441c0cb1e7be158b130bf2ac5b))
+
+- **runnable**: Log version of used runnable
+  ([`c050f8d`](https://github.com/anaticulae/queuemo/commit/c050f8dbf365bfe56f780150e549c6877c99ae18))
+
+
+## v0.7.4 (2020-07-29)
+
+### Bug Fixes
+
+- **doctextstyle): add missing magic(table**: Information
+  ([`a670ce0`](https://github.com/anaticulae/queuemo/commit/a670ce0cff21c4c571cfa1a7839db21b27362c2b))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`68905d7`](https://github.com/anaticulae/queuemo/commit/68905d7749bbbfe26a13ab364b73cf17853c9e86))
+
+- **requirements**: Upgrade requirements.txt
+  ([`b34f3fa`](https://github.com/anaticulae/queuemo/commit/b34f3fa765961971af5801bedff008d0f198adff))
+
+### Features
+
+- **logging**: Highlight start of recipe
+  ([`ad9d654`](https://github.com/anaticulae/queuemo/commit/ad9d654bbedb3fbb8e84c5bb2bb772d5a3a28e7a))
+
+
+## v0.7.3 (2020-07-17)
+
+### Bug Fixes
+
+- **fastview**: Skip non necessary step
+  ([`5daed63`](https://github.com/anaticulae/queuemo/commit/5daed63ef9fe983a042f3c72b5af97519907d5fd))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`16b7b5b`](https://github.com/anaticulae/queuemo/commit/16b7b5b42384fad21527144cc73bc6dd8f145554))
+
+- **requirements**: Upgrade requirements.txt
+  ([`b59122b`](https://github.com/anaticulae/queuemo/commit/b59122b6a5be464df246d00bf743098ee33e725e))
+
+### Features
+
+- **view**: Run new figure step
+  ([`3fcd18c`](https://github.com/anaticulae/queuemo/commit/3fcd18cde16f1e3199bc30d8af47f0c3866185bf))
+
+
+## v0.7.2 (2020-06-18)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`7cecaab`](https://github.com/anaticulae/queuemo/commit/7cecaab09ece25600b8db1f60950ca0e4b032f34))
+
+
+## v0.7.1 (2020-06-13)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`845dd0b`](https://github.com/anaticulae/queuemo/commit/845dd0b1d24743b108b3cfd14ef25ea2eb1529f6))
 
 ### Documentation
 
-* update strategy paper and include to main document (0a80233e14c6)
+- **fix**: Fix spelling content error
+  ([`f3cd178`](https://github.com/anaticulae/queuemo/commit/f3cd1780f9ecc628213984fa558779d2b1712bfb))
 
-## v0.0.1
+### Features
 
-### Feature
+- **runnable**: Add bibliography runnable to extract and judge bibliography
+  ([`69597ef`](https://github.com/anaticulae/queuemo/commit/69597efd5e50d92e14b911abaee244516d05000a))
 
-* add external statistica and feedback module (388c162a5c22)
-* add rawmaker and groupme feature packages (6982ae4c4a42)
-* push job after finishing job to ready folder (df7745bbeaa7)
-* limit loop by max ticks to avoid endless loop (29e223ac0877)
-* using job definition from `link` (9cd6bc5dc5ec)
-* add scheduler to watch todo folder and start working (1487e3580310)
-* move access to global environment to configos package (7e0b50e46671)
-* add access to config with todo and ready folder (2bc49534f5a4)
+- **sections**: Support merging multiple areas
+  ([`10987bc`](https://github.com/anaticulae/queuemo/commit/10987bcfae92aeec023b8398a56bb226f93d2370))
 
-## v0.0.0 Initial release
+
+## v0.7.0 (2020-06-13)
+
+### Bug Fixes
+
+- **log**: Ensure to have unique log file
+  ([`ee3b664`](https://github.com/anaticulae/queuemo/commit/ee3b664aea37d979e18de06e9861d1e9ccdd8c3b))
+
+- **result**: Run sections once
+  ([`bbb2fb5`](https://github.com/anaticulae/queuemo/commit/bbb2fb50f6cc3cfc1d7064205175b94622df207a))
+
+- **test**: Add missing test data generation after changing generator
+  ([`00c683f`](https://github.com/anaticulae/queuemo/commit/00c683f65d8ce1dc8cadbeacdf855b557b1ab487))
+
+### Chores
+
+- **setup**: Use manifest to deliver additional installation files
+  ([`dba9b2a`](https://github.com/anaticulae/queuemo/commit/dba9b2a89c7aac366ef7f87705a22a8239900462))
+
+- **test**: Improve dev test speed
+  ([`27a4575`](https://github.com/anaticulae/queuemo/commit/27a45757b6b6877b18c628be7add385eca164b5f))
+
+- **test**: Increase dev test coverage
+  ([`3ed7e27`](https://github.com/anaticulae/queuemo/commit/3ed7e27e6b9617be8945b3a6b9daa8219bf7fc48))
+
+### Features
+
+- **fastview**: Select toc and titlepage based on sections extractor
+  ([`90b2d39`](https://github.com/anaticulae/queuemo/commit/90b2d39db6dd7e0fc0c402b14e2acf99ac89b5b2))
+
+- **result**: Add sections step to determine location of potential toc etc
+  ([`b6affc6`](https://github.com/anaticulae/queuemo/commit/b6affc68d8c66d2e9ca1ba3c0954ab4d6b08ffbe))
+
+- **result**: Simplify pages pattern
+  ([`a1011c2`](https://github.com/anaticulae/queuemo/commit/a1011c2aef054bb02692b17173acbfb6f9ee5880))
+
+- **result**: Use rawmaker all flag to make interface robust against changes
+  ([`6f46bd5`](https://github.com/anaticulae/queuemo/commit/6f46bd5fa7f60a4c5aefd291651b3a01f04ed141))
+
+- **runtime**: Log path information in debug mode for every recipe step
+  ([`52dc46a`](https://github.com/anaticulae/queuemo/commit/52dc46a4e043dd7d29552d838019f48c65d42d6c))
+
+- **sections**: Shrink feature analysis to expected areas
+  ([`55b7c0a`](https://github.com/anaticulae/queuemo/commit/55b7c0a9a9cf9feda924e244cfca8af32beef381))
+
+### Refactoring
+
+- **fastview**: Process rawmaker in parallel
+  ([`f215727`](https://github.com/anaticulae/queuemo/commit/f2157275c245419c96029a127e0ae92e41ba44d4))
+
+- **remove**: Remove useless code
+  ([`c07c5ba`](https://github.com/anaticulae/queuemo/commit/c07c5bad5669b664e984e00129fed7a050190b1d))
+
+- **result**: Move pdf extraction to separate method
+  ([`1a58f9e`](https://github.com/anaticulae/queuemo/commit/1a58f9e6c27848390fcdab9551dc79f0602d43d4))
+
+- **result**: Move to more general place
+  ([`e015467`](https://github.com/anaticulae/queuemo/commit/e015467d01ad1978b947f8e4192c491f4e3175a6))
+
+### Testing
+
+- **chore**: Reduce test run level
+  ([`e25dc25`](https://github.com/anaticulae/queuemo/commit/e25dc2567bc4a9d63b27d728d60f1b10fdd7c355))
+
+
+## v0.6.4 (2020-06-12)
+
+### Bug Fixes
+
+- **recipe**: Inform about missing resource
+  ([`608e84a`](https://github.com/anaticulae/queuemo/commit/608e84ab75664a4bbfd7319c2ae73b38bd42cede))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`6652d2e`](https://github.com/anaticulae/queuemo/commit/6652d2e07d4c9b139d38dc50b9ee63c56e9474dd))
+
+- **test**: Use new test data generator
+  ([`8667a1c`](https://github.com/anaticulae/queuemo/commit/8667a1c4746e9e73cb8ef1748830972f5fd98fdf))
+
+
+## v0.6.3 (2020-06-07)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`980bdfe`](https://github.com/anaticulae/queuemo/commit/980bdfee87f3a331cd03ae056d52c93a2c4db307))
+
+### Features
+
+- **fastview**: Extend title page collector to more than page zero
+  ([`871e192`](https://github.com/anaticulae/queuemo/commit/871e1920bf3a6ecc84b220a55e4ca5cf5b95107c))
+
+- **logger**: Add method to log cli output to file
+  ([`e0a5818`](https://github.com/anaticulae/queuemo/commit/e0a5818c78b0b5bec94d3f48f875f5372b5e7f1a))
+
+### Refactoring
+
+- **cli**: Replace with utila code
+  ([`7c035b0`](https://github.com/anaticulae/queuemo/commit/7c035b02ee7659c7bc762989c90056dd845e6756))
+
+
+## v0.6.2 (2020-06-01)
+
+### Bug Fixes
+
+- **data**: Copy missing data
+  ([`e758650`](https://github.com/anaticulae/queuemo/commit/e758650bfe4e4628b895b7822686e31e44a245b8))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`eb35327`](https://github.com/anaticulae/queuemo/commit/eb353276b94c3541b1e55c717efb5f74759fe6c1))
+
+### Features
+
+- **runnable**: Beautify input paths
+  ([`28dff94`](https://github.com/anaticulae/queuemo/commit/28dff947d9f456ffdbb3538782662e539b090929))
+
+### Refactoring
+
+- **remove**: This check is already done in run method
+  ([`8302bd1`](https://github.com/anaticulae/queuemo/commit/8302bd14c17d6b216267c6cdaf07260dd7b60609))
+
+- **replace**: Replace with utila code
+  ([`31f7633`](https://github.com/anaticulae/queuemo/commit/31f76339a82520642b1f1a1eb71b26eb6857631b))
+
+- **simplify**: Simplify code
+  ([`15381b9`](https://github.com/anaticulae/queuemo/commit/15381b9a451509c7840aca4a730b2214c76a59ce))
+
+
+## v0.6.1 (2020-05-30)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`76a8359`](https://github.com/anaticulae/queuemo/commit/76a8359b8d358815958e8ae34b68acf05709b415))
+
+
+## v0.6.0 (2020-05-24)
+
+### Bug Fixes
+
+- **scheduler**: Always start on a new line
+  ([`a0d33db`](https://github.com/anaticulae/queuemo/commit/a0d33dbabcd205abda41dfba3a89966ac007f8b8))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`62c0c97`](https://github.com/anaticulae/queuemo/commit/62c0c9712ef389555c7f0a87f31a15c5aefc457a))
+
+- **requirements**: Upgrade requirements.txt
+  ([`6dbb8da`](https://github.com/anaticulae/queuemo/commit/6dbb8da5e1da83f4d1a0b453fd87c24f3ecb82b2))
+
+### Features
+
+- **doctextstyle**: Add content text style linter
+  ([`8eb466f`](https://github.com/anaticulae/queuemo/commit/8eb466f846f08e162718c4ea53c03f89433c2d61))
+
+- **doctextstyle**: Copy font information to resolve hashes in doctextstyle
+  ([`8940a8a`](https://github.com/anaticulae/queuemo/commit/8940a8a205f57a322d83c046131fa6d109577b5e))
+
+- **doctextstyle**: Publish detected text style master
+  ([`cf3ae8b`](https://github.com/anaticulae/queuemo/commit/cf3ae8b94e79ba2010bd47fa5abb1fed4b8c59f2))
+
+- **recipe**: Add decider_textstyle to judge document headline style
+  ([`85fa7fb`](https://github.com/anaticulae/queuemo/commit/85fa7fb66676a473629b5e147ade681753e9d7b2))
+
+- **result**: Add footnote step to verify footnotes in footer
+  ([`7800359`](https://github.com/anaticulae/queuemo/commit/7800359e038f065c84e5247356befa18afd50a19))
+
+- **result**: Run groupme at start once
+  ([`7d0c6a8`](https://github.com/anaticulae/queuemo/commit/7d0c6a8402b9b5e1cec276c2df9b9ee7e3207e3d))
+
+### Testing
+
+- **recipe**: Move test to nightly texts
+  ([`f13cd74`](https://github.com/anaticulae/queuemo/commit/f13cd748561e3e2a2f750a387c1475b86e89c9ee))
+
+
+## v0.5.2 (2020-05-11)
+
+### Bug Fixes
+
+- **scheduler**: Decrease job count only when job was successfully selected
+  ([`44331b9`](https://github.com/anaticulae/queuemo/commit/44331b9b903861e3c3372868c85ad87f052b5bcb))
+
+
+## v0.5.1 (2020-05-11)
+
+### Bug Fixes
+
+- Rawmaker interface change
+  ([`db5527b`](https://github.com/anaticulae/queuemo/commit/db5527b47e5fd4cfadbf57d81dfafde7e9702075))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`db5527b`](https://github.com/anaticulae/queuemo/commit/db5527b47e5fd4cfadbf57d81dfafde7e9702075))
+
+### Features
+
+- **scheduler**: Add second counter to determine ending of scheduler
+  ([`1130871`](https://github.com/anaticulae/queuemo/commit/11308719f8e3ab42ae506cf318a3350226a43387))
+
+
+## v0.5.0 (2020-04-30)
+
+### Bug Fixes
+
+- **fastview**: Use new rawmaker feature and access file directly
+  ([`58027cb`](https://github.com/anaticulae/queuemo/commit/58027cbe5b4a89d2ce1eee186344b91066e71af1))
+
+- **result**: Do not copy cause rawmaker supports inpath without file ext
+  ([`5e154c1`](https://github.com/anaticulae/queuemo/commit/5e154c1b920b4e8b9eb6b36f677be6b5f0600681))
+
+- **view**: Enable required analysis
+  ([`12186ef`](https://github.com/anaticulae/queuemo/commit/12186ef4afb857472942e0ffbb3d17643ebc957f))
+
+### Chores
+
+- **disable**: Disable statistic runtime
+  ([`e4a9403`](https://github.com/anaticulae/queuemo/commit/e4a94030f7ea5b30ede7c1b5cd64a3b3058c7f96))
+
+- **requirements**: Upgrade requirements.txt
+  ([`8bafdf8`](https://github.com/anaticulae/queuemo/commit/8bafdf8d0513577cacdebe19073b1e1ba223d90c))
+
+- **requirements**: Upgrade requirements.txt
+  ([`843ee8b`](https://github.com/anaticulae/queuemo/commit/843ee8bb038dbf857718049427f94ff7797e7ce1))
+
+- **requirements**: Upgrade requirements.txt
+  ([`48396b1`](https://github.com/anaticulae/queuemo/commit/48396b1beebc1ca2e55b3a1ebc3c3e633b4b6faa))
+
+- **requirements**: Upgrade requirements.txt
+  ([`cc74b7e`](https://github.com/anaticulae/queuemo/commit/cc74b7eccfc18651ab9f9e4704717931c5465310))
+
+- **resources**: Add missing dev requirement
+  ([`f3346f0`](https://github.com/anaticulae/queuemo/commit/f3346f007dbe4ebbd4e59c73c52f4ae4f6944e98))
+
+- **setup**: Do not release with linter findings
+  ([`cefd713`](https://github.com/anaticulae/queuemo/commit/cefd71331374146ad35f06e565f7c8c33f27c258))
+
+### Code Style
+
+- **fix**: Fix spelling error
+  ([`1032114`](https://github.com/anaticulae/queuemo/commit/1032114be8e6ca2f316fe3ec7b02cd8bad9c763a))
+
+### Features
+
+- **decider**: Add textflow decider to runnable
+  ([`0072c82`](https://github.com/anaticulae/queuemo/commit/0072c82fcc98a4d9611477bbfa11b56197197cd4))
+
+- **fastview**: Reduces executed steps
+  ([`fee27e3`](https://github.com/anaticulae/queuemo/commit/fee27e31f8095c1f2bfb1b6b6d2934a62d7f5589))
+
+- **result**: Add textflow validation and publishing step
+  ([`eebb29c`](https://github.com/anaticulae/queuemo/commit/eebb29ca08166a5e763f358b9c4291ed367a5cf3))
+
+- **result**: Public words sentence result
+  ([`1e2eef4`](https://github.com/anaticulae/queuemo/commit/1e2eef4e7ff95e3fec61cb80a7ee56e731637865))
+
+- **result**: Run rawmaker extractor in parallel
+  ([`13961e5`](https://github.com/anaticulae/queuemo/commit/13961e541ed7deb2cd75df20687a089b97377fa2))
+
+- **runnable**: Enable converting boolean to flag
+  ([`4a0a332`](https://github.com/anaticulae/queuemo/commit/4a0a33274d4a7938ab9eb8e6913ad430b39b7668))
+
+- **runnable**: Run groupme with multiple processes
+  ([`fd5c03f`](https://github.com/anaticulae/queuemo/commit/fd5c03fc3bd86e53689122e36345593b85ccb472))
+
+- **startup**: Reduce startup time and remove duplicated code
+  ([`4a3e1bb`](https://github.com/anaticulae/queuemo/commit/4a3e1bb300f03fdf5d0717eaf9d0556a6355723f))
+
+- **view**: Extract images and publish
+  ([`ec2d840`](https://github.com/anaticulae/queuemo/commit/ec2d840647b5c429fa45045e726522f2cf63be50))
+
+### Refactoring
+
+- **remove**: Remove unused code
+  ([`5a970f7`](https://github.com/anaticulae/queuemo/commit/5a970f7322f042ba13d17c3afd4e9d4ac756251c))
+
+- **replace**: Replace with utila.test code
+  ([`1b4cf1b`](https://github.com/anaticulae/queuemo/commit/1b4cf1b9cb262376ad1acf6b94bd45280bd3f9ed))
+
+
+## v0.4.3 (2020-04-09)
+
+### Bug Fixes
+
+- **view**: Put border validation results to correct folder
+  ([`8e1b14a`](https://github.com/anaticulae/queuemo/commit/8e1b14a98034f2ffabc05e5779537e2a951f2bb7))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`a150d33`](https://github.com/anaticulae/queuemo/commit/a150d33695fc950ed4f68d4aa65d4cbd4800f628))
+
+- **requirements**: Upgrade requirements.txt
+  ([`ed987c0`](https://github.com/anaticulae/queuemo/commit/ed987c0f1f437cab366097cb074ff64ccba96ca9))
+
+- **requirements**: Upgrade requirements.txt
+  ([`02e598f`](https://github.com/anaticulae/queuemo/commit/02e598f60916937d3a8db1e36440f2530c31ea2b))
+
+- **test**: Increase test logging
+  ([`b1ef923`](https://github.com/anaticulae/queuemo/commit/b1ef923ede99a537729059bbac190d6868daccb9))
+
+- **test**: Mark tests as nightly
+  ([`9c30e7d`](https://github.com/anaticulae/queuemo/commit/9c30e7d6b4e9f8ad276d37cc73af048536bb07a1))
+
+### Code Style
+
+- **format**: Organize imports
+  ([`dbbadf5`](https://github.com/anaticulae/queuemo/commit/dbbadf532ed07e75bc2327c064d51ceaab334210))
+
+- **imports**: Remove unused import
+  ([`54282ee`](https://github.com/anaticulae/queuemo/commit/54282eeb970d5d150424df9d91e2dc3e1a4e5752))
+
+### Features
+
+- **api**: Add __str__ to extend debugging facility
+  ([`bd47f15`](https://github.com/anaticulae/queuemo/commit/bd47f15e1606aa3c590bd07de72f55d6a5e48f90))
+
+- **api**: Make publish step selectable
+  ([`f49914f`](https://github.com/anaticulae/queuemo/commit/f49914f64de6420fb9254ead3dc7ed937c200992))
+
+- **border**: Add border distance check to result view
+  ([`13839a8`](https://github.com/anaticulae/queuemo/commit/13839a84bd673aab2731bdc348de68733a684d91))
+
+- **toc**: Add toc validator to fast view analysis
+  ([`de77d95`](https://github.com/anaticulae/queuemo/commit/de77d95597df9d5f61c9c87286e59dc30a0f83f0))
+
+- **utils**: Add copy method which supports logging copy-operations
+  ([`9e1b083`](https://github.com/anaticulae/queuemo/commit/9e1b0837e7ae16ce5528baf0b3b567febef1f642))
+
+- **view**: Run rawmaker oneline configuration for decider module
+  ([`fa06d3b`](https://github.com/anaticulae/queuemo/commit/fa06d3bb380938b843afa923dae451170daf4ee1))
+
+
+## v0.4.2 (2020-01-10)
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`804e87e`](https://github.com/anaticulae/queuemo/commit/804e87e96bd7d243319eb6008585abdfde54df9a))
+
+### Features
+
+- **fastview**: Publish linter results to result view also
+  ([`d75ed89`](https://github.com/anaticulae/queuemo/commit/d75ed89baee2a23f63896d7c8f52632109f5fd2d))
+
+- **result**: Extract and present whole document
+  ([`bb2f256`](https://github.com/anaticulae/queuemo/commit/bb2f256d72fa6553ed896e565ecfe8ec5466bb9e))
+
+- **runnable**: Reduce runtime of rawmaker application
+  ([`b55e35d`](https://github.com/anaticulae/queuemo/commit/b55e35df69030128ba10d5a45d78b686fc2713a4))
+
+
+## v0.4.1 (2020-01-09)
+
+### Bug Fixes
+
+- **startup**: Do not start a job twice
+  ([`22126a7`](https://github.com/anaticulae/queuemo/commit/22126a72fc35448475c4a5dbf8dc00b56f290c8a))
+
+
+## v0.4.0 (2020-01-09)
+
+### Bug Fixes
+
+- **feedback**: Add required result folder
+  ([`5bcfad4`](https://github.com/anaticulae/queuemo/commit/5bcfad455d1df4357bba0f9d553d87ce2a9f9c94))
+
+- **runner**: Fix scheduling order
+  ([`8e463c6`](https://github.com/anaticulae/queuemo/commit/8e463c6de8e30011d0ec9e337f92724c4b65824f))
+
+- **scheduler**: Run validation task first
+  ([`c5c7e93`](https://github.com/anaticulae/queuemo/commit/c5c7e934e663e05aa88ff15cdbd549621403caf2))
+
+- **worker**: Set output path to todo path
+  ([`5fa0130`](https://github.com/anaticulae/queuemo/commit/5fa0130d894a64fbdeee2610f2ad9cfa3cb8b9f4))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`1ffd539`](https://github.com/anaticulae/queuemo/commit/1ffd539ee2aff3f818c64154d98ff22088f86608))
+
+- **requirements**: Upgrade requirements.txt
+  ([`ed795c6`](https://github.com/anaticulae/queuemo/commit/ed795c65f255b8b95fe4609864688e383ec0bf31))
+
+- **resource**: Sync required pdf files and generate test jobs
+  ([`d89e390`](https://github.com/anaticulae/queuemo/commit/d89e3907ab7262932520b8b75e488cd021bcf0a1))
+
+- **test**: Extend test blacklist to reduce normal test duration
+  ([`0da8228`](https://github.com/anaticulae/queuemo/commit/0da8228f81ecbab7fccf581f4b8afa9ae06fc7b3))
+
+- **test**: Reduce required test power
+  ([`2bfd88d`](https://github.com/anaticulae/queuemo/commit/2bfd88d1a4bec74ee0c762cd5501f727ded4ada9))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`c183f02`](https://github.com/anaticulae/queuemo/commit/c183f024db23cec5ba1f18221be07cb553d3b0a0))
+
+- **imports**: Remove unused import
+  ([`24fa283`](https://github.com/anaticulae/queuemo/commit/24fa28387552809a18f8b9a3184783405e30467c))
+
+- **runnable**: Organize imports
+  ([`c2bdbb7`](https://github.com/anaticulae/queuemo/commit/c2bdbb7ba6b7bee12a11dcf81d5b78b92b258039))
+
+### Documentation
+
+- **fastview**: Extend module documentation
+  ([`dfaf668`](https://github.com/anaticulae/queuemo/commit/dfaf668ca8971d1fdc6673fe4636dcbfdfb586d3))
+
+- **runner**: Extend interface documentation
+  ([`df6a161`](https://github.com/anaticulae/queuemo/commit/df6a161103c4dbb3d3c0ce02c78e2226567ecbbd))
+
+- **test**: Extend interface documentation
+  ([`5e43ad4`](https://github.com/anaticulae/queuemo/commit/5e43ad4ab2e4a56fb0dd5cfe9bc8771fbfa642c8))
+
+- **view**: Improve general documentation
+  ([`edd6598`](https://github.com/anaticulae/queuemo/commit/edd6598d808e3ffcc85b417b1535feb3ca016dd9))
+
+### Features
+
+- **fastview**: Use new scheduling to run fastview
+  ([`89e0c84`](https://github.com/anaticulae/queuemo/commit/89e0c845330d5b91fec8f67a50aad457947e99cb))
+
+- **fastview**: Use oneline parameter to improve extraction result
+  ([`ac9e4d4`](https://github.com/anaticulae/queuemo/commit/ac9e4d4cff9f8f5cc6828b6ce11ff41030cd9f01))
+
+- **publish**: Add method to publish todo to ready folder
+  ([`64a75cc`](https://github.com/anaticulae/queuemo/commit/64a75cc00dc917c9f0b40adffa9cb2d93752745c))
+
+- **publish**: Add separate publish step
+  ([`76bb4df`](https://github.com/anaticulae/queuemo/commit/76bb4df0bb3e240e58d2458ceb3a9ca9bc6ab488))
+
+- **recipe**: Activate result scheduling step
+  ([`41241ea`](https://github.com/anaticulae/queuemo/commit/41241ea9dba7267dbad7f49722e73da7ac8914da))
+
+- **recipe**: Extend runnable checker
+  ([`5fc7446`](https://github.com/anaticulae/queuemo/commit/5fc74460f082a5ddc42b4d00430335ac0d17490e))
+
+- **recipes**: Add runtime to run and manage schedules
+  ([`51d2c35`](https://github.com/anaticulae/queuemo/commit/51d2c3566c816195d5adea925bffa5f624dd61aa))
+
+- **recipes**: Add validation step to check that input resource is valid
+  ([`80c11df`](https://github.com/anaticulae/queuemo/commit/80c11dfd18273dc4f82a9f8447647dcd34abb4a6))
+
+- **recipes**: Extend list with application test at startup
+  ([`72e0843`](https://github.com/anaticulae/queuemo/commit/72e08439b9f37d8b878045e0c2c362ed1151ba15))
+
+- **recipes**: Extend recipes API
+  ([`6bc61d4`](https://github.com/anaticulae/queuemo/commit/6bc61d4d292971cad67c2630bb3ac9984a94241c))
+
+- **result**: Add new result view
+  ([`7f4027a`](https://github.com/anaticulae/queuemo/commit/7f4027ace2e3c20b73cc58d1c6fc056eb4e126b2))
+
+- **scheduler**: Add recipe scheduler and two recipe examples
+  ([`db81a12`](https://github.com/anaticulae/queuemo/commit/db81a1278de7abe23fad245f8dfe463121341b9d))
+
+### Refactoring
+
+- **fastview**: Rename fastview to prepare new feature approach
+  ([`84cacbf`](https://github.com/anaticulae/queuemo/commit/84cacbfd4ef2ea95e134367052a255dd5c54066e))
+
+- **general**: Regroup general structure
+  ([`50b4370`](https://github.com/anaticulae/queuemo/commit/50b437020272abc506218d9e042d4e5bbe8d6b14))
+
+- **link**: Use link API to change current document state
+  ([`d4d7e76`](https://github.com/anaticulae/queuemo/commit/d4d7e7675f42c1b8f1b0f362cbaffb8e8c6bd34a))
+
+- **naming**: Clarify naming and move code
+  ([`d7b2149`](https://github.com/anaticulae/queuemo/commit/d7b214992db1d7421e0523d3dab8df3e84952931))
+
+- **queuemo**: Extend interface documentation and use utila code
+  ([`a06919f`](https://github.com/anaticulae/queuemo/commit/a06919fa5e5b0fd6355b9ce56d0fd94739a7c37b))
+
+- **remove**: Remove outdated approaches
+  ([`21fea20`](https://github.com/anaticulae/queuemo/commit/21fea201386dca842b77cde26e7a73f18a164785))
+
+- **remove**: Remove outdated code
+  ([`c714873`](https://github.com/anaticulae/queuemo/commit/c714873aec98f7adf077caa95efe54cced8c81f8))
+
+- **remove**: Remove outdated result view
+  ([`8ef69c3`](https://github.com/anaticulae/queuemo/commit/8ef69c3c7bacb309de771d0fe5ffbb75d6002eb5))
+
+- **remove**: Remove unused code
+  ([`0101d22`](https://github.com/anaticulae/queuemo/commit/0101d2267fabcd5b55a44a26a2645935f73cff4e))
+
+- **rename**: Rename test file to corresponding code file
+  ([`d88c1f8`](https://github.com/anaticulae/queuemo/commit/d88c1f87cfaf60a93882e44944006fc9688fc455))
+
+- **test**: Introduce resource package to store generated test data
+  ([`1c08703`](https://github.com/anaticulae/queuemo/commit/1c08703a000cce6ee7b2791dbdf34986c674347e))
+
+- **test**: Move recipe tests into separate folder
+  ([`38d09f3`](https://github.com/anaticulae/queuemo/commit/38d09f332bc8afb50d30bde94494cfc44b268c0c))
+
+### Testing
+
+- **fastview**: Copy fewer test data
+  ([`a72ff29`](https://github.com/anaticulae/queuemo/commit/a72ff298f092e5efa89a14179a1e48450c0adb67))
+
+- **recipe**: Add context manager to easier mock RecipeRuntime
+  ([`6ea8906`](https://github.com/anaticulae/queuemo/commit/6ea8906c39cfee0254470fec1256eb672cbd3076))
+
+- **recipe**: Rename test to have unique id
+  ([`60204a9`](https://github.com/anaticulae/queuemo/commit/60204a95237cffbca250b2da05f5292989f12170))
+
+- **resultview**: Extend examples to generate result view
+  ([`873dd6b`](https://github.com/anaticulae/queuemo/commit/873dd6bdb849ba682cf2670e3b69f2fe56293185))
+
+- **resultview**: Extend tested examples
+  ([`ce5550c`](https://github.com/anaticulae/queuemo/commit/ce5550cd13f0b0724823e274ac6c48609958d1f1))
+
+
+## v0.3.2 (2020-01-02)
+
+### Bug Fixes
+
+- **result**: Correct path where result html view must be stored
+  ([`057d3d1`](https://github.com/anaticulae/queuemo/commit/057d3d1768a5f058531e199d182b164693d140b4))
+
+
+## v0.3.1 (2020-01-02)
+
+### Bug Fixes
+
+- **result**: Create folder which must be create by feedback tool
+  ([`e7b58fb`](https://github.com/anaticulae/queuemo/commit/e7b58fbefdd491cfdc7baebe407520e293f70861))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d5f93ba`](https://github.com/anaticulae/queuemo/commit/d5f93ba1d23443de3da9bce06037e42bbf475df6))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`fe8284c`](https://github.com/anaticulae/queuemo/commit/fe8284cadeb03a88e677e41f60a78dba51140fec))
+
+### Documentation
+
+- **copyright**: Happy New Year!
+  ([`a9a2e38`](https://github.com/anaticulae/queuemo/commit/a9a2e3810d25d0922922aaaf9735ed90d0606d8f))
+
+- **strategy**: Update strategy documentation
+  ([`5b35e46`](https://github.com/anaticulae/queuemo/commit/5b35e46ca4dbddc8e6e8c4c856687e97ddce7acb))
+
+- **style**: Format docs
+  ([`a5ebb0a`](https://github.com/anaticulae/queuemo/commit/a5ebb0a9ca1cff6ca1500223285c38c004e820f6))
+
+### Features
+
+- **resultview**: Add mechanism to generate annotated pages
+  ([`f94071f`](https://github.com/anaticulae/queuemo/commit/f94071ff2f4e433f8cbcc32a925f4dbab56d9fa6))
+
+### Testing
+
+- **cli**: Rename test file
+  ([`389d24b`](https://github.com/anaticulae/queuemo/commit/389d24bb2bca158df39aa405af123ad8f3f302be))
+
+
+## v0.3.0 (2019-12-28)
+
+### Bug Fixes
+
+- **scheduler**: Pass workspace result to job info
+  ([`67daefc`](https://github.com/anaticulae/queuemo/commit/67daefce0da3633af04b6ec09965ff0eaef4c793))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`af9517d`](https://github.com/anaticulae/queuemo/commit/af9517daf7241ada5da3951be05989a5f42a2a7f))
+
+- **test**: Reduce required test power
+  ([`97a8f1b`](https://github.com/anaticulae/queuemo/commit/97a8f1b6c683bcae52e21f1dbd00ac2831d0bc0b))
+
+- **test**: Support multi processed testing
+  ([`4ab0c48`](https://github.com/anaticulae/queuemo/commit/4ab0c4824ed7893d17763e94376c55efe713b67e))
+
+### Code Style
+
+- **imports**: Organize imports
+  ([`a77df5b`](https://github.com/anaticulae/queuemo/commit/a77df5b42aa89caeade93b53c4db9ebb7727a98f))
+
+- **imports**: Organize imports
+  ([`f34b703`](https://github.com/anaticulae/queuemo/commit/f34b703e12fd9f48ea542e5a34c5705832420591))
+
+- **imports**: Organize imports
+  ([`eaa520a`](https://github.com/anaticulae/queuemo/commit/eaa520aba5ddb4f1aa1e3ded5ef88a213893d7b1))
+
+- **spelling**: Fix spelling error
+  ([`7e2d533`](https://github.com/anaticulae/queuemo/commit/7e2d5338de8bc80cff900701a7976e82a193a613))
+
+### Documentation
+
+- **general**: Introduce general doc structure
+  ([`2e15f0c`](https://github.com/anaticulae/queuemo/commit/2e15f0ccafc6c96a3f1528aea4d83aa1c8ea3ea3))
+
+- **recipes**: Extend interface documentation
+  ([`1af255b`](https://github.com/anaticulae/queuemo/commit/1af255b03e7fc217b61e9c2c1b7822ada833257d))
+
+### Features
+
+- **fastview**: Add method to extract required fastview resources
+  ([`4a1eff6`](https://github.com/anaticulae/queuemo/commit/4a1eff62a4f70aea6da4d6d374ece78fd79946eb))
+
+- **fastview**: Add method to publish fast view results
+  ([`a7e8f52`](https://github.com/anaticulae/queuemo/commit/a7e8f52c8d1df49c0cbb8e75bc00fb5b41b44f4a))
+
+- **fastview**: Add recipe to verify title page
+  ([`576f89d`](https://github.com/anaticulae/queuemo/commit/576f89d9c22484b9307f45b514ef9f90c888a81a))
+
+- **fastview**: Add run step to run fastview recipe with sub-recipes
+  ([`1f74c8d`](https://github.com/anaticulae/queuemo/commit/1f74c8db1fb7237fe6d2a5ca5b35774f0282fcb0))
+
+- **fastview**: Add validation step to verify given pdf file
+  ([`3bd7469`](https://github.com/anaticulae/queuemo/commit/3bd7469fa3004bb4aae935a1e37ab7d03079562d))
+
+- **resultview**: Add result view to invoke generation of resultview
+  ([`0a40533`](https://github.com/anaticulae/queuemo/commit/0a40533619329b3cac66299118a05c7635c250c8))
+
+- **scheduler**: Add resultview to scheduler
+  ([`09019cd`](https://github.com/anaticulae/queuemo/commit/09019cdab66764f272398ca7f9ebfd025f8880f3))
+
+- **scheduler**: Add verify and fastview step to scheduler
+  ([`4281c84`](https://github.com/anaticulae/queuemo/commit/4281c84208488ce96c2723a987bb1e42a96d11cb))
+
+- **test**: Extend file creation counter with file ending
+  ([`67c79a0`](https://github.com/anaticulae/queuemo/commit/67c79a0206e468fc19b47802e3b7c21e46cf4507))
+
+### Refactoring
+
+- **cli**: Rename command line tool to current convention
+  ([`792ec2e`](https://github.com/anaticulae/queuemo/commit/792ec2e8af432f51e033e046156dada0b48d6c48))
+
+- **fastview**: Move document checker to more general place
+  ([`bea9cd1`](https://github.com/anaticulae/queuemo/commit/bea9cd102a82b158ff54645c7162ee6499437e75))
+
+- **fastview**: Move fastview output path to global variable
+  ([`105c24f`](https://github.com/anaticulae/queuemo/commit/105c24fd52741bd2eecea94a97200b9c1b88876c))
+
+- **fastview**: Move interface check to separate method
+  ([`a448cb7`](https://github.com/anaticulae/queuemo/commit/a448cb7a01d3355df8a0d4c93d682a283a2dcbe9))
+
+- **naming**: Use more specific naming
+  ([`dd5019a`](https://github.com/anaticulae/queuemo/commit/dd5019a67e6afd2cab5f9b696ca570e22cf1698f))
+
+- **recipes**: Use key word args instead of hard coded page number
+  ([`8a57c96`](https://github.com/anaticulae/queuemo/commit/8a57c9681273c8185b0798899b68dbe9cbba25c0))
+
+- **replace**: Replace with utila code
+  ([`33d43ff`](https://github.com/anaticulae/queuemo/commit/33d43ff0f52ee76cc0b4f8816d0f2465d7726566))
+
+- **scheduler**: Clarify progress start process
+  ([`c20d60f`](https://github.com/anaticulae/queuemo/commit/c20d60f8c4e1a87065a176b72cc570e7c0793491))
+
+- **test**: Remove unused code
+  ([`91ae07f`](https://github.com/anaticulae/queuemo/commit/91ae07f1c20c27d260ac26e251627246407b13a9))
+
+### Testing
+
+- **disabled**: Remove wrong xfail notation
+  ([`ce7daf1`](https://github.com/anaticulae/queuemo/commit/ce7daf1e9dba36d866edbfd079580f77ca03aa17))
+
+- **general**: Add method to verify that method creates some files
+  ([`2c113e5`](https://github.com/anaticulae/queuemo/commit/2c113e54cb088ca8b9a827bdc08724166cc69006))
+
+- **general**: Add parameter to control if coping todo test data
+  ([`de5e2d1`](https://github.com/anaticulae/queuemo/commit/de5e2d14810b1df1a3d42abaa3c4e0711716ad8a))
+
+- **refactor**: Move todo example to a more general place
+  ([`bd19521`](https://github.com/anaticulae/queuemo/commit/bd19521c5447f07d2e5bf70e663ec53d17c129d5))
+
+
+## v0.2.1 (2019-08-03)
+
+### Bug Fixes
+
+- **cli**: Close scheduler with correct error code on failure
+  ([`ebdd73d`](https://github.com/anaticulae/queuemo/commit/ebdd73d4f7b7c2ca2519911a182664f0204b0375))
+
+- **cli**: Fix typo in command line interface
+  ([`e513b7e`](https://github.com/anaticulae/queuemo/commit/e513b7e131f93c638feef54f5310592ea1a9ccf1))
+
+- **env**: Fix env vars - overwrite instead of replacing
+  ([`9ac786b`](https://github.com/anaticulae/queuemo/commit/9ac786b55ac0ee2e76783722869e34d3a8b78c08))
+
+- **scheduler**: Ignore single file as working input
+  ([`a85490b`](https://github.com/anaticulae/queuemo/commit/a85490be413770d93ece9871f73c6904caaa15c4))
+
+- **setup**: Add missing package url
+  ([`be6f1a7`](https://github.com/anaticulae/queuemo/commit/be6f1a7cd250b356aa6beab30f9970da19f02c15))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`12b8d5a`](https://github.com/anaticulae/queuemo/commit/12b8d5acc232c6b279f717d39592d9e57cc118e6))
+
+### Features
+
+- **cli**: Setup logging level on start up via --verbose level
+  ([`8f7c07b`](https://github.com/anaticulae/queuemo/commit/8f7c07b49ae096a068f2fedf5b12440a17666cdd))
+
+- **experimental**: Add method to run command with manipulated os env
+  ([`f507243`](https://github.com/anaticulae/queuemo/commit/f507243895e53cb901d7c42fafbef5e62a5fd9e5))
+
+- **log**: Add log entree of todo path after startup
+  ([`6d7efd7`](https://github.com/anaticulae/queuemo/commit/6d7efd78a58d9fb960cf08704ea6b9c6f316daea))
+
+- **log**: Show path which hits the assertion
+  ([`728b68f`](https://github.com/anaticulae/queuemo/commit/728b68f3274db76d871c6e7ae5eb4c276ac335cc))
+
+- **utils**: Add method to display environment variables
+  ([`65eabce`](https://github.com/anaticulae/queuemo/commit/65eabced70f5ed2684d6aed98eab0774d2c101da))
+
+### Refactoring
+
+- **replace**: Replace `copy_content` with utila method
+  ([`8883b4e`](https://github.com/anaticulae/queuemo/commit/8883b4e10ec92d9cff4b770c0fc83d0c706e01c4))
+
+### Testing
+
+- **core**: Add test to run queuemo to evaluate 2 examples
+  ([`b82e361`](https://github.com/anaticulae/queuemo/commit/b82e3615cdbb16d9e02d900d6b53b4e9140e51aa))
+
+- **refactor**: Make test interface more explicit
+  ([`5001d08`](https://github.com/anaticulae/queuemo/commit/5001d081f2f3b1e22abb43135265b5177a9992f0))
+
+- **refactor**: Rename install job corresponding to global test strategy
+  ([`b65ee66`](https://github.com/anaticulae/queuemo/commit/b65ee66feaf249130c69b6bf9406ca85561036bd))
+
+- **refactor**: Rename run method more explicit to avoid namespace collisions
+  ([`d197b80`](https://github.com/anaticulae/queuemo/commit/d197b8047169a5c4a8163ce64bf3eb31b79d62d5))
+
+- **resource**: Add resources which is able to a valid common view
+  ([`c03fb2b`](https://github.com/anaticulae/queuemo/commit/c03fb2befa30cca36e88cc75d4d4764f8fb10c80))
+
+
+## v0.2.0 (2019-08-03)
+
+### Bug Fixes
+
+- **recipe**: Fix method header to pass kwargs to parametrize runnable s
+  ([`d1ae5e7`](https://github.com/anaticulae/queuemo/commit/d1ae5e70df9a541f65af77a5ec56e5e6ab5b079c))
+
+- **utils**: Create all required parent folder
+  ([`8e2e5f0`](https://github.com/anaticulae/queuemo/commit/8e2e5f011b8de9281ba769ac0a3269884c98fbd0))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`620efa0`](https://github.com/anaticulae/queuemo/commit/620efa0fb1b2847ac46e8a1b1ee2002e10c07823))
+
+- **requirements**: Upgrade requirements.txt
+  ([`b50023c`](https://github.com/anaticulae/queuemo/commit/b50023cad5ec46ac38d93bbb5a9619af196eeccb))
+
+- **requirements**: Upgrade requirements.txt
+  ([`f3b2ac5`](https://github.com/anaticulae/queuemo/commit/f3b2ac5ef4ba114256543514b470dc098e7888e9))
+
+- **requirements**: Upgrade requirements.txt
+  ([`717f53c`](https://github.com/anaticulae/queuemo/commit/717f53ce6f64e6238691b3fdad9e0b8920e50e97))
+
+- **requirements**: Upgrade requirements.txt
+  ([`2501e0a`](https://github.com/anaticulae/queuemo/commit/2501e0a5c31cef1046a61888e041c7b651e1a168))
+
+- **requirements**: Upgrade requirements.txt
+  ([`fdc2c8f`](https://github.com/anaticulae/queuemo/commit/fdc2c8f1dd70be5ed8dbde97b4abb0fc8ad31f89))
+
+### Features
+
+- **cli**: Print invalid input error message and return failure
+  ([`b5e857f`](https://github.com/anaticulae/queuemo/commit/b5e857f38ef007e73d28a0d4651ba9a79b06ab89))
+
+- **docsplit**: Add component to split document in different `Sections`
+  ([`ef18e42`](https://github.com/anaticulae/queuemo/commit/ef18e42685079a82cd7a3ea75e986515dc30da6b))
+
+- **layout**: Add file to describe result view
+  ([`243e052`](https://github.com/anaticulae/queuemo/commit/243e052f2c3c8d8503bd5a54b8ac7416ed8af92f))
+
+- **recipe**: Add new `recipe` approach
+  ([`b08e985`](https://github.com/anaticulae/queuemo/commit/b08e985fc591aed6e389435d3f011989b3248793))
+
+- **recipe**: Add optional args and prefix parameter to process runner
+  ([`26cd8ba`](https://github.com/anaticulae/queuemo/commit/26cd8ba9562e611437f97c3daabe612550ca3067))
+
+- **recipe**: Parameterize rawmaker to extract different layouts
+  ([`98b92c8`](https://github.com/anaticulae/queuemo/commit/98b92c8487ad2dc20fdfbe7ed5cd69a0b69fe952))
+
+- **run**: Use new featurepack multi input behavior
+  ([`fa3f769`](https://github.com/anaticulae/queuemo/commit/fa3f7696fa63287c73ab7ea27a1725ed3985f1d6))
+
+- **tabstructure**: Add loading file and accept comments
+  ([`86c303f`](https://github.com/anaticulae/queuemo/commit/86c303f5ed264b372ccf6162c051ae5f6d400eed))
+
+- **tabstructure**: Add tabstructure to simplify managing output paths
+  ([`e915b70`](https://github.com/anaticulae/queuemo/commit/e915b70f545d938e7cbdb8ede06c067d1204c57c))
+
+- **utils**: Add method to copy files and folder
+  ([`db08bc1`](https://github.com/anaticulae/queuemo/commit/db08bc1d7257b3716bbbc2e3920be98c859fca3d))
+
+- **view**: Add generation of common view to display document
+  ([`5b3a86b`](https://github.com/anaticulae/queuemo/commit/5b3a86b6c44de70737d81f059ad0c1713151686f))
+
+### Refactoring
+
+- **recipes**: Extract constants to reuse later
+  ([`b681995`](https://github.com/anaticulae/queuemo/commit/b681995737113dad6afb9cc4c2f4b65487332bae))
+
+### Testing
+
+- **docsplit**: Add test to run docsplit
+  ([`6b3a07d`](https://github.com/anaticulae/queuemo/commit/6b3a07d266cf2121dfe6e3c5c61a909e71576009))
+
+- **names**: Fix test name to ease invoke partial tests manually
+  ([`d9064bd`](https://github.com/anaticulae/queuemo/commit/d9064bd1be4d05fc88d5cdefceadda6b3705e98d))
+
+- **recipes**: Add test to run setup and extract pdf file
+  ([`237e055`](https://github.com/anaticulae/queuemo/commit/237e0553feae59dd8f020cbaac9470b22a7350d6))
+
+- **refactor**: Expose expected return value to increase code re usability
+  ([`4d153fe`](https://github.com/anaticulae/queuemo/commit/4d153fe00fbc929a85caecd773b063720d124604))
+
+- **refactor**: Move test data to resources to confirm with global test strategy
+  ([`9f6f81b`](https://github.com/anaticulae/queuemo/commit/9f6f81b11a59a4c598934291b20f8b7fd73d75bd))
+
+- **refactor**: Remove debugging code
+  ([`4252acf`](https://github.com/anaticulae/queuemo/commit/4252acf4e37f377b0ff9180a0df47f5fd8d457f8))
+
+- **refactor**: Replace outdated `utila` code
+  ([`473d0b2`](https://github.com/anaticulae/queuemo/commit/473d0b2924c8f1e3a8a8facc1aeb85e0fa6096a0))
+
+- **utils**: Add test to copy files and folder
+  ([`f8fe096`](https://github.com/anaticulae/queuemo/commit/f8fe09673b9cc0603c04eb8d87767efc1c7711c0))
+
+
+## v0.1.2 (2019-07-20)
+
+### Bug Fixes
+
+- **recipe**: Fix in/out path to new featurepack pattern
+  ([`fc66a8e`](https://github.com/anaticulae/queuemo/commit/fc66a8e6a080c72e4ff7a256f743e5aed1693d70))
+
+### Chores
+
+- **requirements**: Upgrade requirements.txt
+  ([`d84d2d4`](https://github.com/anaticulae/queuemo/commit/d84d2d46edbb522b0049fe9f15bab058d6900304))
+
+- **requirements**: Upgrade requirements.txt
+  ([`68dcead`](https://github.com/anaticulae/queuemo/commit/68dcead4c9e61ba6beb9ba926fefa7f079959b79))
+
+### Refactoring
+
+- **steps**: Move `Steps` to API package
+  ([`af11623`](https://github.com/anaticulae/queuemo/commit/af116239448e81da31176a246c7fc79d405e05d1))
+
+
+## v0.1.1 (2019-06-03)
+
+### Bug Fixes
+
+- **result**: Remove unit from result file, it is displayed by `viewo`
+  ([`7fb8734`](https://github.com/anaticulae/queuemo/commit/7fb87340bdd66911ae2dfc4695d8914cf13dd19e))
+
+### Chores
+
+- **config**: Add config with ugly fonts to copy while installing
+  ([`2b3f7a2`](https://github.com/anaticulae/queuemo/commit/2b3f7a2b1d7a634cea2d57b048a4c6703775c3a5))
+
+- **requirements**: Upgrade feedback to use feedback_decider_border
+  ([`d9fbeed`](https://github.com/anaticulae/queuemo/commit/d9fbeedc82bfb3d9638ec7f86dfadb597842cc16))
+
+- **requirements**: Upgrade iamraw to use ugly word view generator
+  ([`9742782`](https://github.com/anaticulae/queuemo/commit/974278230fd63786ea62b3e6bb313b4c7c0b25a5))
+
+- **requirements**: Upgrade requirements
+  ([`add0841`](https://github.com/anaticulae/queuemo/commit/add0841be47e8df562a4b7435ade246af0041504))
+
+### Code Style
+
+- **housekeeping**: Add missing dataclass decorator
+  ([`7c82c29`](https://github.com/anaticulae/queuemo/commit/7c82c29fa1414f880c87770730e106f181bf7172))
+
+### Features
+
+- **recipe**: Improve writing recipes - reduce code, improve stability
+  ([`b2a4ad6`](https://github.com/anaticulae/queuemo/commit/b2a4ad61ff74f5ca5b0f894a113dbd9377aea797))
+
+- **recipes**: Add folder to store different recipes
+  ([`34ce9ef`](https://github.com/anaticulae/queuemo/commit/34ce9ef8a8274ce69c9e395d63ec0319e977ce26))
+
+- **uglyfont**: Add ugly font detection to default recipe
+  ([`ccf09cf`](https://github.com/anaticulae/queuemo/commit/ccf09cf2c003693854035dbcc6f788079e6e336d))
+
+
+## v0.1.0 (2019-05-07)
+
+### Bug Fixes
+
+- **imports**: Extend imports to include every package of project
+  ([`5989a29`](https://github.com/anaticulae/queuemo/commit/5989a2968b59c4b32077c7827cd9a08acbfd5544))
+
+- **logging**: Fix logging of recipe
+  ([`0fa0740`](https://github.com/anaticulae/queuemo/commit/0fa0740e7eaaec674b336562b98339a1d3a0e3aa))
+
+- **publish**: Publish to `result` folder which `viewo` expects
+  ([`017fb27`](https://github.com/anaticulae/queuemo/commit/017fb277a87bd77ee7c9cddcf4a882033415d1a8))
+
+- **recipe**: Fix output of words index, which was doubled
+  ([`291fbca`](https://github.com/anaticulae/queuemo/commit/291fbca59589b989ba7bd47a9db18421b5507c24))
+
+- **scheduler**: Use only folder which are not in progress
+  ([`f0f1f6a`](https://github.com/anaticulae/queuemo/commit/f0f1f6af0e4959ffd56b90102ebab4d880c6717f))
+
+- **spelling**: Fix spelling recipe
+  ([`6f5f7c5`](https://github.com/anaticulae/queuemo/commit/6f5f7c574d0f7b7eb15680f2a09ddcfb6a5037b7))
+
+- **testdir**: Copy todo to testdir to avoid deleting todo source folder
+  ([`8856bc3`](https://github.com/anaticulae/queuemo/commit/8856bc3f85a55c07ccbce919d5d7718547ea10c8))
+
+- **verbose**: Remove verbose flag to use it from utila
+  ([`ceeb7dd`](https://github.com/anaticulae/queuemo/commit/ceeb7dd02c589f3f8da5573e4bc734a0d6d1c69b))
+
+### Chores
+
+- **processes**: Upgrade version of used processes
+  ([`23f90dd`](https://github.com/anaticulae/queuemo/commit/23f90ddee5c55ce3c41c801db2239bcb86ee87f8))
+
+- **requirements**: Upgrade link package
+  ([`2c232e9`](https://github.com/anaticulae/queuemo/commit/2c232e9604d15f36788118fb8d15ca415cec1a68))
+
+- **requirements**: Upgrade rawmaker version
+  ([`adbc14b`](https://github.com/anaticulae/queuemo/commit/adbc14b972da878e623836ca87d153bb492444d6))
+
+- **requirements**: Upgrade requirements.txt
+  ([`a6e171c`](https://github.com/anaticulae/queuemo/commit/a6e171c8a5a75a9c1a932f406f5e39e58b70dd71))
+
+- **setup**: Add requirements and data files to setup process
+  ([`3a0e54f`](https://github.com/anaticulae/queuemo/commit/3a0e54f9c54b99ba8bb9645291a5fa9d71f4ad4e))
+
+- **workspace**: Remove code workspace, use baw --ide to generate new one
+  ([`15e21db`](https://github.com/anaticulae/queuemo/commit/15e21db0942cf3c382f23d4b3c50fb3fad83f6c1))
+
+### Documentation
+
+- **strategy**: Update strategy paper and include to main document
+  ([`0a80233`](https://github.com/anaticulae/queuemo/commit/0a80233e14c6b5b84edfaab3e6ca432d07c8d58c))
+
+### Features
+
+- **cmdline**: Add flags to control runtime of scheduler
+  ([`23447a2`](https://github.com/anaticulae/queuemo/commit/23447a2a7fc42d6ccd6e691709e0aac22e4e3b49))
+
+- **cmdline**: Add scheduler start to cmdline entry point
+  ([`d30ded2`](https://github.com/anaticulae/queuemo/commit/d30ded29ba1f9837c9d4bc3a6769cff24e20c409))
+
+- **cmdline**: Add verbose flag to control verbosity of output
+  ([`1ca679e`](https://github.com/anaticulae/queuemo/commit/1ca679efb31d807e6509700495b25491b542291f))
+
+- **cmdline**: Extend recipe to generate html view
+  ([`e0f0c51`](https://github.com/anaticulae/queuemo/commit/e0f0c51065c147e9b015b8a67e1340fa751a98ad))
+
+- **job**: Remove temp path after finish and coping analysis
+  ([`7d49e94`](https://github.com/anaticulae/queuemo/commit/7d49e946308801bd82bee88d6f75474d22910414))
+
+- **logging**: Extend logging of recipe process
+  ([`797463a`](https://github.com/anaticulae/queuemo/commit/797463a7d767c6b46fc6b1f18a16fd524fc48d6d))
+
+- **scheduler**: Add prototype of recipe to chain data procession
+  ([`8667c4c`](https://github.com/anaticulae/queuemo/commit/8667c4c3263ddee4b2e02b057552c61354749b29))
+
+- **scheduler**: Log version of used tools while startup process
+  ([`7d4459b`](https://github.com/anaticulae/queuemo/commit/7d4459b5613184f7b162533833420b8bd77bd76c))
+
+- **scheduler**: Mark job as in progress with 0 percent
+  ([`ae12350`](https://github.com/anaticulae/queuemo/commit/ae1235079635d1d74baf704384ff15997c7356ea))
+
+- **scheeduler**: Add find job implementation
+  ([`7cc7c3b`](https://github.com/anaticulae/queuemo/commit/7cc7c3bcbb1fc47b454213b8845b21a67b24d9e7))
+
+### Refactoring
+
+- **cmdline**: Clean up source code
+  ([`b07a9ff`](https://github.com/anaticulae/queuemo/commit/b07a9ff86b39429bd32d6f9efea90c0f81b60658))
+
+- **tests**: Clean up the tests
+  ([`cf1db1a`](https://github.com/anaticulae/queuemo/commit/cf1db1aa63df950f4f44ad86370121f8088a31a0))
+
+### Testing
+
+- **cmdline**: Add test to run view generation feature
+  ([`2b50ea8`](https://github.com/anaticulae/queuemo/commit/2b50ea878fd2458c352ab6bb6bfd586170f4ca4c))
+
+- **verbose**: Reactivate verbose tests
+  ([`8090e0c`](https://github.com/anaticulae/queuemo/commit/8090e0cfc29009ea7dfc2afa8c901e9b8a72d9b3))
+
+
+## v0.0.1 (2019-04-26)
+
+### Chores
+
+- **requirements**: Add link package to communicate with viewo
+  ([`4637a45`](https://github.com/anaticulae/queuemo/commit/4637a45a420dabb725dc7cfa14c78d1752f75b85))
+
+- **requirements**: Upgrade requirements.txt
+  ([`1abb752`](https://github.com/anaticulae/queuemo/commit/1abb7525ea34a07075e3400418faa6138fc2c7b5))
+
+- **requirements**: Upgrade requirements.txt
+  ([`1712f53`](https://github.com/anaticulae/queuemo/commit/1712f531c20906d902c943c8875927bb3cfe839f))
+
+- **requirements**: Upgrade requirements.txt
+  ([`6017855`](https://github.com/anaticulae/queuemo/commit/6017855a965f0b99a578b2f0339cb2a59a4a90f8))
+
+- **requirements**: Upgrade utila to 0.5.8
+  ([`1a4488f`](https://github.com/anaticulae/queuemo/commit/1a4488f327287fcd76851d569eeaece82a052649))
+
+### Features
+
+- **config**: Add access to config with todo and ready folder
+  ([`2bc4953`](https://github.com/anaticulae/queuemo/commit/2bc49534f5a4fc5647533c3441a01f76dad38f22))
+
+- **config**: Move access to global environment to configo package
+  ([`7e0b50e`](https://github.com/anaticulae/queuemo/commit/7e0b50e46671426a5d907d258073aa4f21a7a715))
+
+- **job**: Using job definition from `link`
+  ([`9cd6bc5`](https://github.com/anaticulae/queuemo/commit/9cd6bc5dc5ec6fca85dcd9b6a693b4b7c5f7547d))
+
+- **packages**: Add rawmaker and groupme feature packages
+  ([`6982ae4`](https://github.com/anaticulae/queuemo/commit/6982ae4c4a42424d51dc9def63b488bae2004be6))
+
+- **scheduler**: Add scheduler to watch todo folder and start working
+  ([`1487e35`](https://github.com/anaticulae/queuemo/commit/1487e3580310392aefd4453c714572ef8b1044c9))
+
+- **scheduler**: Limit loop by max ticks to avoid endless loop
+  ([`29e223a`](https://github.com/anaticulae/queuemo/commit/29e223ac08770dbf5a4aa9ca029db754910fee11))
+
+- **scheduler**: Push job after finishing job to ready folder
+  ([`df7745b`](https://github.com/anaticulae/queuemo/commit/df7745bbeaa703e298cd35c20f2226791a5d32c3))
+
+- **statistica**: Add external statistica and feedback module
+  ([`388c162`](https://github.com/anaticulae/queuemo/commit/388c162a5c22574070599dde0e9f1b81acc0c0b0))
+
+### Testing
+
+- **basic**: Add basic test setup
+  ([`92a68d3`](https://github.com/anaticulae/queuemo/commit/92a68d3c29ad5221665059e975bfb80e6463e502))
+
+- **example**: Add todo example to test scheduler
+  ([`3e6e938`](https://github.com/anaticulae/queuemo/commit/3e6e9382d2d2409657d4f209ccb6ab6323ff3b02))
+
+- **main**: Ensure --version on startup returns success
+  ([`0b2e9e0`](https://github.com/anaticulae/queuemo/commit/0b2e9e0b365beedabc0e19d79578e7817b9109f0))
+
+
+## v0.0.0 (2019-04-22)
+
+- Initial Release
