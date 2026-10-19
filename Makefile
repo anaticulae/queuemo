@@ -38,7 +38,7 @@ docker-alltest: docker-decrypt
 		-v $(CURDIR):/var/workdir \
 		-v /tmp/queuemo:/tmp/queuemo \
 		$(IMAGE_NAME) \
-		"baw test all --generate"
+		"baw test all --generate -n1"
 
 docker-lint: docker-build
 	docker run\
