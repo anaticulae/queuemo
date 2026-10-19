@@ -15,7 +15,6 @@ import utilo
 import queuemo
 import queuemo.runtime.runtime
 import tests
-import tests.resources
 
 
 @contextlib.contextmanager
