@@ -40,6 +40,13 @@ docker-alltest: docker-decrypt
 		$(IMAGE_NAME) \
 		"baw test all --generate -n1"
 
+docker-nightly: docker-decrypt
+	docker run\
+		-v $(CURDIR):/var/workdir \
+		-v /tmp/queuemo:/tmp/queuemo \
+		$(IMAGE_NAME) \
+		"baw test nightly --generate -n1"
+
 docker-lint: docker-build
 	docker run\
 		-v $(CURDIR):/var/workdir \
