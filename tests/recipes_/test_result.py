@@ -58,7 +58,6 @@ def test_recipe_result_run_single(td, mp):  # pylint:disable=W0621
     pytest.param('master089', marks=utilotest.nightly),
 ])
 @tests.conftest.generated
-@utilotest.nightly
 def test_recipe_result_run_example(jobid, td, mp):
     completed = run_resultview(
         td.tmpdir,
