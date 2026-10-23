@@ -9,7 +9,6 @@
 
 import os
 
-import configos.directory
 import utilotest
 
 import queuemo.runtime.api
@@ -26,7 +25,7 @@ def test_run_steps(capsys, td, mp):
         queuemo.worker.startup.step(job=None, config=config)
         assert '.' in utilotest.stdout(capsys)
         queuemo.worker.startup.step(
-            job=tests.resources.EXAMPLE_JOB,
+            job=tests.resources.EXAMPLE_JOB_ID,
             config=config,
         )
         progress = utilotest.stdout(capsys)
@@ -37,14 +36,6 @@ def test_run_steps(capsys, td, mp):
 
 @tests.conftest.generated
 def test_copy_job_to_workspace(td, mp):
-    with mp.context() as context:
-        context.setattr(
-            os,
-            'environ',
-            {
-                configos.directory.TODO: tests.resources.TODO,
-                configos.directory.TMP: td.tmpdir,
-            },
-        )
-        workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB)
+    with tests.patch_todo(td, mp):
+        workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB_ID)
         assert os.path.exists(workspace), workspace

@@ -21,10 +21,10 @@ import tests.resources
 def test_recipe_run(td, mp):
     root = str(td)
     with tests.patch_todo(td, mp):
-        workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB)
+        workspace = queuemo.worker.startup.copy(tests.resources.EXAMPLE_JOB_ID)
         queuemo.runtime.execute.run_document(
             workspace,
-            documentid=tests.resources.EXAMPLE_JOB,
+            documentid=tests.resources.EXAMPLE_JOB_ID,
             outpath=root,
         )
     # TODO: VERIFY RESULT WITH ASSERTION
