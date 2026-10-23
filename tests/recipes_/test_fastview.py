@@ -10,7 +10,6 @@
 import pytest
 import utilotest
 
-import queuemo.recipes.fastview
 import tests
 import tests.fixtures.todo
 import tests.resources
