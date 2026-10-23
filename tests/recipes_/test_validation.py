@@ -26,13 +26,13 @@ def test_recipe_validation_success(td, mp):
     """Ensure to create validation result via `pdfinfo` tool"""
     with tests.fixtures.todo.runtime(
             td.tmpdir,
-            tests.resources.EXAMPLE_JOB,
+            tests.resources.EXAMPLE_JOB_ID,
             queuemo.recipes.VALIDATION,
             mp,
     ) as rt:  # pylint:disable=C0103
         with utilotest.increased_filecount(td.tmpdir, 'yaml'):
             completed = rt.next_step()
-        pdfinfo = qvlink.pdfinfo(tests.resources.EXAMPLE_JOB)
+        pdfinfo = qvlink.pdfinfo(tests.resources.EXAMPLE_JOB_ID)
     assert completed
     assert pdfinfo.version.major == 1
     assert pdfinfo.version.minor == 5

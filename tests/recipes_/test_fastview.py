@@ -19,7 +19,7 @@ import tests.resources
 def test_recipe_fastview_run_single(td, mp):
     completed = run_fastview(
         td.tmpdir,
-        tests.resources.EXAMPLE_JOB,
+        tests.resources.EXAMPLE_JOB_ID,
         mp,
     )
     assert completed

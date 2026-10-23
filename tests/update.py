@@ -31,7 +31,7 @@ def extract_examples(files):
 
     create_example(
         hoverpower.DOCU009_PDF,
-        todoname=tests.resources.EXAMPLE_JOB,
+        todoname=tests.resources.EXAMPLE_JOB_ID,
         filename='howto-cporting.pdf',  # TODO: decide what is correct, see below
     )
     create_example(

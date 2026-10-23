@@ -23,7 +23,7 @@ def test_chapter(td, mp, capsys):
     plan.shrink('before magic chapter'.split())
     with tests.fixtures.todo.runtime(
             workspace=td.tmpdir,
-            document=tests.resources.EXAMPLE_JOB,
+            document=tests.resources.EXAMPLE_JOB_ID,
             recipes=(validation, plan),
             mp=mp,
     ) as rt:  # pylint:disable=C0103
