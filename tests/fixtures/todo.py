@@ -21,7 +21,7 @@ import tests
 def runtime(
     workspace,
     document: str,
-    recipes: list,
+    recipes: list | tuple,
     mp,
     config=None,
 ) -> queuemo.runtime.runtime.RecipeRuntime:
