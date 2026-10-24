@@ -15,14 +15,13 @@ import utilo
 import queuemo
 import queuemo.runtime.runtime
 import tests
-import tests.resources
 
 
 @contextlib.contextmanager
 def runtime(
     workspace,
     document: str,
-    recipes: list,
+    recipes: list | tuple,
     mp,
     config=None,
 ) -> queuemo.runtime.runtime.RecipeRuntime:

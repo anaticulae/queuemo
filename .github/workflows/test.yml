@@ -51,6 +51,18 @@ jobs:
         run: make docker-alltest
         env:
           HOVERPOWER_SECRET: ${{ secrets.HOVERPOWER_SECRET }}
+  nightly:
+    runs-on: ubuntu-24.04
+    needs: alltest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+        # required by test which requires commits
+          fetch-depth: 15
+      - name: run nightly
+        run: make docker-nightly
+        env:
+          HOVERPOWER_SECRET: ${{ secrets.HOVERPOWER_SECRET }}
   linter:
     runs-on: ubuntu-24.04
     needs: build

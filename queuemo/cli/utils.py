@@ -10,7 +10,7 @@
 import os
 
 import configos
-import utilo.logger
+import utilo
 
 
 def logger_start():

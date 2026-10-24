@@ -53,6 +53,7 @@ def patch_todo(td, mp, copy=True):  # pylint:disable=W0613
         else:
             os.makedirs(todopath, exist_ok=True)
 
+        before = configos.environment()
         with mp.context() as context:
             # Overwrite env vars instead of replacing. If we replace the
             # vars we have to set every single variable again, like
@@ -61,6 +62,8 @@ def patch_todo(td, mp, copy=True):  # pylint:disable=W0613
             context.setenv(configos.directory.TODO, todopath)
             context.setenv(configos.directory.READY, readypath)
             yield
+        # restore old env
+        configos.export(*before)
 
 
 def run_queuemo(  # pylint:disable=W0613

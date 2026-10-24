@@ -22,23 +22,30 @@ docker-doctest: docker-build
 docker-fasttest: docker-decrypt
 	docker run\
 		-v $(CURDIR):/var/workdir \
-		-v /tmp/decider:/tmp/decider \
+		-v /tmp/queuemo:/tmp/queuemo \
 		$(IMAGE_NAME) \
 		"baw test fast"
 
 docker-longtest: docker-decrypt
 	docker run\
 		-v $(CURDIR):/var/workdir \
-		-v /tmp/decider:/tmp/decider \
+		-v /tmp/queuemo:/tmp/queuemo \
 		$(IMAGE_NAME) \
 		"baw test long"
 
 docker-alltest: docker-decrypt
 	docker run\
 		-v $(CURDIR):/var/workdir \
-		-v /tmp/decider:/tmp/decider \
+		-v /tmp/queuemo:/tmp/queuemo \
 		$(IMAGE_NAME) \
-		"baw test all --generate"
+		"baw test all --generate -n1"
+
+docker-nightly: docker-decrypt
+	docker run\
+		-v $(CURDIR):/var/workdir \
+		-v /tmp/queuemo:/tmp/queuemo \
+		$(IMAGE_NAME) \
+		"baw test nightly --generate -n1"
 
 docker-lint: docker-build
 	docker run\
@@ -49,7 +56,7 @@ docker-lint: docker-build
 docker-decrypt: docker-build
 	docker run\
 		-v $(CURDIR):/var/workdir \
-		-v /tmp/decider:/tmp/decider \
+		-v /tmp/queuemo:/tmp/queuemo \
 		-e HOVERPOWER_STORE=/var/workdir/hoverpower/repo \
 		-e HOVERPOWER_SECRET \
 		$(IMAGE_NAME) \
