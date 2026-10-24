@@ -1,6 +1,59 @@
 # CHANGELOG
 
 
+## v1.27.7 (2026-10-24)
+
+### Bug Fixes
+
+- **test**: Restore env correctly
+  ([`50a62d8`](https://github.com/anaticulae/queuemo/commit/50a62d809bb965d5f8ff0f03fef8852734705efb))
+
+### Chores
+
+- **docker**: Add missing GL lib
+  ([`d544472`](https://github.com/anaticulae/queuemo/commit/d5444722e359996a58399458723302760608a0ae))
+
+- **make**: Adjust tmp path
+  ([`fd4f777`](https://github.com/anaticulae/queuemo/commit/fd4f77756b72549bffac12585296fec89467f3fa))
+
+- **pyproject**: Add missing resource to download
+  ([`fd3c3b4`](https://github.com/anaticulae/queuemo/commit/fd3c3b47d5fb088162cfea67f463556b91dba5d7))
+
+- **test**: Add nightly to run more tests
+  ([`7f7c685`](https://github.com/anaticulae/queuemo/commit/7f7c6855f9c298c8e4efe3ad025e52e8629eba6a))
+
+### Code Style
+
+- **test**: Remove unused import
+  ([`fe162b5`](https://github.com/anaticulae/queuemo/commit/fe162b5cdb9f89026293792aa99fb407b8de5039))
+
+- **tests**: Organize imports
+  ([`f843fa3`](https://github.com/anaticulae/queuemo/commit/f843fa3532b160b2576701d6d69ca15ac4b94c71))
+
+- **todo**: Improve code style
+  ([`c766aee`](https://github.com/anaticulae/queuemo/commit/c766aee7128e71a64804d927b4f9250529665891))
+
+- **utils**: Organize imports
+  ([`b7e0ce6`](https://github.com/anaticulae/queuemo/commit/b7e0ce60681fbc1bc59b494b6518b8a65390bf88))
+
+### Testing
+
+- **disable**: Make test run
+  ([`1d5e0aa`](https://github.com/anaticulae/queuemo/commit/1d5e0aa9597b13d8ae2a906951db7164e91dbead))
+
+- **make**: Avoid side effects
+  ([`d334264`](https://github.com/anaticulae/queuemo/commit/d334264ea945270b090b42cb11a323a2b7b2a9c5))
+
+- **refactor**: Clarify var name
+  ([`eecb076`](https://github.com/anaticulae/queuemo/commit/eecb076a6b488d21b8d3bd45207d3b8b33c50477))
+
+- **result**: Remove duplicated test flag
+  ([`c62837e`](https://github.com/anaticulae/queuemo/commit/c62837e43ee875184d4175e7fdb190ac29f99ff1))
+
+- **scheduler**: Patch env correctly
+  ([`d24f350`](https://github.com/anaticulae/queuemo/commit/d24f350d4cabe09fbf75541ec6226813260945f9))
+
+
 ## v1.27.6 (2026-10-19)
 
 ### Chores
