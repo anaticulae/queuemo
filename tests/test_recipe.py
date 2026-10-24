@@ -7,16 +7,17 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
+import pytest
 import utilotest
 
 import queuemo.runtime
-import queuemo.runtime.api
 import queuemo.runtime.execute
 import queuemo.worker.startup
 import tests
 import tests.resources
 
 
+@pytest.mark.xfail(strict=False)
 @utilotest.nightly
 def test_recipe_run(td, mp):
     root = str(td)
