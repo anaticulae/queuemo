@@ -8,6 +8,7 @@
 # =============================================================================
 
 import qvlink
+import utilo
 
 import queuemo.recipes
 import queuemo.recipes.logger
@@ -20,7 +21,7 @@ def run_document(
     documentid: str,
     outpath: str,
     config=None,
-):
+) -> int:
     if config is None:
         config = queuemo.runtime.api.RecipeConfig()
     # queuemo.runnable.check(RUNNER)
@@ -57,4 +58,6 @@ def run_document(
                 # before to avoid overwriting error message
                 error = queuemo.recipes.logger.content()
                 qvlink.fail(documentid, error=error)
+                return utilo.FAILURE
             break
+    return utilo.SUCCESS

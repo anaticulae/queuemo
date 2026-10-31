@@ -52,13 +52,13 @@ def main() -> int:
     # analyze single document
     tmpdir = utilo.tmpdir(configos.tmp())
     jobid = queuemo.worker.startup.jobid(inpath)
-    queuemo.runtime.execute.run_document(
+    returncode = queuemo.runtime.execute.run_document(
         workspace=tmpdir,
         documentid=jobid,
         outpath=outpath,
         config=queuemo.runtime.api.RecipeConfig(verbose=verbose),
     )
-    return utilo.SUCCESS
+    return returncode
 
 
 def eval_cli() -> tuple:
