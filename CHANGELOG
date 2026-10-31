@@ -1,6 +1,29 @@
 # CHANGELOG
 
 
+## v1.28.0 (2026-10-31)
+
+### Bug Fixes
+
+- **todo**: Add hint to investigate parameter
+  ([`3a1cfff`](https://github.com/anaticulae/queuemo/commit/3a1cfff111e6b9b9a60f09d94312629ca8711cd2))
+
+### Chores
+
+- **github**: Upgrade actions
+  ([`d5144f7`](https://github.com/anaticulae/queuemo/commit/d5144f7bbe329452effeb4726fff9ab89c27a2d5))
+
+### Features
+
+- **single**: Add return code to pass working state
+  ([`a3419bb`](https://github.com/anaticulae/queuemo/commit/a3419bbf8883b5ba318e09573d128917a0f8b721))
+
+### Refactoring
+
+- **single**: Simplify code
+  ([`299f97a`](https://github.com/anaticulae/queuemo/commit/299f97adaaa2b32e685ae0b0cfd0a4b936a95f17))
+
+
 ## v1.27.7 (2026-10-24)
 
 ### Bug Fixes
