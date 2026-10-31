@@ -43,6 +43,7 @@ def main() -> int:
         else:
             utilo.error(f'require directory: {inpath} or use --create flag')
             return utilo.INVALID_COMMAND
+    # TODO: DISABLE OUTPATH CLI PARAMETER?
     outpath = inpath
     utilo.log(f'write result to: {outpath}')
     # patch todo outpath path. TODO: INVESTIGATE HERE?
