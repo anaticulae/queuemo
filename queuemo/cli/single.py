@@ -32,6 +32,23 @@ Run queuemo recipe for given -i input and write to -o folder.
 
 @utilo.saveme
 def main() -> int:
+    evaled = in_out_verbose_path()
+    if isinstance(evaled, int):
+        return evaled
+    inpath, outpath, verbose = evaled
+    # analyze single document
+    tmpdir = utilo.tmpdir(configos.tmp())
+    jobid = queuemo.worker.startup.jobid(inpath)
+    returncode = queuemo.runtime.execute.run_document(
+        workspace=tmpdir,
+        documentid=jobid,
+        outpath=outpath,
+        config=queuemo.runtime.api.RecipeConfig(verbose=verbose),
+    )
+    return returncode
+
+
+def in_out_verbose_path():
     inpath, outpath, verbose, create = eval_cli()
     utilo.logger.level_setup(utilo.Level(verbose))
     queuemo.cli.utils.logger_start()
@@ -50,16 +67,7 @@ def main() -> int:
     todopath = os.path.normpath(os.path.join(inpath, os.path.pardir))
     configos.todo = lambda _=False: todopath
     configos.ready = lambda _=False: todopath
-    # analyze single document
-    tmpdir = utilo.tmpdir(configos.tmp())
-    jobid = queuemo.worker.startup.jobid(inpath)
-    returncode = queuemo.runtime.execute.run_document(
-        workspace=tmpdir,
-        documentid=jobid,
-        outpath=outpath,
-        config=queuemo.runtime.api.RecipeConfig(verbose=verbose),
-    )
-    return returncode
+    return inpath, outpath, verbose
 
 
 def eval_cli() -> tuple:
