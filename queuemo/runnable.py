@@ -327,16 +327,10 @@ def decider_textflow_lineending(inpath: str, outpath: str = None, **kwargs):
 
 
 def feedback_images(inpath: str, outpath: str = None):
-    # TODO: Remove after feedview is working correctly
-    missing_outdir = os.path.join(outpath, 'feedback__view_pages')
-    os.makedirs(missing_outdir, exist_ok=True)
     run('feedback --images --figures -j2', inpath, outpath)
 
 
 def feedback_view(inpath: str, outpath: str = None):
-    # TODO: Remove after feedview is working correctly
-    missing_outdir = os.path.join(outpath, 'feedback__view_pages')
-    os.makedirs(missing_outdir, exist_ok=True)
     run('feedback --view', inpath, outpath)
 
 
