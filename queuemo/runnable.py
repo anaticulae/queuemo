@@ -303,8 +303,7 @@ def decider_chapter(inpath: str, outpath: str = None, **kwargs):
 
 
 def decider_textstyle_headlines(inpath: str, outpath: str = None, **kwargs):
-    # TODO: Enable later; activate after utilo supports selective inputs
-    # run('decider_textflow --lineending', inpath, outpath)
+    run('decider_textflow --lineending', inpath, outpath)
     run('decider_textstyle --headlines', inpath, outpath, **kwargs)
 
 
@@ -321,8 +320,7 @@ def decider_links(inpath: str, outpath: str = None):
 
 
 def decider_textflow_lineending(inpath: str, outpath: str = None, **kwargs):
-    # TODO: Enable later; activate after utilo supports selective inputs
-    # run('decider_textflow --lineending', inpath, outpath)
+    run('decider_textflow --lineending', inpath, outpath)
     run('decider_textflow -j8', inpath, outpath, **kwargs)
 
 
