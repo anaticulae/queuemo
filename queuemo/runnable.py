@@ -303,8 +303,7 @@ def decider_chapter(inpath: str, outpath: str = None, **kwargs):
 
 
 def decider_textstyle_headlines(inpath: str, outpath: str = None, **kwargs):
-    # TODO: Enable later; activate after utilo supports selective inputs
-    # run('decider_textflow --lineending', inpath, outpath)
+    run('decider_textflow --lineending', inpath, outpath)
     run('decider_textstyle --headlines', inpath, outpath, **kwargs)
 
 
@@ -321,22 +320,15 @@ def decider_links(inpath: str, outpath: str = None):
 
 
 def decider_textflow_lineending(inpath: str, outpath: str = None, **kwargs):
-    # TODO: Enable later; activate after utilo supports selective inputs
-    # run('decider_textflow --lineending', inpath, outpath)
+    run('decider_textflow --lineending', inpath, outpath)
     run('decider_textflow -j8', inpath, outpath, **kwargs)
 
 
 def feedback_images(inpath: str, outpath: str = None):
-    # TODO: Remove after feedview is working correctly
-    missing_outdir = os.path.join(outpath, 'feedback__view_pages')
-    os.makedirs(missing_outdir, exist_ok=True)
     run('feedback --images --figures -j2', inpath, outpath)
 
 
 def feedback_view(inpath: str, outpath: str = None):
-    # TODO: Remove after feedview is working correctly
-    missing_outdir = os.path.join(outpath, 'feedback__view_pages')
-    os.makedirs(missing_outdir, exist_ok=True)
     run('feedback --view', inpath, outpath)
 
 
