@@ -22,16 +22,15 @@ import queuemo.utils
 def before(flow: queuemo.runtime.api.RecipeIO):  # pylint:disable=W0613
     # RUN MAGIC BEFORE
     # TODO: ADD TEST THAT MAGIC EXISTS?
-    # pages = queuemo.utils.select_pages(
-    #     flow.general,
-    #     select=iamraw.sections.MainPart,
-    # )
-    # queuemo.runnable.textflow_wordspace(
-    #     inpath=flow.general,
-    #     outpath=flow.tmppath,
-    #     pages=pages,
-    # )
-    pass
+    pages = queuemo.utils.select_pages(
+        flow.general,
+        select=iamraw.sections.MainPart,
+    )
+    queuemo.runnable.textflow_wordspace(
+        inpath=flow.general,
+        outpath=flow.tmppath,
+        pages=pages,
+    )
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
