@@ -15,7 +15,7 @@ import queuemo.runtime.api
 
 @queuemo.required
 def run(flow: queuemo.runtime.api.RecipeIO) -> list:
-    """Create a file named close to signal update hander that process is
-    completed."""
+    """Creates a file `close` similar to the signal update handler that
+    marks the process as completed."""
     # TODO: ADD STATUS INFORMATION LATER
     qvlink.finish_fastview(flow.document)
