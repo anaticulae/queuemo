@@ -37,8 +37,7 @@ def print_waiting():
 
 
 def print_documents(state):
-    # TODO: PASS READY AND TODO TO AVOID REQUIRED COMMON PARENT
-    common = utilo.path_parent(configos.ready())
+    common = configos.share(check=True)
     documents = qvlink.load_documents(
         common=common,
         owner=None,
