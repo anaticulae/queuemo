@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.28.1 (2026-11-15)
+
+### Chores
+
+- **requirements**: Upgrade pyproject.toml
+  ([`732118e`](https://github.com/anaticulae/queuemo/commit/732118e020719c7e5aed2a3d9c2c14955b81443d))
+
+
 ## v1.28.0 (2026-10-31)
 
 ### Bug Fixes
