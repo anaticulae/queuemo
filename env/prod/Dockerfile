@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-FROM python:3.15-slim
+FROM python:3.15.2-slim
 
 ENV PYTHONOPTIMIZE=2
 # Makes application logs appear immediately in Docker logs.
