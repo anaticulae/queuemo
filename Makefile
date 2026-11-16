@@ -6,9 +6,13 @@ CURDIR := $(CURDIR)
 NAME = queuemo
 IMAGE := $(NAME):$(VERSION)
 IMAGE_NAME := ghcr.io/anaticulae/$(IMAGE)
+IMAGE_NAME_PROD := ghcr.io/anaticulae/$(NAME)-prod:$(VERSION)
 
 docker-build:
 	docker build -t $(IMAGE_NAME) .
+
+docker-build-prod:
+	docker build -f env/prod/Dockerfile -t $(IMAGE_NAME_PROD) .
 
 docker-upload: docker-build
 	docker push $(IMAGE_NAME)
@@ -72,3 +76,8 @@ docker-release: docker-build
 			$(IMAGE_NAME) \
 			"baw release --no_test --no_linter"; \
 	fi
+
+docker-run-prod: docker-build-prod
+	docker run\
+		$(IMAGE_NAME_PROD) \
+		"worker"

@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 # =============================================================================
 # C O P Y R I G H T
 # -----------------------------------------------------------------------------
@@ -7,27 +8,21 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-# TODO: REMOVE GIT AND BAW LATER
-FROM 169.254.149.20:6001/arch_python_git_ghost_opencv_baw:v1.46.0
+: "${WORKER:=1}"
+: "${JOBS:=10240}"
+: "${RUNTIME:=1000000}"
 
-RUN pip install "queuemo==CURRENT" && pip cache purge
+echo "WORKER:  ${WORKER}"
+echo "RUNTIME: ${RUNTIME}"
+echo "JOBS:    ${JOBS}"
 
-VOLUME /var/shared/
-VOLUME /var/cached/
-
-ENV SHARED_TODO=/var/shared/todo
-ENV SHARED_READY=/var/shared/ready
-ENV SHARED_SPACE=/var/shared/
-ENV SHARED_TMP=/tmp
-
-ENV DEV_CACHED_ROOT=/var/cached
-
-ENV PYTHONOPTIMIZE=2
-
-ENV JOBS=1200
-ENV RUNTIME=1000000
-ENV WORKER=16
-
-COPY env/worker /var/parallel/worker
-
-ENTRYPOINT /var/parallel/worker
+for ((NUMBER=0; NUMBER < (${WORKER}-1); NUMBER++)); do
+    echo "start: ${NUMBER}"
+    python -m queuemo --jobs=${JOBS} --runtime=${RUNTIME} -VV >> ${NUMBER}.log &
+    sleep 1
+done
+echo "start: ${NUMBER}"
+echo "see progress in NUMBER.log"
+echo "running..."
+# wait for completion
+queuemo --jobs=${JOBS} --runtime=${RUNTIME} -VV >> ${NUMBER}.log
