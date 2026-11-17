@@ -67,6 +67,7 @@ dev = [
     "gennex==1.1.0",
     "hoverpower==1.7.0",
     "utilotest==1.1.1",
+    "queuemo-quality==1.0.2",
 ]
 
 [project.urls]
