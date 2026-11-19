@@ -7,12 +7,16 @@ NAME = queuemo
 IMAGE := $(NAME):$(VERSION)
 IMAGE_NAME := ghcr.io/anaticulae/$(IMAGE)
 IMAGE_NAME_PROD := ghcr.io/anaticulae/$(NAME)-prod:$(VERSION)
+IMAGE_NAME_SMOKE := ghcr.io/anaticulae/$(NAME)-smoke:$(VERSION)
 
 docker-build:
 	docker build -t $(IMAGE_NAME) .
 
 docker-build-prod:
 	docker build -f env/prod/Dockerfile -t $(IMAGE_NAME_PROD) .
+
+docker-build-smoke: docker-build-prod
+	docker build -f env/smoke/Dockerfile -t $(IMAGE_NAME_SMOKE) .
 
 docker-upload: docker-build
 	docker push $(IMAGE_NAME)
@@ -81,3 +85,14 @@ docker-run-prod: docker-build-prod
 	docker run\
 		$(IMAGE_NAME_PROD) \
 		"worker"
+
+docker-run-smoke: docker-build-smoke
+	docker run\
+		-v $(CURDIR):/var/workdir \
+		-e HOVERPOWER_STORE=/var/workdir/hoverpower/repo \
+		-e HOVERPOWER_SECRET \
+		-e JOBS=10 \
+		-e RUNTIME=5 \
+		-e WORKER=1 \
+		-p 8080:8080 \
+		$(IMAGE_NAME_SMOKE)

@@ -15,7 +15,7 @@ jobs:
         run: make docker-build-prod
       - name: Run application smoke test
         run: |
-          make docker-run-prod JOBS=10 RUNTIME=5 WORKER=2
+          make docker-run-smoke
       - name: Verify success
         if: success()
         run: echo "Application smoke test passed!"
