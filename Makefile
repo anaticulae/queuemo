@@ -7,13 +7,17 @@ NAME = queuemo
 IMAGE := $(NAME):$(VERSION)
 IMAGE_NAME := ghcr.io/anaticulae/$(IMAGE)
 IMAGE_NAME_PROD := ghcr.io/anaticulae/$(NAME)-prod:$(VERSION)
+IMAGE_NAME_PROD_CURRENT := ghcr.io/anaticulae/$(NAME)-prod:current
 IMAGE_NAME_SMOKE := ghcr.io/anaticulae/$(NAME)-smoke:$(VERSION)
 
 docker-build:
 	docker build -t $(IMAGE_NAME) .
 
 docker-build-prod:
-	docker build -f env/prod/Dockerfile -t $(IMAGE_NAME_PROD) .
+	docker build -f env/prod/Dockerfile \
+		-t $(IMAGE_NAME_PROD) \
+		-t $(IMAGE_NAME_PROD_CURRENT) \
+		.
 
 docker-build-smoke: docker-build-prod
 	docker build -f env/smoke/Dockerfile -t $(IMAGE_NAME_SMOKE) .

@@ -7,7 +7,7 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-FROM ghcr.io/anaticulae/queuemo-prod:39fcaf5
+FROM ghcr.io/anaticulae/queuemo-prod:current
 
 RUN apt-get update && apt-get install -y \
     curl \
