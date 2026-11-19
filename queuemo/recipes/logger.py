@@ -9,7 +9,6 @@
 
 import utilo
 
-# TODO: MOVE TO SEPARATE FILE
 LOGGERSTART = 0
 
 

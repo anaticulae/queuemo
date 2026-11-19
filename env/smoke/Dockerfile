@@ -7,27 +7,18 @@
 # be prosecuted under federal law. Its content is company confidential.
 # =============================================================================
 
-# TODO: REMOVE GIT AND BAW LATER
-FROM 169.254.149.20:6001/arch_python_git_ghost_opencv_baw:v1.46.0
+FROM ghcr.io/anaticulae/queuemo-prod:current
 
-RUN pip install "queuemo==CURRENT" && pip cache purge
+RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-VOLUME /var/shared/
-VOLUME /var/cached/
+# Smoketest
+COPY env/smoke/entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-ENV SHARED_TODO=/var/shared/todo
-ENV SHARED_READY=/var/shared/ready
-ENV SHARED_SPACE=/var/shared/
-ENV SHARED_TMP=/tmp
+RUN pip install .[dev]
 
-ENV DEV_CACHED_ROOT=/var/cached
+ENV VIEWO_HELPDESK=/data/helpdesk
 
-ENV PYTHONOPTIMIZE=2
-
-ENV JOBS=1200
-ENV RUNTIME=1000000
-ENV WORKER=16
-
-COPY env/worker /var/parallel/worker
-
-ENTRYPOINT /var/parallel/worker
+ENTRYPOINT ["docker-entrypoint.sh"]

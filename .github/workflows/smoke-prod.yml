@@ -1,0 +1,21 @@
+---
+name: Production Smoke Test
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  smoke-test:
+    name: Build and verify application
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+      - name: build production image
+        run: make docker-build-prod
+      - name: Run application smoke test
+        run: |
+          make docker-run-smoke
+      - name: Verify success
+        if: success()
+        run: echo "Application smoke test passed!"
