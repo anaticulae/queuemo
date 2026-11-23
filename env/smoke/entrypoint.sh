@@ -7,6 +7,8 @@
 : "${DEV_SERVER_PORT:=8080}"
 : "${DEV_SERVER_URL:=0.0.0.0}"
 
+pip list
+
 echo "download docu007..."
 export HOVERPOWER_PACKAGES=docu
 powerdownload && powerdecrypt
