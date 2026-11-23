@@ -28,11 +28,11 @@ WORKDIR /app
 
 COPY pyproject.toml README LICENSE ./
 # Install dependencies
-RUN pip install --no-cache-dir .
+RUN pip install .
 
 # Copy app
 COPY queuemo/ ./queuemo
-RUN pip install --no-cache-dir .
+RUN pip install .
 
 # Persistent data
 VOLUME ["/data"]
