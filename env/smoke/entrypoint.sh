@@ -24,7 +24,7 @@ queuemo --jobs=${JOBS} --runtime=${RUNTIME} -VV &
 PID2=$!
 echo "queuemo started..."
 echo "docu007 push..."
-pusher --port=${DEV_SERVER_PORT} --host=${DEV_SERVER_URL} docu007 &
+pusher --port=${DEV_SERVER_PORT} --host=${DEV_SERVER_URL} -vvv docu007 &
 PID3=$!
 echo "docu007 pushed..."
 
