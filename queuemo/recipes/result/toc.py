@@ -10,14 +10,14 @@
 ===
 """
 
-import os
-
+import iamraw.path
 import iamraw.sections
 import serializeraw
 import utilo
 
 import queuemo.runnable
 import queuemo.runtime.api
+import queuemo.utils
 
 
 def run(flow: queuemo.runtime.api.RecipeIO):
@@ -38,7 +38,7 @@ def run(flow: queuemo.runtime.api.RecipeIO):
 
 
 def create_backup_toc(outpath: str):
-    outpath = os.path.join(outpath, 'reftable__toc_toc.yaml')
+    outpath = iamraw.path.reftable_toc(outpath)
     utilo.log(f'write empty toc: {outpath}')
     dumped = serializeraw.dump_toc(iamraw.Toc())
     utilo.file_create(outpath, dumped)

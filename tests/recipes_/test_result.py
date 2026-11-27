@@ -50,8 +50,8 @@ def test_recipe_result_run_single(td, mp):  # pylint:disable=W0621
 # 'page_72_noimages_toc',
 # 'page_78_images_toc',
 @pytest.mark.parametrize('jobid', [
-    pytest.param('2324123123', marks=utilotest.longrun),
-    pytest.param('8166109011', marks=utilotest.longrun),
+    pytest.param(tests.resources.EXAMPLE_SEC_JOB_ID, marks=utilotest.longrun),
+    pytest.param(tests.resources.EXAMPLE_JOB_ID, marks=utilotest.longrun),
     pytest.param('home025', marks=utilotest.longrun),
     pytest.param('order009', marks=utilotest.longrun),
     pytest.param('master083', marks=utilotest.nightly),

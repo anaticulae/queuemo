@@ -18,7 +18,7 @@ echo "JOBS:    ${JOBS}"
 
 for ((NUMBER=0; NUMBER < (${WORKER}-1); NUMBER++)); do
     echo "start: ${NUMBER}"
-    queuemo --jobs=${JOBS} --runtime=${RUNTIME} -VV >> ${NUMBER}.log &
+    python -m queuemo --jobs=${JOBS} --runtime=${RUNTIME} -VV >> ${NUMBER}.log &
     sleep 1
 done
 echo "start: ${NUMBER}"
