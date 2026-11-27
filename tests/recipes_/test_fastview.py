@@ -29,7 +29,7 @@ def test_recipe_fastview_run_single(td, mp):
 @pytest.mark.parametrize(
     'jobid',
     [
-        '2324123123',
+        tests.resources.EXAMPLE_SEC_JOB_ID,
         # 'page_116_images_toc_formular',
         # 'page_72_noimages_toc',
         # 'page_78_images_toc',

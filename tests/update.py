@@ -36,7 +36,7 @@ def extract_examples(files):
     )
     create_example(
         hoverpower.DOCU027_PDF,
-        todoname='2324123123',
+        todoname=tests.resources.EXAMPLE_SEC_JOB_ID,
         filename='The RestructuredText Book',
     )
 
