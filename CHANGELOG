@@ -1,6 +1,105 @@
 # CHANGELOG
 
 
+## v1.29.0 (2026-11-27)
+
+### Bug Fixes
+
+- **runnable**: Enable decider_textflow
+  ([`d205903`](https://github.com/anaticulae/queuemo/commit/d20590355f5dcd44773019711b6ddeaa1df689cc))
+
+- **runnable**: Remove step after feedback is fixed
+  ([`764164f`](https://github.com/anaticulae/queuemo/commit/764164f993cc4aa459d4dedf3dcfedc223003040))
+
+- **textstyle**: Enable word space runner
+  ([`acf9360`](https://github.com/anaticulae/queuemo/commit/acf9360a00e4937238bedc008ef7a2e187c81b01))
+
+### Chores
+
+- **docker**: Build faster
+  ([`915dab3`](https://github.com/anaticulae/queuemo/commit/915dab3bf2ddbc42df5847229ada9d2d6c2fbf37))
+
+- **docker**: Derive from docker from current
+  ([`17c3bc9`](https://github.com/anaticulae/queuemo/commit/17c3bc94840b61c24af311ce22016c5e960a7ef2))
+
+- **git**: Do not track hoverpower download
+  ([`ee85b0d`](https://github.com/anaticulae/queuemo/commit/ee85b0d5bd9e16ea9bd8e3e8f45695eabe3dbfe4))
+
+- **github**: Add docker production smoke test
+  ([`5148efb`](https://github.com/anaticulae/queuemo/commit/5148efb0dc4d0cd9b05f0a0c85c14fb49d530703))
+
+- **github**: Give more time to solve smoke
+  ([`a165649`](https://github.com/anaticulae/queuemo/commit/a165649b55726be122c0b029904a6e9c7d235dde))
+
+- **github**: Pass secret key for hoverpower
+  ([`5695234`](https://github.com/anaticulae/queuemo/commit/56952344e9a1bfca873076a8c9e201ecb46e8e81))
+
+- **make**: Remove outdated script
+  ([`20a26fe`](https://github.com/anaticulae/queuemo/commit/20a26fe992ea4716c0f9c1a0349292b56926b5ef))
+
+- **make**: Split generation and execution step to have current state
+  ([`1e8164e`](https://github.com/anaticulae/queuemo/commit/1e8164e2410d9336c50973e8fd32442fb7ed9ad2))
+
+- **prod**: Make build more reproducible
+  ([`925c1d3`](https://github.com/anaticulae/queuemo/commit/925c1d31952943939abe2778788479411c5f6b4f))
+
+- **pyproject**: Add missing dependency
+  ([`088eb70`](https://github.com/anaticulae/queuemo/commit/088eb706e4a4bcf9e3b2c5d09a0bdabc4f4a13c7))
+
+- **pyproject**: Add missing dependency
+  ([`3b5950c`](https://github.com/anaticulae/queuemo/commit/3b5950c96aad9e511f1a6aa1c3f7972da595ad8d))
+
+- **pyproject**: Add quality checker
+  ([`d961217`](https://github.com/anaticulae/queuemo/commit/d961217ffbee2d89550476d6ff2df5ec7b850657))
+
+- **pyproject**: Add utilosafe
+  ([`95b59ed`](https://github.com/anaticulae/queuemo/commit/95b59edb7ddfc9c564bc23afa34e57ece26e28b3))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`60c4339`](https://github.com/anaticulae/queuemo/commit/60c43391aa9c562d93935823a13270d4b395eb61))
+
+- **requirements**: Upgrade pyproject.toml
+  ([`2c423fa`](https://github.com/anaticulae/queuemo/commit/2c423fa02beaf3b42168b5c2d3d01d9ff452b295))
+
+- **smoke**: Add script
+  ([`60badc0`](https://github.com/anaticulae/queuemo/commit/60badc03879f02edf06dabfcbbb6d6e7956ac04a))
+
+- **smoke**: Give more debug information
+  ([`cd4cf53`](https://github.com/anaticulae/queuemo/commit/cd4cf53e1d9a34518be36ced7d3310aa22424773))
+
+- **smoke**: Print environment
+  ([`dc9d9e9`](https://github.com/anaticulae/queuemo/commit/dc9d9e96edadc927a17bf7569ffca1acb820ff9b))
+
+### Code Style
+
+- **fastview**: Clarify comment
+  ([`25ab86e`](https://github.com/anaticulae/queuemo/commit/25ab86ecb9fae64395936d796aeaf11d7da8c601))
+
+- **logger**: Remove todo
+  ([`44805e5`](https://github.com/anaticulae/queuemo/commit/44805e50090ce9590757a15e5c6da1b1c09e9971))
+
+### Features
+
+- **prod**: Adjust environment
+  ([`14d8eca`](https://github.com/anaticulae/queuemo/commit/14d8eca60b725ba66f2b996a4d983e79ad07ed0b))
+
+### Refactoring
+
+- **state**: Replace with confgios code
+  ([`52f5db3`](https://github.com/anaticulae/queuemo/commit/52f5db3fe026cad8ec0a0f63eb3d432b24ef4a61))
+
+- **toc**: Replace with iamraw code
+  ([`77df4c9`](https://github.com/anaticulae/queuemo/commit/77df4c9ff8c02bea32e4905080ea1c2c2a4c0a04))
+
+### Testing
+
+- **refactor**: Clarify code
+  ([`324c774`](https://github.com/anaticulae/queuemo/commit/324c774f5bbf2054903921b1f8154a69f8d37404))
+
+- **scheduler**: Make test run
+  ([`66625c9`](https://github.com/anaticulae/queuemo/commit/66625c90f8838a4d2d77a8309c76d2457fa5115c))
+
+
 ## v1.28.1 (2026-11-15)
 
 ### Chores
