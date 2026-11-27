@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v1.29.1 (2026-11-27)
+
+### Chores
+
+- **pyproject**: Release on every commit
+  ([`b765d07`](https://github.com/anaticulae/queuemo/commit/b765d079cabec80e1c2b1103cfdfd8dd34f4e7ed))
+
+### Deps
+
+- **dependabot**: Bump the all-dependencies group across 1 directory with 2 updates
+  ([`0c89212`](https://github.com/anaticulae/queuemo/commit/0c892122037966b47f5127784e9eb7a7ea821348))
+
+
 ## v1.29.0 (2026-11-27)
 
 ### Bug Fixes
