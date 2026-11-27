@@ -46,6 +46,7 @@ dependencies = [
     "titulum>=1.0.2,<2.0.0",
     "ughost>=1.1.1,<2.0.0",
     "utilo>=2.112.3,<3.0.0",
+    "utilosafe>=1.1.0,<2.0.0",
     "verbo>=1.23.4,<2.0.0",
     "queuemo-findings==1.0.1",
 ]
